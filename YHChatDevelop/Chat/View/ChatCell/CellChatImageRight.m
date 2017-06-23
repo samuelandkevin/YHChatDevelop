@@ -121,12 +121,16 @@
     
     //消息图片下载
     if (self.model.msgContent && self.model.msgType == 1) {
-        NSURL *url = [self getImageUrl];
-        [_imgvContent sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"chat_img_defaultPhoto"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-            
-//            [self updateImageCellHeightWith:image maxSize:CGSizeMake(200, 200)];
-            
-        }];
+        if (self.model.imageMsg) {
+            _imgvContent.image = self.model.imageMsg;
+        }else{
+            NSURL *url = [self getImageUrl];
+            [_imgvContent sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"chat_img_defaultPhoto"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                
+    //            [self updateImageCellHeightWith:image maxSize:CGSizeMake(200, 200)];
+                
+            }];
+        }
     }
 }
 

@@ -402,7 +402,8 @@
             complete(NO,obj);
         }else{
             if(obj){
-                complete(YES,obj);
+                YHChatModel *model = [[DataParser shareInstance] parseOneChatLogWithDict:obj];
+                complete(YES,model);
             }else{
                 complete(NO,obj);
             }
@@ -580,6 +581,34 @@
     }];
 
     
+}
+
+//消息撤回
+- (void)putWithDrawMsgWithMsgID:(NSString *)msgID complete:(NetManagerCallback)complete{
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathWithDrawMsg];
+    
+    if (!msgID) {
+        complete(NO,@"msgID is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                           };
+    requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"/%@",msgID]];
+    
+    [self putWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
+        if (success) {
+            complete(YES,obj);
+        }else{
+            complete(NO,obj);
+        }
+    }];
 }
 
 @end

@@ -522,14 +522,10 @@
     }
     
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathUploadImage];
-    
-    NSDictionary *params = @{
-                             @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken
-                             };
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",kBaseURL,kPathUploadImage,[YHUserInfoManager sharedInstance].userInfo.accessToken];
     
     
-    [self uploadWithRequestUrl:requestUrl parameters:params imageArray:@[image] fileNames:@[@"myAvatar"] name:@"files" mimeType:@"image/png" progress:^(int64_t bytesWritten, int64_t totalBytesWritten) {
+    [self uploadWithRequestUrl:requestUrl parameters:nil imageArray:@[image] fileNames:@[@"myAvatar"] name:@"files" mimeType:@"image/png" progress:^(int64_t bytesWritten, int64_t totalBytesWritten) {
         progress(bytesWritten,totalBytesWritten);
     }
                       complete:^(BOOL success, id obj) {

@@ -381,6 +381,7 @@ NSString *const kPathMsgStick           = @"/taxtao/api/im/chat_history_top";//�
 NSString *const kPathMsgCancelStick     = @"/taxtao/api/im/chat_history_top/cancel";//取消消息置顶
 NSString *const kPathGroupMembers       = @"/taxtao/api/im/group_members";//获取群成员
 NSString *const kPathDeleteSession      = @"/taxtao/api/im/delete_history";//删除会话
+NSString *const kPathWithDrawMsg        = @"/taxtao/api/im/retract_msg";//消息撤回
 
 #pragma mark - /**********悬赏***************/
 NSString *const kPathUpdateRewardStatus = @"/taxtao/api/reward/update_payment_status";

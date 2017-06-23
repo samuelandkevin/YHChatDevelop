@@ -31,6 +31,7 @@
 }
 
 #pragma mark - Public
+//从本地创建一条消息
 + (YHChatModel *)creatMessage:(NSString *)msg msgType:(YHMessageType)msgType  toID:(NSString *)toID {
     
     YHChatModel *model  = [YHChatModel new];
@@ -41,7 +42,7 @@
     model.msgType       = msgType;
     model.audienceId    = toID;
     model.chatType      = msgType;
-    model.chatId        = [NSString stringWithFormat:@"%ld",1000 + random()%1000];//本地消息记录ID是手动设置，等消息发送成功后将此替换。
+//    model.chatId        = [NSString stringWithFormat:@"%ld",1000 + random()%1000];//本地消息记录ID是手动设置，等消息发送成功后将此替换。
     model.createTime    = [[NSDate date] getNowDate];
     model.msgContent    = msg;
     
@@ -67,12 +68,14 @@
     }else if (msgType == YHMessageType_Image){
         //设置图片
         
-        //缩略图
-        NSString *thumbnailUrlStr = [NSString stringWithFormat:@"img[%@!t300*300.jpg]",msg];
-        //原图
-        NSString *oriUrlStr = [NSString stringWithFormat:@"img[%@]",msg];
+        //本地图片标识
+        NSString *oriUrlStr = @"img[local://]";
         model.msgContent = oriUrlStr;
     
+    }else if (msgType == YHMessageType_Voice){
+        
+        //语音
+        model.msgContent = msg;
     }
 
     

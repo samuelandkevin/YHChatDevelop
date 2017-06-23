@@ -189,8 +189,8 @@
 
 - (void)setupModel:(YHChatModel *)model{
     [super setupModel:model];
-    self.lbName.text = self.model.speakerName;
-    self.lbTime.text = self.model.createTime;
+     self.lbName.text = self.model.speakerName;
+     self.lbTime.text = self.model.createTime;
     [self.imgvAvatar sd_setImageWithURL:self.model.speakerAvatar placeholderImage:[UIImage imageNamed:@"common_avatar_80px"]];
 //    _lbDuration.text = @"1 '";
 }

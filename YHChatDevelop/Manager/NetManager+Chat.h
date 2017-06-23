@@ -71,4 +71,6 @@ typedef NS_ENUM(int,UnReadMsgType){
 //删除会话
 - (void)postDeleteSessionWithID:(NSString *)sessionID sessionUserID:(NSString *)sessionUserID complete:(NetManagerCallback)complete;
 
+//消息撤回
+- (void)putWithDrawMsgWithMsgID:(NSString *)msgID complete:(NetManagerCallback)complete;
 @end

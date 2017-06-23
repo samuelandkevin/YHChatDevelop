@@ -11,8 +11,8 @@
 
 /***********BaseUrl***************************/
 //#define kBaseURL  @"http://192.168.1.80"    //内网测试环境
-//#define kBaseURL  @"https://testapp.gtax.cn"  //外网测试
-#define kBaseURL  @"https://apps.gtax.cn"   //外网生产环境
+#define kBaseURL  @"https://testapp.gtax.cn"  //外网测试
+//#define kBaseURL  @"https://apps.gtax.cn"   //外网生产环境
 
 //#define kBaseURL @"http://192.168.2.251:8085"//后台家学
 //#define kBaseURL @"http://192.168.2.175:8080"//后台啊亮
@@ -155,6 +155,7 @@ extern NSString *const kPathMsgStick;        //消息置顶
 extern NSString *const kPathMsgCancelStick;  //取消消息置顶
 extern NSString *const kPathGroupMembers;    //获取群成员
 extern NSString *const kPathDeleteSession;   //删除会话
+extern NSString *const kPathWithDrawMsg;     //消息撤回
 
 #pragma mark - /**********悬赏***************/
 extern NSString *const kPathUpdateRewardStatus;//修改悬赏订单状态

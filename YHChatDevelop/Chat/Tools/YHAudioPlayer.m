@@ -62,7 +62,7 @@
         //初始化播放器，注意这里的Url参数只能时文件路径，不支持HTTP Url
         self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:aUrl error:&error];
         //设置播放器属性
-        _player.numberOfLoops=0;//设置为0不循环
+        _player.numberOfLoops = 0;//设置为0不循环
         _player.delegate = self;
         [_player prepareToPlay];//加载音频文件到缓存
         if(error){

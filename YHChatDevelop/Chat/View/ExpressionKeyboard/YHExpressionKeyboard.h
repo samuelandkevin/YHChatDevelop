@@ -58,4 +58,6 @@
  键盘上方视图内容滚动到键盘顶部(Note: 键盘上方视图是scrollView才有效)
  */
 - (void)aboveViewScollToBottom;
+
+- (void)aboveViewScollToBottom:(BOOL)animated;
 @end

@@ -26,8 +26,8 @@ static const char *btnBlockKey = "btnBlockKey";
 
 #pragma mark - Public
 + (UIBarButtonItem *)backItemWithTarget:(id)target selector:(SEL)selector{
-    
-    return  [self barButtonItemWithFrame:CGRectMake(0, 0, 40, 40) imgName:@"common_leftArrow" imageEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0) target:target selector:selector];
+    return [self leftItemWithImgName:@"common_leftArrow" target:target selector:selector];
+//    return  [self barButtonItemWithFrame:CGRectMake(0, 0, 40, 40) imgName:@"common_leftArrow" imageEdgeInsets:UIEdgeInsetsMake(0, -30, 0, 0) target:target selector:selector];
 }
 
 /**********UIBarButtonItem为文字的设置**********/

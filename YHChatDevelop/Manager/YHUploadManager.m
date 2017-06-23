@@ -9,7 +9,6 @@
 #import "YHUploadManager.h"
 #import "NetManager.h"
 #import "YHChatModel.h"
-//#import "YHDebug.h"
 #import "YHProtocolConfig.h"
 
 #define kUploadAudioMAXCount 3      //上传音频数量限制
@@ -63,13 +62,13 @@
 //上传聊天语音
 - (void)uploadChatRecordWithPath:(NSString *)recordPath complete:(void (^)(BOOL success,id obj))complete progress:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten))progress{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,  kPathUploadRecordFile];
-    
-    NSDictionary *params = @{
-                             @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken
-                             };
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",kBaseURL,kPathUploadRecordFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
 
-    [self _uploadFileInQueue:self.uploadAudioQueue filePath:recordPath requestUrl:requestUrl fileNameInServer:@"file" maxConcurrentCount:kUploadAudioMAXCount mimeType:@"audio/wav" params:params complete:^(BOOL success, id obj){
+    [self _uploadFileInQueue:self.uploadAudioQueue filePath:recordPath requestUrl:requestUrl fileNameInServer:@"file" maxConcurrentCount:kUploadAudioMAXCount mimeType:@"audio/wav" params:nil complete:^(BOOL success, id obj){
         if (success) {
             id dictData  = obj[@"data"];
             if(![dictData isKindOfClass:[NSDictionary class]]){
@@ -97,13 +96,16 @@
 //上传办公格式的文件
 - (void)uploadOfficeFileWithPath:(NSString *)filePath complete:(void (^)(BOOL success,id obj))complete progress:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten))progress{
 
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathUploadOfficeFile];
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",kBaseURL,kPathUploadOfficeFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
     
     NSString *mimeType = [self _getMIMETypeWithFilePath:filePath];
     
-    NSDictionary *params = @{
-                             @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken
-                             };
+    NSDictionary *params = nil;
     [self _uploadFileInQueue:self.uploadOfficeFileQueue filePath:filePath requestUrl:requestUrl fileNameInServer:@"files" maxConcurrentCount:kUploadOfficeFileMAXCount mimeType:mimeType params:params complete:^(BOOL success, id obj) {
         if (success) {
             id dictData  = obj[@"data"];

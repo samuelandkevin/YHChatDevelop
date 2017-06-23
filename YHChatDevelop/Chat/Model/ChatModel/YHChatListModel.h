@@ -16,7 +16,7 @@
 @property (nonatomic,copy) NSString *lastContent;
 @property (nonatomic,assign) int    msgType;
 @property (nonatomic,copy) NSString *userId;
-@property (nonatomic,copy) NSString *sessionUserId;
+@property (nonatomic,copy) NSString *sessionUserId;  //会话用户ID(好友或者群)
 @property (nonatomic,copy) NSString *sessionUserName;
 @property (nonatomic,assign) int    unReadCount;
 @property (nonatomic,assign) BOOL   isRead;

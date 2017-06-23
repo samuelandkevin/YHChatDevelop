@@ -22,18 +22,21 @@
 @property (nonatomic,copy) NSString *content;
 @property (nonatomic,copy) NSString *createTime;   //发言时间
 @property (nonatomic,copy) NSString *updateTime;   //最近更新时间
-@property (nonatomic,copy) NSString *audienceId;   //听众Id
-@property (nonatomic,copy) NSURL *audienceAvatar;  //听众头像
-@property (nonatomic,copy) NSString *audienceName; //听众名字
-@property (nonatomic,copy) NSString *speakerName;  //发布者名称
+@property (nonatomic,copy) NSString *audienceId;   //接收者Id
+@property (nonatomic,copy) NSString *audienceDept; //接收者部门
+@property (nonatomic,copy) NSURL *audienceAvatar;  //接收者头像
+@property (nonatomic,copy) NSString *audienceName; //接收者名字
+@property (nonatomic,copy) NSString *speakerId;    //发布者Id
+@property (nonatomic,copy) NSString *speakerDept;  //发布者部门
+@property (nonatomic,copy) NSString *speakerName;  //发布者名字
 @property (nonatomic,copy) NSURL *speakerAvatar;   //发布者头像缩略图
 @property (nonatomic,copy) NSURL *speakerAvatarOri;//发布者头像原图
-@property (nonatomic,copy) NSString *speakerId;    //发布者Id
 @property (nonatomic,assign) BOOL isRead;          //是否已读
 @property (nonatomic,assign) int timestamp;        //时间戳
 @property (nonatomic,assign) int msgType;          //消息类型 // 0是文本 1是图片 2是语音 3是文件 4是gif
 @property (nonatomic,assign) int direction;
 @property (nonatomic,assign) int status; //消息状态（撤回：1,未撤回：0）
+
 
 /*****自定义,以后可能并入服务器****/
 @property (nonatomic,assign) YHMessageDeliveryState deliveryState;//消息发送状态
@@ -47,13 +50,14 @@
 @property (nonatomic,strong) YHChatTextLayout *layout;
 @property (nonatomic,strong) YHFileModel *fileModel;
 @property (nonatomic,strong) YHGIFModel  *gifModel;
+@property (nonatomic,strong) UIImage *imageMsg;//发消息的图片(note:从本地获取一张图片,后将此图片发送)
 @end
 
 #pragma mark - 聊天的音频文件
 @interface YHAudioModel : NSObject
 @property (nonatomic,copy) NSString *ext;    //后缀格式
-@property (nonatomic,assign) float  duration;//时长
-@property (nonatomic,copy) NSURL *url;       //音频url
+@property (nonatomic,assign)float duration;//时长
+@property (nonatomic,copy) NSURL  *url;       //音频url
 
 /******以下非服务器返回字段******/
 

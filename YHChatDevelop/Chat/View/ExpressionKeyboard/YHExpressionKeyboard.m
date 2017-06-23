@@ -240,10 +240,13 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
 
 //键盘上方视图内容滚动到键盘顶部(Note: 键盘上方视图是scrollView才有效)
 - (void)aboveViewScollToBottom{
+    [self aboveViewScollToBottom:YES];
+}
+
+- (void)aboveViewScollToBottom:(BOOL)animated{
     if (_aboveView && [_aboveView isKindOfClass:[UIScrollView class]]) {
         UIScrollView *scr = (UIScrollView *) _aboveView;
-        [self _scrollToBottom:scr];
-        
+        [self _scrollToBottom:scr animated:animated];
     }
 }
 
@@ -463,7 +466,7 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
 }
 
 
-- (void)_scrollToBottom:(UIScrollView *)scrollView{
+- (void)_scrollToBottom:(UIScrollView *)scrollView animated:(BOOL)animated{
     
     CGPoint off         = scrollView.contentOffset;
     CGFloat contentH    = scrollView.contentSize.height;
@@ -484,8 +487,9 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
     if ( off.y < 0 ){
         return;
     }
-    [scrollView setContentOffset:off animated:YES];
-    
+//    [scrollView setContentOffset:off animated:YES];
+    [scrollView scrollToBottomAnimated:animated];
+ 
 }
 
 
@@ -697,6 +701,7 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
             //显示表情
             if (![_textView isFirstResponder]) {
                 [self _showExpressionKeyboard];
+                [self aboveViewScollToBottom];
             }else{
                 [_textView resignFirstResponder];
             }
@@ -713,6 +718,7 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
             //显示"+"内容
             if (![_textView isFirstResponder]) {
                 [self _showAddView];
+                [self aboveViewScollToBottom];
             }else{
                 [_textView resignFirstResponder];
             }
@@ -720,10 +726,6 @@ typedef NS_ENUM(int,YHKeyBoardStatus){
         }
     }
     
-    //aboveView滚到底部
-    if(button != _toolbarVioceButton){
-        [self aboveViewScollToBottom];
-    }
 }
 
 

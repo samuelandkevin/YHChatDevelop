@@ -174,21 +174,21 @@
         _progressView.hidden = YES;
     }
     
-    //wifi状态下自动下载
-    if ([NetManager sharedInstance].currentNetWorkStatus == YHNetworkStatus_ReachableViaWiFi) {
-         [self _downLoadFile];
-    }
-    
-   
-    _progressView.hidden = (self.model.fileModel.status == FileStatus_HasDownLoaded || self.model.fileModel.status == FileStatus_UnDownLoaded) ? YES:NO;
-    _lbFileSize.text = self.model.fileModel.fileSizeStr;
-    if(self.model.fileModel.status == FileStatus_UnDownLoaded){
-        self.lbStatus.text = @"未完成";
-    }else if(self.model.fileModel.status == FileStatus_isDownLoading){
-        self.lbStatus.text = @"下载中";
-    }else if(self.model.fileModel.status == FileStatus_HasDownLoaded){
-        self.lbStatus.text = @"已下载";
-    }
+//    //wifi状态下自动下载
+//    if ([NetManager sharedInstance].currentNetWorkStatus == YHNetworkStatus_ReachableViaWiFi) {
+//         [self _downLoadFile];
+//    }
+//    
+//   
+//    _progressView.hidden = (self.model.fileModel.status == FileStatus_HasDownLoaded || self.model.fileModel.status == FileStatus_UnDownLoaded) ? YES:NO;
+//    _lbFileSize.text = self.model.fileModel.fileSizeStr;
+//    if(self.model.fileModel.status == FileStatus_UnDownLoaded){
+//        self.lbStatus.text = @"未完成";
+//    }else if(self.model.fileModel.status == FileStatus_isDownLoading){
+//        self.lbStatus.text = @"下载中";
+//    }else if(self.model.fileModel.status == FileStatus_HasDownLoaded){
+//        self.lbStatus.text = @"已下载";
+//    }
     
     
 }

@@ -209,32 +209,37 @@
 
 - (YHChatModel *)parseOneChatLogWithDict:(NSDictionary *)dict{
     YHChatModel *model = [YHChatModel new];
-    model.chatId = dict[@"id"];
-    model.chatType   = [dict[@"isGroupChat"] intValue];
-    model.content    = dict[@"content"];
-    model.msgContent = dict[@"msgContent"];
-    model.createTime  = dict[@"createTime"];
-    model.updateTime = dict[@"updateTime"];
-    model.audienceId = dict[@"audienceId"];
-    NSString *audienceHead = dict[@"audienceHead"];
-    if (audienceHead) {
-        model.audienceAvatar = [NSURL URLWithString:audienceHead];
+    if ([dict isKindOfClass:[NSDictionary class]]) {
+        model.chatId = dict[@"id"];
+        model.chatType    = [dict[@"isGroupChat"] intValue];
+        model.content     = dict[@"content"];
+        model.msgContent  = dict[@"msgContent"];
+        model.createTime  = dict[@"createTime"];
+        model.updateTime  = dict[@"updateTime"];
+        model.audienceDept= dict[@"audienceDept"];
+        model.audienceId  = dict[@"audienceId"];
+        NSString *audienceHead   = dict[@"audienceHead"];
+        if (audienceHead) {
+            model.audienceAvatar = [NSURL URLWithString:audienceHead];
+        }
+        
+        model.audienceName     = dict[@"audienceName"];
+        NSString *speakerHead  = dict[@"speakerHead"];
+        if (speakerHead) {
+            NSString *thumbPic = [NSString stringWithFormat:@"%@.w80x80.png",speakerHead];
+            model.speakerAvatar    = [NSURL URLWithString:thumbPic];
+            model.speakerAvatarOri = [NSURL URLWithString:speakerHead];
+        }
+        model.speakerDept  = dict[@"speakerDept"];
+        model.speakerName  = dict[@"speakerName"];
+        model.speakerId    = dict[@"speakerId"];
+        model.isRead       = [dict[@"isRead"] intValue]?YES:NO;
+        model.timestamp    = [dict[@"cursor"] intValue];
+        model.msgType      = [dict[@"msgType"] intValue];
+        model.direction    = [dict[@"direction"] intValue];
+        model.status       = [dict[@"status"] intValue];
+   
     }
-    
-    model.audienceName = dict[@"audienceName"];
-    NSString *speakerHead = dict[@"speakerHead"];
-    if (speakerHead) {
-        NSString *thumbPic = [NSString stringWithFormat:@"%@.w80x80.png",speakerHead];
-        model.speakerAvatar  = [NSURL URLWithString:thumbPic];
-        model.speakerAvatarOri = [NSURL URLWithString:speakerHead];
-    }
-    model.speakerName  = dict[@"speakerName"];
-    model.speakerId    = dict[@"speakerId"];
-    model.isRead       = [dict[@"isRead"] intValue]?YES:NO;
-    model.timestamp    = [dict[@"cursor"] intValue];
-    model.msgType      = [dict[@"msgType"] intValue];
-    model.direction    = [dict[@"direction"] intValue];
-    model.status       = [dict[@"status"] intValue];
     return model;
 }
 
