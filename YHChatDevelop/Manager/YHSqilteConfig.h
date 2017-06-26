@@ -8,6 +8,7 @@
 
 #ifndef YHSqilteConfig_h
 #define YHSqilteConfig_h
+#import "YHUserInfoManager.h"
 
 //#import "YHDebug.h"
 /**********common宏定义**************/

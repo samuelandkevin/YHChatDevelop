@@ -8,6 +8,7 @@
 
 #import "DataParser.h"
 #import "NSDate+Extension.h"
+#import "YHSqilteConfig.h"
 
 @interface DataParser()
 @property (nonatomic,assign)CGFloat addFontSize;
@@ -238,7 +239,9 @@
         model.msgType      = [dict[@"msgType"] intValue];
         model.direction    = [dict[@"direction"] intValue];
         model.status       = [dict[@"status"] intValue];
-   
+        if (model.msgType == YHMessageType_Doc) {
+           model.fileModel = [self parseFileModelWithfileStr:model.msgContent];
+        }
     }
     return model;
 }
@@ -374,6 +377,34 @@
     return model;
 }
 
+
+- (YHFileModel *)parseFileModelWithfileStr:(NSString *)fileStr{
+    YHFileModel *fileModel = [YHFileModel new];
+    if (fileStr) {
+        NSString *fileMsg = [fileStr stringByReplacingOccurrencesOfString:@"file(" withString:@""];
+        NSUInteger urlLocationEnd   = [fileMsg rangeOfString:@")"].location;
+        NSUInteger urlLength = urlLocationEnd;
+        NSString *urlStr;
+        NSString *ext;
+        if (urlLocationEnd != NSNotFound && urlLength > 0) {
+            urlStr = [fileMsg substringWithRange:NSMakeRange(0, urlLength)];
+            ext = urlStr.pathExtension;
+            
+        }
+        NSString *fileName;
+        fileName = [fileMsg stringByReplacingOccurrencesOfString:urlStr withString:@""];
+        fileName = [fileName substringFromIndex:2];
+        fileName = [fileName substringWithRange:NSMakeRange(0, fileName.length-1)];
+        fileModel.filePathInServer = urlStr;
+        fileModel.fileName = fileName;
+        fileModel.ext   = ext;
+        
+        BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/%@",OfficeDir,[urlStr lastPathComponent]]];
+        fileModel.status = exist ? FileStatus_HasDownLoaded:FileStatus_UnDownLoaded;
+        fileModel.filePathInLocal = exist?[NSString stringWithFormat:@"%@/%@",OfficeDir,[urlStr lastPathComponent]]:nil;
+    }
+    return fileModel;
+}
 
 
 @end

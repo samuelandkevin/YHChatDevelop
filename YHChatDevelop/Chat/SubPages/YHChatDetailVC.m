@@ -144,9 +144,11 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
         matchTextColor            = [UIColor greenColor];
         matchTextHighlightBGColor = [UIColor grayColor];
     }
-    YHChatTextLayout *layout = [[YHChatTextLayout alloc] init];
-    [layout layoutWithText:model.msgContent fontSize:(14+addFontSize) textColor:textColor matchTextColor:matchTextColor matchTextHighlightBGColor:matchTextHighlightBGColor];
-    model.layout = layout;
+    if (model.msgType == YHMessageType_Text) {
+        YHChatTextLayout *layout = [[YHChatTextLayout alloc] init];
+        [layout layoutWithText:model.msgContent fontSize:(14+addFontSize) textColor:textColor matchTextColor:matchTextColor matchTextHighlightBGColor:matchTextHighlightBGColor];
+        model.layout = layout;
+    }
     return model;
 }
 
@@ -617,10 +619,12 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
         
         
     }else if ([itemName isEqualToString:@"文件"]) {
+        WeakSelf
         YHDocumentVC *vc = [[YHDocumentVC alloc] init];
         YHNavigationController *nav = [[YHNavigationController alloc] initWithRootViewController:vc];
         [vc didSelectFilesComplete:^(NSArray<NSString *> *files) {
             DDLog(@"准备发送文件。");
+            [weakSelf _requestSendOfficeFiles:files];
         }];
         [self.navigationController presentViewController:nav animated:YES completion:NULL];
     }else if([itemName isEqualToString:@"拍摄"]){
@@ -751,6 +755,48 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     }];
     
    
+}
+
+//请求发送办公文件消息
+- (void)_requestSendOfficeFiles:(NSArray <NSString *>*)files{
+    WeakSelf
+    //创建本地办公文件消息
+    for (NSString *filePath in files) {
+        NSString *fileMsg = [NSString stringWithFormat:@"file(local://%@)[%@]",filePath,filePath.lastPathComponent];
+        YHChatModel *model = [YHChatHelper creatMessage:fileMsg msgType:YHMessageType_Doc toID:weakSelf.model.sessionUserId];
+        [weakSelf.dataArray addObject:model];
+        
+        [[YHUploadManager sharedInstance] uploadOfficeFileWithPath:filePath complete:^(BOOL success, id obj) {
+            if (success) {
+                NSURL    *fileUrl = obj;
+                NSString *filePathInServer = fileUrl.absoluteString;
+                NSString *fileName = [filePath.lastPathComponent stringByReplacingOccurrencesOfString:filePath.pathExtension withString:@""];
+                NSString *fileMsg = [NSString stringWithFormat:@"file(%@)[%@.%@]",filePathInServer,fileName,filePath.lastPathComponent];
+
+                int chatType = weakSelf.model.isGroupChat?QChatType_Group:QChatType_Private;
+                [[NetManager sharedInstance] postSendChatMsgToReceiverID:weakSelf.model.sessionUserId msgType:YHMessageType_Doc msg:fileMsg chatType:chatType complete:^(BOOL success, id obj) {
+                    if (success) {
+                        YHChatModel *retObj = obj;
+                        model.chatId = retObj.chatId;
+                        DDLog(@"办公文件消息发送成功:%@",obj);
+                    }else{
+                        DDLog(@"办公文件消息发送失败:%@",obj);
+                    }
+                }];
+            }else{
+            
+            }
+        } progress:^(int64_t bytesWritten, int64_t totalBytesWritten) {
+            
+        }];
+    }
+    //file(http://testapp.gtax.cn/images/2017/01/22/e53cbb3f30fc4dc5a2004f05f33abecd.docx)[呼呼呼嘎嘎嘎.docx]
+    [weakSelf.tableView reloadData];
+    [weakSelf.keyboard aboveViewScollToBottom];
+    
+   
+    
+    
 }
 
 //获取聊天记录

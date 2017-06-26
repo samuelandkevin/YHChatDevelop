@@ -22,7 +22,7 @@
 @property (nonatomic,strong) UILabel *lbFileName;
 @property (nonatomic,strong) UILabel *lbFileSize;
 @property (nonatomic,strong) UILabel *lbStatus;
-@property (nonatomic,strong) UIProgressView *progressView;
+//@property (nonatomic,strong) UIProgressView *progressView;
 @end
 
 @implementation CellChatFileRight
@@ -83,9 +83,9 @@
     _lbStatus.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:_lbStatus];
     
-    _progressView = [UIProgressView new];
-    _progressView.progressTintColor = [UIColor greenColor];
-    [self.contentView addSubview:_progressView];
+//    _progressView = [UIProgressView new];
+//    _progressView.progressTintColor = [UIColor greenColor];
+//    [self.contentView addSubview:_progressView];
     
     [self layoutUI];
 }
@@ -144,11 +144,11 @@
         make.bottom.equalTo(weakSelf.imgvIcon.mas_bottom);
     }];
     
-    [_progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(weakSelf.imgvBubble.mas_bottom).offset(-3);
-        make.left.equalTo(weakSelf.imgvBubble).offset(5);
-        make.right.equalTo(weakSelf.imgvBubble).offset(-15);
-    }];
+//    [_progressView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(weakSelf.imgvBubble.mas_bottom).offset(-3);
+//        make.left.equalTo(weakSelf.imgvBubble).offset(5);
+//        make.right.equalTo(weakSelf.imgvBubble).offset(-15);
+//    }];
     
     self.hyb_lastViewInCell = _imgvBubble;
     self.hyb_bottomOffsetToCell = 10;
@@ -197,7 +197,7 @@
 #pragma mark - Private
 - (void)_downLoadFile{
     //进度条显示与否
-    _progressView.hidden = self.model.fileModel.status == FileStatus_HasDownLoaded ? YES:NO;
+//    _progressView.hidden = self.model.fileModel.status == FileStatus_HasDownLoaded ? YES:NO;
     if (self.model.fileModel.status == FileStatus_HasDownLoaded) {
         return;
     }
@@ -206,7 +206,7 @@
     
     WeakSelf
     [[YHDownLoadManager sharedInstance] downOfficeFileWithModel:self.model.fileModel complete:^(BOOL success, id obj) {
-        weakSelf.progressView.hidden = YES;
+//        weakSelf.progressView.hidden = YES;
         if (success) {
             DDLog(@"下载文件成功:%@",obj);
             YHFileModel *retModel = obj;
@@ -222,10 +222,10 @@
             weakSelf.lbFileSize.text = @"";
         }
     } progress:^(int64_t bytesWritten, int64_t totalBytesWritten) {
-        float progress = bytesWritten/(float)totalBytesWritten;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.progressView setProgress:progress animated:YES];
-        });
+//        float progress = bytesWritten/(float)totalBytesWritten;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [weakSelf.progressView setProgress:progress animated:YES];
+//        });
     }];
     
     
