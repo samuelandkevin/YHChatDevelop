@@ -1,50 +1,17 @@
 //
-//  DataManager.h
-//  FMDBDemo
+//  SqliteManager+Chat.h
+//  PikeWay
 //
-//  Created by YHIOS002 on 16/11/2.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by YHIOS002 on 2017/6/23.
+//  Copyright © 2017年 YHSoft. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "YHChatModel.h"
-#import "FMDB.h"
-#import "NSObject+YHDBRuntime.h"
-#import "FMDatabase+YHDatabase.h"
-#import "YHSqilteConfig.h"
+#import "SqliteManager.h"
+#import "YHChatListModel.h"
 
-//建表
-@interface CreatTable : NSObject
+@interface SqliteManager (Chat)
 
-@property (nonatomic,copy) NSString *Id;
-@property (nonatomic,strong) FMDatabaseQueue *queue;
-@property (nonatomic,copy) NSArray <NSString *> *sqlCreatTable;
-@property (nonatomic,assign) int type;
-
-@end
-
-@interface SqliteManager : NSObject
-
-
-typedef NS_ENUM(int,DBChatType){
-    DBChatType_Group = 101, //群聊
-    DBChatType_Private      //单聊
-};
-
-
-@property(nonatomic,strong) NSMutableArray < CreatTable *>*chatLogArray; //聊天Array
-@property(nonatomic,strong) NSMutableArray <CreatTable *>*officeFileArray;//聊天文件表（暂时只有一个Sql表）
-
-+ (instancetype)sharedInstance;
-
-#pragma mark - 退出登录
-/*
- *  退出登录清除缓存
- */
-- (void)clearCacheWhenLogout;
-
-
-#pragma mark - 聊天
+#pragma mark - 聊天记录
 
 /*
  *  更新ChatLog表多条信息
@@ -76,8 +43,26 @@ typedef NS_ENUM(int,DBChatType){
 - (void)deleteChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID complete:(void(^)(BOOL success,id obj))complete;
 
 
+#pragma mark - 聊天列表
+
+/*
+ *  更新ChatList表多条信息
+ */
+- (void)updateChatListModelArr:(NSArray <YHChatListModel *>*)chatListModelArr uid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete;
+
+/*
+ *  查询ChatList表
+ */
+- (void)queryChatListTableWithUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete;
+
+/*
+ *  删除ChatLog表
+ */
+- (void)deleteChatListTableWithUid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete;
+
 
 #pragma mark - 聊天文件
+//更新聊天文件
 //更新某一个办公文件
 - (void)updateOfficeFile:(YHFileModel *)officeFile complete:(void (^)(BOOL success,id obj))complete;
 //查询办公文件
@@ -88,11 +73,5 @@ typedef NS_ENUM(int,DBChatType){
 - (void)deleteOfficeFileTableComplete:(void(^)(BOOL success,id obj))complete;
 //删除某一个办公文件
 - (void)deleteOneOfficeFile:(YHFileModel *)officeFile userInfo:(NSDictionary *)userInfo complete:(void(^)(BOOL success,id obj))complete;
-
-#pragma mark - filePrivate
-/*
- *  删除指定路径文件
- */
-- (BOOL)_deleteFileAtPath:(NSString *)filePath;
 
 @end

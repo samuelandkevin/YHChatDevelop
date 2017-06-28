@@ -10,8 +10,7 @@
 #define YHSqilteConfig_h
 #import "YHUserInfoManager.h"
 
-//#import "YHDebug.h"
-/**********common宏定义**************/
+#pragma mark - /**********common宏定义**************/
 #define kDatabaseVersionKey     @"YH_DBVersion" //数据库版本
 //Doc目录
 #define YHDocumentDir [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
@@ -24,7 +23,7 @@
 
 
 
-/********************登录用户信息表*****************/
+#pragma mark - /********************登录用户信息表*****************/
 
 #define YHLoginDir [YHUserDir stringByAppendingPathComponent:@"Login"]
 
@@ -43,7 +42,7 @@ static inline NSString *tableNameLogin(NSString *userID){
 
 
 
-/********************聊天表*****************/
+#pragma mark - /********************聊天记录表*****************/
 //聊天目录 (包括:群聊目录 + 单聊目录 + 语音目录 + 办公文件目录)
 #define YHChatLogDir [YHUserDir stringByAppendingPathComponent:@"ChatLog"]
 
@@ -73,25 +72,53 @@ static inline NSString *tableNameChatLog(NSString *sessionID){
 }
 
 
-/********************聊天文件目录表*****************/
+#pragma mark - /********************聊天列表表*****************/
+//聊天列表目录
+#define YHChatListLogDir [YHChatLogDir stringByAppendingPathComponent:@"ChatList"]
 
 
-//聊天文件表路径
-static inline NSString *pathChatFileWithDir( NSString *dir,NSString *sessionID){
-    NSString *path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"chatFile_%@.sqlite",sessionID]];
-    return path;
+//获取聊天列表路径  dir:目录名称 uid:用户id
+static inline NSString *pathChatListLogWithDir(NSString *dir,NSString *uid){
+    NSString *pathLog = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"chatList_%@.sqlite",uid]];
+    return pathLog;
 }
 
-//聊天文件表名的命名方式
-static inline NSString *tableNameChatFile(NSString *sessionID){
+//ChatList表名的命名方式
+static inline NSString *tableNameChatList(NSString *uid){
     
-    return [NSString stringWithFormat:@"chatFile_%@",[sessionID stringByReplacingOccurrencesOfString:@"-" withString:@""]];
+    return [NSString stringWithFormat:@"chatList_%@",[uid stringByReplacingOccurrencesOfString:@"-" withString:@""]];
 }
 
 
+#pragma mark - /********************聊天文件目录表*****************/
 
 
-/********************动态表*****************/
+////聊天文件表路径
+//static inline NSString *pathChatFileWithDir( NSString *dir,NSString *sessionID){
+//    NSString *path = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"chatFile_%@.sqlite",sessionID]];
+//    return path;
+//}
+//
+////聊天文件表名的命名方式
+//static inline NSString *tableNameChatFile(NSString *sessionID){
+//
+//    return [NSString stringWithFormat:@"chatFile_%@",[sessionID stringByReplacingOccurrencesOfString:@"-" withString:@""]];
+//}
+
+#pragma mark - /********************办公文件表*****************/
+//办公文件表路径
+static inline NSString *pathOfficeFileWithDir(NSString *dir){
+    NSString *pathLog = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"officeFile.sqlite"]];
+    return pathLog;
+}
+
+//办公文件表名的命名方式
+static inline NSString *tableNameOfficeFile(){
+    return @"officeFile";
+}
+
+
+#pragma mark - /********************动态表*****************/
 
 //动态目录 (包括：我的动态 + 公共动态 + 好友动态)
 #define YHDynDir [YHUserDir stringByAppendingPathComponent:@"Dynamic"]
@@ -124,7 +151,7 @@ static inline NSString *tableNameDyn(int dynTag,NSString *userID){
 }
 
 
-/********************好友表*****************/
+#pragma mark - /********************好友表*****************/
 //好友列表目录 (我的好友 或者 好友的好友)
 #define YHFrisDir [YHUserDir stringByAppendingPathComponent:@"Fris"]
 
@@ -141,7 +168,7 @@ static inline NSString *tableNameFris(NSString *friID){
 }
 
 
-/********************我的访客表*****************/
+#pragma mark - /********************我的访客表*****************/
 //访客目录
 #define YHVisitorsDir [YHCacheDir stringByAppendingPathComponent:@"Vistors"]
 
@@ -156,18 +183,6 @@ static inline NSString *pathVistorsWithDir( NSString *dir,NSString *intervieweeI
 static inline NSString *tableNameVisitors(NSString *intervieweeID){
     
     return [NSString stringWithFormat:@"vis_%@",[intervieweeID stringByReplacingOccurrencesOfString:@"-" withString:@""]];
-}
-
-/********************办公文件表*****************/
-//办公文件表路径
-static inline NSString *pathOfficeFileWithDir(NSString *dir){
-    NSString *pathLog = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"officeFile.sqlite"]];
-    return pathLog;
-}
-
-//办公文件表名的命名方式
-static inline NSString *tableNameOfficeFile(){
-    return @"officeFile";
 }
 
 

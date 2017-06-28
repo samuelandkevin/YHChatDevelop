@@ -75,20 +75,6 @@
 		AC51FFCF1EFB67B5005EAE4F /* YHChatListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF211EFB67B5005EAE4F /* YHChatListVC.m */; };
 		AC51FFD01EFB67B5005EAE4F /* YHLoginInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF241EFB67B5005EAE4F /* YHLoginInputViewController.m */; };
 		AC51FFD11EFB67B5005EAE4F /* YHLoginInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC51FF251EFB67B5005EAE4F /* YHLoginInputViewController.xib */; };
-		AC51FFD21EFB67B5005EAE4F /* NetManager+AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF281EFB67B5005EAE4F /* NetManager+AppInfo.m */; };
-		AC51FFD31EFB67B5005EAE4F /* NetManager+Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF2A1EFB67B5005EAE4F /* NetManager+Chat.m */; };
-		AC51FFD41EFB67B5005EAE4F /* NetManager+Connections.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF2C1EFB67B5005EAE4F /* NetManager+Connections.m */; };
-		AC51FFD51EFB67B5005EAE4F /* NetManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF2E1EFB67B5005EAE4F /* NetManager+Login.m */; };
-		AC51FFD61EFB67B5005EAE4F /* NetManager+Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF301EFB67B5005EAE4F /* NetManager+Profile.m */; };
-		AC51FFD71EFB67B5005EAE4F /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF321EFB67B5005EAE4F /* NetManager.m */; };
-		AC51FFD81EFB67B5005EAE4F /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF341EFB67B5005EAE4F /* SqliteManager.m */; };
-		AC51FFD91EFB67B5005EAE4F /* YHChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF361EFB67B5005EAE4F /* YHChatManager.m */; };
-		AC51FFDA1EFB67B5005EAE4F /* YHDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF381EFB67B5005EAE4F /* YHDownLoadManager.m */; };
-		AC51FFDB1EFB67B5005EAE4F /* FMDatabase+YHDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF3B1EFB67B5005EAE4F /* FMDatabase+YHDatabase.m */; };
-		AC51FFDC1EFB67B5005EAE4F /* NSObject+YHDBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF3D1EFB67B5005EAE4F /* NSObject+YHDBRuntime.m */; };
-		AC51FFDD1EFB67B5005EAE4F /* YHProtocolConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF3F1EFB67B5005EAE4F /* YHProtocolConfig.m */; };
-		AC51FFDE1EFB67B5005EAE4F /* YHUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF421EFB67B5005EAE4F /* YHUploadManager.m */; };
-		AC51FFDF1EFB67B5005EAE4F /* YHUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF441EFB67B5005EAE4F /* YHUserInfoManager.m */; };
 		AC51FFE01EFB67B5005EAE4F /* ExpressionKeyboard.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AC51FF461EFB67B5005EAE4F /* ExpressionKeyboard.bundle */; };
 		AC51FFE11EFB67B5005EAE4F /* TestData.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF491EFB67B5005EAE4F /* TestData.m */; };
 		AC51FFE21EFB67B5005EAE4F /* HHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF4D1EFB67B5005EAE4F /* HHUtils.m */; };
@@ -121,6 +107,21 @@
 		AC51FFFD1EFB67B5005EAE4F /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF8A1EFB67B5005EAE4F /* amrFileCodec.mm */; };
 		AC51FFFE1EFB67B5005EAE4F /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC51FF8C1EFB67B5005EAE4F /* libopencore-amrnb.a */; };
 		AC51FFFF1EFB67B5005EAE4F /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC51FF8D1EFB67B5005EAE4F /* libopencore-amrwb.a */; };
+		AC604AB71F03444A00B8D8B4 /* YHChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604A941F03444A00B8D8B4 /* YHChatManager.m */; };
+		AC604AB81F03444A00B8D8B4 /* NetManager+AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604A971F03444A00B8D8B4 /* NetManager+AppInfo.m */; };
+		AC604AB91F03444A00B8D8B4 /* NetManager+Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604A991F03444A00B8D8B4 /* NetManager+Chat.m */; };
+		AC604ABA1F03444A00B8D8B4 /* NetManager+Connections.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604A9B1F03444A00B8D8B4 /* NetManager+Connections.m */; };
+		AC604ABB1F03444A00B8D8B4 /* NetManager+Login.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604A9D1F03444A00B8D8B4 /* NetManager+Login.m */; };
+		AC604ABC1F03444A00B8D8B4 /* NetManager+Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604A9F1F03444A00B8D8B4 /* NetManager+Profile.m */; };
+		AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AA11F03444A00B8D8B4 /* NetManager.m */; };
+		AC604ABE1F03444A00B8D8B4 /* YHProtocolConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AA31F03444A00B8D8B4 /* YHProtocolConfig.m */; };
+		AC604ABF1F03444A00B8D8B4 /* SqliteManager+Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AA61F03444A00B8D8B4 /* SqliteManager+Chat.m */; };
+		AC604AC01F03444A00B8D8B4 /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AA81F03444A00B8D8B4 /* SqliteManager.m */; };
+		AC604AC11F03444A00B8D8B4 /* FMDatabase+YHDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AAB1F03444A00B8D8B4 /* FMDatabase+YHDatabase.m */; };
+		AC604AC21F03444A00B8D8B4 /* NSObject+YHDBRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AAD1F03444A00B8D8B4 /* NSObject+YHDBRuntime.m */; };
+		AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB11F03444A00B8D8B4 /* YHDownLoadManager.m */; };
+		AC604AC41F03444A00B8D8B4 /* YHUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */; };
+		AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -260,35 +261,6 @@
 		AC51FF231EFB67B5005EAE4F /* YHLoginInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHLoginInputViewController.h; sourceTree = "<group>"; };
 		AC51FF241EFB67B5005EAE4F /* YHLoginInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHLoginInputViewController.m; sourceTree = "<group>"; };
 		AC51FF251EFB67B5005EAE4F /* YHLoginInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHLoginInputViewController.xib; sourceTree = "<group>"; };
-		AC51FF271EFB67B5005EAE4F /* NetManager+AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+AppInfo.h"; sourceTree = "<group>"; };
-		AC51FF281EFB67B5005EAE4F /* NetManager+AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+AppInfo.m"; sourceTree = "<group>"; };
-		AC51FF291EFB67B5005EAE4F /* NetManager+Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Chat.h"; sourceTree = "<group>"; };
-		AC51FF2A1EFB67B5005EAE4F /* NetManager+Chat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Chat.m"; sourceTree = "<group>"; };
-		AC51FF2B1EFB67B5005EAE4F /* NetManager+Connections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Connections.h"; sourceTree = "<group>"; };
-		AC51FF2C1EFB67B5005EAE4F /* NetManager+Connections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Connections.m"; sourceTree = "<group>"; };
-		AC51FF2D1EFB67B5005EAE4F /* NetManager+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Login.h"; sourceTree = "<group>"; };
-		AC51FF2E1EFB67B5005EAE4F /* NetManager+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Login.m"; sourceTree = "<group>"; };
-		AC51FF2F1EFB67B5005EAE4F /* NetManager+Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Profile.h"; sourceTree = "<group>"; };
-		AC51FF301EFB67B5005EAE4F /* NetManager+Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Profile.m"; sourceTree = "<group>"; };
-		AC51FF311EFB67B5005EAE4F /* NetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
-		AC51FF321EFB67B5005EAE4F /* NetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
-		AC51FF331EFB67B5005EAE4F /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
-		AC51FF341EFB67B5005EAE4F /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
-		AC51FF351EFB67B5005EAE4F /* YHChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHChatManager.h; sourceTree = "<group>"; };
-		AC51FF361EFB67B5005EAE4F /* YHChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHChatManager.m; sourceTree = "<group>"; };
-		AC51FF371EFB67B5005EAE4F /* YHDownLoadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDownLoadManager.h; sourceTree = "<group>"; };
-		AC51FF381EFB67B5005EAE4F /* YHDownLoadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHDownLoadManager.m; sourceTree = "<group>"; };
-		AC51FF3A1EFB67B5005EAE4F /* FMDatabase+YHDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+YHDatabase.h"; sourceTree = "<group>"; };
-		AC51FF3B1EFB67B5005EAE4F /* FMDatabase+YHDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+YHDatabase.m"; sourceTree = "<group>"; };
-		AC51FF3C1EFB67B5005EAE4F /* NSObject+YHDBRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YHDBRuntime.h"; sourceTree = "<group>"; };
-		AC51FF3D1EFB67B5005EAE4F /* NSObject+YHDBRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YHDBRuntime.m"; sourceTree = "<group>"; };
-		AC51FF3E1EFB67B5005EAE4F /* YHProtocolConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHProtocolConfig.h; sourceTree = "<group>"; };
-		AC51FF3F1EFB67B5005EAE4F /* YHProtocolConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHProtocolConfig.m; sourceTree = "<group>"; };
-		AC51FF401EFB67B5005EAE4F /* YHSqilteConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSqilteConfig.h; sourceTree = "<group>"; };
-		AC51FF411EFB67B5005EAE4F /* YHUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUploadManager.h; sourceTree = "<group>"; };
-		AC51FF421EFB67B5005EAE4F /* YHUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUploadManager.m; sourceTree = "<group>"; };
-		AC51FF431EFB67B5005EAE4F /* YHUserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUserInfoManager.h; sourceTree = "<group>"; };
-		AC51FF441EFB67B5005EAE4F /* YHUserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUserInfoManager.m; sourceTree = "<group>"; };
 		AC51FF461EFB67B5005EAE4F /* ExpressionKeyboard.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ExpressionKeyboard.bundle; sourceTree = "<group>"; };
 		AC51FF481EFB67B5005EAE4F /* TestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestData.h; sourceTree = "<group>"; };
 		AC51FF491EFB67B5005EAE4F /* TestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestData.m; sourceTree = "<group>"; };
@@ -356,6 +328,37 @@
 		AC51FF931EFB67B5005EAE4F /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		AC51FF941EFB67B5005EAE4F /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
 		AC51FF951EFB67B5005EAE4F /* VoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VoiceConverter.mm; sourceTree = "<group>"; };
+		AC604A931F03444A00B8D8B4 /* YHChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHChatManager.h; sourceTree = "<group>"; };
+		AC604A941F03444A00B8D8B4 /* YHChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHChatManager.m; sourceTree = "<group>"; };
+		AC604A961F03444A00B8D8B4 /* NetManager+AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+AppInfo.h"; sourceTree = "<group>"; };
+		AC604A971F03444A00B8D8B4 /* NetManager+AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+AppInfo.m"; sourceTree = "<group>"; };
+		AC604A981F03444A00B8D8B4 /* NetManager+Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Chat.h"; sourceTree = "<group>"; };
+		AC604A991F03444A00B8D8B4 /* NetManager+Chat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Chat.m"; sourceTree = "<group>"; };
+		AC604A9A1F03444A00B8D8B4 /* NetManager+Connections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Connections.h"; sourceTree = "<group>"; };
+		AC604A9B1F03444A00B8D8B4 /* NetManager+Connections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Connections.m"; sourceTree = "<group>"; };
+		AC604A9C1F03444A00B8D8B4 /* NetManager+Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Login.h"; sourceTree = "<group>"; };
+		AC604A9D1F03444A00B8D8B4 /* NetManager+Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Login.m"; sourceTree = "<group>"; };
+		AC604A9E1F03444A00B8D8B4 /* NetManager+Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NetManager+Profile.h"; sourceTree = "<group>"; };
+		AC604A9F1F03444A00B8D8B4 /* NetManager+Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NetManager+Profile.m"; sourceTree = "<group>"; };
+		AC604AA01F03444A00B8D8B4 /* NetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetManager.h; sourceTree = "<group>"; };
+		AC604AA11F03444A00B8D8B4 /* NetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetManager.m; sourceTree = "<group>"; };
+		AC604AA21F03444A00B8D8B4 /* YHProtocolConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHProtocolConfig.h; sourceTree = "<group>"; };
+		AC604AA31F03444A00B8D8B4 /* YHProtocolConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHProtocolConfig.m; sourceTree = "<group>"; };
+		AC604AA51F03444A00B8D8B4 /* SqliteManager+Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SqliteManager+Chat.h"; sourceTree = "<group>"; };
+		AC604AA61F03444A00B8D8B4 /* SqliteManager+Chat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SqliteManager+Chat.m"; sourceTree = "<group>"; };
+		AC604AA71F03444A00B8D8B4 /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
+		AC604AA81F03444A00B8D8B4 /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
+		AC604AAA1F03444A00B8D8B4 /* FMDatabase+YHDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+YHDatabase.h"; sourceTree = "<group>"; };
+		AC604AAB1F03444A00B8D8B4 /* FMDatabase+YHDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+YHDatabase.m"; sourceTree = "<group>"; };
+		AC604AAC1F03444A00B8D8B4 /* NSObject+YHDBRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YHDBRuntime.h"; sourceTree = "<group>"; };
+		AC604AAD1F03444A00B8D8B4 /* NSObject+YHDBRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YHDBRuntime.m"; sourceTree = "<group>"; };
+		AC604AAE1F03444A00B8D8B4 /* YHSqilteConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSqilteConfig.h; sourceTree = "<group>"; };
+		AC604AB01F03444A00B8D8B4 /* YHDownLoadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDownLoadManager.h; sourceTree = "<group>"; };
+		AC604AB11F03444A00B8D8B4 /* YHDownLoadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHDownLoadManager.m; sourceTree = "<group>"; };
+		AC604AB21F03444A00B8D8B4 /* YHUploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUploadManager.h; sourceTree = "<group>"; };
+		AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUploadManager.m; sourceTree = "<group>"; };
+		AC604AB51F03444A00B8D8B4 /* YHUserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUserInfoManager.h; sourceTree = "<group>"; };
+		AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUserInfoManager.m; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -676,45 +679,13 @@
 		AC51FF261EFB67B5005EAE4F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				AC51FF271EFB67B5005EAE4F /* NetManager+AppInfo.h */,
-				AC51FF281EFB67B5005EAE4F /* NetManager+AppInfo.m */,
-				AC51FF291EFB67B5005EAE4F /* NetManager+Chat.h */,
-				AC51FF2A1EFB67B5005EAE4F /* NetManager+Chat.m */,
-				AC51FF2B1EFB67B5005EAE4F /* NetManager+Connections.h */,
-				AC51FF2C1EFB67B5005EAE4F /* NetManager+Connections.m */,
-				AC51FF2D1EFB67B5005EAE4F /* NetManager+Login.h */,
-				AC51FF2E1EFB67B5005EAE4F /* NetManager+Login.m */,
-				AC51FF2F1EFB67B5005EAE4F /* NetManager+Profile.h */,
-				AC51FF301EFB67B5005EAE4F /* NetManager+Profile.m */,
-				AC51FF311EFB67B5005EAE4F /* NetManager.h */,
-				AC51FF321EFB67B5005EAE4F /* NetManager.m */,
-				AC51FF331EFB67B5005EAE4F /* SqliteManager.h */,
-				AC51FF341EFB67B5005EAE4F /* SqliteManager.m */,
-				AC51FF351EFB67B5005EAE4F /* YHChatManager.h */,
-				AC51FF361EFB67B5005EAE4F /* YHChatManager.m */,
-				AC51FF371EFB67B5005EAE4F /* YHDownLoadManager.h */,
-				AC51FF381EFB67B5005EAE4F /* YHDownLoadManager.m */,
-				AC51FF391EFB67B5005EAE4F /* YHFMDB */,
-				AC51FF3E1EFB67B5005EAE4F /* YHProtocolConfig.h */,
-				AC51FF3F1EFB67B5005EAE4F /* YHProtocolConfig.m */,
-				AC51FF401EFB67B5005EAE4F /* YHSqilteConfig.h */,
-				AC51FF411EFB67B5005EAE4F /* YHUploadManager.h */,
-				AC51FF421EFB67B5005EAE4F /* YHUploadManager.m */,
-				AC51FF431EFB67B5005EAE4F /* YHUserInfoManager.h */,
-				AC51FF441EFB67B5005EAE4F /* YHUserInfoManager.m */,
+				AC604A921F03444A00B8D8B4 /* ChatManager */,
+				AC604A951F03444A00B8D8B4 /* NetManager */,
+				AC604AA41F03444A00B8D8B4 /* SqilteManager */,
+				AC604AAF1F03444A00B8D8B4 /* UpDownLoadManager */,
+				AC604AB41F03444A00B8D8B4 /* UserInfoManager */,
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		AC51FF391EFB67B5005EAE4F /* YHFMDB */ = {
-			isa = PBXGroup;
-			children = (
-				AC51FF3A1EFB67B5005EAE4F /* FMDatabase+YHDatabase.h */,
-				AC51FF3B1EFB67B5005EAE4F /* FMDatabase+YHDatabase.m */,
-				AC51FF3C1EFB67B5005EAE4F /* NSObject+YHDBRuntime.h */,
-				AC51FF3D1EFB67B5005EAE4F /* NSObject+YHDBRuntime.m */,
-			);
-			path = YHFMDB;
 			sourceTree = "<group>";
 		};
 		AC51FF451EFB67B5005EAE4F /* Resource */ = {
@@ -891,6 +862,80 @@
 			path = "opencore-amrwb";
 			sourceTree = "<group>";
 		};
+		AC604A921F03444A00B8D8B4 /* ChatManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC604A931F03444A00B8D8B4 /* YHChatManager.h */,
+				AC604A941F03444A00B8D8B4 /* YHChatManager.m */,
+			);
+			path = ChatManager;
+			sourceTree = "<group>";
+		};
+		AC604A951F03444A00B8D8B4 /* NetManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC604A961F03444A00B8D8B4 /* NetManager+AppInfo.h */,
+				AC604A971F03444A00B8D8B4 /* NetManager+AppInfo.m */,
+				AC604A981F03444A00B8D8B4 /* NetManager+Chat.h */,
+				AC604A991F03444A00B8D8B4 /* NetManager+Chat.m */,
+				AC604A9A1F03444A00B8D8B4 /* NetManager+Connections.h */,
+				AC604A9B1F03444A00B8D8B4 /* NetManager+Connections.m */,
+				AC604A9C1F03444A00B8D8B4 /* NetManager+Login.h */,
+				AC604A9D1F03444A00B8D8B4 /* NetManager+Login.m */,
+				AC604A9E1F03444A00B8D8B4 /* NetManager+Profile.h */,
+				AC604A9F1F03444A00B8D8B4 /* NetManager+Profile.m */,
+				AC604AA01F03444A00B8D8B4 /* NetManager.h */,
+				AC604AA11F03444A00B8D8B4 /* NetManager.m */,
+				AC604AA21F03444A00B8D8B4 /* YHProtocolConfig.h */,
+				AC604AA31F03444A00B8D8B4 /* YHProtocolConfig.m */,
+			);
+			path = NetManager;
+			sourceTree = "<group>";
+		};
+		AC604AA41F03444A00B8D8B4 /* SqilteManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC604AA51F03444A00B8D8B4 /* SqliteManager+Chat.h */,
+				AC604AA61F03444A00B8D8B4 /* SqliteManager+Chat.m */,
+				AC604AA71F03444A00B8D8B4 /* SqliteManager.h */,
+				AC604AA81F03444A00B8D8B4 /* SqliteManager.m */,
+				AC604AA91F03444A00B8D8B4 /* YHFMDB */,
+				AC604AAE1F03444A00B8D8B4 /* YHSqilteConfig.h */,
+			);
+			path = SqilteManager;
+			sourceTree = "<group>";
+		};
+		AC604AA91F03444A00B8D8B4 /* YHFMDB */ = {
+			isa = PBXGroup;
+			children = (
+				AC604AAA1F03444A00B8D8B4 /* FMDatabase+YHDatabase.h */,
+				AC604AAB1F03444A00B8D8B4 /* FMDatabase+YHDatabase.m */,
+				AC604AAC1F03444A00B8D8B4 /* NSObject+YHDBRuntime.h */,
+				AC604AAD1F03444A00B8D8B4 /* NSObject+YHDBRuntime.m */,
+			);
+			path = YHFMDB;
+			sourceTree = "<group>";
+		};
+		AC604AAF1F03444A00B8D8B4 /* UpDownLoadManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC604AB01F03444A00B8D8B4 /* YHDownLoadManager.h */,
+				AC604AB11F03444A00B8D8B4 /* YHDownLoadManager.m */,
+				AC604AB21F03444A00B8D8B4 /* YHUploadManager.h */,
+				AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */,
+			);
+			path = UpDownLoadManager;
+			sourceTree = "<group>";
+		};
+		AC604AB41F03444A00B8D8B4 /* UserInfoManager */ = {
+			isa = PBXGroup;
+			children = (
+				AC604AB51F03444A00B8D8B4 /* YHUserInfoManager.h */,
+				AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */,
+			);
+			path = UserInfoManager;
+			sourceTree = "<group>";
+		};
 		BD806E136FFB44C3DFADE3AB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,7 +987,6 @@
 				TargetAttributes = {
 					AC51FE811EFB5B1A005EAE4F = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 6C6E567289;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1034,40 +1078,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC604ABA1F03444A00B8D8B4 /* NetManager+Connections.m in Sources */,
+				AC604AB81F03444A00B8D8B4 /* NetManager+AppInfo.m in Sources */,
 				AC51FFBF1EFB67B5005EAE4F /* CellChatTextRight.m in Sources */,
+				AC604AC11F03444A00B8D8B4 /* FMDatabase+YHDatabase.m in Sources */,
 				AC51FFAC1EFB67B5005EAE4F /* YHDocumentVC.m in Sources */,
 				AC51FFE61EFB67B5005EAE4F /* YHActionSheet.m in Sources */,
 				AC51FFAE1EFB67B5005EAE4F /* VideoPlayOperation.m in Sources */,
-				AC51FFDB1EFB67B5005EAE4F /* FMDatabase+YHDatabase.m in Sources */,
 				AC51FFFD1EFB67B5005EAE4F /* amrFileCodec.mm in Sources */,
+				AC604AC41F03444A00B8D8B4 /* YHUploadManager.m in Sources */,
 				AC51FFCE1EFB67B5005EAE4F /* YHVoiceHUD.m in Sources */,
-				AC51FFDF1EFB67B5005EAE4F /* YHUserInfoManager.m in Sources */,
 				AC51FFFA1EFB67B5005EAE4F /* NSObject+MJProperty.m in Sources */,
 				AC51FFE41EFB67B5005EAE4F /* YHFileTool.m in Sources */,
 				AC51FFC91EFB67B5005EAE4F /* YHChatImageView.m in Sources */,
 				AC51FF9D1EFB67B5005EAE4F /* DataParser.m in Sources */,
 				AC51FFEC1EFB67B5005EAE4F /* YHPopMenuView.m in Sources */,
 				AC51FFB51EFB67B5005EAE4F /* CellDocument.m in Sources */,
-				AC51FFD51EFB67B5005EAE4F /* NetManager+Login.m in Sources */,
 				AC51FFFB1EFB67B5005EAE4F /* NSString+MJExtension.m in Sources */,
 				AC51FFC01EFB67B5005EAE4F /* CellChatTips.m in Sources */,
 				AC51FFF01EFB67B5005EAE4F /* YHWebViewController.m in Sources */,
 				AC51FFC11EFB67B5005EAE4F /* CellChatVoiceLeft.m in Sources */,
 				AC51FFAF1EFB67B5005EAE4F /* YHAVPlayer.m in Sources */,
+				AC604ABB1F03444A00B8D8B4 /* NetManager+Login.m in Sources */,
 				AC51FFBB1EFB67B5005EAE4F /* CellChatImageLeft.m in Sources */,
 				AC51FFC71EFB67B5005EAE4F /* YHExpressionKeyboard.m in Sources */,
-				AC51FFDD1EFB67B5005EAE4F /* YHProtocolConfig.m in Sources */,
 				AC51FF9C1EFB67B5005EAE4F /* UIView+Extension.m in Sources */,
 				AC51FFAB1EFB67B5005EAE4F /* YHChatDetailVC.m in Sources */,
+				AC604ABC1F03444A00B8D8B4 /* NetManager+Profile.m in Sources */,
+				AC604AC01F03444A00B8D8B4 /* SqliteManager.m in Sources */,
 				AC51FFEE1EFB67B5005EAE4F /* YHTipsView.m in Sources */,
+				AC604AB91F03444A00B8D8B4 /* NetManager+Chat.m in Sources */,
 				AC51FFA41EFB67B5005EAE4F /* YHGroupMember.m in Sources */,
 				AC51FFB61EFB67B5005EAE4F /* CellChatBase.m in Sources */,
-				AC51FFD61EFB67B5005EAE4F /* NetManager+Profile.m in Sources */,
 				AC51FF971EFB67B5005EAE4F /* NSString+Extension.m in Sources */,
 				AC51FFE81EFB67B5005EAE4F /* YHNavigationController.m in Sources */,
 				AC51FF991EFB67B5005EAE4F /* UIBarButtonItem+Extension.m in Sources */,
 				AC51FFC41EFB67B5005EAE4F /* YHExpressionAddView.m in Sources */,
-				AC51FFDE1EFB67B5005EAE4F /* YHUploadManager.m in Sources */,
 				AC51FFA01EFB67B5005EAE4F /* YHChatListModel.m in Sources */,
 				AC51FFCD1EFB67B5005EAE4F /* YHShootView.m in Sources */,
 				AC51FFE11EFB67B5005EAE4F /* TestData.m in Sources */,
@@ -1075,6 +1121,7 @@
 				AC51FFB01EFB67B5005EAE4F /* YHPlayManager.m in Sources */,
 				AC51FFB11EFB67B5005EAE4F /* YHAudioPlayer.m in Sources */,
 				AC51FF9B1EFB67B5005EAE4F /* UIView+DRCorner.m in Sources */,
+				AC604AC21F03444A00B8D8B4 /* NSObject+YHDBRuntime.m in Sources */,
 				AC51FFC21EFB67B5005EAE4F /* CellChatVoiceRight.m in Sources */,
 				AC51FFB71EFB67B5005EAE4F /* CellChatFileLeft.m in Sources */,
 				AC51FFC61EFB67B5005EAE4F /* YHExpressionInputView.m in Sources */,
@@ -1083,8 +1130,6 @@
 				AC51FFB81EFB67B5005EAE4F /* CellChatFileRight.m in Sources */,
 				AC51FFAD1EFB67B5005EAE4F /* YHShootVC.m in Sources */,
 				AC51FFF61EFB67B5005EAE4F /* MJPropertyType.m in Sources */,
-				AC51FFD41EFB67B5005EAE4F /* NetManager+Connections.m in Sources */,
-				AC51FFD81EFB67B5005EAE4F /* SqliteManager.m in Sources */,
 				AC51FFAA1EFB67B5005EAE4F /* YHWorkExperienceModel.m in Sources */,
 				AC51FFC81EFB67B5005EAE4F /* YHChatButton.m in Sources */,
 				AC51FFF81EFB67B5005EAE4F /* NSObject+MJCoding.m in Sources */,
@@ -1100,16 +1145,17 @@
 				AC51FFF41EFB67B5005EAE4F /* MJProperty.m in Sources */,
 				AC51FF9F1EFB67B5005EAE4F /* YHChatGroupModel.m in Sources */,
 				AC51FFF71EFB67B5005EAE4F /* NSObject+MJClass.m in Sources */,
-				AC51FFD21EFB67B5005EAE4F /* NetManager+AppInfo.m in Sources */,
+				AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */,
 				AC51FFE31EFB67B5005EAE4F /* SwiftExtension.swift in Sources */,
 				AC51FF981EFB67B5005EAE4F /* UIBarButtonItem+Custom.m in Sources */,
 				AC51FFBA1EFB67B5005EAE4F /* CellChatGIFRight.m in Sources */,
 				AC51FFB21EFB67B5005EAE4F /* YHAudioRecorder.m in Sources */,
+				AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */,
 				AC51FFA81EFB67B5005EAE4F /* YHUserInfo.m in Sources */,
-				AC51FFDC1EFB67B5005EAE4F /* NSObject+YHDBRuntime.m in Sources */,
 				AC51FFEF1EFB67B5005EAE4F /* YHUICommon.m in Sources */,
 				AC51FF9E1EFB67B5005EAE4F /* YHAboutModel.m in Sources */,
 				AC51FFCC1EFB67B5005EAE4F /* YHShootBotView.m in Sources */,
+				AC604AB71F03444A00B8D8B4 /* YHChatManager.m in Sources */,
 				AC51FFA11EFB67B5005EAE4F /* YHChatModel.m in Sources */,
 				AC51FFA21EFB67B5005EAE4F /* YHFileModel.m in Sources */,
 				AC51FFE51EFB67B5005EAE4F /* YHPhotoPicker.swift in Sources */,
@@ -1118,22 +1164,21 @@
 				AC51FF961EFB67B5005EAE4F /* NSDate+Extension.m in Sources */,
 				AC51FE8D1EFB5B1A005EAE4F /* ViewController.m in Sources */,
 				AC51FFD01EFB67B5005EAE4F /* YHLoginInputViewController.m in Sources */,
-				AC51FFD91EFB67B5005EAE4F /* YHChatManager.m in Sources */,
 				AC51FFF51EFB67B5005EAE4F /* MJPropertyKey.m in Sources */,
 				AC51FFB31EFB67B5005EAE4F /* YHChatHelper.m in Sources */,
 				AC51FE8A1EFB5B1A005EAE4F /* AppDelegate.m in Sources */,
-				AC51FFD71EFB67B5005EAE4F /* NetManager.m in Sources */,
 				AC51FFC51EFB67B5005EAE4F /* YHExpressionHelper.m in Sources */,
 				AC5100001EFB67B5005EAE4F /* VoiceConverter.mm in Sources */,
 				AC51FFFC1EFB67B5005EAE4F /* OpenUDID.m in Sources */,
+				AC604ABF1F03444A00B8D8B4 /* SqliteManager+Chat.m in Sources */,
 				AC51FFEA1EFB67B5005EAE4F /* YHPhotoBrowserView.m in Sources */,
 				AC51FFF91EFB67B5005EAE4F /* NSObject+MJKeyValue.m in Sources */,
 				AC51FFBC1EFB67B5005EAE4F /* CellChatImageRight.m in Sources */,
 				AC51FFB41EFB67B5005EAE4F /* YHVideoHelper.m in Sources */,
-				AC51FFDA1EFB67B5005EAE4F /* YHDownLoadManager.m in Sources */,
-				AC51FFD31EFB67B5005EAE4F /* NetManager+Chat.m in Sources */,
 				AC51FFCB1EFB67B5005EAE4F /* YHGroupIconView.m in Sources */,
 				AC51FE871EFB5B1A005EAE4F /* main.m in Sources */,
+				AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */,
+				AC604ABE1F03444A00B8D8B4 /* YHProtocolConfig.m in Sources */,
 				AC51FF9A1EFB67B5005EAE4F /* UIImage+Extension.m in Sources */,
 				AC51FFA91EFB67B5005EAE4F /* YHUserSetting.m in Sources */,
 				AC51FFC31EFB67B5005EAE4F /* YHModel.m in Sources */,
@@ -1254,7 +1299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6C6E567289;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "YHChatDevelop/YHChatDevelop-PrefixHeader.pch";
 				INFOPLIST_FILE = YHChatDevelop/Info.plist;
@@ -1278,7 +1323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 6C6E567289;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "YHChatDevelop/YHChatDevelop-PrefixHeader.pch";
 				INFOPLIST_FILE = YHChatDevelop/Info.plist;

@@ -1,12 +1,15 @@
 //
 //  NSObject+Runtime.h
-//  
+//
 //
 //  Created by YHIOS002 on 16/11/9.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
+#import "MJExtension.h"
+
 
 
 @interface YHDBRuntimeIvar : NSObject

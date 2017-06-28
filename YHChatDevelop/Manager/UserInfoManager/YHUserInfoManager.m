@@ -7,20 +7,7 @@
 //  用户信息管理
 
 #import "YHUserInfoManager.h"
-//#import "YHNetManager.h"
-//#import "FMDatabase.h"
-//#import "FMDatabaseQueue.h"
-//#import "YHNetManager.h"
-//#import "JPUSHService.h"
-//#import "YHCacheManager.h"
-//#import "YHNetManager.h"
-//#import "YHAppInfoManager.h"
-//#import "SqliteManager.h"
-//
-//#import "STMURLCache.h"
-
-//令牌有效时长
-static long const tokenValidDuration = 3600 * 24 * 30; //一个月
+#import "NetManager+Profile.h"
 
 //检查数据库操作是否失败
 #define YHDBCheckIfErr(x)													\
@@ -114,6 +101,8 @@ static long const tokenValidDuration = 3600 * 24 * 30; //一个月
 	//2.更新用户的偏好设置
 	[self updateUserPreference:userInfo];
 
+    //3.请求我的名片信息
+    [self _requestMyCardDetail];
 }
 
 
@@ -198,6 +187,9 @@ static long const tokenValidDuration = 3600 * 24 * 30; //一个月
     self.userInfo.mobilephone = mobilePhone;
     self.userInfo.isRegister  = YES;
     self.userInfo.companyID   = enterpriseId;
+    
+    //3.获取我的名片
+    [self _requestMyCardDetail];
 }
 
 
@@ -209,6 +201,42 @@ static long const tokenValidDuration = 3600 * 24 * 30; //一个月
 }
 
 #pragma mark - Private
+
+//请求我的名片信息(备注：因为登录成功就返回uid,token,mobliePhone三个关键字段.请求名片详情从这里开始开始)
+- (void)_requestMyCardDetail
+{
+    __weak typeof(self) weakSelf = self;
+    
+    [[NetManager sharedInstance] getMyCardDetailComplete:^(BOOL success, id obj) {
+        if (success){
+            
+            DDLog(@"获取我的名片成功:%@", obj);
+            
+            //1.更新当前用户单例信息
+            YHUserInfo *retObj = obj;
+            weakSelf.userInfo  = retObj;
+            weakSelf.userInfo.updateStatus = updateFinish;
+
+        }
+        else
+        {
+            if (isNSDictionaryClass(obj)){
+                //服务器返回的错误描述
+                NSString *msg = obj[kRetMsg];
+                
+                postTips(msg, @"获取我的名片失败");
+            }
+            else{
+                //AFN请求失败的错误描述
+                postTips(obj, @"获取我的名片失败");
+            }
+            
+            weakSelf.userInfo.updateStatus = updateFailure;
+            
+        }
+    }];
+    
+}
 
 /**
  *  更新用户的偏好设置

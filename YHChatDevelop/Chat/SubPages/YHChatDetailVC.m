@@ -33,6 +33,7 @@
 #import "YHActionSheet.h"
 #import "YHChatDevelop-Swift.h"
 #import "NetManager+Profile.h"
+#import "SqliteManager.h"
 
 @interface YHChatDetailVC ()<UITableViewDelegate,UITableViewDataSource,YHExpressionKeyboardDelegate,CellChatTextLeftDelegate,CellChatTextRightDelegate,CellChatVoiceLeftDelegate,CellChatVoiceRightDelegate,CellChatImageLeftDelegate,CellChatImageRightDelegate,CellChatBaseDelegate,
 CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
@@ -622,7 +623,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
         WeakSelf
         YHDocumentVC *vc = [[YHDocumentVC alloc] init];
         YHNavigationController *nav = [[YHNavigationController alloc] initWithRootViewController:vc];
-        [vc didSelectFilesComplete:^(NSArray<NSString *> *files) {
+        [vc didSelectFilesComplete:^(NSArray<YHFileModel *> *files) {
             DDLog(@"准备发送文件。");
             [weakSelf _requestSendOfficeFiles:files];
         }];
@@ -758,20 +759,28 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
 }
 
 //请求发送办公文件消息
-- (void)_requestSendOfficeFiles:(NSArray <NSString *>*)files{
+- (void)_requestSendOfficeFiles:(NSArray <YHFileModel *>*)files{
     WeakSelf
-    //创建本地办公文件消息
-    for (NSString *filePath in files) {
-        NSString *fileMsg = [NSString stringWithFormat:@"file(local://%@)[%@]",filePath,filePath.lastPathComponent];
+    
+    for (YHFileModel *fileModel in files) {
+        //创建本地办公文件消息
+        NSString *fileName = fileModel.fileName;
+        if ([fileName containsString:[NSString stringWithFormat:@".%@",fileModel.ext]]) {
+            fileName = [fileName stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@".%@",fileModel.ext] withString:@""];
+        }
+        NSString *fileMsg = [NSString stringWithFormat:@"file(local://%@)[%@.%@]",fileModel.filePathInLocal,fileName,fileModel.ext];
         YHChatModel *model = [YHChatHelper creatMessage:fileMsg msgType:YHMessageType_Doc toID:weakSelf.model.sessionUserId];
+        model.msgContent = fileMsg;
+        model.fileModel  = fileModel;
         [weakSelf.dataArray addObject:model];
         
-        [[YHUploadManager sharedInstance] uploadOfficeFileWithPath:filePath complete:^(BOOL success, id obj) {
+        [[YHUploadManager sharedInstance] uploadOfficeFileWithFileModel:fileModel complete:^(BOOL success, id obj) {
             if (success) {
-                NSURL    *fileUrl = obj;
-                NSString *filePathInServer = fileUrl.absoluteString;
-                NSString *fileName = [filePath.lastPathComponent stringByReplacingOccurrencesOfString:filePath.pathExtension withString:@""];
-                NSString *fileMsg = [NSString stringWithFormat:@"file(%@)[%@.%@]",filePathInServer,fileName,filePath.lastPathComponent];
+                YHFileModel  *retModel = obj;
+                model.fileModel = retModel;
+                
+                //发送办公文件信息
+                NSString *fileMsg = [NSString stringWithFormat:@"file(%@)[%@.%@]",retModel.filePathInServer,retModel.fileName,retModel.ext];
 
                 int chatType = weakSelf.model.isGroupChat?QChatType_Group:QChatType_Private;
                 [[NetManager sharedInstance] postSendChatMsgToReceiverID:weakSelf.model.sessionUserId msgType:YHMessageType_Doc msg:fileMsg chatType:chatType complete:^(BOOL success, id obj) {
@@ -790,7 +799,6 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
             
         }];
     }
-    //file(http://testapp.gtax.cn/images/2017/01/22/e53cbb3f30fc4dc5a2004f05f33abecd.docx)[呼呼呼嘎嘎嘎.docx]
     [weakSelf.tableView reloadData];
     [weakSelf.keyboard aboveViewScollToBottom];
     

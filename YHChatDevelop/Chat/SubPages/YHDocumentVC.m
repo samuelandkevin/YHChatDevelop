@@ -12,7 +12,6 @@
 #import "YHRefreshTableView.h"
 #import "CellDocument.h"
 #import "YHWebViewController.h"
-#import "YHFileModel.h"
 #import "YHFileTool.h"
 #import "NSString+Extension.h"
 #import "SqliteManager.h"
@@ -24,9 +23,9 @@
 @property (nonatomic,strong) UIBarButtonItem    *rBarItem;
 @property (nonatomic,strong) UIButton       *btnRight;
 @property (nonatomic,strong) NSMutableArray *dataArray;
-@property (nonatomic,strong) NSMutableArray <NSString *>*selFileArray;
+@property (nonatomic,strong) NSMutableArray <YHFileModel *>*selFileArray;
 
-@property (nonatomic,copy) void(^selFiles)(NSArray <NSString *>*files);
+@property (nonatomic,copy) void(^selFiles)(NSArray <YHFileModel *>*files);
 @end
 
 @implementation YHDocumentVC
@@ -82,10 +81,6 @@
     [[SqliteManager sharedInstance] queryOfficeFilesUserInfo:nil fuzzyUserInfo:nil complete:^(BOOL success, id obj) {
         if (success) {
             NSArray *ret = obj;
-            for (YHFileModel *model in ret) {
-                NSString *saveFileName = [model.filePathInServer lastPathComponent];
-                model.filePathInLocal = [NSString stringWithFormat:@"%@/%@",OfficeDir,saveFileName];
-            }
             [weakSelf.dataArray addObjectsFromArray:ret];
         }else{
             
@@ -107,7 +102,7 @@
     return _dataArray;
 }
 
-- (NSMutableArray<NSString *> *)selFileArray{
+- (NSMutableArray<YHFileModel *> *)selFileArray{
     if (!_selFileArray) {
         _selFileArray = [NSMutableArray new];
     }
@@ -132,7 +127,7 @@
 #pragma mark - Private
 
 #pragma mark - Public
-- (void)didSelectFilesComplete:(void(^)(NSArray <NSString *> *files))complete{
+- (void)didSelectFilesComplete:(void(^)(NSArray <YHFileModel *> *files))complete{
     self.selFiles = complete;
 }
 
@@ -141,12 +136,12 @@
 - (void)onCheckBoxSelected:(BOOL)selected fileModel:(YHFileModel *)fileModel{
     
     if (selected) {
-        if (![self.selFileArray containsObject:fileModel.filePathInLocal] && fileModel) {
-            [self.selFileArray addObject:fileModel.filePathInLocal];
+        if (![self.selFileArray containsObject:fileModel] && fileModel) {
+            [self.selFileArray addObject:fileModel];
         }
     }else{
         if (fileModel) {
-            [self.selFileArray removeObjectIdenticalTo:fileModel.filePathInLocal];
+            [self.selFileArray removeObjectIdenticalTo:fileModel];
         }
     }
     //设置导航栏右按钮

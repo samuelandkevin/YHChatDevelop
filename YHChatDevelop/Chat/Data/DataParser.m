@@ -352,7 +352,7 @@
     model.msgType     = [dict[@"msgType"] intValue];
     model.userId      = dict[@"userId"];
     model.sessionUserId = dict[@"sessionUserId"];
-    model.creatTime     = dict[@"createTime"];
+    model.creatTime     = [NSDate showDateString:dict[@"createTime"]];
     model.sessionUserName = dict[@"sessionUserName"];
     model.unReadCount   = [dict[@"isRead"] intValue];
     model.groupName     = dict[@"groupName"];
@@ -382,15 +382,29 @@
     YHFileModel *fileModel = [YHFileModel new];
     if (fileStr) {
         NSString *fileMsg = [fileStr stringByReplacingOccurrencesOfString:@"file(" withString:@""];
+        
+        //获取文件在服务器的路径
         NSUInteger urlLocationEnd   = [fileMsg rangeOfString:@")"].location;
         NSUInteger urlLength = urlLocationEnd;
         NSString *urlStr;
         NSString *ext;
         if (urlLocationEnd != NSNotFound && urlLength > 0) {
             urlStr = [fileMsg substringWithRange:NSMakeRange(0, urlLength)];
-            ext = urlStr.pathExtension;
-            
         }
+        
+        //获取文件的后缀名
+        NSUInteger lastComLocStart = [fileStr.lastPathComponent rangeOfString:@"["].location;//获取“[]”里面的内容
+        if(lastComLocStart != NSNotFound ){
+            ext = [fileStr.lastPathComponent substringFromIndex:lastComLocStart];
+            NSUInteger extLocStart = [ext rangeOfString:@"."].location;
+            if(extLocStart != NSNotFound){
+               ext = [ext substringFromIndex:extLocStart+1];
+            }
+            if (ext.length && ext.length > 1) {
+                 ext = [ext substringToIndex:ext.length-1];
+            }
+        }
+        //获取文件名
         NSString *fileName;
         fileName = [fileMsg stringByReplacingOccurrencesOfString:urlStr withString:@""];
         fileName = [fileName substringFromIndex:2];
@@ -399,9 +413,16 @@
         fileModel.fileName = fileName;
         fileModel.ext   = ext;
         
-        BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/%@",OfficeDir,[urlStr lastPathComponent]]];
+        
+        NSString *saveFileName = [urlStr lastPathComponent];
+        if (![saveFileName containsString:[NSString stringWithFormat:@".%@",ext]]) {
+            //要加上文件的后缀名,否则webview打不开
+            saveFileName = [saveFileName stringByAppendingString:[NSString stringWithFormat:@".%@",ext]];
+        }
+        NSString *filePathInLocal = [NSString stringWithFormat:@"%@/%@",OfficeDir,saveFileName];
+        BOOL exist = [[NSFileManager defaultManager] fileExistsAtPath:filePathInLocal];
         fileModel.status = exist ? FileStatus_HasDownLoaded:FileStatus_UnDownLoaded;
-        fileModel.filePathInLocal = exist?[NSString stringWithFormat:@"%@/%@",OfficeDir,[urlStr lastPathComponent]]:nil;
+        fileModel.filePathInLocal = exist?filePathInLocal:nil;
     }
     return fileModel;
 }

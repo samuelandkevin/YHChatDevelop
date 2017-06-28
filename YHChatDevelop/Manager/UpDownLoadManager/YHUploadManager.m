@@ -10,6 +10,7 @@
 #import "NetManager.h"
 #import "YHChatModel.h"
 #import "YHProtocolConfig.h"
+#import "SqliteManager.h"
 
 #define kUploadAudioMAXCount 3      //上传音频数量限制
 #define kUploadOfficeFileMAXCount 3 //上传办公格式文件数量限制
@@ -94,7 +95,7 @@
 
 
 //上传办公格式的文件
-- (void)uploadOfficeFileWithPath:(NSString *)filePath complete:(void (^)(BOOL success,id obj))complete progress:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten))progress{
+- (void)uploadOfficeFileWithFileModel:(YHFileModel *)fileModel complete:(void (^)(BOOL success,id obj))complete progress:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten))progress{
 
     if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
         complete(NO,@"token is nil");
@@ -102,11 +103,15 @@
     }
     
     NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",kBaseURL,kPathUploadOfficeFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
-    
-    NSString *mimeType = [self _getMIMETypeWithFilePath:filePath];
+    NSString *filePathInLocal = fileModel.filePathInLocal;
+    if (!filePathInLocal) {
+        complete(NO,@"filePathInLocal is nil");
+        return;
+    }
+    NSString *mimeType = [self _getMIMETypeWithFilePath:filePathInLocal];
     
     NSDictionary *params = nil;
-    [self _uploadFileInQueue:self.uploadOfficeFileQueue filePath:filePath requestUrl:requestUrl fileNameInServer:@"files" maxConcurrentCount:kUploadOfficeFileMAXCount mimeType:mimeType params:params complete:^(BOOL success, id obj) {
+    [self _uploadFileInQueue:self.uploadOfficeFileQueue filePath:filePathInLocal requestUrl:requestUrl fileNameInServer:@"files" maxConcurrentCount:kUploadOfficeFileMAXCount mimeType:mimeType params:params complete:^(BOOL success, id obj) {
         if (success) {
             id dictData  = obj[@"data"];
             if(![dictData isKindOfClass:[NSDictionary class]]){
@@ -114,10 +119,28 @@
                 return ;
             }
             NSDictionary *dict = dictData;
-   
-            NSString *urlStr  = dict[@"url"];
-            NSURL *url        = [NSURL URLWithString:urlStr];
-            complete(YES,url);
+            
+            NSArray *files  = dict[@"files"];
+            NSDictionary *dictFile = [NSDictionary new];
+            if (files && [files isKindOfClass:[NSArray class]]) {
+                if (files.count) {
+                    dictFile = files[0];
+                }
+            }
+            //返回字段有： picUrl , picSize ,createdDate ,id, picHeight ,picWidth, extension ,picThumPath
+            YHFileModel *model     = [YHFileModel new];
+            model.filePathInLocal  = filePathInLocal;
+            model.ext              = dictFile[@"extension"];
+            model.filePathInServer = dictFile[@"picUrl"];
+            model.fileSizeStr      = dictFile[@"picSize"];
+            model.status           = FileStatus_HasDownLoaded;
+            NSString *fileName     = fileModel.fileName;
+            if ([fileName containsString:[NSString stringWithFormat:@".%@",model.ext]]) {
+                fileName = [fileName stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@".%@",model.ext] withString:@""];
+            }
+            model.fileName         = fileName;
+            complete(YES,model);
+
         }else{
             complete(NO,obj);
         }

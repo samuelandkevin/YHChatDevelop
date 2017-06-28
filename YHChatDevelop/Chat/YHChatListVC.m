@@ -20,6 +20,8 @@
 #import "NetManager+Login.h"
 #import "YHPopMenuView.h"
 #import "YHUICommon.h"
+#import "SqliteManager.h"
+#import "SqliteManager+Chat.h"
 
 @interface YHChatListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) YHRefreshTableView *tableView;
@@ -45,9 +47,24 @@
     self.navigationController.navigationBar.translucent = NO;
     [self initUI];
     
-    if (_isVisitor) {
-        [self requestChatList];
+    if (!_isVisitor) {
+        WeakSelf
+        //数据库查找聊天列表
+        [[SqliteManager sharedInstance] queryChatListTableWithUserInfo:nil fuzzyUserInfo:nil complete:^(BOOL success, id obj) {
+            if (success) {
+                DDLog(@"%@",obj);
+                NSArray *retObj = obj;
+                if (retObj.count) {
+                    weakSelf.dataArray = obj;
+                    [weakSelf.tableView reloadData];
+                }
+            }
+        }];
     }
+    
+    [self requestChatList];
+    
+    
     
 }
 
@@ -201,6 +218,16 @@
             if (success) {
                 weakSelf.dataArray = obj;
                 [weakSelf.tableView reloadData];
+                
+                //更新聊天列表数据库
+                [[SqliteManager sharedInstance] updateChatListModelArr:obj uid:[YHUserInfoManager sharedInstance].userInfo.uid complete:^(BOOL success, id obj) {
+                    if (success) {
+                        DDLog(@"更新聊天列表数据库成功,%@",obj);
+                    }else{
+                        DDLog(@"更新聊天列表数据库失败,%@",obj);
+                    }
+                }];
+                
             }else{
                 if (isNSDictionaryClass(obj)) {
                     //服务器返回的错误描述

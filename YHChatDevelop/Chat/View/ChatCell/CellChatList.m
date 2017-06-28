@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import "YHChatListModel.h"
 #import "YHGroupIconView.h"
+#import "YHChatServiceDefs.h"
 
 @interface CellChatList()
 
@@ -72,7 +73,7 @@
     _lbName = [UILabel new];
     _lbName.textColor = [UIColor blackColor];
     _lbName.textAlignment = NSTextAlignmentLeft;
-    _lbName.font = [UIFont systemFontOfSize:14.0];
+    _lbName.font = [UIFont systemFontOfSize:15.0];
     [self.contentView addSubview:_lbName];
     
     
@@ -83,7 +84,7 @@
     _lbContent.preferredMaxLayoutWidth = SCREEN_WIDTH - 133;
     _lbContent.textColor = [UIColor blackColor];
     _lbContent.textAlignment = NSTextAlignmentLeft;
-    _lbContent.font = [UIFont systemFontOfSize:14.0];
+    _lbContent.font = [UIFont systemFontOfSize:13.0];
     [self.contentView addSubview:_lbContent];
     
     
@@ -150,12 +151,49 @@
     _model = model;
     _lbName.text = _model.sessionUserName;
     
-    _lbContent.text = _model.lastContent;
-    _lbTime.text    = _model.lastCreatTime;
+    
+    _lbTime.text = _model.creatTime;
+    if(_model.status == 1){
+        //撤回
+        NSString *msg = @"撤回一条消息";
+        switch (_model.msgType) {
+            case   YHMessageType_Image:
+                msg = @"撤回一张图片";
+                break;
+            case   YHMessageType_Voice:
+                msg = @"撤回一条语音";
+                break;
+            case  YHMessageType_Doc:
+                msg = @"撤回一个文件";
+                break;
+            default:
+                break;
+        }
+        _lbContent.text = msg;
+    }else{
+        //未撤回
+        NSString *msg = _model.lastContent;
+        switch (_model.msgType) {
+            case   YHMessageType_Image:
+                msg = @"[图片]";
+                break;
+            case   YHMessageType_Voice:
+                msg = @"[语音]";
+                break;
+            case  YHMessageType_Doc:
+                msg = @"[文件]";
+                break;
+            default:
+                break;
+        }
+
+        _lbContent.text = msg;
+    }
+    
     if (_model.isGroupChat) {
         _imgvGroupIcon.picUrlArray = _model.sessionUserHead;
         _imgvGroupIcon.hidden = NO;
-        _imgvAvatar.hidden = YES;
+        _imgvAvatar.hidden    = YES;
     }else{
         [_imgvAvatar sd_setImageWithURL:_model.sessionUserHead[0] placeholderImage:[UIImage imageNamed:@"common_avatar_80px"]];
         _imgvAvatar.hidden = NO;

@@ -181,15 +181,15 @@
 //    
 //    //非wifi状态
 //    _progressView.hidden = (self.model.fileModel.status == FileStatus_HasDownLoaded || self.model.fileModel.status == FileStatus_UnDownLoaded) ? YES:NO;
-//    _lbFileSize.text = self.model.fileModel.fileSizeStr;
-//
-//    if(self.model.fileModel.status == FileStatus_UnDownLoaded){
-//        self.lbStatus.text = @"未完成";
-//    }else if(self.model.fileModel.status == FileStatus_isDownLoading){
-//        self.lbStatus.text = @"下载中";
-//    }else if(self.model.fileModel.status == FileStatus_HasDownLoaded){
-//        self.lbStatus.text = @"已下载";
-//    }
+    _lbFileSize.text = self.model.fileModel.fileSizeStr;
+
+    if(self.model.fileModel.status == FileStatus_UnDownLoaded){
+        self.lbStatus.text = @"未下载";
+    }else if(self.model.fileModel.status == FileStatus_isDownLoading){
+        self.lbStatus.text = @"下载中";
+    }else if(self.model.fileModel.status == FileStatus_HasDownLoaded){
+        self.lbStatus.text = @"已下载";
+    }
     
     
 }
@@ -218,7 +218,7 @@
         }else{
             DDLog(@"下载文件失败:%@",obj);
             weakSelf.model.fileModel.status = FileStatus_UnDownLoaded;
-            weakSelf.lbStatus.text = @"未完成";
+            weakSelf.lbStatus.text = @"未下载";
             weakSelf.lbFileSize.text = @"";
         }
     } progress:^(int64_t bytesWritten, int64_t totalBytesWritten) {

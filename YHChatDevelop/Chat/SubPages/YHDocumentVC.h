@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YHFileModel.h"
 
 @interface YHDocumentVC : UIViewController
 
-- (void)didSelectFilesComplete:(void(^)(NSArray <NSString *> *files))complete;
+- (void)didSelectFilesComplete:(void(^)(NSArray <YHFileModel *> *files))complete;
 @end

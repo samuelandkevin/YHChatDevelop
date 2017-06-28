@@ -26,7 +26,7 @@
 @property (nonatomic,copy) NSString *lastCreatTime;
 @property (nonatomic,strong) NSArray < NSURL *> *sessionUserHead;
 @property (nonatomic,copy) NSString *msgId;
-@property (nonatomic,assign) int    status;
+@property (nonatomic,assign) int    status; //消息状态（撤回：1,未撤回：0）
 @property (nonatomic,copy) NSString *updateTime;
 
 @end

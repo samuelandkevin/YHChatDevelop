@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "YHFileModel.h"
 
 @interface YHUploadManager : NSObject
 
@@ -24,10 +24,10 @@
 
 /*
  *  上传办公格式的文件        （PDF,Word,Excel）
- *  @param filePath         后台返回的Url
+ *  @param fileModel        YHFileModel
  *  @param progress         上传进度
  *  @param complete         成功失败回调
  */
-- (void)uploadOfficeFileWithPath:(NSString *)filePath complete:(void (^)(BOOL success,id obj))complete progress:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten))progress;
+- (void)uploadOfficeFileWithFileModel:(YHFileModel *)fileModel complete:(void (^)(BOOL success,id obj))complete progress:(void(^)(int64_t bytesWritten, int64_t totalBytesWritten))progres;
 
 @end

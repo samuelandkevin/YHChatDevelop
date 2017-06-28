@@ -118,9 +118,14 @@
     
     //保存在本地的文件名(唯一名字)
     NSString *saveFileName = [requestUrl lastPathComponent];
-
+    if (![saveFileName containsString:[NSString stringWithFormat:@".%@",model.ext]]) {
+        //要加上文件的后缀名,否则webview打不开
+        saveFileName = [saveFileName stringByAppendingString:[NSString stringWithFormat:@".%@",model.ext]];
+    }
+    
+    
     WeakSelf
-    [[SqliteManager sharedInstance] queryOneOfficeFileWithName:model.filePathInServer complete:^(BOOL success, id obj) {
+    [[SqliteManager sharedInstance] queryOneOfficeFileWithFileNameInserver:model.filePathInServer complete:^(BOOL success, id obj) {
         
         if (success) {
             //有缓存
@@ -134,6 +139,7 @@
                 if(success){
                     //计算文件大小
                     model.fileSize = [YHFileTool fileSizeWithPath:obj];
+                    model.filePathInLocal = obj;
                     
                     //关联文件到数据库
                     [[SqliteManager sharedInstance] updateOfficeFile:model complete:^(BOOL success, id obj) {

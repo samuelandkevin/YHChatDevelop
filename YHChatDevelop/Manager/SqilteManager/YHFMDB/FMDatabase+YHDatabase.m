@@ -9,7 +9,7 @@
 #import "FMDatabase+YHDatabase.h"
 #import <UIKit/UIKit.h>
 #import "NSObject+YHDBRuntime.h"
-#import "MJExtension.h"
+
 
 
 @implementation FMDatabase (YHDatabase)
@@ -506,6 +506,10 @@
                             if(obj){
                                 [arrM addObject:obj];
                             }
+                        }else if([destclass isSubclassOfClass:[NSURL class]] && [dict isKindOfClass:[NSString class]]){
+                            if (dict) {
+                                [arrM addObject:[NSURL URLWithString:(NSString *)dict]];
+                            }
                         }else{
                             if(dict){
                                 [arrM addObject:dict];
@@ -550,11 +554,11 @@
                         NSURL *url = [NSURL URLWithString:urlStr];
                         [model setValue:url forKey:ivar.name];
                     }else if([ivar.typeName isEqualToString:@"@\"NSMutableAttributedString\""]){
-                         NSString *strValue = [set stringForColumn:ivar.name];
+                        NSString *strValue = [set stringForColumn:ivar.name];
                         if ([strValue isEqualToString:@"(null)"]) {
                             strValue = nil;
                         }
-
+                        
                         NSMutableAttributedString *mStr = [[NSMutableAttributedString alloc] initWithString:strValue];
                         [model setValue:mStr forKey:ivar.name];
                     }else if ([ivar.typeName isEqualToString:@"@\"NSAttributedString\""]){
@@ -583,6 +587,8 @@
                                     
                                     NSURL *url = [NSURL URLWithString:aStr];
                                     [array addObject:url];
+                                }else if ([aStr isEqualToString:@""]){
+                                    [array addObject:[NSURL URLWithString:aStr]];
                                 }else{
                                     [array addObject:aStr];
                                 }

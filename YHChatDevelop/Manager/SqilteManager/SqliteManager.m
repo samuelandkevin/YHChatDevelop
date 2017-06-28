@@ -69,6 +69,13 @@
     return _officeFileArray;
 }
 
+- (NSMutableArray<CreatTable *> *)chatListArray{
+    if (!_chatListArray) {
+        _chatListArray = [NSMutableArray new];
+    }
+    return _chatListArray;
+}
+
 #pragma mark - Privte 办公文件
 //第一次建聊天表
 - (CreatTable *)_firstCreatOfficeQueue{
@@ -173,8 +180,6 @@
             
         }];
     });
-    
-
 }
 
 //查询办公文件
@@ -197,7 +202,7 @@
 }
 
 //查询某个文件
-- (void)queryOneOfficeFileWithName:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete{
+- (void)queryOneOfficeFileWithFileNameInserver:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete{
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         CreatTable *model = [self _setupOfficeFileDBqueue];
@@ -344,8 +349,12 @@
 - (void)clearCacheWhenLogout{
    
     [self.chatLogArray removeAllObjects];
+    [self.officeFileArray removeAllObjects];
+    [self.chatListArray removeAllObjects];
+    
     [[NSFileManager defaultManager] removeItemAtPath:YHUserDir error:nil];
     [[NSFileManager defaultManager] removeItemAtPath:YHVisitorsDir error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:YHChatListLogDir error:nil];
 }
 
 
