@@ -96,7 +96,7 @@
 
 @property (nonatomic,strong)NSMutableArray *imageViewsArray;
 @property (nonatomic,assign)CGFloat margin;
-@property (nonatomic,assign)CGFloat containerW;
+
 
 @end
 
@@ -115,7 +115,6 @@
     if (self = [super initWithFrame:frame]){
         [self setup];
          self.margin = 1.5;
-         self.containerW = 45;
     }
     return self;
 }
@@ -171,7 +170,7 @@
         imageView.layer.cornerRadius  = itemW/2;
         imageView.layer.masksToBounds = YES;
         imageView.hidden = NO;
-        [imageView sd_setImageWithURL:obj placeholderImage:[UIImage imageNamed:@"common_avatar_120px"]  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {}
+        [imageView sd_setImageWithURL:obj placeholderImage:[UIImage imageNamed:@"common_avatar_80px"]  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {}
          ];
         
 
@@ -194,12 +193,11 @@
     CGFloat itemLeft;
     CGFloat itemTop;
     if (membersCount == 1) {
-        if (index == 0) {
-            itemW = (self.containerW - 3*self.margin)/2;
-            itemLeft = (self.containerW - itemW)/2;
-            itemTop  = (self.containerW - itemW)/2;
+        
+        itemW = (self.containerW - 3*self.margin)/2;
+        itemLeft = (self.containerW - itemW)/2;
+        itemTop  = (self.containerW - itemW)/2;
 
-        }
     }else if (membersCount == 2){
         itemW    = (self.containerW - 3*self.margin)/2;
         itemLeft = self.margin + (itemW + self.margin)*index;
@@ -281,7 +279,7 @@
             itemTop = 3*self.margin + 2*itemW;
         }
        
-    }else if (membersCount == 9){
+    }else{
         itemW = (self.containerW - 4*self.margin)/3;
         if (index < 3) {
             itemLeft = self.margin + (itemW + self.margin)*index;

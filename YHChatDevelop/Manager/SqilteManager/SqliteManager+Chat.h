@@ -50,6 +50,12 @@
  */
 - (void)updateChatListModelArr:(NSArray <YHChatListModel *>*)chatListModelArr uid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete;
 
+
+/*
+ *  删除ChatList表某条信息
+ */
+- (void)deleteOneChatListModel:(YHChatListModel *)clModel uid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete;
+
 /*
  *  查询ChatList表
  */

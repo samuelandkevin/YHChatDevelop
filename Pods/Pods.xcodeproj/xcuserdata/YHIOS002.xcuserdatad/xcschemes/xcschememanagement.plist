@@ -9,12 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>HYBMasonryAutoCellHeight.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -35,6 +45,11 @@
 			<false/>
 		</dict>
 		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,7 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1F8AE2F46250C7B96E175678D797BB3A</key>
+		<key>0F71FC248875B67F53494C44B17B40EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +87,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48FA8D9280326EE33F7F1EA68B1C9EFE</key>
+		<key>2F0C0F810568D3E82219429D9D870F04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5D3AFBD097C44C0C5AF67D1A790CBE4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7F8E70DE3B34F285E7A39E7606CAE4D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>80CE94E3D4FBA5467CAAF205EAD53887</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88ED5C73C65D7242C3B6B8CEEF3F7BC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,7 +117,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C1F16D693021C30C498D9FF4C7931D17</key>
+		<key>CE78619B32BAD49EFD3AE0FBD8D652B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +132,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E70A7AA8EAB773255B9C185BE2CC8122</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F9819975ECDF996BCFD31A5E2BF0AE16</key>
+		<key>F3648BFF148159DB7D4CE8111BACEA4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

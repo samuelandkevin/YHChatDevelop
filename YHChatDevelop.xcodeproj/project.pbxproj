@@ -87,7 +87,6 @@
 		AC51FFE91EFB67B5005EAE4F /* YHBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF5B1EFB67B5005EAE4F /* YHBrowserImageView.m */; };
 		AC51FFEA1EFB67B5005EAE4F /* YHPhotoBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF5E1EFB67B5005EAE4F /* YHPhotoBrowserView.m */; };
 		AC51FFEB1EFB67B5005EAE4F /* YHWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF601EFB67B5005EAE4F /* YHWaitingView.m */; };
-		AC51FFEC1EFB67B5005EAE4F /* YHPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF621EFB67B5005EAE4F /* YHPopMenuView.m */; };
 		AC51FFED1EFB67B5005EAE4F /* YHRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF641EFB67B5005EAE4F /* YHRefreshTableView.m */; };
 		AC51FFEE1EFB67B5005EAE4F /* YHTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF661EFB67B5005EAE4F /* YHTipsView.m */; };
 		AC51FFEF1EFB67B5005EAE4F /* YHUICommon.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF681EFB67B5005EAE4F /* YHUICommon.m */; };
@@ -122,6 +121,8 @@
 		AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB11F03444A00B8D8B4 /* YHDownLoadManager.m */; };
 		AC604AC41F03444A00B8D8B4 /* YHUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */; };
 		AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */; };
+		ACA84D7A1F0CB3D000A887AD /* YHPopMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA84D791F0CB3D000A887AD /* YHPopMenu.swift */; };
+		ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA84D7B1F0CB40800A887AD /* YHCommon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -284,8 +285,6 @@
 		AC51FF5E1EFB67B5005EAE4F /* YHPhotoBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPhotoBrowserView.m; sourceTree = "<group>"; };
 		AC51FF5F1EFB67B5005EAE4F /* YHWaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWaitingView.h; sourceTree = "<group>"; };
 		AC51FF601EFB67B5005EAE4F /* YHWaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWaitingView.m; sourceTree = "<group>"; };
-		AC51FF611EFB67B5005EAE4F /* YHPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPopMenuView.h; sourceTree = "<group>"; };
-		AC51FF621EFB67B5005EAE4F /* YHPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPopMenuView.m; sourceTree = "<group>"; };
 		AC51FF631EFB67B5005EAE4F /* YHRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHRefreshTableView.h; sourceTree = "<group>"; };
 		AC51FF641EFB67B5005EAE4F /* YHRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHRefreshTableView.m; sourceTree = "<group>"; };
 		AC51FF651EFB67B5005EAE4F /* YHTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTipsView.h; sourceTree = "<group>"; };
@@ -359,6 +358,8 @@
 		AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUploadManager.m; sourceTree = "<group>"; };
 		AC604AB51F03444A00B8D8B4 /* YHUserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUserInfoManager.h; sourceTree = "<group>"; };
 		AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUserInfoManager.m; sourceTree = "<group>"; };
+		ACA84D791F0CB3D000A887AD /* YHPopMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHPopMenu.swift; sourceTree = "<group>"; };
+		ACA84D7B1F0CB40800A887AD /* YHCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCommon.swift; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -709,6 +710,7 @@
 		AC51FF4B1EFB67B5005EAE4F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				ACA84D7B1F0CB40800A887AD /* YHCommon.swift */,
 				AC51FF4C1EFB67B5005EAE4F /* HHUtils.h */,
 				AC51FF4D1EFB67B5005EAE4F /* HHUtils.m */,
 				AC51FF4E1EFB67B5005EAE4F /* SwiftExtension.swift */,
@@ -722,6 +724,7 @@
 		AC51FF521EFB67B5005EAE4F /* UICustoms */ = {
 			isa = PBXGroup;
 			children = (
+				ACA84D791F0CB3D000A887AD /* YHPopMenu.swift */,
 				AC51FF531EFB67B5005EAE4F /* YHActionSheet.h */,
 				AC51FF541EFB67B5005EAE4F /* YHActionSheet.m */,
 				AC51FF551EFB67B5005EAE4F /* YHAlertView.h */,
@@ -729,8 +732,6 @@
 				AC51FF571EFB67B5005EAE4F /* YHNavigationController.h */,
 				AC51FF581EFB67B5005EAE4F /* YHNavigationController.m */,
 				AC51FF591EFB67B5005EAE4F /* YHPhotoBrowser */,
-				AC51FF611EFB67B5005EAE4F /* YHPopMenuView.h */,
-				AC51FF621EFB67B5005EAE4F /* YHPopMenuView.m */,
 				AC51FF631EFB67B5005EAE4F /* YHRefreshTableView.h */,
 				AC51FF641EFB67B5005EAE4F /* YHRefreshTableView.m */,
 				AC51FF651EFB67B5005EAE4F /* YHTipsView.h */,
@@ -987,6 +988,7 @@
 				TargetAttributes = {
 					AC51FE811EFB5B1A005EAE4F = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 6C6E567289;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1092,7 +1094,6 @@
 				AC51FFE41EFB67B5005EAE4F /* YHFileTool.m in Sources */,
 				AC51FFC91EFB67B5005EAE4F /* YHChatImageView.m in Sources */,
 				AC51FF9D1EFB67B5005EAE4F /* DataParser.m in Sources */,
-				AC51FFEC1EFB67B5005EAE4F /* YHPopMenuView.m in Sources */,
 				AC51FFB51EFB67B5005EAE4F /* CellDocument.m in Sources */,
 				AC51FFFB1EFB67B5005EAE4F /* NSString+MJExtension.m in Sources */,
 				AC51FFC01EFB67B5005EAE4F /* CellChatTips.m in Sources */,
@@ -1151,6 +1152,7 @@
 				AC51FFBA1EFB67B5005EAE4F /* CellChatGIFRight.m in Sources */,
 				AC51FFB21EFB67B5005EAE4F /* YHAudioRecorder.m in Sources */,
 				AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */,
+				ACA84D7A1F0CB3D000A887AD /* YHPopMenu.swift in Sources */,
 				AC51FFA81EFB67B5005EAE4F /* YHUserInfo.m in Sources */,
 				AC51FFEF1EFB67B5005EAE4F /* YHUICommon.m in Sources */,
 				AC51FF9E1EFB67B5005EAE4F /* YHAboutModel.m in Sources */,
@@ -1173,6 +1175,7 @@
 				AC604ABF1F03444A00B8D8B4 /* SqliteManager+Chat.m in Sources */,
 				AC51FFEA1EFB67B5005EAE4F /* YHPhotoBrowserView.m in Sources */,
 				AC51FFF91EFB67B5005EAE4F /* NSObject+MJKeyValue.m in Sources */,
+				ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */,
 				AC51FFBC1EFB67B5005EAE4F /* CellChatImageRight.m in Sources */,
 				AC51FFB41EFB67B5005EAE4F /* YHVideoHelper.m in Sources */,
 				AC51FFCB1EFB67B5005EAE4F /* YHGroupIconView.m in Sources */,
@@ -1299,9 +1302,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6C6E567289;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "YHChatDevelop/YHChatDevelop-PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = YHChatDevelop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1323,9 +1327,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6C6E567289;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "YHChatDevelop/YHChatDevelop-PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = YHChatDevelop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

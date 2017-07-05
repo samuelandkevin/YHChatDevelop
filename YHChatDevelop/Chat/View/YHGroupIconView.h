@@ -10,4 +10,5 @@
 
 @interface YHGroupIconView : UIView
 @property (nonatomic, strong) NSArray <NSURL *>*picUrlArray; //缩略图URL
+@property (nonatomic, assign) CGFloat containerW;
 @end

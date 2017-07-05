@@ -282,6 +282,20 @@
    
 }
 
+
+//删除ChatList表某条信息
+- (void)deleteOneChatListModel:(YHChatListModel *)clModel uid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete{
+    CreatTable *model = [self _setupChatListDBqueueWithUid:uid];
+    FMDatabaseQueue *queue = model.queue;
+    NSString *tableName = tableNameChatList(uid);
+    [queue inDatabase:^(FMDatabase * _Nonnull db) {
+        [db yh_deleteDataWithTable:tableName model:clModel userInfo:nil otherSQL:nil option:^(BOOL del) {
+            complete(del,@(del));
+        }];
+    }];
+    
+}
+
 //查询ChatList表
 - (void)queryChatListTableWithUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete{
     NSString *uid = [YHUserInfoManager sharedInstance].userInfo.uid;

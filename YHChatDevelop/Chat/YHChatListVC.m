@@ -18,7 +18,7 @@
 #import "YHLoginInputViewController.h"
 #import "YHNavigationController.h"
 #import "NetManager+Login.h"
-#import "YHPopMenuView.h"
+#import "YHChatDevelop-Swift.h"
 #import "YHUICommon.h"
 #import "SqliteManager.h"
 #import "SqliteManager+Chat.h"
@@ -26,12 +26,19 @@
 @interface YHChatListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) YHRefreshTableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
-@property (nonatomic,strong) YHPopMenuView *popView;
+@property (nonatomic,strong) YHPopMenu *popView;
+@property (nonatomic,assign) BOOL rBtnSelected;
 @end
 
 @implementation YHChatListVC
 
 #pragma mark - Life
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [self.view endEditing:YES];
+    _rBtnSelected = NO;
+    [_popView hideWithAnimate:NO];
+}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -85,18 +92,28 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
+    self.tableView.rowHeight  = 70;
     self.tableView.backgroundColor = RGBCOLOR(244, 244, 244);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[CellChatList class] forCellReuseIdentifier:NSStringFromClass([CellChatList class])];
     [self.tableView setEnableLoadNew:YES];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(onLeft)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(_showPopMenu)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onRight)];
 }
 
 #pragma mark - Action
 - (void)onLeft{
 
+}
+
+- (void)onRight{
+    _rBtnSelected = !_rBtnSelected;
+    if (_rBtnSelected) {
+        [self _showPopMenu];
+    }else{
+        [self _hidePopMenuWithAnimation:YES];
+    }
 }
 
 - (void)onLogout{
@@ -130,7 +147,7 @@
     CGFloat y = 10;
     
     //设置参数属性,图标和文字。
-    YHPopMenuView *popView = [[YHPopMenuView alloc] initWithFrame:CGRectMake(x, y, w, h)];
+    YHPopMenu *popView = [[YHPopMenu alloc] initWithFrame:CGRectMake(x, y, w, h)];
     popView.iconNameArray = @[@"img1",@"img1"];
     popView.itemNameArray = @[@"发起聊天",@"退出登录"];
     popView.itemH     = itemH;
@@ -139,15 +156,17 @@
     popView.canTouchTabbar = NO;
     [popView show];
     WeakSelf
-    [popView dismissHandler:^(BOOL isCanceled, NSInteger row) {
+    [popView dismissWithHandler:^(BOOL isCanceled, NSInteger row) {
         if (row == 1){
             [weakSelf onLogout];
         }
+        weakSelf.rBtnSelected = NO;
     }];
+    _popView = popView;
 }
 
 - (void)_hidePopMenuWithAnimation:(BOOL)animate{
-    [_popView hideWithAnimation:animate];
+    [_popView hideWithAnimate:animate];
 }
 
 
@@ -171,18 +190,38 @@
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    return 60.0f;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YHChatDetailVC *vc = [[YHChatDetailVC alloc] init];
     vc.model = self.dataArray[indexPath.row];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row < _dataArray.count && editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        WeakSelf
+        YHChatListModel *model = _dataArray[indexPath.row];
+        
+        [[NetManager sharedInstance] postDeleteSessionWithID:model.chatId sessionUserID:model.sessionUserId complete:^(BOOL success, id obj) {
+            if(success){
+                
+                [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
+                [weakSelf.tableView deleteRow:indexPath.row inSection:indexPath.section withRowAnimation:UITableViewRowAnimationLeft];
+                [[SqliteManager sharedInstance] deleteOneChatListModel:model uid:[YHUserInfoManager sharedInstance].userInfo.uid complete:^(BOOL success, id obj) {
+                    DDLog(@"删除数据库会话%@,%@",success?@"成功":@"失败",obj);
+                }];
+                DDLog(@"删除会话成功,%@",obj);
+            }else{
+                DDLog(@"删除会话失败,%@",obj);
+            }
+        }];
+    }
 }
 
 #pragma mark - YHRefreshTableViewDelegate

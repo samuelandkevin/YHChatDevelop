@@ -13,6 +13,8 @@
 #import "YHGroupIconView.h"
 #import "YHChatServiceDefs.h"
 
+
+#define kGroupIconW 50
 @interface CellChatList()
 
 @property (nonatomic,strong) UILabel *lbTime;
@@ -46,13 +48,14 @@
     _imgvAvatar = [UIImageView new];
     _imgvAvatar.userInteractionEnabled = YES;
     [_imgvAvatar addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onAvatarGesture:)]];
-    _imgvAvatar.layer.cornerRadius = 44.0/2.0;
+    _imgvAvatar.layer.cornerRadius  = 2.0;
     _imgvAvatar.layer.masksToBounds = YES;
     _imgvAvatar.image = [UIImage imageNamed:@"common_avatar_80px"];
     [self.contentView addSubview:_imgvAvatar];
     
     _imgvGroupIcon = [YHGroupIconView new];
-    _imgvGroupIcon.layer.cornerRadius = 2;
+    _imgvGroupIcon.containerW = kGroupIconW;
+    _imgvGroupIcon.layer.cornerRadius  = 2;
     _imgvGroupIcon.layer.masksToBounds = YES;
     _imgvGroupIcon.backgroundColor = RGBCOLOR(221, 222, 224);
     [self.contentView addSubview:_imgvGroupIcon];
@@ -82,7 +85,7 @@
     
     //-5-AvatarWidth-10-15-5-10-AvatarWidth
     _lbContent.preferredMaxLayoutWidth = SCREEN_WIDTH - 133;
-    _lbContent.textColor = [UIColor blackColor];
+    _lbContent.textColor = RGBCOLOR(155, 155, 155);
     _lbContent.textAlignment = NSTextAlignmentLeft;
     _lbContent.font = [UIFont systemFontOfSize:13.0];
     [self.contentView addSubview:_lbContent];
@@ -100,14 +103,14 @@
     
     
     [_imgvAvatar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(44);
-        make.top.equalTo(weakSelf.contentView).offset(10);
+        make.width.height.mas_equalTo(kGroupIconW);
+        make.centerY.equalTo(weakSelf.contentView);
         make.left.equalTo(weakSelf.contentView).offset(10);
     }];
     
     [_imgvGroupIcon mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.height.mas_equalTo(44);
-        make.top.equalTo(weakSelf.contentView).offset(10);
+        make.width.height.mas_equalTo(kGroupIconW);
+        make.centerY.equalTo(weakSelf.contentView);
         make.left.equalTo(weakSelf.contentView).offset(10);
     }];
     
@@ -116,20 +119,20 @@
     
     [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.imgvAvatar.mas_right).offset(10);
-        make.top.equalTo(weakSelf.imgvAvatar.mas_top);
+        make.top.equalTo(weakSelf.contentView).offset(15);
         make.right.equalTo(weakSelf.lbTime.mas_left);
     }];
     
     [_lbTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakSelf.contentView).offset(-5);
+        make.right.equalTo(weakSelf.contentView).offset(-10);
         make.top.equalTo(weakSelf.lbName.mas_top);
     }];
     
     
     [_lbContent mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.imgvAvatar.mas_right).offset(10);
-        make.top.equalTo(weakSelf.lbName.mas_bottom).offset(5);
-        make.right.equalTo(weakSelf.contentView.mas_right).offset(-15);
+        make.top.equalTo(weakSelf.lbName.mas_bottom).offset(10);
+        make.right.equalTo(weakSelf.contentView.mas_right).offset(-10);
     }];
     
     [_viewBotLine mas_makeConstraints:^(MASConstraintMaker *make) {
