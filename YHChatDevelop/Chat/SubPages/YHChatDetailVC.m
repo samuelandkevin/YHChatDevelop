@@ -107,8 +107,8 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     //        [btn setTitle:@"取消" forState:UIControlStateSelected];
     //        [btn setTitle:@"更多" forState:UIControlStateNormal];
     //    }];
-    //
-//        self.navigationItem.rightBarButtonItem = [UIBarButtonItem rightItemWithImgName:@"common_leftArrow" target:self selector:@selector(onRight:)];
+
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem rightItemWithImgName:@"common_user" target:self selector:@selector(onRight:)];
     
     
     self.title = self.model.isGroupChat?[NSString stringWithFormat:@"%@(%lu)",self.model.sessionUserName,(unsigned long)self.model.sessionUserHead.count]: self.model.sessionUserName;

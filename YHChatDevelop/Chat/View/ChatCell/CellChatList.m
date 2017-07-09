@@ -15,6 +15,7 @@
 
 
 #define kGroupIconW 50
+#define kUnReadMsgW 18
 @interface CellChatList()
 
 @property (nonatomic,strong) UILabel *lbTime;
@@ -24,6 +25,8 @@
 @property (nonatomic,strong) UILabel *lbNewMsg;
 @property (nonatomic,strong) UIView  *viewBotLine;
 @property (nonatomic,strong) YHGroupIconView *imgvGroupIcon;
+@property (nonatomic,strong) UILabel  *lbUnReadMsgGroup;  //群聊未读消息
+@property (nonatomic,strong) UILabel  *lbUnReadMsgPrivate;//私聊未读消息
 @end
 
 
@@ -61,6 +64,26 @@
     [self.contentView addSubview:_imgvGroupIcon];
     
     
+    _lbUnReadMsgGroup = [UILabel new];
+    _lbUnReadMsgGroup.textColor = [UIColor whiteColor];
+    _lbUnReadMsgGroup.textAlignment = NSTextAlignmentCenter;
+    _lbUnReadMsgGroup.font = [UIFont systemFontOfSize:12.0];
+    _lbUnReadMsgGroup.backgroundColor = [UIColor redColor];
+    _lbUnReadMsgGroup.layer.cornerRadius  = kUnReadMsgW/2;
+    _lbUnReadMsgGroup.layer.masksToBounds = YES;
+    _lbUnReadMsgGroup.hidden = YES;
+    [self.contentView addSubview:_lbUnReadMsgGroup];
+    
+    _lbUnReadMsgPrivate = [UILabel new];
+    _lbUnReadMsgPrivate.textColor = [UIColor whiteColor];
+    _lbUnReadMsgPrivate.textAlignment = NSTextAlignmentCenter;
+    _lbUnReadMsgPrivate.font = [UIFont systemFontOfSize:12.0];
+    _lbUnReadMsgPrivate.backgroundColor = [UIColor redColor];
+    _lbUnReadMsgPrivate.layer.cornerRadius  = kUnReadMsgW/2;
+    _lbUnReadMsgPrivate.layer.masksToBounds = YES;
+    _lbUnReadMsgPrivate.hidden = YES;
+    [self.contentView addSubview:_lbUnReadMsgPrivate];
+    
     _lbNewMsg = [UILabel new];
     _lbNewMsg.backgroundColor = [UIColor redColor];
     _lbNewMsg.textAlignment = NSTextAlignmentCenter;
@@ -76,7 +99,7 @@
     _lbName = [UILabel new];
     _lbName.textColor = [UIColor blackColor];
     _lbName.textAlignment = NSTextAlignmentLeft;
-    _lbName.font = [UIFont systemFontOfSize:15.0];
+    _lbName.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:_lbName];
     
     
@@ -114,8 +137,24 @@
         make.left.equalTo(weakSelf.contentView).offset(10);
     }];
     
-    [_lbName setContentHuggingPriority:249 forAxis:UILayoutConstraintAxisHorizontal];
-    [_lbName setContentHuggingPriority:749 forAxis:UILayoutConstraintAxisHorizontal];
+    [_lbUnReadMsgPrivate mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.imgvAvatar.mas_centerX).offset(kGroupIconW/2-kUnReadMsgW/4);
+        make.centerY.equalTo(weakSelf.imgvAvatar.mas_centerY).offset(-kGroupIconW/2+kUnReadMsgW/4);
+        make.width.mas_greaterThanOrEqualTo(kUnReadMsgW);
+        make.height.mas_equalTo(kUnReadMsgW);
+    }];
+    
+    
+    [_lbUnReadMsgGroup mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.imgvGroupIcon.mas_centerX).offset(kGroupIconW/2-kUnReadMsgW/4);
+        make.centerY.equalTo(weakSelf.imgvGroupIcon.mas_centerY).offset(-kGroupIconW/2+kUnReadMsgW/4);
+        make.width.mas_greaterThanOrEqualTo(kUnReadMsgW);
+        make.height.mas_equalTo(kUnReadMsgW);
+    }];
+    
+    
+    [_lbName setContentHuggingPriority:248 forAxis:UILayoutConstraintAxisHorizontal];
+    [_lbName setContentCompressionResistancePriority:748 forAxis:UILayoutConstraintAxisHorizontal];
     
     [_lbName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.imgvAvatar.mas_right).offset(10);
@@ -195,13 +234,33 @@
     
     if (_model.isGroupChat) {
         _imgvGroupIcon.picUrlArray = _model.sessionUserHead;
-        _imgvGroupIcon.hidden = NO;
-        _imgvAvatar.hidden    = YES;
+        _imgvGroupIcon.hidden    = NO;
+        _imgvAvatar.hidden       = YES;
+        _lbUnReadMsgPrivate.hidden = YES;
+        if (_model.unReadCount) {
+            _lbUnReadMsgGroup.hidden = NO;
+            _lbUnReadMsgGroup.text   = [NSString stringWithFormat:@"%u  ",_model.unReadCount];
+        }else{
+            _lbUnReadMsgGroup.hidden = YES;
+        }
+       
+
     }else{
         [_imgvAvatar sd_setImageWithURL:_model.sessionUserHead[0] placeholderImage:[UIImage imageNamed:@"common_avatar_80px"]];
-        _imgvAvatar.hidden = NO;
-        _imgvGroupIcon.hidden = YES;
+        _imgvAvatar.hidden         = NO;
+        _imgvGroupIcon.hidden      = YES;
+        _lbUnReadMsgGroup.hidden   = YES;
+        if (_model.unReadCount) {
+             _lbUnReadMsgPrivate.hidden = NO;
+             _lbUnReadMsgPrivate.text   = [NSString stringWithFormat:@"%u",_model.unReadCount];
+        }else{
+            _lbUnReadMsgPrivate.hidden  = YES;
+        }
+       
+
     }
+    
+    
     
     
 }
