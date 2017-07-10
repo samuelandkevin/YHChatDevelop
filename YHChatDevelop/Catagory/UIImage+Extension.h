@@ -23,4 +23,6 @@
 
 - (UIImage *)imageWithCornerRadius:(CGFloat)radius;
 - (UIImage *)imageWithCornerAngle:(CGFloat)radius;
+
++ (UIImage *)createRoundedRectImage:(UIImage *)image withSize:(CGSize)size withRadius:(NSInteger)radius;
 @end

@@ -14,6 +14,8 @@
 
 #import "YHDebug.h"
 #import "YHConfig.h"
+
+
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -43,10 +45,36 @@ alpha:1.0]
 #define kGrayColor  RGBCOLOR(196, 197, 198)
 #define kGreenColor kBlueColor    //绿色主调
 #define kBlueColor  RGB16(0x0e92dd)          //蓝色主调
+#define kSeparatorLineColor RGBCOLOR(222, 222, 222)  //分隔线颜色
+#define kViewBGColor RGBCOLOR(244, 244, 244)         //控制器view的背景色
 
+#pragma mark - Log
 #define DDLog(FORMAT, ...)   fprintf(stderr, "\n[%s]  function:%s line:%d content:%s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 #define WeakSelf  __weak __typeof(&*self)weakSelf = self;
+
+
+#pragma mark - UI
+#define kErrorCell                  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"errCell"]
+
+
+#pragma mark - 通知事件
+//刷新名片详情页
+#define Event_CardDetailPage_Refresh @"event.cardDetailPage_refresh"
+
+//刷新新的好友页
+#define Event_NewFriendsPage_Refresh @"event.newFriendsPage_Refresh"
+
+//刷新我的好友页
+#define Event_MyFriendsPage_Refresh @"event.myFriendsPage_Refresh"
+
+
+#define Event_GroupSettingPage_Refresh @"event.groupSettingPage.refresh"
+//修改群名成功
+#define Event_MofifyGroupName_Success @"event.modifyGroupName_Success"
+
+//用户数据更新成功
+#define Event_UserInfo_UpdateFinish @"event.userInfo.updateFinish"
 
 #endif
 // Include any system framework and library headers here that should be included in all compilation units.

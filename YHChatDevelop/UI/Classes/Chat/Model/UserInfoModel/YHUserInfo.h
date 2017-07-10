@@ -28,6 +28,7 @@ typedef NS_ENUM(int,FriendShipStatus){
 
 //添加好友的状态 (服务器返回：0 别人申请加我为好友 1 我申请加别人为好友  ->解析后 自定义101 别人申请加我为好友 102 我申请加别人为好友)
 typedef NS_ENUM(int,AddFriendStatus){
+    AddFriendStatus_none             = 0,
     AddFriendStatus_otherPersonAddMe = 101,  //别人申请加我为好友
     AddFriendStatus_IAddOtherPerson           //我申请加别人为好友
 };

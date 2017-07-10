@@ -148,6 +148,20 @@
 		ACC9AEBC1F1322DC00A5FF88 /* YHWGManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AE781F1322DC00A5FF88 /* YHWGManager.m */; };
 		ACC9AEBD1F1322DC00A5FF88 /* YHWGTouchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AE7A1F1322DC00A5FF88 /* YHWGTouchModel.m */; };
 		ACC9AEBE1F1322DC00A5FF88 /* YHWorkGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AE7C1F1322DC00A5FF88 /* YHWorkGroup.m */; };
+		ACC9AEC61F134C1C00A5FF88 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEC41F134C1C00A5FF88 /* CardDetailViewController.m */; };
+		ACC9AEC71F134C1C00A5FF88 /* CardDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC9AEC51F134C1C00A5FF88 /* CardDetailViewController.xib */; };
+		ACC9AECA1F134C5100A5FF88 /* HHTagsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEC91F134C5100A5FF88 /* HHTagsContainer.m */; };
+		ACC9AED01F134C9700A5FF88 /* CellForCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AECC1F134C9700A5FF88 /* CellForCard.swift */; };
+		ACC9AED11F134C9700A5FF88 /* CellForCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AECD1F134C9700A5FF88 /* CellForCard2.swift */; };
+		ACC9AED21F134C9700A5FF88 /* YHCardDetailHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AECF1F134C9700A5FF88 /* YHCardDetailHeaderView.m */; };
+		ACC9AED51F134CFE00A5FF88 /* YHCellWave.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AED41F134CFE00A5FF88 /* YHCellWave.m */; };
+		ACC9AEDB1F134D4100A5FF88 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AED61F134D4100A5FF88 /* QRCode.swift */; };
+		ACC9AEDC1F134D4100A5FF88 /* YHABUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AED71F134D4100A5FF88 /* YHABUserInfo.swift */; };
+		ACC9AEDD1F134D4100A5FF88 /* YHCardSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AED81F134D4100A5FF88 /* YHCardSection.swift */; };
+		ACC9AEDE1F134D4100A5FF88 /* YHMyFriendsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEDA1F134D4100A5FF88 /* YHMyFriendsManager.m */; };
+		ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */; };
+		ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */; };
+		ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -426,6 +440,26 @@
 		ACC9AE7A1F1322DC00A5FF88 /* YHWGTouchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWGTouchModel.m; sourceTree = "<group>"; };
 		ACC9AE7B1F1322DC00A5FF88 /* YHWorkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHWorkGroup.h; sourceTree = "<group>"; };
 		ACC9AE7C1F1322DC00A5FF88 /* YHWorkGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWorkGroup.m; sourceTree = "<group>"; };
+		ACC9AEC31F134C1C00A5FF88 /* CardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailViewController.h; sourceTree = "<group>"; };
+		ACC9AEC41F134C1C00A5FF88 /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
+		ACC9AEC51F134C1C00A5FF88 /* CardDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardDetailViewController.xib; sourceTree = "<group>"; };
+		ACC9AEC81F134C5100A5FF88 /* HHTagsContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHTagsContainer.h; sourceTree = "<group>"; };
+		ACC9AEC91F134C5100A5FF88 /* HHTagsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHTagsContainer.m; sourceTree = "<group>"; };
+		ACC9AECC1F134C9700A5FF88 /* CellForCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellForCard.swift; sourceTree = "<group>"; };
+		ACC9AECD1F134C9700A5FF88 /* CellForCard2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellForCard2.swift; sourceTree = "<group>"; };
+		ACC9AECE1F134C9700A5FF88 /* YHCardDetailHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCardDetailHeaderView.h; sourceTree = "<group>"; };
+		ACC9AECF1F134C9700A5FF88 /* YHCardDetailHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCardDetailHeaderView.m; sourceTree = "<group>"; };
+		ACC9AED31F134CFE00A5FF88 /* YHCellWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCellWave.h; sourceTree = "<group>"; };
+		ACC9AED41F134CFE00A5FF88 /* YHCellWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCellWave.m; sourceTree = "<group>"; };
+		ACC9AED61F134D4100A5FF88 /* QRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
+		ACC9AED71F134D4100A5FF88 /* YHABUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHABUserInfo.swift; sourceTree = "<group>"; };
+		ACC9AED81F134D4100A5FF88 /* YHCardSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCardSection.swift; sourceTree = "<group>"; };
+		ACC9AED91F134D4100A5FF88 /* YHMyFriendsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMyFriendsManager.h; sourceTree = "<group>"; };
+		ACC9AEDA1F134D4100A5FF88 /* YHMyFriendsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMyFriendsManager.m; sourceTree = "<group>"; };
+		ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHQRCodeCardVC.swift; sourceTree = "<group>"; };
+		ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCardSettingVC.swift; sourceTree = "<group>"; };
+		ACC9AEE31F135BE200A5FF88 /* YHMsgLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMsgLogVC.h; sourceTree = "<group>"; };
+		ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMsgLogVC.m; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -788,6 +822,10 @@
 				ACC9AD821F1322A300A5FF88 /* YHPhotoBrowser */,
 				ACC9AD7A1F1322A300A5FF88 /* YHActionSheet.h */,
 				ACC9AD7B1F1322A300A5FF88 /* YHActionSheet.m */,
+				ACC9AED31F134CFE00A5FF88 /* YHCellWave.h */,
+				ACC9AED41F134CFE00A5FF88 /* YHCellWave.m */,
+				ACC9AEC81F134C5100A5FF88 /* HHTagsContainer.h */,
+				ACC9AEC91F134C5100A5FF88 /* HHTagsContainer.m */,
 				ACC9AD7E1F1322A300A5FF88 /* YHLoadView.h */,
 				ACC9AD7F1F1322A300A5FF88 /* YHLoadView.m */,
 				ACC9AD801F1322A300A5FF88 /* YHNavigationController.h */,
@@ -822,6 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				ACC9ADF01F1322DB00A5FF88 /* Chat */,
+				ACC9AEBF1F134B4500A5FF88 /* YHConnection */,
 				ACC9AE6C1F1322DC00A5FF88 /* Login */,
 				ACC9AE701F1322DC00A5FF88 /* YHWorkGroup */,
 			);
@@ -927,6 +966,8 @@
 				ACC9AE1C1F1322DB00A5FF88 /* YHRemoveGroupMembers.swift */,
 				ACC9AE161F1322DB00A5FF88 /* YHChatDetailVC.h */,
 				ACC9AE171F1322DB00A5FF88 /* YHChatDetailVC.m */,
+				ACC9AEE31F135BE200A5FF88 /* YHMsgLogVC.h */,
+				ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */,
 				ACC9AE181F1322DB00A5FF88 /* YHDocumentVC.h */,
 				ACC9AE191F1322DB00A5FF88 /* YHDocumentVC.m */,
 				ACC9AE1D1F1322DB00A5FF88 /* YHShootVC.h */,
@@ -1108,6 +1149,59 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		ACC9AEBF1F134B4500A5FF88 /* YHConnection */ = {
+			isa = PBXGroup;
+			children = (
+				ACC9AEC01F134B4500A5FF88 /* Model */,
+				ACC9AEC11F134B4500A5FF88 /* SubPages */,
+				ACC9AEC21F134B4500A5FF88 /* View */,
+			);
+			path = YHConnection;
+			sourceTree = "<group>";
+		};
+		ACC9AEC01F134B4500A5FF88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACC9AED61F134D4100A5FF88 /* QRCode.swift */,
+				ACC9AED71F134D4100A5FF88 /* YHABUserInfo.swift */,
+				ACC9AED81F134D4100A5FF88 /* YHCardSection.swift */,
+				ACC9AED91F134D4100A5FF88 /* YHMyFriendsManager.h */,
+				ACC9AEDA1F134D4100A5FF88 /* YHMyFriendsManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACC9AEC11F134B4500A5FF88 /* SubPages */ = {
+			isa = PBXGroup;
+			children = (
+				ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */,
+				ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */,
+				ACC9AEC31F134C1C00A5FF88 /* CardDetailViewController.h */,
+				ACC9AEC41F134C1C00A5FF88 /* CardDetailViewController.m */,
+				ACC9AEC51F134C1C00A5FF88 /* CardDetailViewController.xib */,
+			);
+			path = SubPages;
+			sourceTree = "<group>";
+		};
+		ACC9AEC21F134B4500A5FF88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACC9AECB1F134C9700A5FF88 /* CardDetail */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACC9AECB1F134C9700A5FF88 /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				ACC9AECC1F134C9700A5FF88 /* CellForCard.swift */,
+				ACC9AECD1F134C9700A5FF88 /* CellForCard2.swift */,
+				ACC9AECE1F134C9700A5FF88 /* YHCardDetailHeaderView.h */,
+				ACC9AECF1F134C9700A5FF88 /* YHCardDetailHeaderView.m */,
+			);
+			path = CardDetail;
+			sourceTree = "<group>";
+		};
 		BD806E136FFB44C3DFADE3AB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,6 +1285,7 @@
 				AC51FFF11EFB67B5005EAE4F /* Info.plist in Resources */,
 				ACC9AEB91F1322DC00A5FF88 /* YHLoginInputViewController.xib in Resources */,
 				AC51FE921EFB5B1B005EAE4F /* Assets.xcassets in Resources */,
+				ACC9AEC71F134C1C00A5FF88 /* CardDetailViewController.xib in Resources */,
 				AC51FE901EFB5B1A005EAE4F /* Main.storyboard in Resources */,
 				AC5100041EFB6E39005EAE4F /* Launch Screen.storyboard in Resources */,
 			);
@@ -1257,6 +1352,7 @@
 				AC604AC11F03444A00B8D8B4 /* FMDatabase+YHDatabase.m in Sources */,
 				ACC9AE9F1F1322DC00A5FF88 /* CellChatFileLeft.m in Sources */,
 				ACC9AE891F1322DC00A5FF88 /* YHEducationExperienceModel.m in Sources */,
+				ACC9AEDB1F134D4100A5FF88 /* QRCode.swift in Sources */,
 				ACC9AE931F1322DC00A5FF88 /* YHTransferGroupOwner.swift in Sources */,
 				AC51FFFD1EFB67B5005EAE4F /* amrFileCodec.mm in Sources */,
 				ACC9AE811F1322DC00A5FF88 /* YHChatListModel.m in Sources */,
@@ -1268,6 +1364,7 @@
 				ACC9AEA61F1322DC00A5FF88 /* CellChatTextLeft.m in Sources */,
 				ACC9ACBF1F1311B900A5FF88 /* STMURLProtocol.m in Sources */,
 				AC51FFFB1EFB67B5005EAE4F /* NSString+MJExtension.m in Sources */,
+				ACC9AED21F134C9700A5FF88 /* YHCardDetailHeaderView.m in Sources */,
 				ACC9AEB61F1322DC00A5FF88 /* YHVoiceHUD.m in Sources */,
 				ACC9AE9A1F1322DC00A5FF88 /* YHVideoHelper.m in Sources */,
 				ACC9AEAE1F1322DC00A5FF88 /* YHExpressionInputView.m in Sources */,
@@ -1280,6 +1377,7 @@
 				ACC9AE861F1322DC00A5FF88 /* YHGroupMember.m in Sources */,
 				ACC9ACCC1F1314CB00A5FF88 /* YHProtocol.swift in Sources */,
 				AC604ABC1F03444A00B8D8B4 /* NetManager+Profile.m in Sources */,
+				ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */,
 				AC604AC01F03444A00B8D8B4 /* SqliteManager.m in Sources */,
 				ACC9AEB41F1322DC00A5FF88 /* YHShootBotView.m in Sources */,
 				ACC9ADDD1F1322A300A5FF88 /* YHActionSheet.m in Sources */,
@@ -1291,6 +1389,7 @@
 				AC51FF991EFB67B5005EAE4F /* UIBarButtonItem+Extension.m in Sources */,
 				ACC9AEA11F1322DC00A5FF88 /* CellChatGIFLeft.m in Sources */,
 				ACC9ADE71F1322A300A5FF88 /* YHTipsView.m in Sources */,
+				ACC9AED11F134C9700A5FF88 /* CellForCard2.swift in Sources */,
 				AC51FFE11EFB67B5005EAE4F /* TestData.m in Sources */,
 				AC51FF9B1EFB67B5005EAE4F /* UIView+DRCorner.m in Sources */,
 				ACC9AEB01F1322DC00A5FF88 /* YHChatButton.m in Sources */,
@@ -1307,11 +1406,14 @@
 				AC51FFF81EFB67B5005EAE4F /* NSObject+MJCoding.m in Sources */,
 				ACC9AEAA1F1322DC00A5FF88 /* CellChatVoiceRight.m in Sources */,
 				ACC9ACF71F131EF100A5FF88 /* SqliteManager+Fris.m in Sources */,
+				ACC9AECA1F134C5100A5FF88 /* HHTagsContainer.m in Sources */,
 				AC51FFF31EFB67B5005EAE4F /* MJFoundation.m in Sources */,
 				AC51FFE21EFB67B5005EAE4F /* HHUtils.m in Sources */,
 				ACC9AEB21F1322DC00A5FF88 /* YHChatLabel.m in Sources */,
 				AC51FFF41EFB67B5005EAE4F /* MJProperty.m in Sources */,
+				ACC9AEDC1F134D4100A5FF88 /* YHABUserInfo.swift in Sources */,
 				ACC9AE8E1F1322DC00A5FF88 /* YHDocumentVC.m in Sources */,
+				ACC9AEDE1F134D4100A5FF88 /* YHMyFriendsManager.m in Sources */,
 				ACC9AEB11F1322DC00A5FF88 /* YHChatImageView.m in Sources */,
 				ACC9AEA81F1322DC00A5FF88 /* CellChatTips.m in Sources */,
 				ACC9ACBC1F1311B900A5FF88 /* STMURLCache.m in Sources */,
@@ -1321,6 +1423,7 @@
 				AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */,
 				AC51FFE31EFB67B5005EAE4F /* SwiftExtension.swift in Sources */,
 				AC51FF981EFB67B5005EAE4F /* UIBarButtonItem+Custom.m in Sources */,
+				ACC9AED51F134CFE00A5FF88 /* YHCellWave.m in Sources */,
 				ACC9ACD91F131A1B00A5FF88 /* YHCompanyInfo.m in Sources */,
 				AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */,
 				ACC9ADE81F1322A300A5FF88 /* YHUICommon.m in Sources */,
@@ -1341,6 +1444,7 @@
 				AC51FE8D1EFB5B1A005EAE4F /* ViewController.m in Sources */,
 				ACC9AE971F1322DC00A5FF88 /* YHAudioPlayer.m in Sources */,
 				ACC9AE881F1322DC00A5FF88 /* YHChatTextLayout.m in Sources */,
+				ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */,
 				ACC9AE801F1322DC00A5FF88 /* YHChatGroupModel.m in Sources */,
 				ACC9AEA51F1322DC00A5FF88 /* CellChatList.m in Sources */,
 				ACC9AE901F1322DC00A5FF88 /* YHGroupSetting.swift in Sources */,
@@ -1348,6 +1452,7 @@
 				AC51FFF51EFB67B5005EAE4F /* MJPropertyKey.m in Sources */,
 				ACC9AEB81F1322DC00A5FF88 /* YHLoginInputViewController.m in Sources */,
 				ACC9AEBA1F1322DC00A5FF88 /* YHWGLayout.m in Sources */,
+				ACC9AEC61F134C1C00A5FF88 /* CardDetailViewController.m in Sources */,
 				AC51FE8A1EFB5B1A005EAE4F /* AppDelegate.m in Sources */,
 				ACC9AEBE1F1322DC00A5FF88 /* YHWorkGroup.m in Sources */,
 				AC5100001EFB67B5005EAE4F /* VoiceConverter.mm in Sources */,
@@ -1360,9 +1465,11 @@
 				ACC9AE9D1F1322DC00A5FF88 /* CellGroupSettingMembers.swift in Sources */,
 				AC604ABF1F03444A00B8D8B4 /* SqliteManager+Chat.m in Sources */,
 				ACC9ADE01F1322A300A5FF88 /* YHLoadView.m in Sources */,
+				ACC9AED01F134C9700A5FF88 /* CellForCard.swift in Sources */,
 				ACC9AE8D1F1322DC00A5FF88 /* YHChatDetailVC.m in Sources */,
 				ACC9AEB31F1322DC00A5FF88 /* YHGroupIconView.m in Sources */,
 				ACC9AEB71F1322DC00A5FF88 /* YHChatListVC.m in Sources */,
+				ACC9AEDD1F134D4100A5FF88 /* YHCardSection.swift in Sources */,
 				ACC9AEB51F1322DC00A5FF88 /* YHShootView.m in Sources */,
 				ACC9ADDE1F1322A300A5FF88 /* YHAlertView.swift in Sources */,
 				ACC9AEA01F1322DC00A5FF88 /* CellChatFileRight.m in Sources */,
@@ -1370,6 +1477,7 @@
 				ACC9ACD61F1319AC00A5FF88 /* YHAppInfoManager.m in Sources */,
 				ACC9AEAB1F1322DC00A5FF88 /* YHModel.m in Sources */,
 				AC51FFF91EFB67B5005EAE4F /* NSObject+MJKeyValue.m in Sources */,
+				ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */,
 				ACC9AE981F1322DC00A5FF88 /* YHAudioRecorder.m in Sources */,
 				ACC9AE871F1322DC00A5FF88 /* YHUnReadMsg.m in Sources */,
 				ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */,

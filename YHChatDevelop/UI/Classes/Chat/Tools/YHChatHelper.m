@@ -90,7 +90,7 @@
     return iTime;
 }
 
-- (void)registerCellClassWithTableView:(__weak UITableView *)tableView{
+- (void)registerCellClassWithTableView:(UITableView *)tableView{
    
     [tableView registerClass:[CellChatTextLeft class] forCellReuseIdentifier:NSStringFromClass([CellChatTextLeft class])];
     [tableView registerClass:[CellChatTextRight class] forCellReuseIdentifier:NSStringFromClass([CellChatTextRight class])];
@@ -107,7 +107,7 @@
 }
 
 
-- (UITableViewCell *)test:(__weak YHChatModel *)model tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)test:(YHChatModel *)model tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath{
     
     if(model.status == 1){
         //消息撤回
@@ -164,7 +164,7 @@
     return [[UITableViewCell alloc] init];
 }
 
-- (CGFloat)heightWithModel:(__weak YHChatModel *)model tableView:(__weak UITableView *)tableView{
+- (CGFloat)heightWithModel:(YHChatModel *)model tableView:(UITableView *)tableView{
     
     CGFloat height;
     if (model.chatId) {

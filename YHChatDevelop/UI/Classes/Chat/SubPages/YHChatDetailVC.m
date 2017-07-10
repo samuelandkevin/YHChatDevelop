@@ -8,17 +8,14 @@
 
 #import "YHChatDetailVC.h"
 #import "YHRefreshTableView.h"
-#import "YHChatHeader.h"
 #import "UITableViewCell+HYBMasonryAutoCellHeight.h"
 #import "YHChatModel.h"
-#import "YHExpressionKeyboard.h"
 #import "YHUserInfo.h"
 #import "HHUtils.h"
 #import "YHChatHeader.h"
 #import "TestData.h"
 #import "YHAudioPlayer.h"
 #import "YHAudioRecorder.h"
-#import "YHVoiceHUD.h"
 #import "YHUploadManager.h"
 #import "YHChatManager.h"
 #import "UIBarButtonItem+Extension.h"
@@ -28,24 +25,20 @@
 #import "YHWebViewController.h"
 #import "YHShootVC.h"
 #import "YHUserInfoManager.h"
-#import "NetManager+Chat.h"
+#import "YHNetManager.h"
 #import "YHActionSheet.h"
 #import "YHChatDevelop-Swift.h"
-#import "NetManager+Profile.h"
-#import "SqliteManager.h"
+#import "YHSqliteManager.h"
+#import "CardDetailViewController.h"
 
 @interface YHChatDetailVC ()<UITableViewDelegate,UITableViewDataSource,YHExpressionKeyboardDelegate,CellChatTextLeftDelegate,CellChatTextRightDelegate,CellChatVoiceLeftDelegate,CellChatVoiceRightDelegate,CellChatImageLeftDelegate,CellChatImageRightDelegate,CellChatBaseDelegate,
-CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
-
-//控件
-@property (nonatomic,strong) YHRefreshTableView *tableView;
-@property (nonatomic,strong) YHExpressionKeyboard *keyboard;
-@property (nonatomic,strong) YHVoiceHUD *imgvVoiceTips;
-
-//数据
-@property (nonatomic,strong) YHChatHelper *chatHelper;
-@property (nonatomic,assign) BOOL showCheckBox;
-@property (nonatomic,strong) NSMutableArray *dataArray;
+CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefreshTableViewDelegate>{
+    int  _currentRequestPage;  //当前请求页面
+    BOOL _noMoreDataInDB;      //数据库无更多数据
+    YHChatModel *_lastDataInDB;//上一条在数据库的聊天记录
+}
+@property (nonatomic,assign)DBChatType dbChatType;
+@property (nonatomic,copy)  NSString *sessionID;
 
 @end
 
@@ -55,25 +48,18 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    
+    _dbChatType = self.model.isGroupChat? DBChatType_Group:DBChatType_Private;
+    _sessionID  = self.model.sessionUserId;
+    
     [self initUI];
-   
-    //设置WebScoket
-    NSString *chatUserId = _model.sessionUserId;
-    [[YHChatManager sharedInstance] connectToUserID:chatUserId isGroupChat:_model.isGroupChat];
+    [self setupExpKeyBoard];
+    [self setupMsg];
     
-    
+    //本地加载聊天记录
     WeakSelf
-    //接收新消息回调
-    [[YHChatManager sharedInstance] receiveNewMsg:^(YHChatModel *model) {
-        
-        [weakSelf.dataArray addObject:[weakSelf _textLayoutWithChatModel:model]];
-        [weakSelf.tableView reloadData];
-        [weakSelf.keyboard aboveViewScollToBottom];
+    [self _loadFromDBWithLastChatLog:_lastDataInDB complete:^(BOOL success, id obj) {
+        [weakSelf.keyboard aboveViewScollToBottom:NO];
     }];
-    
-    //请求聊天记录
-    [self _requestChatLog];
-    
 }
 
 #pragma mark - Getter
@@ -101,12 +87,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     //设置导航栏
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithTarget:self selector:@selector(onBack:)];
 
-    //    self.navigationItem.rightBarButtonItem = [UIBarButtonItem rightItemWithTitle:@"更多" target:self selector:@selector(onMore:) block:^(UIButton *btn) {
-    //        btn.titleLabel.font = [UIFont systemFontOfSize:14];
-    //        [btn setTitle:@"取消" forState:UIControlStateSelected];
-    //        [btn setTitle:@"更多" forState:UIControlStateNormal];
-    //    }];
-
+   
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem rightItemWithImgName:@"common_user" target:self selector:@selector(onRight:)];
     
     
@@ -116,42 +97,46 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     
     //tableview
     self.tableView = [[YHRefreshTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    self.tableView.delegate = self;
+    self.tableView.delegate   = self;
     self.tableView.dataSource = self;
+    self.tableView.enableLoadNew   = YES;
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = RGBCOLOR(239, 236, 236);
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
    
     //注册Cell
     _chatHelper = [[YHChatHelper alloc ] init];
     [_chatHelper registerCellClassWithTableView:self.tableView];
     
-    //表情键盘
+}
+
+#pragma mark - Public Method
+
+//表情键盘
+- (void)setupExpKeyBoard{
     YHExpressionKeyboard *keyboard = [[YHExpressionKeyboard alloc] initWithViewController:self aboveView:self.tableView];
     _keyboard = keyboard;
-
 }
 
-#pragma mark - Private
-//YHChatModel布局
-- (YHChatModel *)_textLayoutWithChatModel:(YHChatModel *)model{
-    CGFloat addFontSize     = [[[NSUserDefaults standardUserDefaults] valueForKey:kSetSystemFontSize] floatValue];
-    UIColor *textColor      = [UIColor blackColor];
-    UIColor *matchTextColor = UIColorHex(527ead);
-    UIColor *matchTextHighlightBGColor = UIColorHex(bfdffe);
-    if (model.direction == 0) {
-        textColor                 = [UIColor whiteColor];
-        matchTextColor            = [UIColor greenColor];
-        matchTextHighlightBGColor = [UIColor grayColor];
-    }
-    if (model.msgType == YHMessageType_Text) {
-        YHChatTextLayout *layout = [[YHChatTextLayout alloc] init];
-        [layout layoutWithText:model.msgContent fontSize:(14+addFontSize) textColor:textColor matchTextColor:matchTextColor matchTextHighlightBGColor:matchTextHighlightBGColor];
-        model.layout = layout;
-    }
-    return model;
+//设置信息
+- (void)setupMsg{
+    //设置WebScoket
+    NSString *chatUserId = _model.sessionUserId;
+    [[YHChatManager sharedInstance] connectToUserID:chatUserId isGroupChat:_model.isGroupChat];
+    
+    WeakSelf
+    //接收新消息回调
+    [[YHChatManager sharedInstance] receiveNewMsg:^(YHChatModel *model) {
+        model.layout = [model textLayout];
+        [weakSelf.dataArray addObject:model];
+        [weakSelf.tableView reloadData];
+        [weakSelf.keyboard aboveViewScollToBottom];
+    }];
+    
 }
 
+
+#pragma mark - Private Method
 //当前录音文件名字
 - (NSString *)_currentRecordFileName
 {
@@ -193,6 +178,10 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
 
 - (void)tapLeftAvatar:(YHUserInfo *)userInfo{
     DDLog(@"点击左边头像");
+    CardDetailViewController *vc = [[CardDetailViewController alloc] initWithUserInfo:userInfo];
+    vc.model = _model;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)retweetMsg:(NSString *)msg inLeftCell:(CellChatTextLeft *)leftCell{
@@ -213,6 +202,10 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
 #pragma mark - @protocol CellChatTextRightDelegate
 - (void)tapRightAvatar:(YHUserInfo *)userInfo{
     DDLog(@"点击右边头像,%@",userInfo);
+    CardDetailViewController *vc = [[CardDetailViewController alloc] initWithUserInfo:userInfo];
+    vc.model = _model;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)retweetMsg:(NSString *)msg inRightCell:(CellChatTextRight *)rightCell{
@@ -641,6 +634,21 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     [self _requestSendImage:compressImage];
 }
 
+#pragma mark - YHRefreshTableViewDelegate
+- (void)refreshTableViewLoadNew:(YHRefreshTableView *)view{
+    if (_noMoreDataInDB && !self.dataArray.count) {
+        [self requestChatLogsFromNet];
+    }else{
+        [self _loadFromDBWithLastChatLog:_lastDataInDB complete:^(BOOL success, id obj) {
+            
+        }];
+    }
+}
+
+- (void)refreshTableViewLoadmore:(YHRefreshTableView *)view{
+
+}
+
 #pragma mark - 网络请求
 
 //请求发送文本信息
@@ -801,45 +809,115 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate>
     [weakSelf.tableView reloadData];
     [weakSelf.keyboard aboveViewScollToBottom];
     
-   
+}
+
+
+//从数据库加载聊天记录 lastChatLog:上一条聊天记录
+- (void)_loadFromDBWithLastChatLog:(YHChatModel *)lastChatLog complete:(NetManagerCallback)complete{
     
+    YHRefreshType refreshType = YHRefreshType_LoadNew;
+    if (_noMoreDataInDB) {
+        [self.tableView loadFinish:refreshType];
+        return;
+    }
+ 
+    WeakSelf
+    [[SqliteManager sharedInstance] queryChatLogTableWithType:_dbChatType sessionID:_sessionID lastChatLog:lastChatLog length:lengthForEveryRequest complete:^(BOOL success, id obj) {
+        [weakSelf.tableView loadFinish:refreshType];
+        if (success) {
+            NSArray *cacheList = obj;
+            if (cacheList.count) {
+                
+                [weakSelf.dataArray addObjectsFromArray:cacheList];
+                
+                if (cacheList.count < lengthForEveryRequest) {
+                    //数据库无更多数据
+                    _noMoreDataInDB = YES;
+                }else{
+                    //数据库还有更多
+                    _noMoreDataInDB = NO;
+                }
+                
+                //获取当前页
+                _lastDataInDB        = cacheList.lastObject;
+                _currentRequestPage  = _lastDataInDB.curReqPage;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.tableView reloadData];
+                    if (complete) {
+                        complete(YES,nil);
+                    }
+                });
+                
+            }else{
+                _noMoreDataInDB = YES;
+                [weakSelf requestChatLogsFromNet];
+                if (complete) {
+                    complete(NO,nil);
+                }
+            }
+        }else{
+            DDLog(@"%@",obj);
+            if (complete) {
+                complete(NO,nil);
+            }
+        }
+    }];
     
 }
 
-//获取聊天记录
-- (void)_requestChatLog{
-    WeakSelf
+
+//从服务器加载聊天记录
+- (void)requestChatLogsFromNet{
+    
+    YHRefreshType refreshType = YHRefreshType_LoadNew;
     QChatType qcType = self.model.isGroupChat?QChatType_Group:QChatType_Private;
+    WeakSelf
+    [self.tableView loadBegin:refreshType];
     [[NetManager sharedInstance] postFetchChatLogWithType:qcType sessionID:self.model.sessionUserId timestamp:nil  complete:^(BOOL success, id obj) {
+        [self.tableView loadFinish:refreshType];
         if (success) {
+            NSArray *retArr = obj;
             [weakSelf.dataArray removeAllObjects];
-            for (YHChatModel *model in obj) {
-                [weakSelf.dataArray addObject:[self _textLayoutWithChatModel:model]];
+            for (int i =0 ;i< retArr.count; i++ ){
+                int curReqPage = i/lengthForEveryRequest;
+                YHChatModel *model = retArr[i];
+                model.curReqPage   = curReqPage;
+                model.layout = [model textLayout];
+                [weakSelf.dataArray addObject:model];
             }
-            //kun调试
-            if (weakSelf.dataArray.count > 25) {
-                weakSelf.dataArray =  [weakSelf.dataArray subarrayWithRange:NSMakeRange(weakSelf.dataArray.count-25, 25)].mutableCopy;
-            }
+            
             [weakSelf.tableView reloadData];
             [weakSelf.keyboard aboveViewScollToBottom:NO];
+            [weakSelf _writeAllChatLogsToDBWithArr:weakSelf.dataArray];
         }else{
-            
+            postTips(obj, @"获取聊天记录失败");
+        }
+    }];
+}
+
+//把所有聊天记录写入本地数据库
+- (void)_writeAllChatLogsToDBWithArr:(NSArray *)arr{
+    DBChatType type = self.model.isGroupChat?DBChatType_Group:DBChatType_Private;
+    [[SqliteManager sharedInstance] updateChatLogWithType:type sessionID:self.model.sessionUserId chatLogList:arr complete:^(BOOL success, id obj) {
+        if (success) {
+            DDLog(@"%@",obj);
+        }else{
+            DDLog(@"%@",obj);
         }
     }];
 }
 
 
 #pragma mark - Action
-- (void)onMore:(UIButton *)sender{
-    sender.selected = !sender.selected;
-    _showCheckBox = sender.selected? YES:NO;
-    [self.tableView reloadData];
-}
-
 - (void)onRight:(id)sender{
     if (_model.isGroupChat){
         YHGroupSetting *vc = [[YHGroupSetting alloc] init];
         vc.groupID = _model.sessionUserId;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        CardDetailViewController *vc = [[CardDetailViewController alloc] initWithUserId:_model.sessionUserId];
+        vc.model = _model;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }

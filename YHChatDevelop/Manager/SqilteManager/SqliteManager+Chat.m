@@ -32,29 +32,35 @@
 //更新多条聊天信息
 - (void)updateChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID chatLogList:(NSArray <YHChatModel *>*)chatLogList complete:(void (^)(BOOL success,id obj))complete{
     
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    
-    NSString *tableName = tableNameChatLog(sessionID);
-    for (int i= 0; i< chatLogList.count; i++) {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
+        FMDatabaseQueue *queue = model.queue;
         
-        YHChatModel *model = chatLogList[i];
-        
-        [queue inDatabase:^(FMDatabase *db) {
-            /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
-            [db yh_saveDataWithTable:tableName model:model userInfo:nil otherSQL:nil option:^(BOOL save) {
-                if (i == chatLogList.count-1) {
-                    complete(save,nil);
-                }else{
-                    if (!save) {
-                        complete(save,@"更新某条数据失败");
-                    }
-                }
+        NSString *tableName = tableNameChatLog(sessionID);
+        for (int i= 0; i< chatLogList.count; i++) {
+            
+            YHChatModel *model = chatLogList[i];
+            
+            [queue inDatabase:^(FMDatabase *db) {
+                /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
+                [db yh_saveDataWithTable:tableName model:model userInfo:nil otherSQL:nil option:^(BOOL save) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (i == chatLogList.count-1) {
+                            if (complete) {
+                                complete(save,nil);
+                            }
+                        }else{
+                            if (!save && complete) {
+                                complete(save,@"更新某条数据失败");
+                            }
+                        }
+                    });
+                }];
                 
             }];
-            
-        }];
-    }
+        }
+ 
+    });
     
     
 }
@@ -83,14 +89,56 @@
 //查询ChatLog表
 - (void)queryChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID userInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete{
     
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    
-    [queue inDatabase:^(FMDatabase *db) {
-        [db yh_excuteDatasWithTable:tableNameChatLog(sessionID) model:[YHChatModel new] userInfo:userInfo fuzzyUserInfo:fuzzyUserInfo otherSQL:nil option:^(NSMutableArray *models) {
-            complete(YES,models);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
+        FMDatabaseQueue *queue = model.queue;
+        
+        [queue inDatabase:^(FMDatabase *db) {
+            [db yh_excuteDatasWithTable:tableNameChatLog(sessionID) model:[YHChatModel new] userInfo:userInfo fuzzyUserInfo:fuzzyUserInfo otherSQL:nil option:^(NSMutableArray *models) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (complete) {
+                        complete(YES,models);
+                    }
+                });
+            }];
         }];
-    }];
+    });
+}
+
+//查询ChatLog表   按长度length获取聊天记录
+- (void)queryChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID  lastChatLog:(YHChatModel *)lastChatLog length:(int)length complete:(void (^)(BOOL success,id obj))complete{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
+        FMDatabaseQueue *queue = model.queue;
+        
+        //设置otherSQL
+        NSMutableDictionary *otherSQLDict = [NSMutableDictionary dictionary];
+        [otherSQLDict setObject:@"order by createTime ASC" forKey:YHOrderKey];
+        if (length) {
+            [otherSQLDict setObject:@(length) forKey:YHLengthLimitKey];
+        }
+        
+        if (lastChatLog.createTime) {
+            NSString *lesserSQL = [NSString stringWithFormat:@" createTime < '%@'",lastChatLog.createTime];
+            [otherSQLDict setObject:lesserSQL forKey:YHLesserKey];
+        }
+        
+        [queue inDatabase:^(FMDatabase *db) {
+            [db yh_excuteDatasWithTable:tableNameChatLog(sessionID) model:[YHChatModel new] userInfo:nil fuzzyUserInfo:nil otherSQL:otherSQLDict option:^(NSMutableArray *models) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    for (YHChatModel *model in models) {
+                        model.layout = [model textLayout];
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (complete) {
+                            complete(YES,models);
+                        }
+                    });
+                });
+            }];
+        }];
+    });
+
 }
 
 

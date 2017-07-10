@@ -13,8 +13,8 @@ class YHProtocol:NSObject{
 
     /***********BaseUrl***************************/
     //var kBaseURL = "http://192.168.1.80"    //内网测试环境
-    var kBaseURL = "https://testapp.gtax.cn"  //测试
-//    var kBaseURL = "https://apps.gtax.cn"       //生产环境
+//    var kBaseURL = "https://testapp.gtax.cn"  //测试
+    var kBaseURL = "https://apps.gtax.cn"       //生产环境
     
     //var kBaseURL = "http://192.168.2.251:8085"//后台家学
     //var kBaseURL = "http://192.168.2.175:8080"//后台啊亮

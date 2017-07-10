@@ -21,5 +21,8 @@
 #import "YHUserInfo.h"
 #import "YHNetManager.h"
 #import "YHGroupInfo.h"
+#import "YHPhotoBrowserView.h"
+#import "YHSqliteManager.h"
+#import "YHMsgLogVC.h"
 
 #endif /* YHChatDevelop_Bridging_Header_h */

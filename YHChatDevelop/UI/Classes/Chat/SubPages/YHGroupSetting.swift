@@ -44,6 +44,7 @@ class YHGroupSetting:UIViewController{
     
     //群ID
     var groupID:String = ""
+    var model:YHChatListModel?
     
     // MARK: - Life
     deinit {
@@ -410,10 +411,9 @@ extension YHGroupSetting:UITableViewDataSource,UITableViewDelegate{
                 self.present(alertC, animated: true, completion: nil)
             }else if indexPath.row == 3{
                 //查看聊天记录
-//                let vc = SystemMessageController()
-//                vc.sessionID = groupID
-//                vc.type      = ChatOCType_Group
-//                navigationController?.pushViewController(vc, animated: true)
+                let vc = YHMsgLogVC()
+                vc.model = model
+                navigationController?.pushViewController(vc, animated: true)
             }else if indexPath.row == 4{
                 //投诉
                 //https://apps.gtax.cn/taxtao/webim/group_complaints/ee4cb649-783b-4197-b855-7c4879ec13ea?accessToken=1A5B960F3A5C46F39D8980234A2AA5F5

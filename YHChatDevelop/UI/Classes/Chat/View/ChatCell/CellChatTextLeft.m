@@ -122,7 +122,9 @@
     [super onAvatarGesture:aRec];
     if (aRec.state == UIGestureRecognizerStateEnded) {
         if (_delegate && [_delegate respondsToSelector:@selector(tapLeftAvatar:)]) {
-            [_delegate tapLeftAvatar:nil];
+            YHUserInfo *userInfo = [YHUserInfo new];
+            userInfo.uid = self.model.speakerId;
+            [_delegate tapLeftAvatar:userInfo];
         }
     }
 }

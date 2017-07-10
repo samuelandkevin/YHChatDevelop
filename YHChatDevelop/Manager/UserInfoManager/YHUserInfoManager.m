@@ -7,7 +7,11 @@
 //  用户信息管理
 
 #import "YHUserInfoManager.h"
-#import "NetManager+Profile.h"
+#import "YHNetManager.h"
+#import "YHSqliteManager.h"
+#import "STMURLCache.h"
+#import "YHAppInfoManager.h"
+
 
 //检查数据库操作是否失败
 #define YHDBCheckIfErr(x)													\
@@ -120,9 +124,24 @@
 {
 	
     [self _clearLoginInfoFromUserDefaults];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+     [[SqliteManager sharedInstance] clearCacheWhenLogout];
     //4.清除用户单例信息
     _userInfo = nil;
     
+    //5.清除网页缓存
+    //清网页URLCache缓存
+    if([[NSURLCache sharedURLCache] isKindOfClass:[STMURLCache class]]){
+        STMURLCache *sCache =  (STMURLCache *)[NSURLCache sharedURLCache];
+        [sCache clearCache];
+    }
+    
+    //清网页协议缓存
+    if([YHAppInfoManager shareInstanced].webCacheUseURLProtocol){
+        STMURLCacheModel *sModel = [STMURLCacheModel shareInstance];
+        [sModel deleteCacheFolder];
+    }
 }
 
 //从UserDefaults中清除登录信息

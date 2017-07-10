@@ -33,6 +33,9 @@
 - (void)queryChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID userInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete;
 
 
+//查询ChatLog表   按长度length获取聊天记录
+- (void)queryChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID  lastChatLog:(YHChatModel *)lastChatLog length:(int)length complete:(void (^)(BOOL success,id obj))complete;
+
 //删除某条消息记录
 - (void)deleteOneChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID msgID:(NSString *)msgID complete:(void(^)(BOOL success,id obj))complete;
 

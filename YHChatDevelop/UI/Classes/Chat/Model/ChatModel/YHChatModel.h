@@ -48,9 +48,13 @@
 @property (nonatomic,assign) BOOL isSelected;  //被选中
 @property (nonatomic,assign) BOOL showCheckBox;//显示勾选框
 @property (nonatomic,strong) YHChatTextLayout *layout;
+@property (nonatomic,assign) int  curReqPage;//记录当前请求页码
 @property (nonatomic,strong) YHFileModel *fileModel;
 @property (nonatomic,strong) YHGIFModel  *gifModel;
 @property (nonatomic,strong) UIImage *imageMsg;//发消息的图片(note:从本地获取一张图片,后将此图片发送)
+
+#pragma mark - Public Method
+- (YHChatTextLayout *)textLayout;
 @end
 
 #pragma mark - 聊天的音频文件
@@ -60,6 +64,7 @@
 @property (nonatomic,copy) NSURL  *url;       //音频url
 
 /******以下非服务器返回字段******/
+
 
 @end
 

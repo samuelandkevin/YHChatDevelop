@@ -9,7 +9,7 @@
 #import "YHEducationExperienceModel.h"
 #import <objc/runtime.h>
 //#import "YHSerializeKit.h"
-//#import "NSObject+YHDBRuntime.h"
+#import "NSObject+YHDBRuntime.h"
 
 @implementation YHEducationExperienceModel
 
@@ -49,13 +49,13 @@
 }
 
 
-//#pragma mark - YHFMDB
-//+ (NSString *)yh_primaryKey{
-//    return @"eduExpId";
-//}
-//
-//+ (NSDictionary *)yh_replacedKeyFromPropertyName{
-//    return @{@"eduExpId":YHDB_PrimaryKey};
-//}
+#pragma mark - YHFMDB
++ (NSString *)yh_primaryKey{
+    return @"eduExpId";
+}
+
++ (NSDictionary *)yh_replacedKeyFromPropertyName{
+    return @{@"eduExpId":YHDB_PrimaryKey};
+}
 
 @end

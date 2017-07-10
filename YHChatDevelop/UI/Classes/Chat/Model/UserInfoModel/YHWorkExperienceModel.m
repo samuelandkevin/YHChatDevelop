@@ -9,7 +9,7 @@
 #import "YHWorkExperienceModel.h"
 #import <objc/runtime.h>
 
-//#import "NSObject+YHDBRuntime.h"
+#import "NSObject+YHDBRuntime.h"
 
 
 @implementation YHWorkExperienceModel
@@ -47,13 +47,14 @@
     return [self mutableCopy];
 }
 
-//+ (NSString *)yh_primaryKey{
-//    return @"workExpId";
-//}
-//
-//+ (NSDictionary *)yh_replacedKeyFromPropertyName{
-//    return @{@"workExpId":YHDB_PrimaryKey};
-//}
+#pragma mark - YHFMDB
++ (NSString *)yh_primaryKey{
+    return @"workExpId";
+}
+
++ (NSDictionary *)yh_replacedKeyFromPropertyName{
+    return @{@"workExpId":YHDB_PrimaryKey};
+}
 
 
 @end

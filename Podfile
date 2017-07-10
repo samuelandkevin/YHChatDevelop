@@ -13,6 +13,7 @@ target 'YHChatDevelop' do
     pod 'FDFullscreenPopGesture'
     pod 'SnapKit'
     pod 'Kingfisher'
+    pod 'MBProgressHUD'
     post_install do |installer|
         puts("Update debug pod settings to speed up build time")
         Dir.glob(File.join("Pods", "**", "Pods*{debug,Private}.xcconfig")).each do |file|

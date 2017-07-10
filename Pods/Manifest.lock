@@ -22,6 +22,7 @@ PODS:
     - Masonry (~> 0.6)
   - Kingfisher (3.10.2)
   - Masonry (0.6.4)
+  - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - HYBMasonryAutoCellHeight
   - Kingfisher
   - Masonry
+  - MBProgressHUD
   - MJRefresh
   - SDWebImage
   - SnapKit
@@ -54,6 +56,7 @@ SPEC CHECKSUMS:
   HYBMasonryAutoCellHeight: 9296583777080d32ba6257f55e52b7334dd481fc
   Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
@@ -61,6 +64,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: '086034156913375cb19c8e4103562f15322c3b36'
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 56e9731855859b6e63f5e0ada35c11ccf1eb8db0
+PODFILE CHECKSUM: 9e1fde42832de28173b0842b3265bb8869fa7fec
 
 COCOAPODS: 1.1.1
