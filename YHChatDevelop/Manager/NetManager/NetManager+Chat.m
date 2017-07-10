@@ -8,7 +8,7 @@
 
 #import "NetManager+Chat.h"
 #import "YHUnReadMsg.h"
-#import "YHProtocolConfig.h"
+#import "YHChatDevelop-Swift.h"
 #import "YHUserInfoManager.h"
 #import "DataParser.h"
 #import "NetManager.h"
@@ -17,14 +17,14 @@
 
 //发起群聊
 - (void)postCreatGroupChatWithUserArray:(NSArray<YHUserInfo *>*)userArray complete:(NetManagerCallback)complete{
-
-    NSString *baseUrl = kBaseURL;
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",baseUrl,kPathCreatGroupChat];
-     requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"?accessToken=%@",[YHUserInfoManager sharedInstance].userInfo.accessToken]];
+    
+    NSString *baseUrl = [[YHProtocol share] baseUrlLoadedByHTTPS:NO];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",baseUrl,[YHProtocol share].kPathCreatGroupChat];
+    requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"?accessToken=%@",[YHUserInfoManager sharedInstance].userInfo.accessToken]];
     
     NSMutableArray *maParams = [NSMutableArray new];
     for (YHUserInfo *userInfo in userArray) {
-
+        
         NSDictionary *dict =[NSDictionary new];
         if (!userInfo.userName.length) {
             userInfo.userName = @"匿名用户";
@@ -39,7 +39,7 @@
                  };
         [maParams addObject:dict];
     }
-
+    
     //创建请求对象
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:requestUrl]];
     //设置请求超时
@@ -49,14 +49,14 @@
     // 设置请求体
     NSData *data = [NSJSONSerialization dataWithJSONObject:maParams options:0 error:nil];
     request.HTTPBody = data;
-
+    
     [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     
     //创建session配置对象
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-   
+    
     //创建session对象
-   
+    
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     //添加网络任务
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -65,7 +65,7 @@
             DDLog(@"请求失败...");
             complete(NO,error);
         }else{
-
+            
             NSDictionary *jsonObj = nil;
             if([self canParseResponseObject:data jsonObj:&jsonObj requestUrl:requestUrl]){
                 
@@ -81,10 +81,10 @@
             else{
                 complete(NO,kParseError);
             }
-
+            
         }
     }];
-   
+    
     [task resume];
     
 }
@@ -96,8 +96,8 @@
         complete(NO,@"groupId is nil!");
         return;
     }
-   
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathAddGroupMember];
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathAddGroupMember];
     requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"?accessToken=%@",[YHUserInfoManager sharedInstance].userInfo.accessToken]];
     
     NSMutableArray *maParams = [NSMutableArray new];
@@ -134,7 +134,7 @@
     
     //创建session配置对象
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-
+    
     //创建session对象
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     //添加网络任务
@@ -168,38 +168,38 @@
 
 - (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
  completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler{
-
-
-        NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-        __block NSURLCredential *credential = nil;
-        //判断服务器返回的证书是否是服务器信任的
-        if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-            credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-            /*disposition：如何处理证书
-             NSURLSessionAuthChallengePerformDefaultHandling:默认方式处理
-             NSURLSessionAuthChallengeUseCredential：使用指定的证书    NSURLSessionAuthChallengeCancelAuthenticationChallenge：取消请求
-             */
-            
-            if (credential) {
-                    disposition = NSURLSessionAuthChallengeUseCredential;
-            } else {
-                disposition = NSURLSessionAuthChallengePerformDefaultHandling;
-            }
-        } else {
-            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
-        }
-        //安装证书
-        if (completionHandler) {
-            completionHandler(disposition, credential);
-        }
     
-
+    
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    __block NSURLCredential *credential = nil;
+    //判断服务器返回的证书是否是服务器信任的
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        /*disposition：如何处理证书
+         NSURLSessionAuthChallengePerformDefaultHandling:默认方式处理
+         NSURLSessionAuthChallengeUseCredential：使用指定的证书    NSURLSessionAuthChallengeCancelAuthenticationChallenge：取消请求
+         */
+        
+        if (credential) {
+            disposition = NSURLSessionAuthChallengeUseCredential;
+        } else {
+            disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+        }
+    } else {
+        disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+    }
+    //安装证书
+    if (completionHandler) {
+        completionHandler(disposition, credential);
+    }
+    
+    
 }
 
 //获取聊天历史记录
 - (void)postFetchChatLogWithType:(QChatType)chatType sessionID:(NSString *)sessionID timestamp:(NSString *)timestamp complete:(NetManagerCallback)complete{
-
-     NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathGetChatLog];
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetChatLog];
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -221,49 +221,49 @@
         NSTimeInterval cursor = [date timeIntervalSince1970];
         [dict setObject:@(cursor) forKey:@"cursor"];
     }
-   
-
-    //由于时间关系,后台返回数据格式跟之前不一样 
+    
+    
+    //由于时间关系,后台返回数据格式跟之前不一样
     if(self.currentNetWorkStatus == YHNetworkStatus_NotReachable){
         complete(NO,kNetWorkFailTips);
         return;
     }
     
-
+    
     [self.requestManager  POST:requestUrl parameters:dict progress:^(NSProgress * _Nonnull uploadProgress) {
         
     }
-    success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        NSError *parseJsonError = nil;
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&parseJsonError];
-        if (parseJsonError) {
-            return complete(NO,parseJsonError.localizedDescription);
-        }
-        else {
-            //数组
-            if ([jsonObject isKindOfClass:[NSArray class]] ){
-                NSArray *obj = (NSArray *)jsonObject;
-                NSArray *logArr = [[DataParser shareInstance] parseChatLogWithListData:obj];
-                complete(YES,logArr);
-                
-            }else{
-                complete(NO,@"return data is not array format");
-            }
-        }
-
-        
-    }
-    failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                                                       
-        complete(NO,error);
-    }];
+                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                           
+                           NSError *parseJsonError = nil;
+                           id jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&parseJsonError];
+                           if (parseJsonError) {
+                               return complete(NO,parseJsonError.localizedDescription);
+                           }
+                           else {
+                               //数组
+                               if ([jsonObject isKindOfClass:[NSArray class]] ){
+                                   NSArray *obj = (NSArray *)jsonObject;
+                                   NSArray *logArr = [[DataParser shareInstance] parseChatLogWithListData:obj];
+                                   complete(YES,logArr);
+                                   
+                               }else{
+                                   complete(NO,@"return data is not array format");
+                               }
+                           }
+                           
+                           
+                       }
+                       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                           
+                           complete(NO,error);
+                       }];
 }
 
 
 //获取未读消息
 - (void)postFetchUnReadMsgComplete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathUnReadMsg];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathUnReadMsg];
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -275,7 +275,7 @@
                            };
     
     [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
-
+        
         if (success) {
             
             //1.返回参数判断
@@ -295,7 +295,7 @@
         }else{
             complete(success,obj);
         }
-       
+        
     } progress:^(NSProgress *uploadProgress) {
         
     }];
@@ -304,7 +304,7 @@
 //获取群聊列表
 - (void)getGroupChatListComplete:(NetManagerCallback)complete{
     
-     NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathGetGroupChatList];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetGroupChatList];
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
         complete(NO,@"token is nil");
@@ -369,15 +369,15 @@
 
 //单发消息
 - (void)postSendChatMsgToReceiverID:(NSString *)rID msgType:(int)msgType msg:(NSString *)msg chatType:(QChatType)chatType complete:(NetManagerCallback)complete{
-
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathSendChatMsg];
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathSendChatMsg];
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
         complete(NO,@"token is nil");
         return;
     }
     if (!rID) {
-         complete(NO,@"receiverID is nil");
+        complete(NO,@"receiverID is nil");
         return;
     }
     if (!msg) {
@@ -415,13 +415,13 @@
 
 //获取聊天列表
 - (void)postFetchChatListWithTimestamp:(NSString *)timestamp type:(QChatType)type complete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathGetChatList];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetChatList];
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
         complete(NO,@"token is nil");
         return;
     }
-   
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:@{ @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken}];
     if(type != QChatType_All){
         [dict setObject:@(type) forKey:@"type"];
@@ -465,27 +465,27 @@
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         complete(NO,error);
+        complete(NO,error);
     }];
-   
+    
 }
 
 //消息置顶/取消置顶
 - (void)postMsgStick:(BOOL)msgStick msgID:(NSString *)msgID complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,msgStick?kPathMsgStick:kPathMsgCancelStick];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,msgStick?[YHProtocol share].kPathMsgStick:[YHProtocol share].kPathMsgCancelStick];
     
     if (!msgID) {
         complete(NO,@"msgID is nil");
         return;
     }
     requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"/%@",msgID]];
-
+    
     if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
         complete(NO,@"token is nil");
         return;
     }
-
+    
     NSDictionary *dict = @{
                            @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken};
     
@@ -502,13 +502,13 @@
     } progress:^(NSProgress *uploadProgress) {
         
     }];
-
+    
 }
 
 //获取群成员
 - (void)getGroupMemebersWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathGroupMembers];
+    NSString *requestUrl = [YHProtocol share].pathGroupMembers;
     
     if (!groupID) {
         complete(NO,@"groupID is nil");
@@ -522,7 +522,7 @@
     
     NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
                            };
-
+    
     requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"/%@",groupID]];
     [self getWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
         if (success) {
@@ -548,8 +548,8 @@
 
 //删除会话
 - (void)postDeleteSessionWithID:(NSString *)sessionID sessionUserID:(NSString *)sessionUserID complete:(NetManagerCallback)complete{
-
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathDeleteSession];
+    
+    NSString *requestUrl = [YHProtocol share].pathDeleteSession;
     
     if (!sessionID) {
         complete(NO,@"sessionID is nil");
@@ -567,7 +567,7 @@
     }
     
     NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
-                          };
+                           };
     requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"/%@/%@",sessionID,sessionUserID]];
     
     [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
@@ -579,14 +579,189 @@
     } progress:^(NSProgress *uploadProgress) {
         
     }];
+    
+    
+}
 
+//修改群名称
+- (void)postModifyGroupNameWithGroupID:(NSString *)groupID newGroupName:(NSString *)newGroupName complete:(NetManagerCallback)complete{
+    
+    NSString *requestUrl = [YHProtocol share].pathModifyGroupName;
+    
+    if (!newGroupName) {
+        complete(NO,@"newGroupName is nil");
+        return;
+    }
+    
+    if (!groupID) {
+        complete(NO,@"groupID is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                           @"groupId":groupID,
+                           @"groupName":newGroupName
+                           };
+    
+    [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
+        if (success) {
+            complete(YES,obj);
+        }else{
+            complete(NO,obj);
+        }
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
+    
+    
+}
+
+
+//修改我在群里的名称
+- (void)postModiftyMyNameInGroupWithGroupID:(NSString *)groupID newName:(NSString *)newName complete:(NetManagerCallback)complete{
+    NSString *requestUrl = [YHProtocol share].pathModifyMyNameInGroup;
+    
+    if (!newName) {
+        complete(NO,@"newName is nil");
+        return;
+    }
+    
+    if (!groupID) {
+        complete(NO,@"groupID is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                           @"groupId":groupID,
+                           @"memberName":newName
+                           };
+    
+    [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
+        if (success) {
+            complete(YES,obj);
+        }else{
+            complete(NO,obj);
+        }
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
+}
+
+//转让群
+- (void)postTransferGroupOwnerWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete{
+    
+    NSString *requestUrl = [YHProtocol share].pathTransferGroupOwner;
+    
+    if (!groupID) {
+        complete(NO,@"groupId is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                           @"groupId":groupID
+                           };
+    
+    [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
+        if (success) {
+            complete(YES,obj);
+        }else{
+            complete(NO,obj);
+        }
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
+    
+}
+
+//退出并且删除群聊
+- (void)postQuitGroupWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete{
+    
+    NSString *requestUrl = [YHProtocol share].pathQuitGroup;
+    
+    if (!groupID) {
+        complete(NO,@"groupId is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                           @"groupId":groupID
+                           };
+    
+    [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
+        if (success) {
+            complete(YES,obj);
+        }else{
+            complete(NO,obj);
+        }
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
+    
+}
+
+//获取群信息
+- (void)postFetchGroupInfoWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete{
+    NSString *requestUrl = [YHProtocol share].pathGroupInfo;
+    
+    if (!groupID) {
+        complete(NO,@"groupId is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"/%@",groupID]];
+    
+    NSDictionary *dict = @{@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                           @"groupId":groupID
+                           };
+    
+    [self postWithRequestUrl:requestUrl parameters:dict complete:^(BOOL success, id obj) {
+        if (success) {
+            NSDictionary *jsonObj = obj;
+            //1.条件判断
+            id dictData  = jsonObj[@"data"];
+            if(![dictData isKindOfClass:[NSDictionary class]]){
+                complete(NO,kServerReturnEmptyData);
+                return ;
+            }
+            YHGroupInfo *model = [[DataParser shareInstance] parseGroupInfoWithDict:dictData];
+            complete(YES,model);
+            
+        }else{
+            complete(NO,obj);
+        }
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
     
 }
 
 //消息撤回
 - (void)putWithDrawMsgWithMsgID:(NSString *)msgID complete:(NetManagerCallback)complete{
-    
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",kBaseURL,kPathWithDrawMsg];
+    NSString *requestUrl = [YHProtocol share].pathWithDrawMsg;
     
     if (!msgID) {
         complete(NO,@"msgID is nil");
@@ -610,5 +785,85 @@
         }
     }];
 }
+
+//对专家评分
+- (void)postGradeExpertWithExpertID:(NSString *)expertID score:(int)score sessionUserID:(NSString *)sessionUserID complete:(NetManagerCallback)complete{
+    NSString *requestUrl = [YHProtocol share].pathGradeExpert;
+    
+    if (!expertID) {
+        complete(NO,@"expertID is nil");
+        return;
+    }
+    
+    if (!sessionUserID) {
+        complete(NO,@"sessionUserID is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    NSDictionary *dict = @{
+                           @"expertId":expertID,
+                           @"score":@(score),
+                           @"sessionUserId":sessionUserID
+                           };
+    
+    
+    
+    requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"/?accessToken=%@",[YHUserInfoManager sharedInstance].userInfo.accessToken]];
+    //创建请求对象
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString:requestUrl]];
+    //设置请求超时
+    request.timeoutInterval = 8;
+    request.HTTPMethod = @"POST";
+    
+    // 设置请求体
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+    request.HTTPBody = data;
+    
+    [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    //创建session配置对象
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    //创建session对象
+    
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    //添加网络任务
+    NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            DDLog(@"请求失败...");
+            complete(NO,error);
+        }else{
+            
+            NSDictionary *jsonObj = nil;
+            if([self canParseResponseObject:data jsonObj:&jsonObj requestUrl:requestUrl]){
+                
+                if([self isRequestSuccessWithJsonObj:jsonObj])
+                {
+                    complete(YES,jsonObj[@"data"]);
+                }
+                else
+                {
+                    complete(NO,jsonObj);
+                }
+            }
+            else{
+                complete(NO,kParseError);
+            }
+            
+        }
+    }];
+    
+    [task resume];
+    
+    
+    
+}
+
 
 @end

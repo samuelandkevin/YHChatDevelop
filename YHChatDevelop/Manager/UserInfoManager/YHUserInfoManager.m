@@ -15,7 +15,7 @@
 		BOOL __err = x;														\
 		if (!__err)															\
 		{																	\
-			DErrLog(@"数据库 err %d, %@", [db lastErrorCode], [db lastError]);	\
+			DDLog(@"数据库 err %d, %@", [db lastErrorCode], [db lastError]);	\
 		}																	\
 	} while (0)
 

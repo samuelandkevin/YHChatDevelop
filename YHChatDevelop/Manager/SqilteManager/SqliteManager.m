@@ -7,20 +7,15 @@
 //
 
 #import "SqliteManager.h"
-#import "NetManager.h"
-
-
+#import "YHNetManager.h"
 
 @implementation CreatTable
-
 
 @end
 
 @interface SqliteManager()
 
-
 @end
-
 
 @implementation SqliteManager
 
@@ -41,7 +36,6 @@
     
 }
 
-
 + (instancetype)sharedInstance{
     static SqliteManager *g_instance = nil;
     static dispatch_once_t onceToken;
@@ -50,16 +44,44 @@
         
     });
     return g_instance;
-    
 }
 
+
 #pragma mark - Lazy Load
+
+- (NSMutableArray<CreatTable *> *)loginAcountArray{
+    if (!_loginAcountArray) {
+        _loginAcountArray = [NSMutableArray new];
+    }
+    return _loginAcountArray;
+}
 
 - (NSMutableArray<CreatTable *> *)chatLogArray{
     if (!_chatLogArray) {
         _chatLogArray = [NSMutableArray new];
     }
     return _chatLogArray;
+}
+
+- (NSMutableArray<CreatTable *> *)myFrisArray{
+    if (!_myFrisArray) {
+        _myFrisArray = [NSMutableArray new];
+    }
+    return _myFrisArray;
+}
+
+- (NSMutableArray<CreatTable *> *)dynsArray{
+    if (!_dynsArray) {
+        _dynsArray = [NSMutableArray new];
+    }
+    return _dynsArray;
+}
+
+- (NSMutableArray<CreatTable *> *)visitorsArray{
+    if (!_visitorsArray) {
+        _visitorsArray = [NSMutableArray new];
+    }
+    return _visitorsArray;
 }
 
 - (NSMutableArray<CreatTable *> *)officeFileArray{
@@ -76,77 +98,101 @@
     return _chatListArray;
 }
 
-#pragma mark - Privte 办公文件
-//第一次建聊天表
-- (CreatTable *)_firstCreatOfficeQueue{
+#pragma mark - Private 登录用户
+
+//第一次建登录用户表
+- (CreatTable *)_firstCreatLoginAccountQueueWithUserID:(NSString *)userID{
     
-    NSString *dir = OfficeDir;
-    NSString *pathLog = pathOfficeFileWithDir(OfficeDir);
+    NSString *pathLoginAccount = pathLoginWithDir(YHLoginDir, userID);
     NSFileManager *fileM = [NSFileManager defaultManager];
-    if(![fileM fileExistsAtPath:dir]){
+    if(![fileM fileExistsAtPath:YHLoginDir]){
         //如果不存在,则说明是第一次运行这个程序，那么建立这个文件夹
         if (![fileM fileExistsAtPath:YHUserDir]) {
             [fileM createDirectoryAtPath:YHUserDir withIntermediateDirectories:YES attributes:nil error:nil];
         }
-        if (![fileM fileExistsAtPath:OfficeDir]){
-            [fileM createDirectoryAtPath:OfficeDir withIntermediateDirectories:YES attributes:nil error:nil];
+        if (![fileM fileExistsAtPath:YHLoginDir]) {
+            [fileM createDirectoryAtPath:YHLoginDir withIntermediateDirectories:YES attributes:nil error:nil];
         }
+        
     }
     
-    DDLog(@"-----数据库操作路径------\n%@",pathLog);
+    DDLog(@"------LoginAcountDBPath-----\n:%@",pathLoginAccount);
     
-    CreatTable *model = [[CreatTable alloc] init];
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:pathLog];
+    CreatTable *model = [CreatTable new];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:pathLoginAccount];
     
     if (queue) {
         
         //存ID和队列
-
+        model.Id = userID;
         model.queue = queue;
         
         
         //存SQL语句
-        NSString *tableName = tableNameOfficeFile();
-        NSString *creatTableSql = [YHFileModel yh_sqlForCreatTable:tableName primaryKey:@"id"];
-        if (creatTableSql) {
-            model.sqlCreatTable = @[creatTableSql];
+        NSString *tableName = tableNameLogin(userID);
+        NSString *userSql = [YHUserInfo yh_sqlForCreatTable:tableName primaryKey:@"id"];
+        NSString *companySql = [YHCompanyInfo yh_sqlForCreateTableWithPrimaryKey:@"id"];
+        NSString *weSql = [YHWorkExperienceModel yh_sqlForCreateTableWithPrimaryKey:@"id" ];
+        NSString *eeSql = [YHEducationExperienceModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
+        NSArray *sqlArr = nil;
+        if (userSql && companySql && weSql && eeSql) {
+            sqlArr = @[userSql,companySql,weSql,eeSql];
         }
         
-        [self.officeFileArray addObject:model];
+        if (sqlArr) {
+            model.sqlCreatTable = sqlArr;
+        }
+        
+        [self.loginAcountArray addObject:model];
     }
     return model;
 }
 
-//设置办公文件队列
-- (CreatTable *)_setupOfficeFileDBqueue{
+- (CreatTable *)_setupLoginAcountDBqueueWithUserID:(NSString *)userID{
     //是否已存在Queue
-    for (CreatTable *model in self.officeFileArray) {
-        //办公文件表只有一个
-
-        if (model) {
+    for (CreatTable *model in self.loginAcountArray) {
+        NSString *aID = model.Id;
+        if ([aID isEqualToString:userID]) {
+            
 #ifdef DEBUG
             
-            NSString *pathLog = pathOfficeFileWithDir(OfficeDir);
-            DDLog(@"-----数据库操作路径------\n%@",pathLog);
+            NSString *pathLogin = pathLoginWithDir(YHLoginDir, userID);
+            DDLog(@"-----LoginAccountDBPath------%@",pathLogin);
 #else
             
 #endif
             return model;
             break;
         }
-        
     }
     
-    
-    //没有就创建文件目录表
-    return [self creatFileTable];
+    //没有就创建login表
+    return [self creatLoginAccountTableWithUserID:userID];
 }
 
-#pragma mark - 办公文件
-//建办公文件表
-- (CreatTable *)creatFileTable{
+
+
+//退出登录清除缓存
+- (void)clearCacheWhenLogout{
+    [self.loginAcountArray removeAllObjects];
+    [self.chatLogArray removeAllObjects];
+    [self.myFrisArray removeAllObjects];
+    [self.dynsArray removeAllObjects];
+    [self.visitorsArray removeAllObjects];
+    [self.officeFileArray removeAllObjects];
+    [self.chatListArray removeAllObjects];
     
-    CreatTable *model = [self _firstCreatOfficeQueue];
+    [[NSFileManager defaultManager] removeItemAtPath:YHUserDir error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:YHVisitorsDir error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:YHChatListLogDir error:nil];
+}
+
+#pragma mark - 登录用户信息
+
+//建我的好友表
+- (CreatTable *)creatLoginAccountTableWithUserID:(NSString *)userID{
+    
+    CreatTable *model = [self _firstCreatLoginAccountQueueWithUserID:userID];
     FMDatabaseQueue *queue = model.queue;
     NSArray *sqlArr    = model.sqlCreatTable;
     for (NSString *sql in sqlArr) {
@@ -162,255 +208,12 @@
     return model;
 }
 
-//更新某一个办公文件
-- (void)updateOfficeFile:(YHFileModel *)officeFile complete:(void (^)(BOOL success,id obj))complete{
+//更新登录用户信息
+- (void)updateUserInfoWithItems:(NSArray <NSString *>*)updateItems complete:(void (^)(BOOL success,id obj))complete{
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        CreatTable *model = [self _setupOfficeFileDBqueue];
-        FMDatabaseQueue *queue = model.queue;
-        NSString *tableName = tableNameOfficeFile();
-        
-        [queue inDatabase:^(FMDatabase *db) {
-            /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
-            [db yh_saveDataWithTable:tableName model:officeFile userInfo:nil otherSQL:nil option:^(BOOL save) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    complete(save,nil);
-                });        
-            }];
-            
-        }];
-    });
-}
-
-//查询办公文件
-- (void)queryOfficeFilesUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete{
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        CreatTable *model = [self _setupOfficeFileDBqueue];
-        FMDatabaseQueue *queue = model.queue;
-        
-        [queue inDatabase:^(FMDatabase *db) {
-            [db yh_excuteDatasWithTable:tableNameOfficeFile() model:[YHFileModel new] userInfo:userInfo fuzzyUserInfo:fuzzyUserInfo otherSQL:nil option:^(NSMutableArray *models) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    complete(YES,models);
-                });
-                
-            }];
-        }];
-    });
-    
-}
-
-//查询某个文件
-- (void)queryOneOfficeFileWithFileNameInserver:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete{
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        CreatTable *model = [self _setupOfficeFileDBqueue];
-        FMDatabaseQueue *queue = model.queue;
-        YHFileModel *fileModel = [YHFileModel new];
-        fileModel.filePathInServer = fileNameInserver;
-        [queue inDatabase:^(FMDatabase *db) {
-            [db yh_excuteDataWithTable:tableNameOfficeFile() model:fileModel userInfo:nil fuzzyUserInfo:nil otherSQL:nil option:^(id output_model) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (output_model) {
-                        complete(YES,output_model);
-                    }else{
-                        complete(NO,@"can not find user in dataBase");
-                    }
-                });
-                
-            }];
-        }];
-    });
-}
-
-//删除办公文件表
-- (void)deleteOfficeFileTableComplete:(void(^)(BOOL success,id obj))complete{
-    NSString *path = pathOfficeFileWithDir(OfficeDir);
-    BOOL success = [self _deleteFileAtPath:path];
-    if (success) {
-        [self.officeFileArray removeAllObjects];
-    }
-    complete(success,nil);
-}
-
-//删除某一个办公文件
-- (void)deleteOneOfficeFile:(YHFileModel *)officeFile userInfo:(NSDictionary *)userInfo complete:(void(^)(BOOL success,id obj))complete{
-    
-    CreatTable *model = [self _setupOfficeFileDBqueue];
-    FMDatabaseQueue *queue = model.queue;
-    
-    [queue inDatabase:^(FMDatabase *db) {
-        [db yh_deleteDataWithTable:tableNameOfficeFile() model:officeFile userInfo:userInfo otherSQL:nil option:^(BOOL del) {
-            complete(del,@(del));
-        }];
-    }];
-}
-
-
-#pragma mark - Private 聊天
-//初始化聊天FMDBQueue
-- (CreatTable *)_setupDBqueueWithType:(DBChatType)type sessionID:(NSString *)sessionID{
-    
-    if (!sessionID) {
-        return nil;
-    }
-    //是否已存在Queue
-    for (CreatTable *model in self.chatLogArray) {
-        NSString *aID = model.Id;
-        if ([aID isEqualToString:sessionID]) {
-            
-#ifdef DEBUG
-            NSString *dir = nil;
-            switch (type) {
-                case DBChatType_Group:
-                    dir = GroupChatLogDir;
-                    break;
-                case DBChatType_Private:
-                    dir = PriChatLogDir;
-                    break;
-                default:
-                    break;
-            }
-            
-            NSString *pathLog = pathLogWithDir(dir, sessionID);
-            DDLog(@"-----数据库操作路径------\n%@",pathLog);
-#else
-            
-#endif
-            return model;
-            break;
-        }
-    }
-    
-    //没有就创建聊天表
-    return [self creatChatLogTableWithType:type sessionID:sessionID];
-    
-}
-
-//第一次建聊天表
-- (CreatTable *)_firstCreatChatLogQueueWithType:(DBChatType)type sessionID:(NSString *)sessionID{
-    
-    NSString *dir = nil;
-    switch (type) {
-        case DBChatType_Group:{
-            dir = GroupChatLogDir;
-        }
-            break;
-        case DBChatType_Private:{
-            dir = PriChatLogDir;
-        }
-            
-        default:
-            break;
-    }
-    
-    NSString *pathLog = pathLogWithDir(dir, sessionID);
-    NSFileManager *fileM = [NSFileManager defaultManager];
-    if(![fileM fileExistsAtPath:dir]){
-        //如果不存在,则说明是第一次运行这个程序，那么建立这个文件夹
-        if (![fileM fileExistsAtPath:YHUserDir]) {
-            [fileM createDirectoryAtPath:YHUserDir withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        if (![fileM fileExistsAtPath:YHChatLogDir]){
-            [fileM createDirectoryAtPath:YHChatLogDir withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        if (![fileM fileExistsAtPath:dir]){
-            [fileM createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-    }
-    
-    DDLog(@"-----数据库操作路径------\n%@",pathLog);
-    
-    CreatTable *model = [[CreatTable alloc] init];
-    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:pathLog];
-    
-    if (queue) {
-        
-        //存ID和队列
-        model.Id = sessionID;
-        model.queue = queue;
-        
-        
-        //存SQL语句
-        NSString *tableName = tableNameChatLog(sessionID);
-        NSString *creatTableSql = [YHChatModel yh_sqlForCreatTable:tableName primaryKey:@"id"];
-        if (creatTableSql) {
-            model.sqlCreatTable = @[creatTableSql];
-        }
-        
-        [self.chatLogArray addObject:model];
-    }
-    return model;
-}
-
-
-//退出登录清除缓存
-- (void)clearCacheWhenLogout{
-   
-    [self.chatLogArray removeAllObjects];
-    [self.officeFileArray removeAllObjects];
-    [self.chatListArray removeAllObjects];
-    
-    [[NSFileManager defaultManager] removeItemAtPath:YHUserDir error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:YHVisitorsDir error:nil];
-    [[NSFileManager defaultManager] removeItemAtPath:YHChatListLogDir error:nil];
-}
-
-
-#pragma mark - 聊天
-//建聊天表
-- (CreatTable *)creatChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID{
-    
-    CreatTable *model = [self _firstCreatChatLogQueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    NSString *sql = model.sqlCreatTable.lastObject;
-    [queue inDatabase:^(FMDatabase *db) {
-        
-        BOOL ok = [db executeUpdate:sql];
-        if (ok == NO) {
-            DDLog(@"----NO:%@---",sql);
-        }
-        
-    }];
-    return model;
-}
-
-
-//更新多条聊天信息
-- (void)updateChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID chatLogList:(NSArray <YHChatModel *>*)chatLogList complete:(void (^)(BOOL success,id obj))complete{
-    
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    
-    NSString *tableName = tableNameChatLog(sessionID);
-    for (int i= 0; i< chatLogList.count; i++) {
-        
-        YHChatModel *model = chatLogList[i];
-        
-        [queue inDatabase:^(FMDatabase *db) {
-            /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
-            [db yh_saveDataWithTable:tableName model:model userInfo:nil otherSQL:nil option:^(BOOL save) {
-                if (i == chatLogList.count-1) {
-                    complete(save,nil);
-                }else{
-                    if (!save) {
-                        complete(save,@"更新某条数据失败");
-                    }
-                }
-                
-            }];
-            
-        }];
-    }
-    
-    
-}
-
-//更新某条聊天信息
-- (void)updateOneChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID aChatLog:(YHChatModel*)aChatLog updateItems:(NSArray <NSString *>*)updateItems complete:(void (^)(BOOL success,id obj))complete{
-    
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
+    YHUserInfo *loginUserInfo = [YHUserInfoManager sharedInstance].userInfo;
+    NSString *myID = loginUserInfo.uid;
+    CreatTable *model = [self _setupLoginAcountDBqueueWithUserID:myID];
     FMDatabaseQueue *queue = model.queue;
     
     NSDictionary *otherSQL = nil;
@@ -420,163 +223,32 @@
     
     [queue inDatabase:^(FMDatabase *db) {
         /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
-        [db yh_saveDataWithTable:tableNameChatLog(sessionID)  model:aChatLog userInfo:nil otherSQL:otherSQL option:^(BOOL save) {
+        [db yh_saveDataWithTable:tableNameLogin(myID)  model:loginUserInfo userInfo:nil otherSQL:otherSQL option:^(BOOL save) {
             complete(save,nil);
         }];
         
     }];
+    
 }
 
-
-//查询ChatLog表
-- (void)queryChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID userInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete{
+//获取登录用户信息
+- (void)getLoginUserInfoWithUid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete{
     
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
+    CreatTable *model = [self _setupLoginAcountDBqueueWithUserID:uid];
     FMDatabaseQueue *queue = model.queue;
     
     [queue inDatabase:^(FMDatabase *db) {
-        [db yh_excuteDatasWithTable:tableNameChatLog(sessionID) model:[YHChatModel new] userInfo:userInfo fuzzyUserInfo:fuzzyUserInfo otherSQL:nil option:^(NSMutableArray *models) {
-            complete(YES,models);
-        }];
-    }];
-}
-
-
-//查询多条聊天信息
-- (void)queryChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID list:(NSArray<YHChatModel *>*)chatLogList complete:(void (^)(BOOL, id))complete{
-    
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    
-    __block NSMutableArray *maRet = [NSMutableArray new];
-    for (YHChatModel *model in chatLogList) {
-        [queue inDatabase:^(FMDatabase *db) {
-            [db yh_excuteDataWithTable:tableNameChatLog(sessionID) model:model userInfo:nil fuzzyUserInfo:nil otherSQL:nil option:^(id output_model) {
-                if (output_model) {
-                    [maRet addObject:output_model];
-                }
-            }];
-        }];
-    }
-    complete(YES,maRet);
-    
-}
-
-//查询一条聊天信息
-- (void)queryaChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID aChatLog:(YHChatModel *)aChatLog userInfo:(NSDictionary *)userInfo complete:(void (^)(BOOL, id))complete{
-    
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    
-    [queue inDatabase:^(FMDatabase *db) {
-        [db yh_excuteDataWithTable:tableNameChatLog(sessionID) model:aChatLog userInfo:userInfo fuzzyUserInfo:nil otherSQL:nil option:^(id output_model) {
-            complete(YES,output_model);
-        }];
-        
-    }];
-}
-
-//删除聊天信息数组
-- (void)deleteChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID list:(NSArray <YHChatModel *>*)chatLogList complete:(void(^)(BOOL success,id obj))complete;{
-    
-    CreatTable *model1 = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model1.queue;
-    
-    for (YHChatModel *model in chatLogList) {
-        [queue inDatabase:^(FMDatabase *db) {
-            [db yh_deleteDataWithTable:tableNameChatLog(sessionID) model:model userInfo:nil otherSQL:nil option:^(BOOL del) {
-            }];
-        }];
-    }
-    
-}
-
-//删除某条消息记录
-- (void)deleteOneChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID msgID:(NSString *)msgID complete:(void(^)(BOOL success,id obj))complete{
-    
-    if (!msgID) {
-        complete(NO,@"msgID is nil");
-        return;
-    }
-    
-    CreatTable *cmodel     = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = cmodel.queue;
-    YHChatModel *model = [YHChatModel new];
-    model.chatId       = msgID;
-    
-    [queue inDatabase:^(FMDatabase *db) {
-        [db yh_deleteDataWithTable:tableNameChatLog(sessionID) model:model userInfo:nil otherSQL:nil option:^(BOOL del) {
-            complete(del,nil);
-        }
-         ];
-    }];
-}
-
-//删除ChatLog表
-- (void)deleteChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID complete:(void(^)(BOOL success,id obj))complete{
-    
-    switch (type) {
-        case DBChatType_Group:{
-            
-            NSString *pathLog = pathLogWithDir(GroupChatLogDir, sessionID);
-            BOOL success = [self _deleteFileAtPath:pathLog];
-            if (success) {
-                
-                for (CreatTable *model in self.chatLogArray) {
-                    NSString *aID = model.Id;
-                    if ([aID isEqualToString:sessionID]) {
-                        [self.chatLogArray removeObject:model];
-                        break;
-                    }
-                }
-                
+        [db yh_excuteDataWithTable:tableNameLogin(uid) model:[YHUserInfoManager sharedInstance].userInfo userInfo:nil fuzzyUserInfo:nil otherSQL:nil option:^(id output_model) {
+            if (output_model) {
+                complete(YES,output_model);
+            }else{
+                complete(NO,@"can not find user in dataBase");
             }
-            complete(success,nil);
-        }
-            break;
-        case DBChatType_Private:{
             
-            NSString *pathLog = pathLogWithDir(PriChatLogDir, sessionID);
-            BOOL success = [self _deleteFileAtPath:pathLog];
-            if (success) {
-                
-                for (CreatTable *model in self.chatLogArray) {
-                    NSString *aID = model.Id;
-                    if ([aID isEqualToString:sessionID]) {
-                        [self.chatLogArray removeObject:model];
-                        break;
-                    }
-                }
-            }
-            complete(success,nil);
-            
-        }
-            
-        default:
-            break;
-    }
-    
-    
-    
-}
-
-//删除某一聊天信息
-- (void)deleteaChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID aChatLog:(YHChatModel *)aChatLog userInfo:(NSDictionary *)userInfo complete:(void(^)(BOOL success,id obj))complete{
-    
-    CreatTable *model = [self _setupDBqueueWithType:type sessionID:sessionID];
-    FMDatabaseQueue *queue = model.queue;
-    
-    [queue inDatabase:^(FMDatabase *db) {
-        [db yh_deleteDataWithTable:tableNameChatLog(sessionID) model:aChatLog userInfo:userInfo otherSQL:nil option:^(BOOL del) {
-            complete(del,@(del));
         }];
     }];
+    
 }
-
-
-#pragma mark - 聊天文件
-//更新聊天文件
-
 
 
 #pragma mark - filePrivate

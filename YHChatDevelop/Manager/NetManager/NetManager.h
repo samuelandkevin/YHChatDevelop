@@ -11,7 +11,7 @@
 #import "YHUserInfo.h"
 #import "AFNetworking.h"
 #import "YHUserInfoManager.h"
-#import "YHProtocolConfig.h"
+//#import "YHChatDevelop-Swift.h"
 #import "DataParser.h"
 #import "HHUtils.h"
 

@@ -50,7 +50,6 @@
  */
 - (void)updateChatListModelArr:(NSArray <YHChatListModel *>*)chatListModelArr uid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete;
 
-
 /*
  *  删除ChatList表某条信息
  */
@@ -74,7 +73,7 @@
 //查询办公文件
 - (void)queryOfficeFilesUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete;
 //查询某个文件
-- (void)queryOneOfficeFileWithName:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete;
+- (void)queryOneOfficeFileWithFileNameInserver:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete;
 //删除办公文件表
 - (void)deleteOfficeFileTableComplete:(void(^)(BOOL success,id obj))complete;
 //删除某一个办公文件

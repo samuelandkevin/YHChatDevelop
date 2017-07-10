@@ -12,8 +12,8 @@
 
 //获取页面能否打开信息
 - (void)getPageInfoAboutCanOpenedComplete:(NetManagerCallback)complete{
-   
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@", kBaseURL,kPathPageCanOpened];
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@", [YHProtocol share].kBaseURL,[YHProtocol share].kPathPageCanOpened];
     
     NSDictionary *params = @{
                              @"platform":iOSPlatform,
@@ -21,7 +21,7 @@
                              };
     
     [self getWithRequestUrl:requestUrl parameters:params complete:^(BOOL success, id obj) {
-
+        
         if (success) {
             NSArray *retArray = [obj objectForKey:@"data"];
             complete(YES,retArray);
@@ -34,4 +34,5 @@
     }];
     
 }
+
 @end

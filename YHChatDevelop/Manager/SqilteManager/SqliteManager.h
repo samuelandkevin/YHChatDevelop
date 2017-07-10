@@ -21,7 +21,6 @@
 @property (nonatomic,copy) NSArray <NSString *> *sqlCreatTable;
 @property (nonatomic,assign) int type;
 
-
 @end
 
 @interface SqliteManager : NSObject
@@ -33,9 +32,14 @@ typedef NS_ENUM(int,DBChatType){
 };
 
 
+@property(nonatomic,strong) NSMutableArray < CreatTable *>*loginAcountArray;//登录账户Array
 @property(nonatomic,strong) NSMutableArray < CreatTable *>*chatLogArray; //聊天Array
+@property(nonatomic,strong) NSMutableArray < CreatTable *>*myFrisArray;  //我的好友Array
+@property(nonatomic,strong) NSMutableArray < CreatTable *>*dynsArray; //动态Array
+@property(nonatomic,strong) NSMutableArray < CreatTable *>*visitorsArray;//访客Array
 @property(nonatomic,strong) NSMutableArray <CreatTable *>*officeFileArray;//聊天文件表（暂时只有一个Sql表）
 @property(nonatomic,strong) NSMutableArray <CreatTable *>*chatListArray;//聊天列表Array
+
 
 + (instancetype)sharedInstance;
 
@@ -45,51 +49,24 @@ typedef NS_ENUM(int,DBChatType){
  */
 - (void)clearCacheWhenLogout;
 
+#pragma mark - 登录用户信息
 
-#pragma mark - 聊天
-
-/*
- *  更新ChatLog表多条信息
+/**
+ 更新登录用户信息
+ @param updateItems <#updateItems description#>
+ @param complete 成功失败回调
  */
-- (void)updateChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID chatLogList:(NSArray <YHChatModel *>*)chatLogList complete:(void (^)(BOOL success,id obj))complete;
+- (void)updateUserInfoWithItems:(NSArray <NSString *>*)updateItems complete:(void (^)(BOOL success,id obj))complete;
 
-/*
- *  更新某条聊天信息
+
+/**
+ 获取登录用户信息
+ 
+ @param complete 成功失败回调
  */
-- (void)updateOneChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID aChatLog:(YHChatModel*)aChatLog updateItems:(NSArray <NSString *>*)updateItems complete:(void (^)(BOOL success,id obj))complete;
-
-/*
- *  查询ChatLog表
- *  @param userInfo       条件查询Dict
- *  @param fuzzyUserInfo  模糊查询Dict
- *  @param complete       成功失败回调
- *  备注:userInfo = nil && fuzzyUserInfo = nil 为全文搜索
- */
-- (void)queryChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID userInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete;
+- (void)getLoginUserInfoWithUid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete;
 
 
-//删除某条消息记录
-- (void)deleteOneChatLogWithType:(DBChatType)type sessionID:(NSString *)sessionID msgID:(NSString *)msgID complete:(void(^)(BOOL success,id obj))complete;
-
-
-/*
- *  删除ChatLog表
- */
-- (void)deleteChatLogTableWithType:(DBChatType)type sessionID:(NSString *)sessionID complete:(void(^)(BOOL success,id obj))complete;
-
-
-
-#pragma mark - 聊天文件
-//更新某一个办公文件
-- (void)updateOfficeFile:(YHFileModel *)officeFile complete:(void (^)(BOOL success,id obj))complete;
-//查询办公文件
-- (void)queryOfficeFilesUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete;
-//查询某个文件
-- (void)queryOneOfficeFileWithFileNameInserver:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete;
-//删除办公文件表
-- (void)deleteOfficeFileTableComplete:(void(^)(BOOL success,id obj))complete;
-//删除某一个办公文件
-- (void)deleteOneOfficeFile:(YHFileModel *)officeFile userInfo:(NSDictionary *)userInfo complete:(void(^)(BOOL success,id obj))complete;
 
 #pragma mark - filePrivate
 /*

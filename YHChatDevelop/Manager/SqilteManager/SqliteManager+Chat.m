@@ -251,7 +251,7 @@
  *  更新ChatList表多条信息
  */
 - (void)updateChatListModelArr:(NSArray <YHChatListModel *>*)chatListModelArr uid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete{
-
+    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         CreatTable *model = [self _setupChatListDBqueueWithUid:uid];
         FMDatabaseQueue *queue = model.queue;
@@ -277,11 +277,10 @@
                 
             }];
         }
-  
+        
     });
-   
+    
 }
-
 
 //删除ChatList表某条信息
 - (void)deleteOneChatListModel:(YHChatListModel *)clModel uid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete{
@@ -295,6 +294,7 @@
     }];
     
 }
+
 
 //查询ChatList表
 - (void)queryChatListTableWithUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete{
@@ -394,7 +394,7 @@
 }
 
 //查询某个文件
-- (void)queryOneOfficeFileWithName:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete{
+- (void)queryOneOfficeFileWithFileNameInserver:(NSString *)fileNameInserver complete:(void (^)(BOOL success,id obj))complete{
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         CreatTable *model = [self _setupOfficeFileDBqueue];

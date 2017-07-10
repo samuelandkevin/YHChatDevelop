@@ -9,7 +9,7 @@
 #import "YHUploadManager.h"
 #import "NetManager.h"
 #import "YHChatModel.h"
-#import "YHProtocolConfig.h"
+#import "YHChatDevelop-Swift.h"
 #import "SqliteManager.h"
 
 #define kUploadAudioMAXCount 3      //上传音频数量限制
@@ -67,7 +67,7 @@
         complete(NO,@"token is nil");
         return;
     }
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",kBaseURL,kPathUploadRecordFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathUploadRecordFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
 
     [self _uploadFileInQueue:self.uploadAudioQueue filePath:recordPath requestUrl:requestUrl fileNameInServer:@"file" maxConcurrentCount:kUploadAudioMAXCount mimeType:@"audio/wav" params:nil complete:^(BOOL success, id obj){
         if (success) {
@@ -102,7 +102,7 @@
         return;
     }
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",kBaseURL,kPathUploadOfficeFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathUploadOfficeFile,[YHUserInfoManager sharedInstance].userInfo.accessToken];
     NSString *filePathInLocal = fileModel.filePathInLocal;
     if (!filePathInLocal) {
         complete(NO,@"filePathInLocal is nil");

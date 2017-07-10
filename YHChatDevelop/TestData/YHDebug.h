@@ -9,7 +9,7 @@
 #ifndef YHDebug_h
 #define YHDebug_h
 
-#import "YHProtocolConfig.h"
+#import "YHChatDevelop-Swift.h"
 #import "YHUICommon.h"
 
 #define isNSDictionaryClass(obj) [obj isKindOfClass:[NSDictionary class]]

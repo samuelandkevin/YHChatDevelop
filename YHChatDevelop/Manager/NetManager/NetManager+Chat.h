@@ -47,7 +47,7 @@ typedef NS_ENUM(int,UnReadMsgType){
 
 /**
  获取群聊列表
-
+ 
  @param complete 成功失败回调
  */
 - (void)getGroupChatListComplete:(NetManagerCallback)complete;
@@ -71,6 +71,25 @@ typedef NS_ENUM(int,UnReadMsgType){
 //删除会话
 - (void)postDeleteSessionWithID:(NSString *)sessionID sessionUserID:(NSString *)sessionUserID complete:(NetManagerCallback)complete;
 
+//修改群名称
+- (void)postModifyGroupNameWithGroupID:(NSString *)groupID newGroupName:(NSString *)newGroupName complete:(NetManagerCallback)complete;
+
+//修改我在群里的名称
+- (void)postModiftyMyNameInGroupWithGroupID:(NSString *)groupID newName:(NSString *)newName complete:(NetManagerCallback)complete;
+
+//转让群
+- (void)postTransferGroupOwnerWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete;
+
+//退出并且删除群
+- (void)postQuitGroupWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete;
+
+//获取群信息
+- (void)postFetchGroupInfoWithGroupID:(NSString *)groupID complete:(NetManagerCallback)complete;
+
 //消息撤回
 - (void)putWithDrawMsgWithMsgID:(NSString *)msgID complete:(NetManagerCallback)complete;
+
+//对专家评分
+- (void)postGradeExpertWithExpertID:(NSString *)expertID score:(int)score sessionUserID:(NSString *)sessionUserID complete:(NetManagerCallback)complete;
+
 @end

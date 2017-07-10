@@ -9,7 +9,7 @@
 #import "YHDownLoadManager.h"
 #import "NetManager.h"
 #import "YHSqilteConfig.h"
-#import "SqliteManager.h"
+#import "YHSqliteManager.h"
 #import "YHFileTool.h"
 
 #define kDownloadAudioMAXCount 3      //下载音频数量限制
