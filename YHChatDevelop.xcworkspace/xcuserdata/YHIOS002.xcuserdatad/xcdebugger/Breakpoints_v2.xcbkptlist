@@ -28,11 +28,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YHChatDevelop/Manager/NetManager/NetManager+Chat.m"
-            timestampString = "521350180.0703"
+            timestampString = "521539762.042862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "754"
-            endingLineNumber = "754"
+            startingLineNumber = "822"
+            endingLineNumber = "822"
             landmarkName = "-postFetchGroupInfoWithGroupID:complete:"
             landmarkType = "7">
          </BreakpointContent>
@@ -43,13 +43,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "YHChatDevelop/UI/Classes/Chat/SubPages/YHChatDetailVC.m"
-            timestampString = "521374051.245386"
+            filePath = "YHChatDevelop/Manager/ChatManager/YHChatManager.m"
+            timestampString = "521536385.047325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "835"
-            endingLineNumber = "835"
-            landmarkName = "-_loadFromDBWithLastChatLog:complete:"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-webSocket:didFailWithError:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -60,29 +60,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "YHChatDevelop/UI/Classes/Chat/SubPages/YHChatDetailVC.m"
-            timestampString = "521374113.753205"
+            timestampString = "521545215.912389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "829"
-            endingLineNumber = "829"
-            landmarkName = "-_loadFromDBWithLastChatLog:complete:"
+            startingLineNumber = "933"
+            endingLineNumber = "933"
+            landmarkName = "-_requestChatLogsFromNetWithLastChatLogModel:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "YHChatDevelop/UI/Classes/Chat/SubPages/YHChatDetailVC.m"
-            timestampString = "521374137.902499"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "838"
-            endingLineNumber = "838"
-            landmarkName = "-_loadFromDBWithLastChatLog:complete:"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[YHChatDetailVC _requestChatLogsFromNetWithLastChatLogModel:]"
+                  moduleName = "YHChatDevelop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YHIOS002/Desktop/MyGithubDemo/YHChatDevelop/YHChatDevelop/UI/Classes/Chat/SubPages/YHChatDetailVC.m"
+                  timestampString = "521545216.037262"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "933"
+                  endingLineNumber = "933"
+                  offsetFromSymbolStart = "247">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__62-[YHChatDetailVC _requestChatLogsFromNetWithLastChatLogModel:]_block_invoke"
+                  moduleName = "YHChatDevelop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YHIOS002/Desktop/MyGithubDemo/YHChatDevelop/YHChatDevelop/UI/Classes/Chat/SubPages/YHChatDetailVC.m"
+                  timestampString = "521545216.042742"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "933"
+                  endingLineNumber = "933"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

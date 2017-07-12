@@ -21,6 +21,17 @@
     return @{@"chatId":YHDB_PrimaryKey};
 }
 
++ (NSDictionary *)yh_getClassForKeyIsObject{
+    return @{@"fileModel":[YHFileModel class],
+             @"gifModel":[YHGIFModel class]};
+}
+
++ (NSDictionary *)yh_replacedKeyFromDictionaryWhenPropertyIsObject{
+    return @{@"fileModel":[NSString stringWithFormat:@"fileModel%@",YHDB_AppendingID],
+             @"gifModel":[NSString stringWithFormat:@"gifModel%@",YHDB_AppendingID]};
+}
+
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     
 }

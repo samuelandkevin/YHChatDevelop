@@ -26,9 +26,10 @@
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) YHChatListModel *model;
 
+
 /******父类的方法*********/
 - (void)setupExpKeyBoard;//设置表情键盘
 - (void)setupMsg;        //设置消息
 - (void)refreshTableViewLoadNew:(YHRefreshTableView *)view;
-- (void)requestChatLogsFromNet;
+
 @end

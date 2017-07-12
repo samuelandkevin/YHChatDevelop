@@ -40,6 +40,17 @@ typedef NS_ENUM(int,UnReadMsgType){
 
 
 /**
+ 获取从某个日期到指定日期的聊天记录
+
+ @param chatType 0-单聊，1-群聊
+ @param sessionID 单聊用户id / 群聊群id
+ @param oldChatLog 旧的聊天记录
+ @param newChatLog 新的聊天记录 传nil等于 现在时刻
+ @param complete 成功失败回调
+ */
+- (void)postFetchChatLogWithType:(QChatType)chatType sessionID:(NSString *)sessionID fromOldChatLog:(YHChatModel *)oldChatLog  toNewChatLog:(YHChatModel *)newChatLog complete:(NetManagerCallback)complete;
+
+/**
  *  获取未读消息
  */
 - (void)postFetchUnReadMsgComplete:(NetManagerCallback)complete;

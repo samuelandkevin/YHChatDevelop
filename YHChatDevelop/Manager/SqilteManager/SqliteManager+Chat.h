@@ -8,7 +8,7 @@
 
 #import "SqliteManager.h"
 #import "YHChatListModel.h"
-
+#import "YHGIFModel.h"
 @interface SqliteManager (Chat)
 
 #pragma mark - 聊天记录

@@ -39,6 +39,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
 }
 @property (nonatomic,assign)DBChatType dbChatType;
 @property (nonatomic,copy)  NSString *sessionID;
+@property (nonatomic,assign)BOOL isFirstEntered;
 
 @end
 
@@ -48,11 +49,15 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
     [super viewDidLoad];
     // Do any additional setup after loading the view.
    
+    //数据初始化
     _dbChatType = self.model.isGroupChat? DBChatType_Group:DBChatType_Private;
     _sessionID  = self.model.sessionUserId;
-    
+    _isFirstEntered = YES;
+    //初始化UI
     [self initUI];
     [self setupExpKeyBoard];
+    
+    //设置消息
     [self setupMsg];
     
     //本地加载聊天记录
@@ -60,6 +65,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
     [self _loadFromDBWithLastChatLog:_lastDataInDB complete:^(BOOL success, id obj) {
         [weakSelf.keyboard aboveViewScollToBottom:NO];
     }];
+    
 }
 
 #pragma mark - Getter
@@ -127,10 +133,20 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
     WeakSelf
     //接收新消息回调
     [[YHChatManager sharedInstance] receiveNewMsg:^(YHChatModel *model) {
+        //更新UI
         model.layout = [model textLayout];
         [weakSelf.dataArray addObject:model];
         [weakSelf.tableView reloadData];
         [weakSelf.keyboard aboveViewScollToBottom];
+        
+        //写入数据库
+        [[SqliteManager sharedInstance] updateOneChatLogWithType:weakSelf.dbChatType sessionID:weakSelf.sessionID aChatLog:model updateItems:nil complete:^(BOOL success, id obj) {
+            if (success) {
+                DDLog(@"新消息写入数据库成功,%@",obj);
+            }else{
+                DDLog(@"新消息写入数据库失败,%@",obj);
+            }
+        }];
     }];
     
 }
@@ -634,19 +650,18 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
     [self _requestSendImage:compressImage];
 }
 
-#pragma mark - YHRefreshTableViewDelegate
+#pragma mark - YHRefreshTableViewDelegate  上下拉刷新
 - (void)refreshTableViewLoadNew:(YHRefreshTableView *)view{
     if (_noMoreDataInDB && !self.dataArray.count) {
-        [self requestChatLogsFromNet];
+        [self _requestChatLogsFromNetWithLastChatLogModel:_lastDataInDB];
     }else{
         [self _loadFromDBWithLastChatLog:_lastDataInDB complete:^(BOOL success, id obj) {
-            
         }];
     }
 }
 
 - (void)refreshTableViewLoadmore:(YHRefreshTableView *)view{
-
+    //空操作
 }
 
 #pragma mark - 网络请求
@@ -818,17 +833,19 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
     YHRefreshType refreshType = YHRefreshType_LoadNew;
     if (_noMoreDataInDB) {
         [self.tableView loadFinish:refreshType];
+        [self.tableView setEnableLoadNew:NO];
         return;
     }
  
     WeakSelf
     [[SqliteManager sharedInstance] queryChatLogTableWithType:_dbChatType sessionID:_sessionID lastChatLog:lastChatLog length:lengthForEveryRequest complete:^(BOOL success, id obj) {
         [weakSelf.tableView loadFinish:refreshType];
+        
         if (success) {
             NSArray *cacheList = obj;
             if (cacheList.count) {
                 
-                [weakSelf.dataArray addObjectsFromArray:cacheList];
+                [weakSelf.dataArray insertObjects:cacheList atIndex:0];
                 
                 if (cacheList.count < lengthForEveryRequest) {
                     //数据库无更多数据
@@ -839,7 +856,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
                 }
                 
                 //获取当前页
-                _lastDataInDB        = cacheList.lastObject;
+                _lastDataInDB        = cacheList.firstObject;
                 _currentRequestPage  = _lastDataInDB.curReqPage;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
@@ -850,7 +867,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
                 
             }else{
                 _noMoreDataInDB = YES;
-                [weakSelf requestChatLogsFromNet];
+                [weakSelf _requestChatLogsFromNetWithLastChatLogModel:_lastDataInDB];
                 if (complete) {
                     complete(NO,nil);
                 }
@@ -861,42 +878,87 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
                 complete(NO,nil);
             }
         }
+        
+        [weakSelf _requestChatLogsWhenFirstEntered];
     }];
     
 }
 
+//第一次进入此控制器,去请求最新的聊天记录
+- (void)_requestChatLogsWhenFirstEntered{
+    if (!_lastDataInDB || !_isFirstEntered) {
+        return;
+    }
+    _isFirstEntered = NO;
+    WeakSelf
+    QChatType qcType = weakSelf.model.isGroupChat?QChatType_Group:QChatType_Private;
+    [[NetManager sharedInstance] postFetchChatLogWithType:qcType sessionID:_sessionID fromOldChatLog:_lastDataInDB toNewChatLog:nil complete:^(BOOL success, id obj) {
+        if (success) {
+            NSArray *retArr = obj;
+            if (retArr.count){
+                NSMutableArray *arrToDB = [NSMutableArray new];
+                for (int i =0 ;i< retArr.count; i++ ){
+                    int totalcount = (int)weakSelf.dataArray.count;
+                    int curReqPage = (totalcount-1+i)/lengthForEveryRequest;
+                    YHChatModel *model = retArr[i];
+                    model.curReqPage   = curReqPage;
+                    model.layout = [model textLayout];
+                    [weakSelf.dataArray addObject:model];
+                    [arrToDB addObject:model];
+                }
+                
+                [weakSelf.tableView reloadData];
+                [weakSelf.keyboard aboveViewScollToBottom:NO];
+                
+                //插入数据到数据库
+                [weakSelf _updateChatLogsWithArr:arrToDB];
+            }
+            
+        }else{
+            DDLog(@"%@",obj);
+        }
+    }];
 
-//从服务器加载聊天记录
-- (void)requestChatLogsFromNet{
+}
+
+
+//从服务器加载聊天记录,lastChatLogModel:上一次加载的最后一条聊天记录
+- (void)_requestChatLogsFromNetWithLastChatLogModel:(YHChatModel *)lastChatLogModel{
     
     YHRefreshType refreshType = YHRefreshType_LoadNew;
     QChatType qcType = self.model.isGroupChat?QChatType_Group:QChatType_Private;
     WeakSelf
     [self.tableView loadBegin:refreshType];
-    [[NetManager sharedInstance] postFetchChatLogWithType:qcType sessionID:self.model.sessionUserId timestamp:nil  complete:^(BOOL success, id obj) {
+    [[NetManager sharedInstance] postFetchChatLogWithType:qcType sessionID:self.model.sessionUserId timestamp:lastChatLogModel.createTime  complete:^(BOOL success, id obj) {
         [self.tableView loadFinish:refreshType];
         if (success) {
             NSArray *retArr = obj;
-            [weakSelf.dataArray removeAllObjects];
-            for (int i =0 ;i< retArr.count; i++ ){
-                int curReqPage = i/lengthForEveryRequest;
-                YHChatModel *model = retArr[i];
-                model.curReqPage   = curReqPage;
-                model.layout = [model textLayout];
-                [weakSelf.dataArray addObject:model];
+            if (retArr.count){
+                [weakSelf.dataArray removeAllObjects];
+                for (int i =0 ;i< retArr.count; i++ ){
+                    int curReqPage = i/lengthForEveryRequest;
+                    YHChatModel *model = retArr[i];
+                    model.curReqPage   = curReqPage;
+                    model.layout = [model textLayout];
+                    [weakSelf.dataArray addObject:model];
+                }
+                
+                [weakSelf.tableView reloadData];
+                [weakSelf.keyboard aboveViewScollToBottom:NO];
+                [weakSelf _updateChatLogsWithArr:weakSelf.dataArray];
             }
             
-            [weakSelf.tableView reloadData];
-            [weakSelf.keyboard aboveViewScollToBottom:NO];
-            [weakSelf _writeAllChatLogsToDBWithArr:weakSelf.dataArray];
         }else{
             postTips(obj, @"获取聊天记录失败");
         }
     }];
 }
 
-//把所有聊天记录写入本地数据库
-- (void)_writeAllChatLogsToDBWithArr:(NSArray *)arr{
+//更新聊天数据
+- (void)_updateChatLogsWithArr:(NSArray<YHChatModel *> *)arr{
+    if (!arr.count) {
+        return;
+    }
     DBChatType type = self.model.isGroupChat?DBChatType_Group:DBChatType_Private;
     [[SqliteManager sharedInstance] updateChatLogWithType:type sessionID:self.model.sessionUserId chatLogList:arr complete:^(BOOL success, id obj) {
         if (success) {

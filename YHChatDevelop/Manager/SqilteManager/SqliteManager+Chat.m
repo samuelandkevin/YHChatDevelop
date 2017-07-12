@@ -16,15 +16,17 @@
     
     CreatTable *model = [self _firstCreatChatLogQueueWithType:type sessionID:sessionID];
     FMDatabaseQueue *queue = model.queue;
-    NSString *sql = model.sqlCreatTable.lastObject;
-    [queue inDatabase:^(FMDatabase *db) {
-        
-        BOOL ok = [db executeUpdate:sql];
-        if (ok == NO) {
-            DDLog(@"----NO:%@---",sql);
-        }
-        
-    }];
+    NSArray *sqlArr = model.sqlCreatTable;
+    for (NSString *sql in sqlArr) {
+        [queue inDatabase:^(FMDatabase *db) {
+            
+            BOOL ok = [db executeUpdate:sql];
+            if (ok == NO) {
+                DDLog(@"----NO:%@---",sql);
+            }
+            
+        }];
+    }
     return model;
 }
 
@@ -113,7 +115,7 @@
         
         //设置otherSQL
         NSMutableDictionary *otherSQLDict = [NSMutableDictionary dictionary];
-        [otherSQLDict setObject:@"order by createTime ASC" forKey:YHOrderKey];
+        [otherSQLDict setObject:@"order by createTime desc" forKey:YHOrderKey];
         if (length) {
             [otherSQLDict setObject:@(length) forKey:YHLengthLimitKey];
         }
@@ -126,6 +128,12 @@
         [queue inDatabase:^(FMDatabase *db) {
             [db yh_excuteDatasWithTable:tableNameChatLog(sessionID) model:[YHChatModel new] userInfo:nil fuzzyUserInfo:nil otherSQL:otherSQLDict option:^(NSMutableArray *models) {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    if ([models isKindOfClass:[NSArray class]] && models.count >1 ) {
+                        [models sortUsingComparator:^NSComparisonResult(YHChatModel *obj1, YHChatModel *obj2) {
+                            return NSOrderedDescending;
+                        }];
+                    }
+                    
                     for (YHChatModel *model in models) {
                         model.layout = [model textLayout];
                     }
@@ -574,9 +582,11 @@
         
         //存SQL语句
         NSString *tableName = tableNameChatLog(sessionID);
-        NSString *creatTableSql = [YHChatModel yh_sqlForCreatTable:tableName primaryKey:@"id"];
-        if (creatTableSql) {
-            model.sqlCreatTable = @[creatTableSql];
+        NSString *chatSql = [YHChatModel yh_sqlForCreatTable:tableName primaryKey:@"id"];
+        NSString *fileSql = [YHFileModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
+        NSString *gifSql  = [YHGIFModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
+        if (chatSql && fileSql && gifSql) {
+            model.sqlCreatTable = @[chatSql,fileSql,gifSql];
         }
         
         [self.chatLogArray addObject:model];

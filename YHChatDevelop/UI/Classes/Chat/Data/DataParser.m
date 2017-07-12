@@ -383,6 +383,33 @@
     return chatLogArray;
 }
 
+// 解析从某个日期到指定日期的聊天记录
+- (NSArray<YHChatModel *>*)parseChatLogWithListData:(NSArray<NSDictionary *>*)listData fromOldChatLog:(YHChatModel *)oldChatLog toNewChatLog:(YHChatModel *)newChatLog{
+    
+    NSMutableArray *chatLogArray = [NSMutableArray new];
+    if ([listData isKindOfClass:[NSArray class]]) {
+        
+        for (NSUInteger i = listData.count-1; i >0; i--) {
+            NSDictionary *dict = listData[i];
+            NSString *newID    = dict[@"id"];
+            if ([oldChatLog.chatId isEqualToString:newID]) {
+                break;
+            }
+            [chatLogArray addObject:[self parseOneChatLogWithDict:dict]];
+           
+        }
+        if (chatLogArray.count > 1) {
+            [chatLogArray sortUsingComparator:^NSComparisonResult(  YHChatModel *obj1, YHChatModel *obj2) {
+                return NSOrderedDescending;
+            }];
+        }
+        
+    }
+    return chatLogArray;
+}
+
+
+
 - (YHChatModel *)parseOneChatLogWithDict:(NSDictionary *)dict{
     YHChatModel *model = [YHChatModel new];
     if ([dict isKindOfClass:[NSDictionary class]]) {
@@ -613,9 +640,12 @@
         }
         //获取文件名
         NSString *fileName;
-        fileName = [fileMsg stringByReplacingOccurrencesOfString:urlStr withString:@""];
-        fileName = [fileName substringFromIndex:2];
-        fileName = [fileName substringWithRange:NSMakeRange(0, fileName.length-1)];
+        if (urlStr) {
+            fileName = [fileMsg stringByReplacingOccurrencesOfString:urlStr withString:@""];
+            fileName = [fileName substringFromIndex:2];
+            fileName = [fileName substringWithRange:NSMakeRange(0, fileName.length-1)];
+        }
+        
         fileModel.filePathInServer = urlStr;
         fileModel.fileName = fileName;
         fileModel.ext   = ext;

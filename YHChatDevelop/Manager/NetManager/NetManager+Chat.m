@@ -196,6 +196,7 @@
     
 }
 
+
 //获取聊天历史记录
 - (void)postFetchChatLogWithType:(QChatType)chatType sessionID:(NSString *)sessionID timestamp:(NSString *)timestamp complete:(NetManagerCallback)complete{
     
@@ -259,6 +260,73 @@
                            complete(NO,error);
                        }];
 }
+
+
+//获取从某个日期到指定日期的聊天记录
+- (void)postFetchChatLogWithType:(QChatType)chatType sessionID:(NSString *)sessionID fromOldChatLog:(YHChatModel *)oldChatLog  toNewChatLog:(YHChatModel *)newChatLog complete:(NetManagerCallback)complete{
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetChatLog];
+    
+    //参数判断
+    if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
+        complete(NO,@"token is nil");
+        return;
+    }
+    
+    if (!sessionID) {
+        complete(NO,@"sessionID is nil");
+        return;
+    }
+    
+    //
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary: @{ @"audienceId":sessionID,                                                        @"isGroupChat":@(chatType),@"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken                                                          }];
+   
+    if (newChatLog && newChatLog.createTime) {
+        NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+        [dataFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
+        NSDate *date = [dataFormatter dateFromString:newChatLog.createTime];
+        NSTimeInterval cursor = [date timeIntervalSince1970];
+        [dict setObject:@(cursor) forKey:@"cursor"];
+    }
+    
+    
+    //由于时间关系,后台返回数据格式跟之前不一样
+    if(self.currentNetWorkStatus == YHNetworkStatus_NotReachable){
+        complete(NO,kNetWorkFailTips);
+        return;
+    }
+    
+    
+    [self.requestManager  POST:requestUrl parameters:dict progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    }
+                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                           
+                           NSError *parseJsonError = nil;
+                           id jsonObject = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&parseJsonError];
+                           if (parseJsonError) {
+                               return complete(NO,parseJsonError.localizedDescription);
+                           }
+                           else {
+                               //数组
+                               if ([jsonObject isKindOfClass:[NSArray class]] ){
+                                   NSArray *obj = (NSArray *)jsonObject;
+                                   NSArray *logArr = [[DataParser shareInstance] parseChatLogWithListData:obj fromOldChatLog:oldChatLog toNewChatLog:newChatLog];
+                                   complete(YES,logArr);
+                                   
+                               }else{
+                                   complete(NO,@"return data is not array format");
+                               }
+                           }
+                           
+                           
+                       }
+                       failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                           
+                           complete(NO,error);
+                       }];
+}
+
 
 
 //获取未读消息

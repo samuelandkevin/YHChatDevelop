@@ -7,7 +7,14 @@
 //
 
 #import "YHGIFModel.h"
+#import "NSObject+YHDBRuntime.h"
 
 @implementation YHGIFModel
++ (NSString *)yh_primaryKey{
+    return @"filePathInServer";
+}
 
++ (NSDictionary *)yh_replacedKeyFromPropertyName{
+    return @{@"filePathInServer":YHDB_PrimaryKey};
+}
 @end

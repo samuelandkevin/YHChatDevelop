@@ -59,11 +59,15 @@
 
 //解析企业信息
 - (YHCompanyInfo *)parseCompanyInfo:(NSDictionary *)dict;
+
 /**
  *  解析聊天记录Model
  *
  */
 - (NSArray<YHChatModel *>*)parseChatLogWithListData:(NSArray<NSDictionary *>*)listData;
+
+// 解析从某个日期到指定日期的聊天记录
+- (NSArray<YHChatModel *>*)parseChatLogWithListData:(NSArray<NSDictionary *>*)listData fromOldChatLog:(YHChatModel *)oldChatLog toNewChatLog:(YHChatModel *)newChatLog;
 
 
 /**
