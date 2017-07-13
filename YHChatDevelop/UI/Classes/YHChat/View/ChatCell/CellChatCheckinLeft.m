@@ -1,12 +1,12 @@
 //
-//  CellChatImageLeft.m
-//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
+//  CellChatCheckinLeft.m
+//  YHChatDevelop
 //
-//  Created by samuelandkevin on 17/2/22.
+//  Created by YHIOS002 on 2017/7/13.
 //  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 
-#import "CellChatImageLeft.h"
+#import "CellChatCheckinLeft.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <Masonry/Masonry.h>
 #import <HYBMasonryAutoCellHeight/UITableViewCell+HYBMasonryAutoCellHeight.h>
@@ -14,14 +14,18 @@
 #import "UIImage+Extension.h"
 #import "YHPhotoBrowserView.h"
 #import "YHChatImageView.h"
+#import "YHCheckinBtn.h"
 
-@interface CellChatImageLeft()<YHPhotoBrowserViewDelegate>
+@interface CellChatCheckinLeft()<YHPhotoBrowserViewDelegate>
 
 @property (nonatomic,strong) YHChatImageView *imgvContent;
-
+@property (nonatomic,strong) YHCheckinBtn    *btnCheckin;
+@property (nonatomic,strong) UILabel         *lbMsg;
+@property (nonatomic,strong) UILabel         *lbPosition;
 @end
 
-@implementation CellChatImageLeft
+
+@implementation CellChatCheckinLeft
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -46,23 +50,37 @@
     [self.contentView addSubview:_imgvContent];
     WeakSelf
     _imgvContent.retweetImageBlock = ^(UIImage *image){
-        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(retweetImage:inLeftCell:)]) {
-            [weakSelf.delegate retweetImage:image inLeftCell:weakSelf];
+        if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(retweetImage:inLeftCheckinCell:)]) {
+            [weakSelf.delegate retweetImage:image inLeftCheckinCell:weakSelf];
         }
     };
+    
+    _btnCheckin = [YHCheckinBtn new];
+    [self.contentView addSubview:_btnCheckin];
+    
+    _lbMsg = [UILabel new];
+    _lbMsg.textColor      = [UIColor whiteColor];
+    _lbMsg.numberOfLines  = 0;
+    _lbMsg.font           = [UIFont systemFontOfSize:14.0];
+    [self.contentView addSubview:_lbMsg];
+    
+    _lbPosition = [UILabel new];
+    _lbPosition.textColor = RGBCOLOR(155, 155, 155);
+    _lbPosition.font      = [UIFont systemFontOfSize:11.0];
+    [self.contentView addSubview:_lbPosition];
     
     [self layoutUI];
 }
 
 - (void)layoutUI{
     __weak typeof(self) weakSelf = self;
-   [self layoutCommonUI];
-
+    [self layoutCommonUI];
+    
     
     [self.lbName mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.imgvAvatar.mas_right).offset(10);
     }];
-
+    
     [self.imgvAvatar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.btnCheckBox.mas_right).offset(5);
     }];
@@ -73,18 +91,33 @@
         make.size.mas_equalTo(CGSizeMake(113, 113));
     }];
     
-    self.hyb_lastViewInCell = _imgvContent;
+    [_lbMsg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.imgvContent.mas_left).offset(5);
+        make.top.equalTo(weakSelf.imgvContent.mas_top).offset(5);
+        make.right.lessThanOrEqualTo(weakSelf.imgvContent.mas_right).offset(5);
+        make.bottom.lessThanOrEqualTo(weakSelf.imgvContent.mas_bottom);
+    }];
+    
+    [_btnCheckin mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.imgvContent.mas_left);
+        make.top.equalTo(weakSelf.imgvContent.mas_bottom).offset(5);
+        make.size.mas_equalTo(CGSizeMake(40, 20));
+    }];
+    
+    [_lbPosition mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.btnCheckin.mas_right).offset(5);
+        make.centerY.equalTo(weakSelf.btnCheckin.mas_centerY);
+        make.right.lessThanOrEqualTo(weakSelf.contentView).offset(-50);
+    }];
+    
+    self.hyb_lastViewInCell = _btnCheckin;
     self.hyb_bottomOffsetToCell = 10;
 }
 
 #pragma mark - Super
 
 - (void)onAvatarGesture:(UIGestureRecognizer *)aRec{
-    //    if (aRec.state == UIGestureRecognizerStateEnded) {
-    //        if (_delegate && [_delegate respondsToSelector:@selector(tapLeftAvatar:)]) {
-    //            [_delegate tapLeftAvatar:nil];
-    //        }
-    //    }
+
 }
 
 - (void)setupModel:(YHChatModel *)model{
@@ -93,38 +126,25 @@
     self.lbTime.text    = self.model.createTime;
     [self.imgvAvatar sd_setImageWithURL:self.model.speakerAvatar placeholderImage:[UIImage imageNamed:@"common_avatar_80px"]];
     
-    //消息图片下载
-    if (self.model.msgContent && self.model.msgType == 1) {
-        NSURL *thumbUrl = [NSURL URLWithString:self.model.picModel.thumbPicUrl];
+    //签到图片下载
+    if (self.model.msgContent && self.model.msgType == 4) {
+        NSURL *thumbUrl = [NSURL URLWithString:self.model.checkinModel.thumbPicUrl];
         [_imgvContent sd_setImageWithURL:thumbUrl placeholderImage:[UIImage imageNamed:@"chat_img_defaultPhoto"] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-            
-//            [self updateImageCellHeightWith:image maxSize:CGSizeMake(200, 200)];
-            
         }];
+        
+        _lbMsg.text      = self.model.checkinModel.msg;
+        _lbPosition.text = self.model.checkinModel.position;
     }
-
+    
 }
 
-- (void)updateImageCellHeightWith:(UIImage *)image maxSize:(CGSize)maxSize{
-    WeakSelf
-    CGSize size = [UIImage handleImgSize:image.size maxSize:maxSize];
-    image = [UIImage imageArrowWithSize:size image:image isSender:NO];
-    weakSelf.imgvContent.image = image;
-    
-    
-    [_imgvContent mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.lbName.mas_bottom).offset(5);
-        make.left.equalTo(weakSelf.imgvAvatar.mas_right).offset(10);
-        make.size.mas_equalTo(image.size);
-    }];
-}
 
 #pragma mark - Private
 
 #pragma mark - Gesture
 - (void)gestureOnContent:(UIGestureRecognizer *)aGes{
     if (aGes.state == UIGestureRecognizerStateEnded) {
-       
+        
         YHPhotoBrowserView *browser = [[YHPhotoBrowserView alloc] init];
         browser.currentImageView = _imgvContent;
         browser.delegate = self;
@@ -136,7 +156,7 @@
 
 - (NSURL *)photoBrowser:(YHPhotoBrowserView *)browser highQualityImageURLForIndex:(NSInteger)index
 {
-    return [NSURL URLWithString:self.model.picModel.oriPicUrl];
+    return [NSURL URLWithString:self.model.checkinModel.oriPicUrl];
 }
 
 - (UIImage *)photoBrowser:(YHPhotoBrowserView *)browser placeholderImageForIndex:(NSInteger)index

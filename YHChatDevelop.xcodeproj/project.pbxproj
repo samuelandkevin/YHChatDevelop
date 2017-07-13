@@ -162,6 +162,11 @@
 		ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */; };
 		ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */; };
 		ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */; };
+		ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CCA1F17154B00F23433 /* CellChatCheckinLeft.m */; };
+		ACE13CCE1F17156300F23433 /* CellChatCheckinRight.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CCD1F17156300F23433 /* CellChatCheckinRight.m */; };
+		ACE13CD41F171AAE00F23433 /* YHCheckinBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD31F171AAE00F23433 /* YHCheckinBtn.m */; };
+		ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD61F17450100F23433 /* YHCheckinModel.m */; };
+		ACE13CDA1F17565000F23433 /* YHPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD91F17565000F23433 /* YHPicModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -460,6 +465,16 @@
 		ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMsgLogVC.m; sourceTree = "<group>"; };
 		ACE13CC61F16F7FC00F23433 /* YHVisitorChatDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVisitorChatDetailVC.h; sourceTree = "<group>"; };
 		ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVisitorChatDetailVC.m; sourceTree = "<group>"; };
+		ACE13CC91F17154B00F23433 /* CellChatCheckinLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellChatCheckinLeft.h; sourceTree = "<group>"; };
+		ACE13CCA1F17154B00F23433 /* CellChatCheckinLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellChatCheckinLeft.m; sourceTree = "<group>"; };
+		ACE13CCC1F17156300F23433 /* CellChatCheckinRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellChatCheckinRight.h; sourceTree = "<group>"; };
+		ACE13CCD1F17156300F23433 /* CellChatCheckinRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellChatCheckinRight.m; sourceTree = "<group>"; };
+		ACE13CD21F171AAE00F23433 /* YHCheckinBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCheckinBtn.h; sourceTree = "<group>"; };
+		ACE13CD31F171AAE00F23433 /* YHCheckinBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCheckinBtn.m; sourceTree = "<group>"; };
+		ACE13CD51F17450100F23433 /* YHCheckinModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCheckinModel.h; sourceTree = "<group>"; };
+		ACE13CD61F17450100F23433 /* YHCheckinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCheckinModel.m; sourceTree = "<group>"; };
+		ACE13CD81F17565000F23433 /* YHPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPicModel.h; sourceTree = "<group>"; };
+		ACE13CD91F17565000F23433 /* YHPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPicModel.m; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -919,10 +934,14 @@
 				ACC9ADFC1F1322DB00A5FF88 /* YHChatListModel.m */,
 				ACC9ADFD1F1322DB00A5FF88 /* YHChatModel.h */,
 				ACC9ADFE1F1322DB00A5FF88 /* YHChatModel.m */,
+				ACE13CD81F17565000F23433 /* YHPicModel.h */,
+				ACE13CD91F17565000F23433 /* YHPicModel.m */,
 				ACC9ADFF1F1322DB00A5FF88 /* YHFileModel.h */,
 				ACC9AE001F1322DB00A5FF88 /* YHFileModel.m */,
 				ACC9AE011F1322DB00A5FF88 /* YHGIFModel.h */,
 				ACC9AE021F1322DB00A5FF88 /* YHGIFModel.m */,
+				ACE13CD51F17450100F23433 /* YHCheckinModel.h */,
+				ACE13CD61F17450100F23433 /* YHCheckinModel.m */,
 				ACC9AE031F1322DB00A5FF88 /* YHGroupInfo.h */,
 				ACC9AE041F1322DB00A5FF88 /* YHGroupInfo.m */,
 				ACC9AE051F1322DB00A5FF88 /* YHGroupMember.h */,
@@ -1016,6 +1035,8 @@
 				ACC9AE501F1322DC00A5FF88 /* ExpressionKeyboard */,
 				ACC9AE5C1F1322DC00A5FF88 /* YHChatButton.h */,
 				ACC9AE5D1F1322DC00A5FF88 /* YHChatButton.m */,
+				ACE13CD21F171AAE00F23433 /* YHCheckinBtn.h */,
+				ACE13CD31F171AAE00F23433 /* YHCheckinBtn.m */,
 				ACC9AE5E1F1322DC00A5FF88 /* YHChatImageView.h */,
 				ACC9AE5F1F1322DC00A5FF88 /* YHChatImageView.m */,
 				ACC9AE601F1322DC00A5FF88 /* YHChatLabel.h */,
@@ -1061,6 +1082,10 @@
 				ACC9AE4D1F1322DC00A5FF88 /* CellChatVoiceLeft.m */,
 				ACC9AE4E1F1322DC00A5FF88 /* CellChatVoiceRight.h */,
 				ACC9AE4F1F1322DC00A5FF88 /* CellChatVoiceRight.m */,
+				ACE13CC91F17154B00F23433 /* CellChatCheckinLeft.h */,
+				ACE13CCA1F17154B00F23433 /* CellChatCheckinLeft.m */,
+				ACE13CCC1F17156300F23433 /* CellChatCheckinRight.h */,
+				ACE13CCD1F17156300F23433 /* CellChatCheckinRight.m */,
 			);
 			path = ChatCell;
 			sourceTree = "<group>";
@@ -1360,6 +1385,7 @@
 				AC51FFFA1EFB67B5005EAE4F /* NSObject+MJProperty.m in Sources */,
 				AC51FFE41EFB67B5005EAE4F /* YHFileTool.m in Sources */,
 				ACC9ACD31F13193700A5FF88 /* YHConfig.m in Sources */,
+				ACE13CCE1F17156300F23433 /* CellChatCheckinRight.m in Sources */,
 				ACC9ADE51F1322A300A5FF88 /* YHPopMenu.swift in Sources */,
 				ACC9AEA61F1322DC00A5FF88 /* CellChatTextLeft.m in Sources */,
 				ACC9ACBF1F1311B900A5FF88 /* STMURLProtocol.m in Sources */,
@@ -1374,6 +1400,7 @@
 				AC51FF9C1EFB67B5005EAE4F /* UIView+Extension.m in Sources */,
 				ACC9AE921F1322DC00A5FF88 /* YHShootVC.m in Sources */,
 				ACC9AE8A1F1322DC00A5FF88 /* YHUserInfo.m in Sources */,
+				ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */,
 				ACC9AE861F1322DC00A5FF88 /* YHGroupMember.m in Sources */,
 				ACC9ACCC1F1314CB00A5FF88 /* YHProtocol.swift in Sources */,
 				AC604ABC1F03444A00B8D8B4 /* NetManager+Profile.m in Sources */,
@@ -1421,6 +1448,7 @@
 				AC51FFF71EFB67B5005EAE4F /* NSObject+MJClass.m in Sources */,
 				ACC9AE841F1322DC00A5FF88 /* YHGIFModel.m in Sources */,
 				AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */,
+				ACE13CDA1F17565000F23433 /* YHPicModel.m in Sources */,
 				AC51FFE31EFB67B5005EAE4F /* SwiftExtension.swift in Sources */,
 				AC51FF981EFB67B5005EAE4F /* UIBarButtonItem+Custom.m in Sources */,
 				ACC9AED51F134CFE00A5FF88 /* YHCellWave.m in Sources */,
@@ -1433,6 +1461,7 @@
 				ACC9AEBC1F1322DC00A5FF88 /* YHWGManager.m in Sources */,
 				AC51FFE51EFB67B5005EAE4F /* YHPhotoPicker.swift in Sources */,
 				ACC9AE831F1322DC00A5FF88 /* YHFileModel.m in Sources */,
+				ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */,
 				ACC9AE7F1F1322DC00A5FF88 /* DataParser.m in Sources */,
 				ACC9AEA31F1322DC00A5FF88 /* CellChatImageLeft.m in Sources */,
 				AC51FF961EFB67B5005EAE4F /* NSDate+Extension.m in Sources */,
@@ -1459,6 +1488,7 @@
 				ACC9AEA71F1322DC00A5FF88 /* CellChatTextRight.m in Sources */,
 				AC51FFFC1EFB67B5005EAE4F /* OpenUDID.m in Sources */,
 				ACC9AE821F1322DC00A5FF88 /* YHChatModel.m in Sources */,
+				ACE13CD41F171AAE00F23433 /* YHCheckinBtn.m in Sources */,
 				ACC9AE941F1322DC00A5FF88 /* VideoPlayOperation.m in Sources */,
 				ACC9AE9E1F1322DC00A5FF88 /* CellChatBase.m in Sources */,
 				ACC9AE8C1F1322DC00A5FF88 /* YHWorkExperienceModel.m in Sources */,

@@ -202,7 +202,7 @@
                            @"gif[http://file.digitaling.com/eImg/uimages/20150818/1439870587358907.gif][400_158]",
                            @"gif[http://file.digitaling.com/eImg/uimages/20150818/1439870563878858.gif][500_281]"];
     int giflength = arc4random() % gifMsgArr.count;
-    if (model.msgType == 4) {
+    if (model.msgType == 5) {
         NSString *gifUrlStr = gifMsgArr[giflength];
         model.msgContent = gifUrlStr;
         

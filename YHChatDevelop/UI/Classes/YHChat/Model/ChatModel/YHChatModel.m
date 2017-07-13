@@ -22,13 +22,20 @@
 }
 
 + (NSDictionary *)yh_getClassForKeyIsObject{
-    return @{@"fileModel":[YHFileModel class],
-             @"gifModel":[YHGIFModel class]};
+    
+    return @{
+             @"picModel":[YHPicModel class],
+             @"fileModel":[YHFileModel class],
+             @"gifModel":[YHGIFModel class],
+             @"checkinModel":[YHCheckinModel class]};
 }
 
 + (NSDictionary *)yh_replacedKeyFromDictionaryWhenPropertyIsObject{
-    return @{@"fileModel":[NSString stringWithFormat:@"fileModel%@",YHDB_AppendingID],
-             @"gifModel":[NSString stringWithFormat:@"gifModel%@",YHDB_AppendingID]};
+    return @{
+             @"picModel":[NSString stringWithFormat:@"picModel%@",YHDB_AppendingID],
+             @"fileModel":[NSString stringWithFormat:@"fileModel%@",YHDB_AppendingID],
+             @"gifModel":[NSString stringWithFormat:@"gifModel%@",YHDB_AppendingID],
+             @"checkinModel":[NSString stringWithFormat:@"checkinModel%@",YHDB_AppendingID]};
 }
 
 

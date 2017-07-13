@@ -34,13 +34,15 @@ const float kCheckBoxWidth = 30;//勾选框宽高
     
     
     _viewTimeBG = [UIView new];
+    _viewTimeBG.layer.cornerRadius  = 3;
+    _viewTimeBG.layer.masksToBounds = YES;
     _viewTimeBG.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
     [self.contentView addSubview:_viewTimeBG];
     
     _lbTime = [UILabel new];
     _lbTime.textColor = [UIColor whiteColor];
     _lbTime.textAlignment = NSTextAlignmentCenter;
-    _lbTime.font = [UIFont systemFontOfSize:14.0];
+    _lbTime.font = [UIFont systemFontOfSize:12.0];
     [_viewTimeBG addSubview:_lbTime];
     
     

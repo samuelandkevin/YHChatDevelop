@@ -190,15 +190,17 @@
 
 #pragma mark - Setter
 - (void)setModel:(YHChatListModel *)model{
-    _model = model;
+    _model       = model;
     _lbName.text = _model.sessionUserName;
-    
     
     _lbTime.text = _model.creatTime;
     if(_model.status == 1){
         //撤回
         NSString *msg = @"撤回一条消息";
         switch (_model.msgType) {
+            case YHMessageType_Checkin:
+                msg = @"撤回一个签到";
+                break;
             case   YHMessageType_Image:
                 msg = @"撤回一张图片";
                 break;
@@ -216,6 +218,9 @@
         //未撤回
         NSString *msg = _model.lastContent;
         switch (_model.msgType) {
+            case YHMessageType_Checkin:
+                msg = @"[签到]";
+                break;
             case   YHMessageType_Image:
                 msg = @"[图片]";
                 break;

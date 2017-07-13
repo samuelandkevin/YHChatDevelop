@@ -32,7 +32,7 @@
 #import "CardDetailViewController.h"
 
 @interface YHChatDetailVC ()<UITableViewDelegate,UITableViewDataSource,YHExpressionKeyboardDelegate,CellChatTextLeftDelegate,CellChatTextRightDelegate,CellChatVoiceLeftDelegate,CellChatVoiceRightDelegate,CellChatImageLeftDelegate,CellChatImageRightDelegate,CellChatBaseDelegate,
-CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefreshTableViewDelegate>{
+CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,CellChatCheckinRightDelegate,YHPhotoPickerDelegate,YHRefreshTableViewDelegate>{
     int  _currentRequestPage;  //当前请求页面
     BOOL _noMoreDataInDB;      //数据库无更多数据
     YHChatModel *_lastDataInDB;//上一条在数据库的聊天记录
@@ -199,6 +199,20 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
         }
     }];
     return YES;
+}
+
+#pragma mark - @protocol CellChatCheckinLeftDelegate
+- (void)retweetImage:(UIImage *)image inLeftCheckinCell:(CellChatCheckinLeft *)leftCheckinCell{
+
+}
+
+#pragma mark - @protocol CellChatCheckinRightDelegate
+- (void)retweetImage:(UIImage *)image inRightCheckinCell:(CellChatCheckinRight *)rightCheckinCell{
+
+}
+
+- (void)withDrawImage:(UIImage *)image inRightCheckinCell:(CellChatCheckinRight *)rightCheckinCell{
+
 }
 
 
@@ -473,6 +487,25 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
                     return cell;
                 }
                 
+            }else if(model.msgType == YHMessageType_Checkin){
+            
+                if (model.direction == 0) {
+                    CellChatCheckinRight *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CellChatCheckinRight class])];
+                    cell.delegate     = self;
+                    cell.baseDelegate = self;
+                    cell.showCheckBox = _showCheckBox;
+                    [cell setupModel:model];
+                    return cell;
+                }else{
+                    CellChatCheckinLeft *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CellChatCheckinLeft class])];
+                    cell.delegate     = self;
+                    cell.baseDelegate = self;
+                    cell.showCheckBox = _showCheckBox;
+                    [cell setupModel:model];
+                    return cell;
+                }
+                
+                
             }else if (model.msgType == YHMessageType_GIF){
                 
                 if (model.direction == 0) {
@@ -532,10 +565,6 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-
 }
 
 
@@ -857,6 +886,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
             NSArray *cacheList = obj;
             if (cacheList.count) {
                 
+                
                 [weakSelf.dataArray insertObjects:cacheList atIndex:0];
                 
                 if (cacheList.count < lengthForEveryRequest) {
@@ -870,8 +900,15 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,YHPhotoPickerDelegate,YHRefre
                 //获取当前页
                 _lastDataInDB        = cacheList.firstObject;
                 _currentRequestPage  = _lastDataInDB.curReqPage;
+                
+                NSUInteger row = weakSelf.dataArray.count > cacheList.count ? ((cacheList.count-1 > 0) ?cacheList.count-1:0):0;
+
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
+                    if (row<weakSelf.dataArray.count) {
+                        [weakSelf.tableView scrollToRow:row inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
+                    }
+                    
                     if (complete) {
                         complete(YES,nil);
                     }

@@ -441,9 +441,16 @@
         model.msgType      = [dict[@"msgType"] intValue];
         model.direction    = [dict[@"direction"] intValue];
         model.status       = [dict[@"status"] intValue];
-        if (model.msgType == YHMessageType_Doc) {
+        if (model.msgType == YHMessageType_Image) {
+            model.picModel = [self parsePicModelWithString:model.msgContent];
+        }
+        else if (model.msgType == YHMessageType_Doc) {
            model.fileModel = [self parseFileModelWithfileStr:model.msgContent];
         }
+        else if (model.msgType == YHMessageType_Checkin) {
+            model.checkinModel = [self parseCheckinModelWithString:model.msgContent];
+        }
+        
     }
     return model;
 }
@@ -611,7 +618,23 @@
     return model;
 }
 
+- (YHPicModel *)parsePicModelWithString:(NSString *)picStr{
+    YHPicModel *picModel = [YHPicModel new];
+    if (picStr) {
+        NSString *oriPicUrl = [picStr stringByReplacingOccurrencesOfString:@"img[" withString:@""];
+        oriPicUrl = [oriPicUrl stringByReplacingOccurrencesOfString:@"]" withString:@""];
+        
+        if ([oriPicUrl hasSuffix:@".gif"]) {
+            DDLog(@"is gif!!");
+        }
+        NSString *thumbPicUrl = [NSString stringWithFormat:@"%@!m200x200.png",oriPicUrl];
+        picModel.oriPicUrl   = oriPicUrl;
+        picModel.thumbPicUrl = thumbPicUrl;
+    }
+    return picModel;
+}
 
+//解析文件模型
 - (YHFileModel *)parseFileModelWithfileStr:(NSString *)fileStr{
     YHFileModel *fileModel = [YHFileModel new];
     if (fileStr) {
@@ -662,6 +685,35 @@
         fileModel.filePathInLocal = exist?filePathInLocal:nil;
     }
     return fileModel;
+}
+
+//解析签到模型
+- (YHCheckinModel *)parseCheckinModelWithString:(NSString *)checkinStr{
+    YHCheckinModel *model = [YHCheckinModel new];
+  
+    NSString *picUrlStr = [checkinStr stringByReplacingOccurrencesOfString:@"checkin(" withString:@""];
+    NSUInteger piclocEnd = [picUrlStr rangeOfString:@")"].location;
+    if (piclocEnd != NSNotFound) {
+        picUrlStr = [picUrlStr substringToIndex:piclocEnd];
+        NSString *oriPicUrl = [NSString stringWithFormat:@"https:%@",picUrlStr];
+        NSString *thumbPicUrl = [NSString stringWithFormat:@"%@!m150x150.png",oriPicUrl];
+        model.oriPicUrl   = oriPicUrl;
+        model.thumbPicUrl = thumbPicUrl;
+    }
+    NSUInteger msgLoc = [checkinStr rangeOfString:@")["].location;
+    if (msgLoc != NSNotFound) {
+        NSString *msg2 = [checkinStr substringFromIndex:msgLoc+2];
+        NSArray *arrStrs = [msg2 componentsSeparatedByString:@"]["];
+        if (arrStrs && arrStrs.count == 2) {
+            NSString *msg = arrStrs[0];
+            NSString *position = arrStrs[1];
+            position = [position stringByReplacingOccurrencesOfString:@"]" withString:@""];
+            model.msg      = msg;
+            model.position = position;
+        }
+        
+    }
+    return model;
 }
 
 

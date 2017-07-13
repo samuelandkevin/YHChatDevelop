@@ -18,6 +18,8 @@
 #import "YHCommentData.h"
 #import "YHExpressionHelper.h"
 #import "YHGroupInfo.h"
+#import "YHCheckinModel.h"
+#import "YHPicModel.h"
 
 @interface DataParser : NSObject
 
@@ -41,10 +43,6 @@
  */
 - (YHAboutModel *)parseAboutModelWithDict:(NSDictionary *)dict;
 
-/**
- *  解析工作圈模型列表
- */
-- (NSArray<YHWorkGroup*> *)parseWorkGroupListWithData:(NSArray<NSDictionary *> *)listData curReqPage:(int)curReqPage;
 
 /**
  *  解析用户列表

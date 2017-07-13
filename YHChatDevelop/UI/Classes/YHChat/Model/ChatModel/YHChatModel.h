@@ -12,6 +12,8 @@
 #import "YHChatTextLayout.h"
 #import "YHFileModel.h"
 #import "YHGIFModel.h"
+#import "YHCheckinModel.h"
+#import "YHPicModel.h"
 
 #pragma mark - 聊天记录Model
 @interface YHChatModel : NSObject
@@ -33,7 +35,7 @@
 @property (nonatomic,copy) NSURL *speakerAvatarOri;//发布者头像原图
 @property (nonatomic,assign) BOOL isRead;          //是否已读
 @property (nonatomic,assign) int timestamp;        //时间戳
-@property (nonatomic,assign) int msgType;          //消息类型 // 0是文本 1是图片 2是语音 3是文件 4是gif
+@property (nonatomic,assign) int msgType;          //消息类型 // 0是文本 1是图片 2是语音 3是文件 4是签到 5是gif
 @property (nonatomic,assign) int direction;
 @property (nonatomic,assign) int status; //消息状态（撤回：1,未撤回：0）
 
@@ -48,9 +50,11 @@
 @property (nonatomic,assign) BOOL isSelected;  //被选中
 @property (nonatomic,assign) BOOL showCheckBox;//显示勾选框
 @property (nonatomic,strong) YHChatTextLayout *layout;
-@property (nonatomic,assign) int  curReqPage;//记录当前请求页码
+@property (nonatomic,assign) int  curReqPage;  //记录当前请求页码
+@property (nonatomic,strong) YHPicModel  *picModel;
 @property (nonatomic,strong) YHFileModel *fileModel;
 @property (nonatomic,strong) YHGIFModel  *gifModel;
+@property (nonatomic,strong) YHCheckinModel *checkinModel;
 @property (nonatomic,strong) UIImage *imageMsg;//发消息的图片(note:从本地获取一张图片,后将此图片发送)
 
 #pragma mark - Public Method

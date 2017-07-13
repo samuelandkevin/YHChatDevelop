@@ -583,10 +583,12 @@
         //存SQL语句
         NSString *tableName = tableNameChatLog(sessionID);
         NSString *chatSql = [YHChatModel yh_sqlForCreatTable:tableName primaryKey:@"id"];
+        NSString *picSql = [YHPicModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
         NSString *fileSql = [YHFileModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
         NSString *gifSql  = [YHGIFModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
-        if (chatSql && fileSql && gifSql) {
-            model.sqlCreatTable = @[chatSql,fileSql,gifSql];
+        NSString *checkinSql = [YHCheckinModel yh_sqlForCreateTableWithPrimaryKey:@"id"];
+        if (picSql && chatSql && fileSql && gifSql && checkinSql) {
+            model.sqlCreatTable = @[picSql,chatSql,fileSql,gifSql,checkinSql];
         }
         
         [self.chatLogArray addObject:model];
