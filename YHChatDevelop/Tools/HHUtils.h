@@ -1,6 +1,6 @@
 //
 //  HHUtils.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by samuelandkevin on 14-6-26.
 //  Copyright (c) 2014年 samuelandkevin.,Ltd. All rights reserved.

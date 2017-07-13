@@ -1,8 +1,8 @@
 //
 //  YHCellWave.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 2017/4/19.
+//  Created by samuelandkevin on 2017/4/19.
 //  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 

@@ -1,6 +1,6 @@
 //
 //  YHFileTool.h
-//  YHSOFT
+//  samuelandkevin
 //
 //  Created by samuelandkevin on 16/9/17.
 //  Copyright (c) 2016年 samuelandkevin Co.,Ltd. All rights reserved.

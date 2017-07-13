@@ -1,9 +1,9 @@
 //
 //  HHTagsContainer.h
-//  YHSOFT
+//  samuelandkevin
 //
 //  Created by kun on 16/4/20.
-//  Copyright © 2016年 kun Co.,Ltd. All rights reserved.
+//  Copyright © 2016年 samuelandkevin Co.,Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

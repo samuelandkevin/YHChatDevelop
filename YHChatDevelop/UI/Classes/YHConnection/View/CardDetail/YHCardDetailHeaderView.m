@@ -1,9 +1,9 @@
 //
 //  YHCardDetailHeaderView.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by kun on 16/6/10.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "YHCardDetailHeaderView.h"

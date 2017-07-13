@@ -1,9 +1,9 @@
 //
 //  OCtoSwiftUtil.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/11/3.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/11/3.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //  OC转Swift工具
 
 #import <Foundation/Foundation.h>

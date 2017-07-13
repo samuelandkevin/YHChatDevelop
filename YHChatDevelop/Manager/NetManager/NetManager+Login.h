@@ -2,7 +2,7 @@
 //  NetManager+Login.h
 //  YHChat
 //
-//  Created by YHIOS002 on 2017/6/14.
+//  Created by samuelandkevin on 2017/6/14.
 //  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 

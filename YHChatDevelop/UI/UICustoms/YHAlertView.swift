@@ -1,9 +1,9 @@
 //
 //  YHAlertView.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by samuelandkevin on 2017/5/12.
-//  Copyright © 2017年 YHSoft. All rights reserved.
+//  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 
 import Foundation

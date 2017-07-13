@@ -3,7 +3,7 @@
 //  testCustomerNavigationBar
 //
 //  Created by YHIOS003 on 16/4/20.
-//  Copyright © 2016年 GDYHSoft. All rights reserved.
+//  Copyright © 2016年 GDsamuelandkevin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

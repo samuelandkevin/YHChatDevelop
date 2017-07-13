@@ -3,7 +3,7 @@
 //  正确圆角设置方式
 //
 //  Created by apple on 16/3/2.
-//  Copyright © 2016年 kun. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "UIView+DRCorner.h"

@@ -1,9 +1,9 @@
 //
 //  YHCompanyInfo.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 2017/5/25.
-//  Copyright © 2017年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 2017/5/25.
+//  Copyright © 2017年 samuelandkevin. All rights reserved.
 //  企业用户信息
 
 #import "YHCompanyInfo.h"

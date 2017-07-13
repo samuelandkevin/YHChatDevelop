@@ -2,8 +2,8 @@
 //  NSObject+Runtime.m
 //
 //
-//  Created by YHIOS002 on 16/11/9.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/11/9.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "NSObject+YHDBRuntime.h"

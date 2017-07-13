@@ -1,9 +1,9 @@
 //
 //  YHNetManager.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/12/2.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/12/2.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "NetManager.h"

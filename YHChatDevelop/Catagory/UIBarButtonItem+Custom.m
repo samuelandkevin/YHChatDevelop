@@ -1,9 +1,9 @@
 //
 //  UIBarButtonItem+Custom.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by hkp on 16/11/30.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "UIBarButtonItem+Custom.h"

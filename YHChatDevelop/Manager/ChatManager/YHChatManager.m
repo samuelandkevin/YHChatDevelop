@@ -40,7 +40,7 @@
     
     _socket = [[SRWebSocket alloc] initWithURLRequest:
                            [NSURLRequest requestWithURL:url]];
-    _socketQueue = dispatch_queue_create("com.yhsoft.sockeQueue", DISPATCH_QUEUE_SERIAL);
+    _socketQueue = dispatch_queue_create("com.samuelandkevin.sockeQueue", DISPATCH_QUEUE_SERIAL);
     _socket.delegate = self;
     [_socket open];
 }

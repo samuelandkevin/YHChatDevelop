@@ -12,7 +12,6 @@
 		AC5100041EFB6E39005EAE4F /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5100031EFB6E39005EAE4F /* Launch Screen.storyboard */; };
 		AC51FE871EFB5B1A005EAE4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FE861EFB5B1A005EAE4F /* main.m */; };
 		AC51FE8A1EFB5B1A005EAE4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FE891EFB5B1A005EAE4F /* AppDelegate.m */; };
-		AC51FE8D1EFB5B1A005EAE4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FE8C1EFB5B1A005EAE4F /* ViewController.m */; };
 		AC51FE901EFB5B1A005EAE4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC51FE8E1EFB5B1A005EAE4F /* Main.storyboard */; };
 		AC51FE921EFB5B1B005EAE4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC51FE911EFB5B1B005EAE4F /* Assets.xcassets */; };
 		AC51FF961EFB67B5005EAE4F /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FE9E1EFB67B5005EAE4F /* NSDate+Extension.m */; };
@@ -162,6 +161,7 @@
 		ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */; };
 		ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */; };
 		ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */; };
+		ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,8 +174,6 @@
 		AC51FE861EFB5B1A005EAE4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AC51FE881EFB5B1A005EAE4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AC51FE891EFB5B1A005EAE4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AC51FE8B1EFB5B1A005EAE4F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AC51FE8C1EFB5B1A005EAE4F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AC51FE8F1EFB5B1A005EAE4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC51FE911EFB5B1B005EAE4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC51FE961EFB5B1B005EAE4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -460,6 +458,8 @@
 		ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCardSettingVC.swift; sourceTree = "<group>"; };
 		ACC9AEE31F135BE200A5FF88 /* YHMsgLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMsgLogVC.h; sourceTree = "<group>"; };
 		ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMsgLogVC.m; sourceTree = "<group>"; };
+		ACE13CC61F16F7FC00F23433 /* YHVisitorChatDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVisitorChatDetailVC.h; sourceTree = "<group>"; };
+		ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVisitorChatDetailVC.m; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -507,8 +507,6 @@
 				AC51FF6B1EFB67B5005EAE4F /* Vendors */,
 				AC51FE881EFB5B1A005EAE4F /* AppDelegate.h */,
 				AC51FE891EFB5B1A005EAE4F /* AppDelegate.m */,
-				AC51FE8B1EFB5B1A005EAE4F /* ViewController.h */,
-				AC51FE8C1EFB5B1A005EAE4F /* ViewController.m */,
 				AC5100011EFB6841005EAE4F /* YHChatDevelop-PrefixHeader.pch */,
 				AC5100021EFB68B9005EAE4F /* YHChatDevelop-Bridging-Header.h */,
 				AC51FE8E1EFB5B1A005EAE4F /* Main.storyboard */,
@@ -577,6 +575,8 @@
 				ACC9ACD21F13193700A5FF88 /* YHConfig.m */,
 				AC51FF481EFB67B5005EAE4F /* TestData.h */,
 				AC51FF491EFB67B5005EAE4F /* TestData.m */,
+				ACE13CC61F16F7FC00F23433 /* YHVisitorChatDetailVC.h */,
+				ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */,
 				AC51FF4A1EFB67B5005EAE4F /* YHDebug.h */,
 			);
 			path = TestData;
@@ -859,15 +859,15 @@
 		ACC9ADEF1F1322DB00A5FF88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ACC9ADF01F1322DB00A5FF88 /* Chat */,
+				ACC9ADF01F1322DB00A5FF88 /* YHChat */,
 				ACC9AEBF1F134B4500A5FF88 /* YHConnection */,
-				ACC9AE6C1F1322DC00A5FF88 /* Login */,
+				ACC9AE6C1F1322DC00A5FF88 /* YHLogin */,
 				ACC9AE701F1322DC00A5FF88 /* YHWorkGroup */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		ACC9ADF01F1322DB00A5FF88 /* Chat */ = {
+		ACC9ADF01F1322DB00A5FF88 /* YHChat */ = {
 			isa = PBXGroup;
 			children = (
 				ACC9ADF11F1322DB00A5FF88 /* Config */,
@@ -879,7 +879,7 @@
 				ACC9AE6A1F1322DC00A5FF88 /* YHChatListVC.h */,
 				ACC9AE6B1F1322DC00A5FF88 /* YHChatListVC.m */,
 			);
-			path = Chat;
+			path = YHChat;
 			sourceTree = "<group>";
 		};
 		ACC9ADF11F1322DB00A5FF88 /* Config */ = {
@@ -1090,14 +1090,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		ACC9AE6C1F1322DC00A5FF88 /* Login */ = {
+		ACC9AE6C1F1322DC00A5FF88 /* YHLogin */ = {
 			isa = PBXGroup;
 			children = (
 				ACC9AE6D1F1322DC00A5FF88 /* YHLoginInputViewController.h */,
 				ACC9AE6E1F1322DC00A5FF88 /* YHLoginInputViewController.m */,
 				ACC9AE6F1F1322DC00A5FF88 /* YHLoginInputViewController.xib */,
 			);
-			path = Login;
+			path = YHLogin;
 			sourceTree = "<group>";
 		};
 		ACC9AE701F1322DC00A5FF88 /* YHWorkGroup */ = {
@@ -1428,6 +1428,7 @@
 				AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */,
 				ACC9ADE81F1322A300A5FF88 /* YHUICommon.m in Sources */,
 				ACC9ACC81F1312F200A5FF88 /* OCtoSwiftUtil.m in Sources */,
+				ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */,
 				AC604AB71F03444A00B8D8B4 /* YHChatManager.m in Sources */,
 				ACC9AEBC1F1322DC00A5FF88 /* YHWGManager.m in Sources */,
 				AC51FFE51EFB67B5005EAE4F /* YHPhotoPicker.swift in Sources */,
@@ -1441,7 +1442,6 @@
 				ACC9ADE11F1322A300A5FF88 /* YHNavigationController.m in Sources */,
 				ACC9ADE91F1322A300A5FF88 /* YHWebViewController.m in Sources */,
 				ACC9AE8B1F1322DC00A5FF88 /* YHUserSetting.m in Sources */,
-				AC51FE8D1EFB5B1A005EAE4F /* ViewController.m in Sources */,
 				ACC9AE971F1322DC00A5FF88 /* YHAudioPlayer.m in Sources */,
 				ACC9AE881F1322DC00A5FF88 /* YHChatTextLayout.m in Sources */,
 				ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */,

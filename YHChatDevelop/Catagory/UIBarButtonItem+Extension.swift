@@ -1,9 +1,9 @@
 //
 //  UIBarButtonItem+Extension.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 2017/5/8.
-//  Copyright © 2017年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 2017/5/8.
+//  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 
 import Foundation

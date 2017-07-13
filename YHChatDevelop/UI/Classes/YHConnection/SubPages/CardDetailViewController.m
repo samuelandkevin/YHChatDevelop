@@ -2,8 +2,8 @@
 //  CardDetailViewController.m
 //  MyProject
 //
-//  Created by YHIOS002 on 16/4/14.
-//  Copyright © 2016年 kun. All rights reserved.
+//  Created by samuelandkevin on 16/4/14.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "CardDetailViewController.h"

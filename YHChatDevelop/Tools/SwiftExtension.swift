@@ -1,9 +1,9 @@
 //
 //  SwiftExtension.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by YHIOS003 on 2016/11/24.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 import UIKit

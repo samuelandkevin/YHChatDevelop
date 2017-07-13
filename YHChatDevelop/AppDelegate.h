@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  YHChatDevelop
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 2017/6/22.
+//  Created by samuelandkevin on 2017/6/22.
 //  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 

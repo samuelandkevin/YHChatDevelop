@@ -1,9 +1,9 @@
 //
 //  YHAboutModel.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/6/7.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/6/7.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

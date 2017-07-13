@@ -1,9 +1,9 @@
 //
 //  SqliteManager+Fris.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 17/1/3.
-//  Copyright © 2017年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 17/1/3.
+//  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 
 #import "SqliteManager+Fris.h"

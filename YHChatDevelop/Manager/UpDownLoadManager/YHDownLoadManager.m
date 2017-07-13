@@ -3,7 +3,7 @@
 //  samuelandkevin
 //
 //  Created by samuelandkevin on 17/1/12.
-//  Copyright © 2017年 YHSoft. All rights reserved.
+//  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 
 #import "YHDownLoadManager.h"
