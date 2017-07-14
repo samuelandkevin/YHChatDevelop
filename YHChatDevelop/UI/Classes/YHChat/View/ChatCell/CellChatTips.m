@@ -12,8 +12,7 @@
 #import "YHUserInfoManager.h"
 
 @interface CellChatTips()
-@property (nonatomic,strong) UILabel *lbTime;    //发言时间
-@property (nonatomic,strong) UIView  *viewTimeBG;//发言时间背景
+
 @property (nonatomic,strong) UILabel *lbContent; //提示信息
 @property (nonatomic,strong) UIView  *viewContentBG;//内容背景
 @end
@@ -33,19 +32,9 @@
 }
 
 - (void)setupUI{
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.contentView.backgroundColor = RGBCOLOR(239, 236, 236);
     
-    _viewTimeBG = [UIView new];
-    _viewTimeBG.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
-    [self.contentView addSubview:_viewTimeBG];
-    
-    _lbTime = [UILabel new];
-    _lbTime.textColor = [UIColor whiteColor];
-    _lbTime.textAlignment = NSTextAlignmentCenter;
-    _lbTime.font = [UIFont systemFontOfSize:14.0];
-    [_viewTimeBG addSubview:_lbTime];
-    
+    self.imgvAvatar.hidden = YES;
+    self.lbName.hidden     = YES;
     
     _viewContentBG = [UIView new];
     _viewContentBG.backgroundColor = [UIColor colorWithRed:221/255.0 green:221/255.0 blue:221/255.0 alpha:1.0];
@@ -62,17 +51,15 @@
 
 - (void)layoutUI{
     WeakSelf
-    [_lbTime mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(weakSelf.viewTimeBG);
+    [self layoutCommonUI];
+    
+    
+    [self.lbName mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.imgvAvatar.mas_right).offset(10);
     }];
     
-    [_viewTimeBG mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(weakSelf.lbTime.mas_left).offset(-5);
-        make.top.equalTo(weakSelf.lbTime.mas_top).offset(-5);
-        make.right.equalTo(weakSelf.lbTime.mas_right).offset(5);
-        make.bottom.equalTo(weakSelf.lbTime.mas_bottom).offset(5);
-        make.centerX.equalTo(weakSelf.contentView.mas_centerX);
-        make.top.equalTo(weakSelf.contentView.mas_top).offset(5);
+    [self.imgvAvatar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.btnCheckBox.mas_right).offset(5);
     }];
     
     
@@ -89,19 +76,22 @@
         make.top.equalTo(weakSelf.viewTimeBG.mas_bottom).offset(5);
     }];
     
-    self.hyb_lastViewInCell = _viewContentBG;
-    self.hyb_bottomOffsetToCell = 5;
+    self.hyb_lastViewsInCell = @[_viewContentBG,self.imgvAvatar];
+    self.hyb_bottomOffsetToCell = 10;
 }
 
-#pragma mark - Setter
-- (void)setModel:(YHChatModel *)model{
-    _model = model;
+#pragma mark - Super
+
+
+- (void)setupModel:(YHChatModel *)model{
+    [super setupModel:model];
+    
     NSString *name = model.speakerName;
     if ([model.speakerId isEqualToString:[YHUserInfoManager sharedInstance].userInfo.uid]) {
         name = @"你";
     }
     _lbContent.text = [NSString stringWithFormat:@"%@撤回了一条消息",name];
-    _lbTime.text    = self.model.createTime;
+    self.lbTime.text    = self.model.createTime;
 }
 
 

@@ -7,7 +7,6 @@
 //
 
 #import "YHChatDetailVC.h"
-#import "YHRefreshTableView.h"
 #import "UITableViewCell+HYBMasonryAutoCellHeight.h"
 #import "YHChatModel.h"
 #import "YHUserInfo.h"
@@ -32,7 +31,9 @@
 #import "CardDetailViewController.h"
 
 @interface YHChatDetailVC ()<UITableViewDelegate,UITableViewDataSource,YHExpressionKeyboardDelegate,CellChatTextLeftDelegate,CellChatTextRightDelegate,CellChatVoiceLeftDelegate,CellChatVoiceRightDelegate,CellChatImageLeftDelegate,CellChatImageRightDelegate,CellChatBaseDelegate,
-CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,CellChatCheckinRightDelegate,YHPhotoPickerDelegate,YHRefreshTableViewDelegate>{
+    CellChatFileLeftDelegate,CellChatFileRightDelegate,
+    CellChatCheckinLeftDelegate,CellChatCheckinRightDelegate,
+    YHPhotoPickerDelegate,YHChatTableViewDelegate>{
     int  _currentRequestPage;  //当前请求页面
     BOOL _noMoreDataInDB;      //数据库无更多数据
     YHChatModel *_lastDataInDB;//上一条在数据库的聊天记录
@@ -105,10 +106,10 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
     self.view.backgroundColor = RGBCOLOR(239, 236, 236);
     
     //tableview
-    self.tableView = [[YHRefreshTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    self.tableView = [[YHChatTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
-    self.tableView.enableLoadNew   = YES;
+    self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = RGBCOLOR(239, 236, 236);
     self.tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
@@ -422,7 +423,10 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
         if(model.status == 1){
             //消息撤回
             CellChatTips *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CellChatTips class])];
-            cell.model = model;
+            cell.baseDelegate = self;
+            cell.indexPath    = indexPath;
+            cell.showCheckBox = _showCheckBox;
+            [cell setupModel:model];
             return cell;
         }else{
             if (model.msgType == YHMessageType_Image){
@@ -543,8 +547,6 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
             }
 
         }
-        
-        
         
     }
     return [[UITableViewCell alloc] init];
@@ -691,18 +693,14 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
     [self _requestSendImage:compressImage];
 }
 
-#pragma mark - YHRefreshTableViewDelegate  上下拉刷新
-- (void)refreshTableViewLoadNew:(YHRefreshTableView *)view{
+#pragma mark - YHChatTableViewDelegate
+- (void)loadMoreData{
     if (_noMoreDataInDB && !self.dataArray.count) {
         [self _requestChatLogsFromNetWithLastChatLogModel:_lastDataInDB];
     }else{
         [self _loadFromDBWithLastChatLog:_lastDataInDB complete:^(BOOL success, id obj) {
         }];
     }
-}
-
-- (void)refreshTableViewLoadmore:(YHRefreshTableView *)view{
-    //空操作
 }
 
 #pragma mark - 网络请求
@@ -871,16 +869,15 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
 //从数据库加载聊天记录 lastChatLog:上一条聊天记录
 - (void)_loadFromDBWithLastChatLog:(YHChatModel *)lastChatLog complete:(NetManagerCallback)complete{
     
-    YHRefreshType refreshType = YHRefreshType_LoadNew;
+
     if (_noMoreDataInDB) {
-        [self.tableView loadFinish:refreshType];
-        [self.tableView setEnableLoadNew:NO];
+        [self.tableView setNoMoreData];
         return;
     }
  
     WeakSelf
     [[SqliteManager sharedInstance] queryChatLogTableWithType:_dbChatType sessionID:_sessionID lastChatLog:lastChatLog length:lengthForEveryRequest complete:^(BOOL success, id obj) {
-        [weakSelf.tableView loadFinish:refreshType];
+        [weakSelf.tableView loadFinish];
         
         if (success) {
             NSArray *cacheList = obj;
@@ -892,6 +889,7 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
                 if (cacheList.count < lengthForEveryRequest) {
                     //数据库无更多数据
                     _noMoreDataInDB = YES;
+                    [weakSelf.tableView setNoMoreData];
                 }else{
                     //数据库还有更多
                     _noMoreDataInDB = NO;
@@ -901,14 +899,9 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
                 _lastDataInDB        = cacheList.firstObject;
                 _currentRequestPage  = _lastDataInDB.curReqPage;
                 
-                NSUInteger row = weakSelf.dataArray.count > cacheList.count ? ((cacheList.count-1 > 0) ?cacheList.count-1:0):0;
-
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakSelf.tableView reloadData];
-                    if (row<weakSelf.dataArray.count) {
-                        [weakSelf.tableView scrollToRow:row inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
-                    }
-                    
+
                     if (complete) {
                         complete(YES,nil);
                     }
@@ -973,12 +966,10 @@ CellChatFileLeftDelegate,CellChatFileRightDelegate,CellChatCheckinLeftDelegate,C
 //从服务器加载聊天记录,lastChatLogModel:上一次加载的最后一条聊天记录
 - (void)_requestChatLogsFromNetWithLastChatLogModel:(YHChatModel *)lastChatLogModel{
     
-    YHRefreshType refreshType = YHRefreshType_LoadNew;
     QChatType qcType = self.model.isGroupChat?QChatType_Group:QChatType_Private;
     WeakSelf
-    [self.tableView loadBegin:refreshType];
     [[NetManager sharedInstance] postFetchChatLogWithType:qcType sessionID:self.model.sessionUserId timestamp:lastChatLogModel.createTime  complete:^(BOOL success, id obj) {
-        [self.tableView loadFinish:refreshType];
+        [weakSelf.tableView loadFinish];
         if (success) {
             NSArray *retArr = obj;
             if (retArr.count){

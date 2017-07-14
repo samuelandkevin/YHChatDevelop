@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
+
 @class YHChatListModel;
-@interface CellChatList : UITableViewCell
+@interface CellChatList : SWTableViewCell
 
 @property (nonatomic,strong) YHChatListModel *model;
+
+//更新置顶/取消置顶状态
+- (void)updateStickStatus:(BOOL)stick;
 @end

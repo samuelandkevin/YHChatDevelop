@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "YHChatModel.h"
 
-@interface CellChatTips : UITableViewCell
+@interface CellChatTips : CellChatBase
 
-@property (nonatomic,strong)YHChatModel *model;
+
 
 @end

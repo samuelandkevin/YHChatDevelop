@@ -24,11 +24,12 @@
 #import "SqliteManager+Chat.h"
 #import "YHVisitorChatDetailVC.h"
 
-@interface YHChatListVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface YHChatListVC ()<UITableViewDelegate,UITableViewDataSource,SWTableViewCellDelegate>
 @property (nonatomic,strong) YHRefreshTableView *tableView;
 @property (nonatomic,strong) NSMutableArray *dataArray;
 @property (nonatomic,strong) YHPopMenu *popView;
 @property (nonatomic,assign) BOOL rBtnSelected;
+
 @end
 
 @implementation YHChatListVC
@@ -171,7 +172,6 @@
 }
 
 
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -184,7 +184,8 @@
 
     CellChatList *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([CellChatList class])];
     if (indexPath.row < self.dataArray.count) {
-        cell.model = self.dataArray[indexPath.row];
+        cell.model    = self.dataArray[indexPath.row];
+        cell.delegate = self;
     }
     return cell;
 }
@@ -205,33 +206,94 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+}
+
+#pragma mark - @protocol SWTableViewCellDelegate
+
+// click event on left utility button
+- (void)swipeableTableViewCell:(CellChatList *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index{
     
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleDelete;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row < _dataArray.count && editingStyle == UITableViewCellEditingStyleDelete) {
-        
+// click event on right utility button
+- (void)swipeableTableViewCell:(CellChatList *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index{
+    YHChatListModel *selectedModel = cell.model;
+    NSUInteger row = [_dataArray indexOfObject:selectedModel];
+    if (!index) {
+        //置顶或取消置顶
         WeakSelf
-        YHChatListModel *model = _dataArray[indexPath.row];
-        
-        [[NetManager sharedInstance] postDeleteSessionWithID:model.chatId sessionUserID:model.sessionUserId complete:^(BOOL success, id obj) {
-            if(success){
+        [self requestMsgStickWithModel:selectedModel retryCount:3 complete:^(BOOL success, id obj) {
+            if (success) {
+                selectedModel.isStickTop = !selectedModel.isStickTop;
+                if (row < weakSelf.dataArray.count) {
+                    
+                    
+                    if (selectedModel.isStickTop){
+                        //数据置顶
+                        [weakSelf.dataArray removeObjectAtIndex:row];
+                        [weakSelf.dataArray insertObject:selectedModel atIndex:0];
+                        //更新UI
+                        [cell updateStickStatus:selectedModel.isStickTop];
+                        [cell setContentOffest:CGPointZero animated:NO];
+                        [weakSelf.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                    }else{
+                        
+                        //数据取消置顶
+                        NSUInteger toIndex = NSNotFound;
+                        for (int i=0;i<weakSelf.dataArray.count;i++) {
+                            YHChatListModel *aModel = weakSelf.dataArray[i];
+                            if(!aModel.isStickTop && ![aModel.chatId isEqualToString:selectedModel.chatId]){
+                                toIndex = i;
+                                break;
+                            }
+                        }
+                        
+                        toIndex = toIndex-1 >0 ? toIndex-1: 0;
+                        if (toIndex < weakSelf.dataArray.count){
+                            [weakSelf.dataArray exchangeObjectAtIndex:row withObjectAtIndex:toIndex];
+                            //更新UI
+                            [cell updateStickStatus:selectedModel.isStickTop];
+                            [cell setContentOffest:CGPointZero animated:NO];
+                            [weakSelf.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] toIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
+                        }
+                        
+                        
+                    }
+                    
+                }
                 
-                [weakSelf.dataArray removeObjectAtIndex:indexPath.row];
-                [weakSelf.tableView deleteRow:indexPath.row inSection:indexPath.section withRowAnimation:UITableViewRowAnimationLeft];
-                [[SqliteManager sharedInstance] deleteOneChatListModel:model uid:[YHUserInfoManager sharedInstance].userInfo.uid complete:^(BOOL success, id obj) {
-                    DDLog(@"删除数据库会话%@,%@",success?@"成功":@"失败",obj);
-                }];
-                DDLog(@"删除会话成功,%@",obj);
-            }else{
-                DDLog(@"删除会话失败,%@",obj);
             }
         }];
+    }else{
+        //删除
+        
+        
+        if (row < _dataArray.count) {
+            
+            WeakSelf
+            YHChatListModel *model = _dataArray[row];
+            [weakSelf.dataArray removeObjectAtIndex:row];
+            [weakSelf.tableView deleteRow:row inSection:0 withRowAnimation:UITableViewRowAnimationLeft];
+            [weakSelf requestDeleteChatSessionWithModel:model retryCount:3];
+           
+        }
+
     }
+}
+
+// utility button open/close event
+- (void)swipeableTableViewCell:(CellChatList *)cell scrollingToState:(SWCellState)state{
+    
+}
+
+// prevent multiple cells from showing utilty buttons simultaneously
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(CellChatList *)cell{
+    return YES;
+}
+
+// prevent cell(s) from displaying left/right utility buttons
+- (BOOL)swipeableTableViewCell:(CellChatList *)cell canSwipeToState:(SWCellState)state{
+    return YES;
 }
 
 #pragma mark - YHRefreshTableViewDelegate
@@ -290,6 +352,49 @@
         }];
     }
     
+}
+
+//消息置顶/取消置顶
+- (void)requestMsgStickWithModel:(YHChatListModel *)model retryCount:(int)retryCount complete:(NetManagerCallback)complete{
+    WeakSelf
+    __block int count = retryCount;
+    [[NetManager sharedInstance] postMsgStick:!model.isStickTop msgID:model.chatId complete:^(BOOL success, id obj) {
+        if (success) {
+            DDLog(@"%@成功",model.isStickTop?@"取消置顶":@"消息置顶");
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (complete) {
+                    complete(YES,model);
+                }
+            });
+        }else{
+            DDLog(@"消息置顶失败,%@",obj);
+            count --;
+            if (count>=0) {
+                [weakSelf requestMsgStickWithModel:model retryCount:retryCount complete:complete];
+            }
+        }
+    }];
+}
+
+//删除聊天会话
+- (void)requestDeleteChatSessionWithModel:(YHChatListModel *)model retryCount:(int)retryCount{
+    WeakSelf
+    __block int count = retryCount;
+    [[NetManager sharedInstance] postDeleteSessionWithID:model.chatId sessionUserID:model.sessionUserId complete:^(BOOL success, id obj) {
+        if(success){
+            
+            [[SqliteManager sharedInstance] deleteOneChatListModel:model uid:[YHUserInfoManager sharedInstance].userInfo.uid complete:^(BOOL success, id obj) {
+                DDLog(@"删除数据库会话%@,%@",success?@"成功":@"失败",obj);
+            }];
+            DDLog(@"删除会话成功,%@",obj);
+        }else{
+            DDLog(@"删除会话失败,%@",obj);
+            count --;
+            if (count>=0) {
+                [weakSelf requestDeleteChatSessionWithModel:model retryCount:count];
+            }
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -167,6 +167,13 @@
 		ACE13CD41F171AAE00F23433 /* YHCheckinBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD31F171AAE00F23433 /* YHCheckinBtn.m */; };
 		ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD61F17450100F23433 /* YHCheckinModel.m */; };
 		ACE13CDA1F17565000F23433 /* YHPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD91F17565000F23433 /* YHPicModel.m */; };
+		ACFCF4141F1856960040F988 /* YHChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4131F1856960040F988 /* YHChatTableView.m */; };
+		ACFCF4221F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4171F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m */; };
+		ACFCF4231F18A34A0040F988 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4191F18A34A0040F988 /* SWCellScrollView.m */; };
+		ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF41B1F18A34A0040F988 /* SWLongPressGestureRecognizer.m */; };
+		ACFCF4251F18A34A0040F988 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF41D1F18A34A0040F988 /* SWTableViewCell.m */; };
+		ACFCF4261F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF41F1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m */; };
+		ACFCF4271F18A34A0040F988 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4211F18A34A0040F988 /* SWUtilityButtonView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -475,6 +482,20 @@
 		ACE13CD61F17450100F23433 /* YHCheckinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCheckinModel.m; sourceTree = "<group>"; };
 		ACE13CD81F17565000F23433 /* YHPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPicModel.h; sourceTree = "<group>"; };
 		ACE13CD91F17565000F23433 /* YHPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPicModel.m; sourceTree = "<group>"; };
+		ACFCF4121F1856960040F988 /* YHChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHChatTableView.h; sourceTree = "<group>"; };
+		ACFCF4131F1856960040F988 /* YHChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHChatTableView.m; sourceTree = "<group>"; };
+		ACFCF4161F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		ACFCF4171F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		ACFCF4181F18A34A0040F988 /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		ACFCF4191F18A34A0040F988 /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		ACFCF41A1F18A34A0040F988 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		ACFCF41B1F18A34A0040F988 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		ACFCF41C1F18A34A0040F988 /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		ACFCF41D1F18A34A0040F988 /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		ACFCF41E1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		ACFCF41F1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		ACFCF4201F18A34A0040F988 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		ACFCF4211F18A34A0040F988 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -616,6 +637,7 @@
 		AC51FF6B1EFB67B5005EAE4F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ACFCF4151F18A34A0040F988 /* SWTableViewCell */,
 				ACC9ACB31F1311B900A5FF88 /* STMURLCache */,
 				AC51FF6C1EFB67B5005EAE4F /* FLAnimatedImage */,
 				AC51FF6D1EFB67B5005EAE4F /* MJExtension */,
@@ -847,6 +869,8 @@
 				ACC9AD811F1322A300A5FF88 /* YHNavigationController.m */,
 				ACC9AD8B1F1322A300A5FF88 /* YHRefreshTableView.h */,
 				ACC9AD8C1F1322A300A5FF88 /* YHRefreshTableView.m */,
+				ACFCF4121F1856960040F988 /* YHChatTableView.h */,
+				ACFCF4131F1856960040F988 /* YHChatTableView.m */,
 				ACC9AD8D1F1322A300A5FF88 /* YHTipsView.h */,
 				ACC9AD8E1F1322A300A5FF88 /* YHTipsView.m */,
 				ACC9AD8F1F1322A300A5FF88 /* YHUICommon.h */,
@@ -1227,6 +1251,25 @@
 			path = CardDetail;
 			sourceTree = "<group>";
 		};
+		ACFCF4151F18A34A0040F988 /* SWTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				ACFCF4161F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.h */,
+				ACFCF4171F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m */,
+				ACFCF4181F18A34A0040F988 /* SWCellScrollView.h */,
+				ACFCF4191F18A34A0040F988 /* SWCellScrollView.m */,
+				ACFCF41A1F18A34A0040F988 /* SWLongPressGestureRecognizer.h */,
+				ACFCF41B1F18A34A0040F988 /* SWLongPressGestureRecognizer.m */,
+				ACFCF41C1F18A34A0040F988 /* SWTableViewCell.h */,
+				ACFCF41D1F18A34A0040F988 /* SWTableViewCell.m */,
+				ACFCF41E1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.h */,
+				ACFCF41F1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m */,
+				ACFCF4201F18A34A0040F988 /* SWUtilityButtonView.h */,
+				ACFCF4211F18A34A0040F988 /* SWUtilityButtonView.m */,
+			);
+			path = SWTableViewCell;
+			sourceTree = "<group>";
+		};
 		BD806E136FFB44C3DFADE3AB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1400,6 +1443,7 @@
 				AC51FF9C1EFB67B5005EAE4F /* UIView+Extension.m in Sources */,
 				ACC9AE921F1322DC00A5FF88 /* YHShootVC.m in Sources */,
 				ACC9AE8A1F1322DC00A5FF88 /* YHUserInfo.m in Sources */,
+				ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */,
 				ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */,
 				ACC9AE861F1322DC00A5FF88 /* YHGroupMember.m in Sources */,
 				ACC9ACCC1F1314CB00A5FF88 /* YHProtocol.swift in Sources */,
@@ -1428,6 +1472,7 @@
 				ACC9ADDF1F1322A300A5FF88 /* YHLoadingView.swift in Sources */,
 				ACC9AEA41F1322DC00A5FF88 /* CellChatImageRight.m in Sources */,
 				ACC9AEAF1F1322DC00A5FF88 /* YHExpressionKeyboard.m in Sources */,
+				ACFCF4261F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				ACC9AE991F1322DC00A5FF88 /* YHChatHelper.m in Sources */,
 				AC51FFF61EFB67B5005EAE4F /* MJPropertyType.m in Sources */,
 				AC51FFF81EFB67B5005EAE4F /* NSObject+MJCoding.m in Sources */,
@@ -1455,12 +1500,14 @@
 				ACC9ACD91F131A1B00A5FF88 /* YHCompanyInfo.m in Sources */,
 				AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */,
 				ACC9ADE81F1322A300A5FF88 /* YHUICommon.m in Sources */,
+				ACFCF4231F18A34A0040F988 /* SWCellScrollView.m in Sources */,
 				ACC9ACC81F1312F200A5FF88 /* OCtoSwiftUtil.m in Sources */,
 				ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */,
 				AC604AB71F03444A00B8D8B4 /* YHChatManager.m in Sources */,
 				ACC9AEBC1F1322DC00A5FF88 /* YHWGManager.m in Sources */,
 				AC51FFE51EFB67B5005EAE4F /* YHPhotoPicker.swift in Sources */,
 				ACC9AE831F1322DC00A5FF88 /* YHFileModel.m in Sources */,
+				ACFCF4141F1856960040F988 /* YHChatTableView.m in Sources */,
 				ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */,
 				ACC9AE7F1F1322DC00A5FF88 /* DataParser.m in Sources */,
 				ACC9AEA31F1322DC00A5FF88 /* CellChatImageLeft.m in Sources */,
@@ -1476,6 +1523,7 @@
 				ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */,
 				ACC9AE801F1322DC00A5FF88 /* YHChatGroupModel.m in Sources */,
 				ACC9AEA51F1322DC00A5FF88 /* CellChatList.m in Sources */,
+				ACFCF4221F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				ACC9AE901F1322DC00A5FF88 /* YHGroupSetting.swift in Sources */,
 				ACC9AE8F1F1322DC00A5FF88 /* YHGroupMembersList.swift in Sources */,
 				AC51FFF51EFB67B5005EAE4F /* MJPropertyKey.m in Sources */,
@@ -1499,6 +1547,7 @@
 				ACC9AE8D1F1322DC00A5FF88 /* YHChatDetailVC.m in Sources */,
 				ACC9AEB31F1322DC00A5FF88 /* YHGroupIconView.m in Sources */,
 				ACC9AEB71F1322DC00A5FF88 /* YHChatListVC.m in Sources */,
+				ACFCF4271F18A34A0040F988 /* SWUtilityButtonView.m in Sources */,
 				ACC9AEDD1F134D4100A5FF88 /* YHCardSection.swift in Sources */,
 				ACC9AEB51F1322DC00A5FF88 /* YHShootView.m in Sources */,
 				ACC9ADDE1F1322A300A5FF88 /* YHAlertView.swift in Sources */,
@@ -1508,6 +1557,7 @@
 				ACC9AEAB1F1322DC00A5FF88 /* YHModel.m in Sources */,
 				AC51FFF91EFB67B5005EAE4F /* NSObject+MJKeyValue.m in Sources */,
 				ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */,
+				ACFCF4251F18A34A0040F988 /* SWTableViewCell.m in Sources */,
 				ACC9AE981F1322DC00A5FF88 /* YHAudioRecorder.m in Sources */,
 				ACC9AE871F1322DC00A5FF88 /* YHUnReadMsg.m in Sources */,
 				ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */,

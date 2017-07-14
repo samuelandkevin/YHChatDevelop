@@ -27,6 +27,8 @@
 @property (nonatomic,strong) YHGroupIconView *imgvGroupIcon;
 @property (nonatomic,strong) UILabel  *lbUnReadMsgGroup;  //群聊未读消息
 @property (nonatomic,strong) UILabel  *lbUnReadMsgPrivate;//私聊未读消息
+@property (nonatomic,strong) UIButton *btnStick;//置顶
+
 @end
 
 
@@ -40,6 +42,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         [self setupUI];
+        self.rightUtilityButtons = [self rightButtons];
     }
     return self;
 }
@@ -181,6 +184,20 @@
     
 }
 
+#pragma mark - Private
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    _btnStick = [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"消息置顶"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"删除"];
+    
+    return rightUtilityButtons;
+}
+
 #pragma mark - Gesture
 - (void)onAvatarGesture:(UIGestureRecognizer *)aRec{
     if (aRec.state == UIGestureRecognizerStateEnded) {
@@ -262,10 +279,11 @@
             _lbUnReadMsgPrivate.hidden  = YES;
         }
        
-
     }
     
+    [_btnStick setTitle:_model.isStickTop?@"取消置顶":@"消息置顶" forState:UIControlStateNormal];
     
+    self.contentView.backgroundColor = _model.isStickTop?RGBCOLOR(243, 243, 247):[UIColor whiteColor];
     
     
 }
@@ -275,6 +293,12 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+//更新置顶/取消置顶状态
+- (void)updateStickStatus:(BOOL)stick{
+    self.contentView.backgroundColor = stick?RGBCOLOR(243, 243, 247):[UIColor whiteColor];
+    [_btnStick setTitle:stick?@"取消置顶":@"消息置顶" forState:UIControlStateNormal];
 }
 
 @end

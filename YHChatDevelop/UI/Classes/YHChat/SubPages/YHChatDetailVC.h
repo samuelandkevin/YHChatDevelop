@@ -11,12 +11,13 @@
 #import "YHExpressionKeyboard.h"
 #import "YHVoiceHUD.h"
 #import "YHChatHeader.h"
+#import "YHChatTableView.h"
 
 @interface YHChatDetailVC : UIViewController
 
 /******父类的属性*********/
 //控件
-@property (nonatomic,strong) YHRefreshTableView *tableView;
+@property (nonatomic,strong) YHChatTableView *tableView;
 @property (nonatomic,strong) YHExpressionKeyboard *keyboard;
 @property (nonatomic,strong) YHVoiceHUD *imgvVoiceTips;
 
@@ -31,6 +32,6 @@
 - (void)setupExpKeyBoard;    //设置表情键盘
 - (void)setupMsg;            //设置消息
 - (void)loadChatLogFromCacheComplete:(void(^)(BOOL success, id obj))complete;                //从缓存加载聊天记录
-- (void)refreshTableViewLoadNew:(YHRefreshTableView *)view;
+
 
 @end
