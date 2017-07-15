@@ -52,7 +52,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"YHChat";
+
     self.navigationController.navigationBar.translucent = NO;
     [self initUI];
     
@@ -150,7 +150,7 @@
     
     //设置参数属性,图标和文字。
     YHPopMenu *popView = [[YHPopMenu alloc] initWithFrame:CGRectMake(x, y, w, h)];
-    popView.iconNameArray = @[@"img1",@"img1"];
+    popView.iconNameArray = @[@"popMenu_img_groupChat",@"img1"];
     popView.itemNameArray = @[@"发起聊天",@"退出登录"];
     popView.itemH     = itemH;
     popView.fontSize  = 16.0f;
@@ -222,50 +222,52 @@
     if (!index) {
         //置顶或取消置顶
         WeakSelf
+        BOOL stick = !selectedModel.isStickTop;
+        if (row < weakSelf.dataArray.count) {
+    
+            if (stick){
+                //数据置顶
+                [weakSelf.dataArray removeObjectAtIndex:row];
+                [weakSelf.dataArray insertObject:selectedModel atIndex:0];
+                //更新UI
+                [cell updateStickStatus:stick];
+                [cell setContentOffest:CGPointZero animated:NO];
+                [weakSelf.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                [weakSelf.tableView scrollToTopAnimated:YES];
+            }else{
+                
+                //数据取消置顶
+                NSUInteger toIndex = NSNotFound;
+                for (int i=0;i<weakSelf.dataArray.count;i++) {
+                    YHChatListModel *aModel = weakSelf.dataArray[i];
+                    if(!aModel.isStickTop && ![aModel.chatId isEqualToString:selectedModel.chatId]){
+                        toIndex = i;
+                        break;
+                    }
+                }
+                
+                toIndex = toIndex-1 >0 ? toIndex-1: 0;
+                if (toIndex < weakSelf.dataArray.count){
+                    [weakSelf.dataArray exchangeObjectAtIndex:row withObjectAtIndex:toIndex];
+                    //更新UI
+                    [cell updateStickStatus:stick];
+                    [cell setContentOffest:CGPointZero animated:NO];
+                    [weakSelf.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] toIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
+                }
+                
+                
+            }
+            
+        }
+
         [self requestMsgStickWithModel:selectedModel retryCount:3 complete:^(BOOL success, id obj) {
             if (success) {
                 selectedModel.isStickTop = !selectedModel.isStickTop;
-                if (row < weakSelf.dataArray.count) {
-                    
-                    
-                    if (selectedModel.isStickTop){
-                        //数据置顶
-                        [weakSelf.dataArray removeObjectAtIndex:row];
-                        [weakSelf.dataArray insertObject:selectedModel atIndex:0];
-                        //更新UI
-                        [cell updateStickStatus:selectedModel.isStickTop];
-                        [cell setContentOffest:CGPointZero animated:NO];
-                        [weakSelf.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-                    }else{
-                        
-                        //数据取消置顶
-                        NSUInteger toIndex = NSNotFound;
-                        for (int i=0;i<weakSelf.dataArray.count;i++) {
-                            YHChatListModel *aModel = weakSelf.dataArray[i];
-                            if(!aModel.isStickTop && ![aModel.chatId isEqualToString:selectedModel.chatId]){
-                                toIndex = i;
-                                break;
-                            }
-                        }
-                        
-                        toIndex = toIndex-1 >0 ? toIndex-1: 0;
-                        if (toIndex < weakSelf.dataArray.count){
-                            [weakSelf.dataArray exchangeObjectAtIndex:row withObjectAtIndex:toIndex];
-                            //更新UI
-                            [cell updateStickStatus:selectedModel.isStickTop];
-                            [cell setContentOffest:CGPointZero animated:NO];
-                            [weakSelf.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] toIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]];
-                        }
-                        
-                        
-                    }
-                    
-                }
                 
             }
         }];
     }else{
-        //删除
+        //删除会话
         
         
         if (row < _dataArray.count) {

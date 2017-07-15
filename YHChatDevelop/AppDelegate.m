@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "YHChatListVC.h"
 #import "YHNavigationController.h"
-#import "NetManager.h"
+#import "YHNetManager.h"
 #import "YHLoginInputViewController.h"
+#import "YHTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -29,10 +30,8 @@
     //1.判断用户是否登录过
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kLoginOAuth]){
         //1-1.进入RootVc
-        YHChatListVC *vc = [[YHChatListVC alloc] init];
-        YHNavigationController *nav = [[YHNavigationController alloc] initWithRootViewController:vc];
-        
-        self.window.rootViewController = nav;
+        YHTabBarController *tabCtrl = [[YHTabBarController alloc] init];
+        self.window.rootViewController = tabCtrl;
         [self.window makeKeyAndVisible];
         
         //1-2.直接登录

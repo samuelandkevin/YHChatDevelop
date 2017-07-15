@@ -24,5 +24,6 @@
 #import "YHPhotoBrowserView.h"
 #import "YHSqliteManager.h"
 #import "YHMsgLogVC.h"
+#import "YHCellWave.h"
 
 #endif /* YHChatDevelop_Bridging_Header_h */

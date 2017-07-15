@@ -33,8 +33,6 @@
 	<string>YHChatDevelop需要访问您的麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>YHChatDevelop需要访问您的相册</string>
-	<key>UILaunchStoryboardName</key>
-	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
