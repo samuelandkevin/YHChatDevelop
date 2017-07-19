@@ -17,23 +17,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置导航栏背景颜色
-    UIColor * color = kBlueColor;
+    UIColor *color = kBlackColor;
     self.navigationBar.barTintColor = color;
     
-    NSShadow *shadow = [[NSShadow alloc]init];
-    shadow.shadowColor = [UIColor colorWithWhite:0.871 alpha:1.000];
-    shadow.shadowOffset = CGSizeMake(0.5, 0.5);
-//    shadow.shadowBlurRadius = 20;
-    
-    
     //设置导航栏标题颜色
-    NSDictionary *attributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18],NSShadowAttributeName:shadow};
-//    NSDictionary *colorDic = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    NSDictionary *attributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont systemFontOfSize:18]};
     self.navigationBar.titleTextAttributes = attributes;
     
     //设置返回按钮的颜色
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
+
+    //状态栏文字白色
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 //根据颜色返回图片

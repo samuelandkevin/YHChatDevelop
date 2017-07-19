@@ -2,7 +2,7 @@
 //  ThirdViewController.h
 //  MyProject
 //
-//  Created by YHIOS002 on 16/4/10.
+//  Created by samuelandkevin on 16/4/10.
 //  Copyright © 2016年 kun. All rights reserved.
 //  人脉
 

@@ -45,10 +45,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 \
 alpha:1.0]
 
 #define kGrayColor  RGBCOLOR(196, 197, 198)
+#define kBlackColor RGBCOLOR(54, 54, 59) 
+#define kTbvBGColor RGBCOLOR(239, 239, 244)
 #define kGreenColor kBlueColor    //绿色主调
 #define kBlueColor  RGB16(0x0e92dd)          //蓝色主调
 #define kSeparatorLineColor RGBCOLOR(222, 222, 222)  //分隔线颜色
-#define kViewBGColor RGBCOLOR(244, 244, 244)         //控制器view的背景色
+
 
 #pragma mark - Log
 #define DDLog(FORMAT, ...)   fprintf(stderr, "\n[%s]  function:%s line:%d content:%s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
@@ -61,6 +63,8 @@ alpha:1.0]
 
 
 #pragma mark - 通知事件
+#define Event_Login_Success @"event.login.success"
+
 //刷新名片详情页
 #define Event_CardDetailPage_Refresh @"event.cardDetailPage_refresh"
 

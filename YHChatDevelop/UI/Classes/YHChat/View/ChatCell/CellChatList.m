@@ -210,7 +210,7 @@
     _model       = model;
     _lbName.text = _model.sessionUserName;
     
-    _lbTime.text = _model.creatTime;
+    _lbTime.text = _model.creatTimeFormat;
     if(_model.status == 1){
         //撤回
         NSString *msg = @"撤回一条消息";

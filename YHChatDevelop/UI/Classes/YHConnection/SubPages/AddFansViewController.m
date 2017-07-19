@@ -2,7 +2,7 @@
 //  AddFansViewController.m
 //  MyProject
 //
-//  Created by YHIOS002 on 16/4/12.
+//  Created by samuelandkevin on 16/4/12.
 //  Copyright © 2016年 kun. All rights reserved.
 //
 
@@ -69,7 +69,7 @@
 
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithTarget:self selector:@selector(onBack:)];
     
-	self.view.backgroundColor = kViewBGColor;
+	self.view.backgroundColor = kTbvBGColor;
 	self.isSearching = NO;
 	//tableview
 	self.tableView = [[YHRefreshTableView alloc] initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH
@@ -77,7 +77,7 @@
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
 	[self.view addSubview:self.tableView];
-	self.tableView.backgroundColor = kViewBGColor;
+	self.tableView.backgroundColor = kTbvBGColor;
 	self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[ConnectionSearchCell class] forCellReuseIdentifier:@"ConnectionSearchCell"];
     [self.tableView registerClass:[CellForBase1 class] forCellReuseIdentifier:NSStringFromClass([CellForBase1 class])];

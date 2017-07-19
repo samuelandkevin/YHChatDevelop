@@ -1,9 +1,9 @@
 //
 //  YHIMHandler.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by YHIOS003 on 16/6/8.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "YHNetManager.h"

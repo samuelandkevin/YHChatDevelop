@@ -22,7 +22,8 @@
 @property (nonatomic,assign) BOOL   isRead;
 @property (nonatomic,assign) int    memberCount;
 @property (nonatomic,copy) NSString *groupName;
-@property (nonatomic,copy) NSString *creatTime;
+@property (nonatomic,copy) NSString *creatTime;      //服务器返回的时间
+@property (nonatomic,copy) NSString *creatTimeFormat;//格式化后的时间
 @property (nonatomic,copy) NSString *lastCreatTime;
 @property (nonatomic,strong) NSArray < NSURL *> *sessionUserHead;
 @property (nonatomic,copy) NSString *msgId;

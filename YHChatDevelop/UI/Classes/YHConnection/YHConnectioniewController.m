@@ -2,7 +2,7 @@
 //  ThirdViewController.m
 //  MyProject
 //
-//  Created by YHIOS002 on 16/4/10.
+//  Created by samuelandkevin on 16/4/10.
 //  Copyright © 2016年 kun. All rights reserved.
 //
 #import "YHChatDevelop-Swift.h"
@@ -246,8 +246,8 @@
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kSearchBarH)];
     searchBar.placeholder = @"搜索";
     searchBar.layer.borderWidth = 1;
-    searchBar.layer.borderColor = RGBCOLOR(240, 240, 240).CGColor;
-    searchBar.barTintColor = RGBCOLOR(240, 240, 240);
+    searchBar.layer.borderColor = kTbvBGColor.CGColor;
+    searchBar.barTintColor = kTbvBGColor;
     searchBar.tintColor = [UIColor blueColor];
     searchBar.delegate = self;
     [self.view addSubview:searchBar];
@@ -259,7 +259,7 @@
     self.tableView.delegate   = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight  = 60.0f;
-    self.tableView.backgroundColor = kViewBGColor;
+    self.tableView.backgroundColor = kTbvBGColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.tableView.sectionIndexColor = RGBCOLOR(160, 160, 160);
@@ -392,7 +392,7 @@
     UITableViewHeaderFooterView * hf = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerId];
     if (!hf) {
         hf = [[UITableViewHeaderFooterView alloc]initWithReuseIdentifier:headerId];
-        hf.contentView.backgroundColor = kViewBGColor;
+        hf.contentView.backgroundColor = kTbvBGColor;
         
         //首字母
         UILabel *labelTitle = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 20)];

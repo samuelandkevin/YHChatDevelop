@@ -1,14 +1,16 @@
 //
 //  YHTabBarController.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/4/21.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/4/21.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 #import "YHNavigationController.h"
 #import "YHTabBarController.h"
 #import "YHChatListVC.h"
 #import "YHConnectioniewController.h"
+#import "YHMyController.h"
+#import "YHDiscoveryVC.h"
 
 @interface YHTabBarController ()
 
@@ -16,9 +18,9 @@
 
 @property(nonatomic,strong) YHConnectioniewController * secVC;
 
-@property(nonatomic,strong) UIViewController * thiVC;
+@property(nonatomic,strong) YHDiscoveryVC  * thiVC;
 
-@property(nonatomic,strong) UIViewController * fifVC;
+@property(nonatomic,strong) YHMyController * fifVC;
 @end
 
 @implementation YHTabBarController
@@ -29,10 +31,10 @@
     self = [super init];
     if (self) {
         
-        self.firstVC = [[YHChatListVC alloc]init];
-        self.secVC = [[YHConnectioniewController alloc]init];
-        self.thiVC = [[UIViewController alloc]init];
-        self.fifVC = [[UIViewController alloc]init];
+        self.firstVC = [[YHChatListVC alloc] init];
+        self.secVC   = [[YHConnectioniewController alloc] init];
+        self.thiVC   = [[YHDiscoveryVC alloc] init];
+        self.fifVC   = [[YHMyController alloc] init];
 
         UIColor * color = [UIColor colorWithRed:0.f green:191.f / 255 blue:143.f / 255 alpha:1];
         NSDictionary *colorDic = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];

@@ -8,11 +8,11 @@
 
 import Foundation
 
-//颜色
+let kBlackColor_Swift = UIColor(red: 54/255.0, green: 54/255.0, blue: 59/255.0, alpha: 1.0)
 let kBlueColor_Swift = UIColor.colorWithHexString(hex: "0e92dd")
 let kRedColor_Swift  = UIColor(red: 221/255.0, green: 82/255.0, blue: 77/255.0, alpha: 1.0)
 let kSeparatorLineColor_Swift = UIColor(red: 222/255.0, green: 222/255.0, blue: 222/255.0, alpha: 1.0)  //分隔线颜色
-let kViewBGColor_Swift =  UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)         //控制器view的背景色
+let kTbvBGColor_Swift =  UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)         //控制器view的背景色
 //通知
 let kNotif_Evaluation_BeginTest_Refresh_Swift = "kNotif_Evaluation_BeginTest_Refresh"               //刷新开始测评页
 let kNotif_Login_Success_Swift = "event.login.success"  //登录成功

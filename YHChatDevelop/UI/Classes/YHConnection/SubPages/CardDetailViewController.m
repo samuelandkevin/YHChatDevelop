@@ -236,6 +236,7 @@ typedef NS_ENUM (NSInteger, SectionType)
 	[self.tableView registerClass:[YHCardDetailHeaderView class] forHeaderFooterViewReuseIdentifier:kHeaderIdentifier];
     [self.tableView registerClass:[CellForCard class] forCellReuseIdentifier:NSStringFromClass([CellForCard class])];
     [self.tableView registerClass:[CellForCard2 class] forCellReuseIdentifier:NSStringFromClass([CellForCard2 class])];
+    self.tableView.backgroundColor = kTbvBGColor;
 	[self updateUI];
 }
 
@@ -723,7 +724,7 @@ typedef NS_ENUM (NSInteger, SectionType)
 {
 	UIView *viewFooterInSection = [[UIView alloc] init];
 
-	viewFooterInSection.backgroundColor = kViewBGColor;
+	viewFooterInSection.backgroundColor = kTbvBGColor;
 	return viewFooterInSection;
 }
 

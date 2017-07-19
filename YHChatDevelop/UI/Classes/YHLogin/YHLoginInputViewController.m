@@ -144,9 +144,10 @@
             //1.更新用户偏好设置信息
             [[YHUserInfoManager sharedInstance] loginSuccessWithUserInfo:userInfo];
             
-            YHChatListVC *vc = [YHChatListVC new];
-            vc.hidesBottomBarWhenPushed = YES;
-            [weakSelf.navigationController pushViewController:vc animated:YES];
+            
+            //2.跳转到首页
+            [[NSNotificationCenter defaultCenter] postNotificationName:Event_Login_Success object:nil];
+            [weakSelf.navigationController dismissViewControllerAnimated:YES completion:NULL];
             
         }
         else

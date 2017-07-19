@@ -1,6 +1,6 @@
 //
 //  DataParser.m
-//  MyProject
+//  samuelandkevin
 //
 //  Created by samuelandkevin on 16/4/10.
 //  Copyright © 2016年 samuelandkevin. All rights reserved.
@@ -593,7 +593,8 @@
     model.msgType     = [dict[@"msgType"] intValue];
     model.userId      = dict[@"userId"];
     model.sessionUserId = dict[@"sessionUserId"];
-    model.creatTime     = [NSDate showDateString:dict[@"createTime"]];
+    model.creatTime     = dict[@"createTime"];
+    model.creatTimeFormat = [NSDate showDateString:dict[@"createTime"]];
     model.sessionUserName = dict[@"sessionUserName"];
     model.unReadCount   = [dict[@"isRead"] intValue];
     model.groupName     = dict[@"groupName"];

@@ -2,7 +2,7 @@
 //  AddFansViewController.h
 //  MyProject
 //
-//  Created by YHIOS002 on 16/4/12.
+//  Created by samuelandkevin on 16/4/12.
 //  Copyright © 2016年 kun. All rights reserved.
 //
 

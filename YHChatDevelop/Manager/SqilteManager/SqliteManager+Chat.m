@@ -359,6 +359,10 @@
         CreatTable *model = [self _setupChatListDBqueueWithUid:uid];
         FMDatabaseQueue *queue = model.queue;
         
+        //设置otherSQL
+        NSMutableDictionary *otherSQLDict = [NSMutableDictionary dictionary];
+        [otherSQLDict setObject:@"order by isStickTop desc" forKey:YHOrderKey];//消息置顶
+        
         [queue inDatabase:^(FMDatabase *db) {
             [db yh_excuteDatasWithTable:tableNameChatList(uid) model:[YHChatListModel new] userInfo:userInfo fuzzyUserInfo:fuzzyUserInfo otherSQL:nil option:^(NSMutableArray *models) {
                 dispatch_async(dispatch_get_main_queue(), ^{

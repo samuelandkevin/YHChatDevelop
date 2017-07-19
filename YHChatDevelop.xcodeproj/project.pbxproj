@@ -55,6 +55,8 @@
 		AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB11F03444A00B8D8B4 /* YHDownLoadManager.m */; };
 		AC604AC41F03444A00B8D8B4 /* YHUploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */; };
 		AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */; };
+		AC69EA231F1F3777008D8EE0 /* SqliteManager+MyVisitors.m in Sources */ = {isa = PBXBuildFile; fileRef = AC69EA221F1F3777008D8EE0 /* SqliteManager+MyVisitors.m */; };
+		AC69EA2A1F1F3DA4008D8EE0 /* YHDiscoveryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC69EA291F1F3DA4008D8EE0 /* YHDiscoveryVC.m */; };
 		ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA84D7B1F0CB40800A887AD /* YHCommon.swift */; };
 		ACC9ACBC1F1311B900A5FF88 /* STMURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB51F1311B900A5FF88 /* STMURLCache.m */; };
 		ACC9ACBD1F1311B900A5FF88 /* STMURLCacheMk.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB71F1311B900A5FF88 /* STMURLCacheMk.m */; };
@@ -160,6 +162,12 @@
 		ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */; };
 		ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */; };
 		ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */; };
+		ACDDA3951F1F2B1D0029E134 /* YHMyController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA3941F1F2B1D0029E134 /* YHMyController.m */; };
+		ACDDA3981F1F2B970029E134 /* MyControllerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */; };
+		ACDDA3991F1F2B970029E134 /* MyControllerMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA3971F1F2B970029E134 /* MyControllerMiddleCell.swift */; };
+		ACDDA39C1F1F35F20029E134 /* MyVisitorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA39B1F1F35F20029E134 /* MyVisitorsViewController.m */; };
+		ACDDA3A01F1F366A0029E134 /* VistorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA39E1F1F366A0029E134 /* VistorCell.m */; };
+		ACDDA3A11F1F366A0029E134 /* VistorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDDA39F1F1F366A0029E134 /* VistorCell.xib */; };
 		ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */; };
 		ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CCA1F17154B00F23433 /* CellChatCheckinLeft.m */; };
 		ACE13CCE1F17156300F23433 /* CellChatCheckinRight.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CCD1F17156300F23433 /* CellChatCheckinRight.m */; };
@@ -293,6 +301,10 @@
 		AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUploadManager.m; sourceTree = "<group>"; };
 		AC604AB51F03444A00B8D8B4 /* YHUserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUserInfoManager.h; sourceTree = "<group>"; };
 		AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUserInfoManager.m; sourceTree = "<group>"; };
+		AC69EA211F1F3777008D8EE0 /* SqliteManager+MyVisitors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SqliteManager+MyVisitors.h"; sourceTree = "<group>"; };
+		AC69EA221F1F3777008D8EE0 /* SqliteManager+MyVisitors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SqliteManager+MyVisitors.m"; sourceTree = "<group>"; };
+		AC69EA281F1F3DA4008D8EE0 /* YHDiscoveryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDiscoveryVC.h; sourceTree = "<group>"; };
+		AC69EA291F1F3DA4008D8EE0 /* YHDiscoveryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHDiscoveryVC.m; sourceTree = "<group>"; };
 		ACA84D7B1F0CB40800A887AD /* YHCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCommon.swift; sourceTree = "<group>"; };
 		ACC9ACB41F1311B900A5FF88 /* STMURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMURLCache.h; sourceTree = "<group>"; };
 		ACC9ACB51F1311B900A5FF88 /* STMURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMURLCache.m; sourceTree = "<group>"; };
@@ -487,6 +499,15 @@
 		ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCardSettingVC.swift; sourceTree = "<group>"; };
 		ACC9AEE31F135BE200A5FF88 /* YHMsgLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMsgLogVC.h; sourceTree = "<group>"; };
 		ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMsgLogVC.m; sourceTree = "<group>"; };
+		ACDDA3931F1F2B1D0029E134 /* YHMyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMyController.h; sourceTree = "<group>"; };
+		ACDDA3941F1F2B1D0029E134 /* YHMyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMyController.m; sourceTree = "<group>"; };
+		ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyControllerHeaderCell.swift; sourceTree = "<group>"; };
+		ACDDA3971F1F2B970029E134 /* MyControllerMiddleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyControllerMiddleCell.swift; sourceTree = "<group>"; };
+		ACDDA39A1F1F35F20029E134 /* MyVisitorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyVisitorsViewController.h; sourceTree = "<group>"; };
+		ACDDA39B1F1F35F20029E134 /* MyVisitorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyVisitorsViewController.m; sourceTree = "<group>"; };
+		ACDDA39D1F1F366A0029E134 /* VistorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VistorCell.h; sourceTree = "<group>"; };
+		ACDDA39E1F1F366A0029E134 /* VistorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VistorCell.m; sourceTree = "<group>"; };
+		ACDDA39F1F1F366A0029E134 /* VistorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VistorCell.xib; sourceTree = "<group>"; };
 		ACE13CC61F16F7FC00F23433 /* YHVisitorChatDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVisitorChatDetailVC.h; sourceTree = "<group>"; };
 		ACE13CC71F16F7FC00F23433 /* YHVisitorChatDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVisitorChatDetailVC.m; sourceTree = "<group>"; };
 		ACE13CC91F17154B00F23433 /* CellChatCheckinLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellChatCheckinLeft.h; sourceTree = "<group>"; };
@@ -834,6 +855,8 @@
 				AC604AA61F03444A00B8D8B4 /* SqliteManager+Chat.m */,
 				ACC9ACF51F131EF100A5FF88 /* SqliteManager+Fris.h */,
 				ACC9ACF61F131EF100A5FF88 /* SqliteManager+Fris.m */,
+				AC69EA211F1F3777008D8EE0 /* SqliteManager+MyVisitors.h */,
+				AC69EA221F1F3777008D8EE0 /* SqliteManager+MyVisitors.m */,
 				AC604AA71F03444A00B8D8B4 /* SqliteManager.h */,
 				AC604AA81F03444A00B8D8B4 /* SqliteManager.m */,
 				AC604AA91F03444A00B8D8B4 /* YHFMDB */,
@@ -876,6 +899,39 @@
 				AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */,
 			);
 			path = UserInfoManager;
+			sourceTree = "<group>";
+		};
+		AC69EA241F1F3D71008D8EE0 /* YHDiscovery */ = {
+			isa = PBXGroup;
+			children = (
+				AC69EA251F1F3D71008D8EE0 /* Model */,
+				AC69EA261F1F3D71008D8EE0 /* SubPages */,
+				AC69EA271F1F3D71008D8EE0 /* View */,
+				AC69EA281F1F3DA4008D8EE0 /* YHDiscoveryVC.h */,
+				AC69EA291F1F3DA4008D8EE0 /* YHDiscoveryVC.m */,
+			);
+			path = YHDiscovery;
+			sourceTree = "<group>";
+		};
+		AC69EA251F1F3D71008D8EE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC69EA261F1F3D71008D8EE0 /* SubPages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SubPages;
+			sourceTree = "<group>";
+		};
+		AC69EA271F1F3D71008D8EE0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		ACC9ACB31F1311B900A5FF88 /* STMURLCache */ = {
@@ -950,9 +1006,11 @@
 		ACC9ADEF1F1322DB00A5FF88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ACC9ADF01F1322DB00A5FF88 /* YHChat */,
+				AC69EA241F1F3D71008D8EE0 /* YHDiscovery */,
+				ACDDA38F1F1F2ADB0029E134 /* YHMy */,
 				ACF6C6E41F1A1611003EF332 /* YHTabbar */,
 				ACF6C6CE1F1A0F15003EF332 /* YHPush */,
-				ACC9ADF01F1322DB00A5FF88 /* YHChat */,
 				ACC9AEBF1F134B4500A5FF88 /* YHConnection */,
 				ACC9AE6C1F1322DC00A5FF88 /* YHLogin */,
 				ACC9AE701F1322DC00A5FF88 /* YHWorkGroup */,
@@ -1315,6 +1373,46 @@
 			path = CardDetail;
 			sourceTree = "<group>";
 		};
+		ACDDA38F1F1F2ADB0029E134 /* YHMy */ = {
+			isa = PBXGroup;
+			children = (
+				ACDDA3931F1F2B1D0029E134 /* YHMyController.h */,
+				ACDDA3941F1F2B1D0029E134 /* YHMyController.m */,
+				ACDDA3901F1F2AF90029E134 /* Model */,
+				ACDDA3911F1F2AF90029E134 /* SubPages */,
+				ACDDA3921F1F2AF90029E134 /* View */,
+			);
+			path = YHMy;
+			sourceTree = "<group>";
+		};
+		ACDDA3901F1F2AF90029E134 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACDDA3911F1F2AF90029E134 /* SubPages */ = {
+			isa = PBXGroup;
+			children = (
+				ACDDA39A1F1F35F20029E134 /* MyVisitorsViewController.h */,
+				ACDDA39B1F1F35F20029E134 /* MyVisitorsViewController.m */,
+			);
+			path = SubPages;
+			sourceTree = "<group>";
+		};
+		ACDDA3921F1F2AF90029E134 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */,
+				ACDDA3971F1F2B970029E134 /* MyControllerMiddleCell.swift */,
+				ACDDA39D1F1F366A0029E134 /* VistorCell.h */,
+				ACDDA39E1F1F366A0029E134 /* VistorCell.m */,
+				ACDDA39F1F1F366A0029E134 /* VistorCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		ACF6C6B01F1A0DB8003EF332 /* RegexKitLite */ = {
 			isa = PBXGroup;
 			children = (
@@ -1517,6 +1615,7 @@
 				AC51FE921EFB5B1B005EAE4F /* Assets.xcassets in Resources */,
 				ACC9AEC71F134C1C00A5FF88 /* CardDetailViewController.xib in Resources */,
 				AC51FE901EFB5B1A005EAE4F /* Main.storyboard in Resources */,
+				ACDDA3A11F1F366A0029E134 /* VistorCell.xib in Resources */,
 				ACF6C6C91F1A0E30003EF332 /* CellForMyFans.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1582,6 +1681,7 @@
 				ACF6C6AC1F1A0D04003EF332 /* YHConnectioniewController.m in Sources */,
 				AC604AB81F03444A00B8D8B4 /* NetManager+AppInfo.m in Sources */,
 				AC604AC11F03444A00B8D8B4 /* FMDatabase+YHDatabase.m in Sources */,
+				ACDDA3951F1F2B1D0029E134 /* YHMyController.m in Sources */,
 				ACC9AE9F1F1322DC00A5FF88 /* CellChatFileLeft.m in Sources */,
 				ACC9AE891F1322DC00A5FF88 /* YHEducationExperienceModel.m in Sources */,
 				ACC9AEDB1F134D4100A5FF88 /* QRCode.swift in Sources */,
@@ -1611,6 +1711,7 @@
 				ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */,
 				ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */,
 				ACC9AE861F1322DC00A5FF88 /* YHGroupMember.m in Sources */,
+				ACDDA39C1F1F35F20029E134 /* MyVisitorsViewController.m in Sources */,
 				ACC9ACCC1F1314CB00A5FF88 /* YHProtocol.swift in Sources */,
 				AC604ABC1F03444A00B8D8B4 /* NetManager+Profile.m in Sources */,
 				ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */,
@@ -1652,6 +1753,7 @@
 				ACC9AEB21F1322DC00A5FF88 /* YHChatLabel.m in Sources */,
 				AC51FFF41EFB67B5005EAE4F /* MJProperty.m in Sources */,
 				ACF6C6E01F1A10B0003EF332 /* YHAddressBook.m in Sources */,
+				ACDDA3981F1F2B970029E134 /* MyControllerHeaderCell.swift in Sources */,
 				ACC9AEDC1F134D4100A5FF88 /* YHABUserInfo.swift in Sources */,
 				ACC9AE8E1F1322DC00A5FF88 /* YHDocumentVC.m in Sources */,
 				ACF6C6CB1F1A0E30003EF332 /* CellNewFri.swift in Sources */,
@@ -1660,6 +1762,7 @@
 				ACC9AEA81F1322DC00A5FF88 /* CellChatTips.m in Sources */,
 				ACC9ACBC1F1311B900A5FF88 /* STMURLCache.m in Sources */,
 				ACC9AE851F1322DC00A5FF88 /* YHGroupInfo.m in Sources */,
+				AC69EA231F1F3777008D8EE0 /* SqliteManager+MyVisitors.m in Sources */,
 				AC51FFF71EFB67B5005EAE4F /* NSObject+MJClass.m in Sources */,
 				ACC9AE841F1322DC00A5FF88 /* YHGIFModel.m in Sources */,
 				AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */,
@@ -1700,8 +1803,10 @@
 				ACC9AE901F1322DC00A5FF88 /* YHGroupSetting.swift in Sources */,
 				ACC9AE8F1F1322DC00A5FF88 /* YHGroupMembersList.swift in Sources */,
 				AC51FFF51EFB67B5005EAE4F /* MJPropertyKey.m in Sources */,
+				AC69EA2A1F1F3DA4008D8EE0 /* YHDiscoveryVC.m in Sources */,
 				ACC9AEB81F1322DC00A5FF88 /* YHLoginInputViewController.m in Sources */,
 				ACC9AEBA1F1322DC00A5FF88 /* YHWGLayout.m in Sources */,
+				ACDDA3991F1F2B970029E134 /* MyControllerMiddleCell.swift in Sources */,
 				ACC9AEC61F134C1C00A5FF88 /* CardDetailViewController.m in Sources */,
 				AC51FE8A1EFB5B1A005EAE4F /* AppDelegate.m in Sources */,
 				ACC9AEBE1F1322DC00A5FF88 /* YHWorkGroup.m in Sources */,
@@ -1738,6 +1843,7 @@
 				ACF6C6DC1F1A1023003EF332 /* CellForBase1.swift in Sources */,
 				ACF6C6C81F1A0E30003EF332 /* CellForMyFans.m in Sources */,
 				ACC9AE871F1322DC00A5FF88 /* YHUnReadMsg.m in Sources */,
+				ACDDA3A01F1F366A0029E134 /* VistorCell.m in Sources */,
 				ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */,
 				ACC9ACDF1F131C4700A5FF88 /* SqliteManager+Dynamic.m in Sources */,
 				ACF6C6DB1F1A1023003EF332 /* CellForAB.swift in Sources */,

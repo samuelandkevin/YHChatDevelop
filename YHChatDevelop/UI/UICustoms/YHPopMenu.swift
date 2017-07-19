@@ -69,8 +69,8 @@ class CellForMenuItem: UITableViewCell {
         lbName.font = UIFont.systemFont(ofSize: 14.0)
         lbName.textAlignment = .left;
         contentView.addSubview(lbName)
-    
-        viewBotLine.backgroundColor = kSeparatorLineColor_Swift;
+   
+        viewBotLine.backgroundColor = UIColor(red: 78/255.0, green: 77/255.0, blue: 80/255.0, alpha: 1.0)
         contentView.addSubview(viewBotLine)
     
         _layoutUI()
@@ -91,8 +91,10 @@ class CellForMenuItem: UITableViewCell {
         }
         
         viewBotLine.snp.makeConstraints {[unowned self] (make) in
-            make.left.right.bottom.equalTo(self.contentView)
-            make.height.equalTo(0.5)
+            make.bottom.equalTo(self.contentView)
+            make.left.equalTo(self.contentView).offset(10)
+            make.right.equalTo(self.contentView).offset(-10)
+            make.height.equalTo(0.3)
         }
         
     }
@@ -148,7 +150,7 @@ class YHArrow : UIView {
         bezierPath.addLine(to: CGPoint(x: 10, y: 5))
         bezierPath.close()
         
-        let fillColor = kBlueColor_Swift
+        let fillColor = kBlackColor_Swift
         fillColor.set()
         bezierPath.fill()
         bezierPath.stroke()

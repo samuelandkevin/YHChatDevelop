@@ -13,5 +13,6 @@
 #import "SqliteManager+Fris.h"
 #import "SqliteManager+Dynamic.h"
 #import "SqliteManager+Chat.h"
+#import "SqliteManager+MyVisitors.h"
 
 #endif /* YHSqliteManager_h */

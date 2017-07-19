@@ -23,6 +23,7 @@
 #import "SqliteManager.h"
 #import "SqliteManager+Chat.h"
 #import "YHVisitorChatDetailVC.h"
+#import "YHIMHandler.h"
 
 @interface YHChatListVC ()<UITableViewDelegate,UITableViewDataSource,SWTableViewCellDelegate>
 @property (nonatomic,strong) YHRefreshTableView *tableView;
@@ -45,8 +46,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (!_isVisitor) {
-        [self requestChatList];
+        [self _requestChatList];
     }
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -54,27 +59,22 @@
     // Do any additional setup after loading the view.
 
     self.navigationController.navigationBar.translucent = NO;
-    [self initUI];
+    [self _setupNavigationBar];
+    [self _initUI];
+    [self _addNotification];
     
     if (!_isVisitor) {
+        [self _requestUnReadMsgComplete:^(BOOL success, id obj) {}];
         WeakSelf
-        //数据库查找聊天列表
-        [[SqliteManager sharedInstance] queryChatListTableWithUserInfo:nil fuzzyUserInfo:nil complete:^(BOOL success, id obj) {
-            if (success) {
-                DDLog(@"%@",obj);
-                NSArray *retObj = obj;
-                if (retObj.count) {
-                    weakSelf.dataArray = obj;
-                    [weakSelf.tableView reloadData];
-                }
+        [self _loadCacheOfChatListComplete:^(BOOL success, id obj) {
+            if (!success) {
+                [weakSelf _requestChatList];
             }
         }];
+    }else{
+        [self _requestChatList];
     }
-    
-    [self requestChatList];
-    
-    
-    
+
 }
 
 #pragma mark - Lazy Load
@@ -87,22 +87,45 @@
 }
 
 #pragma mark - init
-- (void)initUI{
+- (void)_initUI{
     //tableview
     self.tableView = [[YHRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH
                                                                           , SCREEN_HEIGHT-64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self.tableView setEnableLoadNew:NO];
     [self.view addSubview:self.tableView];
     self.tableView.rowHeight  = 70;
     self.tableView.backgroundColor = RGBCOLOR(244, 244, 244);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[CellChatList class] forCellReuseIdentifier:NSStringFromClass([CellChatList class])];
-    [self.tableView setEnableLoadNew:YES];
     
+}
+
+- (void)_setupNavigationBar{
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(onLeft)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onRight)];
 }
+
+- (void)_addNotification{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFont:) name:Event_SystemFontSize_Change object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUnReadMsg:) name:@"refreshChatHomePage" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLogout:) name:@"event.logout" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUnReadMsg:) name:@"event.login.success" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUnReadMsg:) name:@"loadBadgeForloginSuccess" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUnReadMsg:) name:@"event.popFromChatVC" object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleUnReadMsg:) name:@"event.popFromChatVC" object:nil];
+    
+}
+
 
 #pragma mark - Action
 - (void)onLeft{
@@ -118,49 +141,63 @@
     }
 }
 
-- (void)onLogout{
-    
-    [[NetManager sharedInstance] postLogoutComplete:^(BOOL success, id obj) {
+#pragma mark - Private Method
+- (void)_loadCacheOfChatListComplete:(void(^)(BOOL success,id obj))complete{
+    WeakSelf
+    [[SqliteManager sharedInstance] queryChatListTableWithUserInfo:nil fuzzyUserInfo:nil complete:^(BOOL success, id obj) {
         if (success) {
-            DDLog(@"退出登录成功，%@",obj);
+            NSArray *retObj = obj;
+            if (retObj.count) {
+                [weakSelf.dataArray removeAllObjects];
+                weakSelf.dataArray = [NSMutableArray arrayWithArray:retObj];
+                [weakSelf.tableView reloadData];
+            }else{
+                if (complete) {
+                    complete(NO,obj);
+                }
+            }
         }else{
-            DDLog(@"退出登录失败，%@",obj);
+            if (complete) {
+                complete(NO,obj);
+            }
         }
     }];
-    [[YHUserInfoManager sharedInstance] logout];
-    
-    
-    YHLoginInputViewController *vc = [[YHLoginInputViewController alloc] init];
-    YHNavigationController *nav = [[YHNavigationController alloc] initWithRootViewController:vc];
-    
-    [UIApplication sharedApplication].delegate.window.rootViewController = nav;
-    [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
 }
 
-#pragma mark - Private Method
 - (void)_showPopMenu{
     
     //设置弹出视图的坐标，宽高
     CGFloat itemH = 50;//每个item的高度
-    CGFloat w = 150;
-    CGFloat h = 2*itemH;
+    CGFloat w = 120;
+    CGFloat h = 3*itemH;
     CGFloat r = 5;
     CGFloat x = SCREEN_WIDTH - w - r;
     CGFloat y = 10;
     
     //设置参数属性,图标和文字。
     YHPopMenu *popView = [[YHPopMenu alloc] initWithFrame:CGRectMake(x, y, w, h)];
-    popView.iconNameArray = @[@"popMenu_img_groupChat",@"img1"];
-    popView.itemNameArray = @[@"发起聊天",@"退出登录"];
+    popView.iconNameArray = @[@"popMenu_img_groupChat",@"popMenu_img_addFri",@"popMenu_img_scan"];
+    popView.itemNameArray = @[@"发起群聊",@"添加朋友",@"扫一扫"];
     popView.itemH     = itemH;
     popView.fontSize  = 16.0f;
+    popView.itemBgColor = kBlackColor;
     popView.fontColor = [UIColor whiteColor];
     popView.canTouchTabbar = NO;
     [popView show];
     WeakSelf
     [popView dismissWithHandler:^(BOOL isCanceled, NSInteger row) {
-        if (row == 1){
-            [weakSelf onLogout];
+        switch (row) {
+            case 0:
+            
+                break;
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            default:
+                break;
         }
         weakSelf.rBtnSelected = NO;
     }];
@@ -171,6 +208,49 @@
     [_popView hideWithAnimate:animate];
 }
 
+
+#pragma mark - NSNotification
+- (void)updateFont:(NSNotification *)aNotifi{
+    [self.tableView removeFromSuperview];
+    [self _initUI];
+    [self.tableView reloadData];
+}
+
+//处理未读消息
+- (void)handleUnReadMsg:(NSNotification *)aNotifi {
+    if (![YHUserInfoManager sharedInstance].userInfo.isRegister) {
+        return;
+    }
+    WeakSelf
+    [weakSelf _requestUnReadMsgComplete:^(BOOL success, id obj) {
+        if (success) {
+            YHUnReadMsg *model = obj;
+            if (!model) {
+                return;
+            }
+            [[YHIMHandler sharedInstance] setBadgeModelIfNeed:model];
+            if(!model.groupChat && !model.privateChat && !model.newFri){
+                DDLog(@"暂无新消息");
+            }else{
+                [weakSelf _requestChatList];
+            }
+            
+        }else{
+            if (isNSDictionaryClass(obj)) {
+                NSString *msg = obj[kRetMsg];
+                postTips(msg, @"获取未读消息失败");
+            }else{
+                postTips(obj, @"获取未读消息失败");
+            }
+        }
+    }];
+    
+}
+
+//处理退出登录
+- (void)handleLogout:(NSNotification *)aNotifi{
+    [_dataArray removeAllObjects];
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -218,14 +298,18 @@
 // click event on right utility button
 - (void)swipeableTableViewCell:(CellChatList *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index{
     YHChatListModel *selectedModel = cell.model;
+    //不管成功失败,立即改变置顶状态
+    selectedModel.isStickTop = !selectedModel.isStickTop;
+    
     NSUInteger row = [_dataArray indexOfObject:selectedModel];
     if (!index) {
         //置顶或取消置顶
         WeakSelf
-        BOOL stick = !selectedModel.isStickTop;
+        BOOL stick = selectedModel.isStickTop;
         if (row < weakSelf.dataArray.count) {
-    
+            
             if (stick){
+                
                 //数据置顶
                 [weakSelf.dataArray removeObjectAtIndex:row];
                 [weakSelf.dataArray insertObject:selectedModel atIndex:0];
@@ -259,17 +343,21 @@
             }
             
         }
-
-        [self requestMsgStickWithModel:selectedModel retryCount:3 complete:^(BOOL success, id obj) {
+        //note:顺序不能乱
+        [self requestMsgStickWithModel:selectedModel retryCount:3 complete:^(BOOL success, YHChatListModel *obj) {
             if (success) {
-                selectedModel.isStickTop = !selectedModel.isStickTop;
-                
+                //                if ([selectedModel.chatId isEqualToString:obj.chatId]) {
+                //                    selectedModel.isStickTop = !obj.isStickTop;
+                //                }
+            }else{
+                if ([selectedModel.chatId isEqualToString:obj.chatId]) {
+                    selectedModel.isStickTop = !obj.isStickTop;
+                }
             }
         }];
+        
     }else{
         //删除会话
-        
-        
         if (row < _dataArray.count) {
             
             WeakSelf
@@ -277,9 +365,9 @@
             [weakSelf.dataArray removeObjectAtIndex:row];
             [weakSelf.tableView deleteRow:row inSection:0 withRowAnimation:UITableViewRowAnimationLeft];
             [weakSelf requestDeleteChatSessionWithModel:model retryCount:3];
-           
+            
         }
-
+        
     }
 }
 
@@ -300,7 +388,7 @@
 
 #pragma mark - YHRefreshTableViewDelegate
 - (void)refreshTableViewLoadNew:(YHRefreshTableView*)view{
-    [self requestChatList];
+    [self _requestChatList];
 }
 
 - (void)refreshTableViewLoadmore:(YHRefreshTableView*)view{
@@ -308,7 +396,16 @@
 }
 
 #pragma mark - 网络请求
-- (void)requestChatList{
+//获取未读消息
+- (void)_requestUnReadMsgComplete:(NetManagerCallback)complete{
+    [[NetManager sharedInstance] postFetchUnReadMsgComplete:^(BOOL success, id obj) {
+        if(complete){
+            complete(success,obj);
+        }
+    }];
+}
+
+- (void)_requestChatList{
     
     WeakSelf
     [(YHRefreshTableView *)self.tableView loadBegin:YHRefreshType_LoadNew];
@@ -360,7 +457,7 @@
 - (void)requestMsgStickWithModel:(YHChatListModel *)model retryCount:(int)retryCount complete:(NetManagerCallback)complete{
     WeakSelf
     __block int count = retryCount;
-    [[NetManager sharedInstance] postMsgStick:!model.isStickTop msgID:model.chatId complete:^(BOOL success, id obj) {
+    [[NetManager sharedInstance] postMsgStick:model.isStickTop msgID:model.chatId complete:^(BOOL success, id obj) {
         if (success) {
             DDLog(@"%@成功",model.isStickTop?@"取消置顶":@"消息置顶");
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -372,7 +469,15 @@
             DDLog(@"消息置顶失败,%@",obj);
             count --;
             if (count>=0) {
-                [weakSelf requestMsgStickWithModel:model retryCount:retryCount complete:complete];
+                [weakSelf requestMsgStickWithModel:model retryCount:count complete:complete];
+            }else{
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (complete) {
+                        complete(NO,model);
+                    }
+                });
+                
             }
         }
     }];
