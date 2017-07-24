@@ -31,6 +31,8 @@
     self = [super init];
     if (self) {
         
+        [self setupTabBar];
+        
         self.firstVC = [[YHChatListVC alloc] init];
         self.secVC   = [[YHConnectioniewController alloc] init];
         self.thiVC   = [[YHDiscoveryVC alloc] init];
@@ -65,7 +67,7 @@
         self.fifVC.tabBarItem.image = [[UIImage imageNamed:@"tabbar_me"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         self.fifVC.tabBarItem.selectedImage = [[UIImage imageNamed:@"tabbar_meHL"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
-        [self setupTabBar];
+        
         
         //这里设置导航栏,默认用系统的,如需修改,进入超类添加方法,但不允许重写init 和 viewdidload等方法,自己写开关方法去调用
         YHNavigationController *firNav = [[YHNavigationController alloc]initWithRootViewController:self.firstVC];

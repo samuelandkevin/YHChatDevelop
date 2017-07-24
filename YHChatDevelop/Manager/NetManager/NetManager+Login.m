@@ -517,33 +517,6 @@
     }];
 }
 
-//税道网页登录
-- (void)postLoginByWebPage:(NSString *)QRCodeId complete:(NetManagerCallback)complete{
-    
-    
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathLoginByWebPage];
-    if(!QRCodeId.length){
-        complete(NO,@"QRCodeId is nil");
-        return;
-    }
-    
-    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
-        complete(NO,@"用户token 为nil");
-        return;
-    }
-    
-    NSDictionary *params = @{
-                             @"uuid":QRCodeId,
-                             @"token":[YHUserInfoManager sharedInstance].userInfo.accessToken
-                             };
-    
-    [self postWithRequestUrl:requestUrl parameters:params complete:^(BOOL success, id obj) {
-        complete(success,obj);
-    } progress:^(NSProgress *uploadProgress) {
-        
-    }];
-    
-}
 
 /**
  提交启动日志
@@ -636,5 +609,34 @@
     
     [task resume];
 }
+
+//税道网页登录
+- (void)postLoginByWebPage:(NSString *)QRCodeId complete:(NetManagerCallback)complete{
+    
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathLoginByWebPage];
+    if(!QRCodeId.length){
+        complete(NO,@"QRCodeId is nil");
+        return;
+    }
+    
+    if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
+        complete(NO,@"用户token 为nil");
+        return;
+    }
+    
+    NSDictionary *params = @{
+                             @"uuid":QRCodeId,
+                             @"token":[YHUserInfoManager sharedInstance].userInfo.accessToken
+                             };
+    
+    [self postWithRequestUrl:requestUrl parameters:params complete:^(BOOL success, id obj) {
+        complete(success,obj);
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
+    
+}
+
 
 @end

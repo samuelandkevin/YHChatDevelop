@@ -25,5 +25,8 @@
 #import "YHSqliteManager.h"
 #import "YHMsgLogVC.h"
 #import "YHCellWave.h"
+#import "CardDetailViewController.h"
+#import "CellForChatGroup.h"
+
 
 #endif /* YHChatDevelop_Bridging_Header_h */

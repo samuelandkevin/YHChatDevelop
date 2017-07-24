@@ -57,6 +57,18 @@
 		AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */; };
 		AC69EA231F1F3777008D8EE0 /* SqliteManager+MyVisitors.m in Sources */ = {isa = PBXBuildFile; fileRef = AC69EA221F1F3777008D8EE0 /* SqliteManager+MyVisitors.m */; };
 		AC69EA2A1F1F3DA4008D8EE0 /* YHDiscoveryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC69EA291F1F3DA4008D8EE0 /* YHDiscoveryVC.m */; };
+		AC7737061F25C12800FA8D6B /* UIView+ZJFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7736F61F25C12800FA8D6B /* UIView+ZJFrame.m */; };
+		AC7737071F25C12800FA8D6B /* UIViewController+ZJScrollPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7736F81F25C12800FA8D6B /* UIViewController+ZJScrollPageController.m */; };
+		AC7737081F25C12800FA8D6B /* ZJCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7736FA1F25C12800FA8D6B /* ZJCollectionView.m */; };
+		AC7737091F25C12800FA8D6B /* ZJContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7736FC1F25C12800FA8D6B /* ZJContentView.m */; };
+		AC77370A1F25C12800FA8D6B /* ZJScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7736FE1F25C12800FA8D6B /* ZJScrollPageView.m */; };
+		AC77370B1F25C12800FA8D6B /* ZJScrollSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7737011F25C12800FA8D6B /* ZJScrollSegmentView.m */; };
+		AC77370C1F25C12800FA8D6B /* ZJSegmentStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7737031F25C12800FA8D6B /* ZJSegmentStyle.m */; };
+		AC77370D1F25C12800FA8D6B /* ZJTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7737051F25C12800FA8D6B /* ZJTitleView.m */; };
+		AC7737101F25C16800FA8D6B /* YHSearchFriView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC77370F1F25C16800FA8D6B /* YHSearchFriView.m */; };
+		AC7737131F25C19400FA8D6B /* YHSearchFriBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7737121F25C19400FA8D6B /* YHSearchFriBar.m */; };
+		AC7737151F25C1D000FA8D6B /* YHGroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7737141F25C1D000FA8D6B /* YHGroupListViewController.swift */; };
+		AC7737181F25C1FD00FA8D6B /* CellForChatGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7737171F25C1FD00FA8D6B /* CellForChatGroup.m */; };
 		ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA84D7B1F0CB40800A887AD /* YHCommon.swift */; };
 		ACC9ACBC1F1311B900A5FF88 /* STMURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB51F1311B900A5FF88 /* STMURLCache.m */; };
 		ACC9ACBD1F1311B900A5FF88 /* STMURLCacheMk.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB71F1311B900A5FF88 /* STMURLCacheMk.m */; };
@@ -162,6 +174,28 @@
 		ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */; };
 		ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */; };
 		ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */; };
+		ACD2785B1F25C60700168B36 /* MySettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2785A1F25C60700168B36 /* MySettingController.m */; };
+		ACD2785E1F25C64900168B36 /* MySettingCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2785D1F25C64900168B36 /* MySettingCommonCell.m */; };
+		ACD278601F25C67100168B36 /* FontSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2785F1F25C67100168B36 /* FontSizeController.swift */; };
+		ACD278621F25C68600168B36 /* FontSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD278611F25C68600168B36 /* FontSizeCell.swift */; };
+		ACD278651F25C6AA00168B36 /* YHAnimatedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278641F25C6AA00168B36 /* YHAnimatedBtn.m */; };
+		ACD278681F25C6DC00168B36 /* EditAccountController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278671F25C6DC00168B36 /* EditAccountController.m */; };
+		ACD2788F1F25C70400168B36 /* IQNSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2786C1F25C70400168B36 /* IQNSArray+Sort.m */; };
+		ACD278901F25C70400168B36 /* IQUIScrollView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2786E1F25C70400168B36 /* IQUIScrollView+Additions.m */; };
+		ACD278911F25C70400168B36 /* IQUITextFieldView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278701F25C70400168B36 /* IQUITextFieldView+Additions.m */; };
+		ACD278921F25C70400168B36 /* IQUIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278721F25C70400168B36 /* IQUIView+Hierarchy.m */; };
+		ACD278931F25C70400168B36 /* IQUIViewController+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278741F25C70400168B36 /* IQUIViewController+Additions.m */; };
+		ACD278941F25C70400168B36 /* IQUIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278761F25C70400168B36 /* IQUIWindow+Hierarchy.m */; };
+		ACD278951F25C70400168B36 /* IQKeyboardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2787B1F25C70400168B36 /* IQKeyboardManager.m */; };
+		ACD278961F25C70400168B36 /* IQKeyboardReturnKeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2787D1F25C70400168B36 /* IQKeyboardReturnKeyHandler.m */; };
+		ACD278971F25C70400168B36 /* IQTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278801F25C70400168B36 /* IQTextView.m */; };
+		ACD278981F25C70400168B36 /* IQBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278831F25C70400168B36 /* IQBarButtonItem.m */; };
+		ACD278991F25C70400168B36 /* IQPreviousNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278851F25C70400168B36 /* IQPreviousNextView.m */; };
+		ACD2789A1F25C70400168B36 /* IQTitleBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278871F25C70400168B36 /* IQTitleBarButtonItem.m */; };
+		ACD2789B1F25C70400168B36 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278891F25C70400168B36 /* IQToolbar.m */; };
+		ACD2789C1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2788B1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.m */; };
+		ACD2789D1F25C70400168B36 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACD2788E1F25C70400168B36 /* IQKeyboardManager.bundle */; };
+		ACD278A01F25C73100168B36 /* MyPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2789F1F25C73100168B36 /* MyPasswordView.m */; };
 		ACDDA3951F1F2B1D0029E134 /* YHMyController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA3941F1F2B1D0029E134 /* YHMyController.m */; };
 		ACDDA3981F1F2B970029E134 /* MyControllerHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */; };
 		ACDDA3991F1F2B970029E134 /* MyControllerMiddleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDA3971F1F2B970029E134 /* MyControllerMiddleCell.swift */; };
@@ -193,6 +227,20 @@
 		ACF6C6E01F1A10B0003EF332 /* YHAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF6C6DF1F1A10B0003EF332 /* YHAddressBook.m */; };
 		ACF6C6E31F1A11BA003EF332 /* ConnectionSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF6C6E21F1A11BA003EF332 /* ConnectionSearchCell.m */; };
 		ACF6C6E71F1A1611003EF332 /* YHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF6C6E61F1A1611003EF332 /* YHTabBarController.m */; };
+		ACFC60521F25D30A000A1202 /* AccountInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC60511F25D30A000A1202 /* AccountInfoController.m */; };
+		ACFC60551F25D340000A1202 /* EditPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC60541F25D340000A1202 /* EditPasswordController.m */; };
+		ACFC60581F25D35D000A1202 /* EditPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC60571F25D35D000A1202 /* EditPhoneController.m */; };
+		ACFC605B1F25D377000A1202 /* ChangePhoneNuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC605A1F25D377000A1202 /* ChangePhoneNuViewController.m */; };
+		ACFC605E1F25D38D000A1202 /* VerificationNuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFC605D1F25D38D000A1202 /* VerificationNuViewController.m */; };
+		ACFC60601F25D462000A1202 /* YHError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC605F1F25D462000A1202 /* YHError.swift */; };
+		ACFC60641F25DC6F000A1202 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFC60621F25DC6F000A1202 /* MOBFoundation.framework */; };
+		ACFC60651F25DC6F000A1202 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFC60631F25DC6F000A1202 /* SMS_SDK.framework */; };
+		ACFC606A1F25DFEE000A1202 /* libicucore.A.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFC60681F25DFA5000A1202 /* libicucore.A.tbd */; };
+		ACFC606C1F25DFFD000A1202 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFC606B1F25DFFD000A1202 /* libz.1.2.5.tbd */; };
+		ACFC606E1F25E00C000A1202 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFC606D1F25E00C000A1202 /* libstdc++.tbd */; };
+		ACFC60701F25E01A000A1202 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFC606F1F25E01A000A1202 /* JavaScriptCore.framework */; };
+		ACFC60731F25E31A000A1202 /* UILabel+FontChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC60711F25E31A000A1202 /* UILabel+FontChange.swift */; };
+		ACFC60741F25E31A000A1202 /* UITextField+FontChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFC60721F25E31A000A1202 /* UITextField+FontChange.swift */; };
 		ACFCF4141F1856960040F988 /* YHChatTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4131F1856960040F988 /* YHChatTableView.m */; };
 		ACFCF4221F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4171F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m */; };
 		ACFCF4231F18A34A0040F988 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4191F18A34A0040F988 /* SWCellScrollView.m */; };
@@ -200,6 +248,13 @@
 		ACFCF4251F18A34A0040F988 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF41D1F18A34A0040F988 /* SWTableViewCell.m */; };
 		ACFCF4261F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF41F1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m */; };
 		ACFCF4271F18A34A0040F988 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFCF4211F18A34A0040F988 /* SWUtilityButtonView.m */; };
+		ACFEF3021F25A0B800582683 /* YHScanResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEF3001F25A0B800582683 /* YHScanResultVC.swift */; };
+		ACFEF3031F25A0B800582683 /* YHScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEF3011F25A0B800582683 /* YHScanVC.swift */; };
+		ACFEF3071F25A0D900582683 /* YHScanArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEF3051F25A0D900582683 /* YHScanArea.swift */; };
+		ACFEF3081F25A0D900582683 /* YHScanBG.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEF3061F25A0D900582683 /* YHScanBG.swift */; };
+		ACFEF30A1F25A15F00582683 /* YHLoginByWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFEF3091F25A15F00582683 /* YHLoginByWebVC.swift */; };
+		ACFEF30C1F25A25100582683 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACFEF30B1F25A25100582683 /* AVFoundation.framework */; };
+		ACFEF30F1F25C07A00582683 /* YHChooseFriVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACFEF30E1F25C07A00582683 /* YHChooseFriVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -305,6 +360,30 @@
 		AC69EA221F1F3777008D8EE0 /* SqliteManager+MyVisitors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SqliteManager+MyVisitors.m"; sourceTree = "<group>"; };
 		AC69EA281F1F3DA4008D8EE0 /* YHDiscoveryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDiscoveryVC.h; sourceTree = "<group>"; };
 		AC69EA291F1F3DA4008D8EE0 /* YHDiscoveryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHDiscoveryVC.m; sourceTree = "<group>"; };
+		AC7736F51F25C12800FA8D6B /* UIView+ZJFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZJFrame.h"; sourceTree = "<group>"; };
+		AC7736F61F25C12800FA8D6B /* UIView+ZJFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZJFrame.m"; sourceTree = "<group>"; };
+		AC7736F71F25C12800FA8D6B /* UIViewController+ZJScrollPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZJScrollPageController.h"; sourceTree = "<group>"; };
+		AC7736F81F25C12800FA8D6B /* UIViewController+ZJScrollPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZJScrollPageController.m"; sourceTree = "<group>"; };
+		AC7736F91F25C12800FA8D6B /* ZJCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCollectionView.h; sourceTree = "<group>"; };
+		AC7736FA1F25C12800FA8D6B /* ZJCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCollectionView.m; sourceTree = "<group>"; };
+		AC7736FB1F25C12800FA8D6B /* ZJContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJContentView.h; sourceTree = "<group>"; };
+		AC7736FC1F25C12800FA8D6B /* ZJContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJContentView.m; sourceTree = "<group>"; };
+		AC7736FD1F25C12800FA8D6B /* ZJScrollPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageView.h; sourceTree = "<group>"; };
+		AC7736FE1F25C12800FA8D6B /* ZJScrollPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollPageView.m; sourceTree = "<group>"; };
+		AC7736FF1F25C12800FA8D6B /* ZJScrollPageViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollPageViewDelegate.h; sourceTree = "<group>"; };
+		AC7737001F25C12800FA8D6B /* ZJScrollSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJScrollSegmentView.h; sourceTree = "<group>"; };
+		AC7737011F25C12800FA8D6B /* ZJScrollSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJScrollSegmentView.m; sourceTree = "<group>"; };
+		AC7737021F25C12800FA8D6B /* ZJSegmentStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJSegmentStyle.h; sourceTree = "<group>"; };
+		AC7737031F25C12800FA8D6B /* ZJSegmentStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJSegmentStyle.m; sourceTree = "<group>"; };
+		AC7737041F25C12800FA8D6B /* ZJTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJTitleView.h; sourceTree = "<group>"; };
+		AC7737051F25C12800FA8D6B /* ZJTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJTitleView.m; sourceTree = "<group>"; };
+		AC77370E1F25C16800FA8D6B /* YHSearchFriView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSearchFriView.h; sourceTree = "<group>"; };
+		AC77370F1F25C16800FA8D6B /* YHSearchFriView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSearchFriView.m; sourceTree = "<group>"; };
+		AC7737111F25C19400FA8D6B /* YHSearchFriBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSearchFriBar.h; sourceTree = "<group>"; };
+		AC7737121F25C19400FA8D6B /* YHSearchFriBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSearchFriBar.m; sourceTree = "<group>"; };
+		AC7737141F25C1D000FA8D6B /* YHGroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHGroupListViewController.swift; sourceTree = "<group>"; };
+		AC7737161F25C1FD00FA8D6B /* CellForChatGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForChatGroup.h; sourceTree = "<group>"; };
+		AC7737171F25C1FD00FA8D6B /* CellForChatGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForChatGroup.m; sourceTree = "<group>"; };
 		ACA84D7B1F0CB40800A887AD /* YHCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCommon.swift; sourceTree = "<group>"; };
 		ACC9ACB41F1311B900A5FF88 /* STMURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMURLCache.h; sourceTree = "<group>"; };
 		ACC9ACB51F1311B900A5FF88 /* STMURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMURLCache.m; sourceTree = "<group>"; };
@@ -499,6 +578,50 @@
 		ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCardSettingVC.swift; sourceTree = "<group>"; };
 		ACC9AEE31F135BE200A5FF88 /* YHMsgLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMsgLogVC.h; sourceTree = "<group>"; };
 		ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMsgLogVC.m; sourceTree = "<group>"; };
+		ACD278591F25C60700168B36 /* MySettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySettingController.h; sourceTree = "<group>"; };
+		ACD2785A1F25C60700168B36 /* MySettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySettingController.m; sourceTree = "<group>"; };
+		ACD2785C1F25C64900168B36 /* MySettingCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySettingCommonCell.h; sourceTree = "<group>"; };
+		ACD2785D1F25C64900168B36 /* MySettingCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySettingCommonCell.m; sourceTree = "<group>"; };
+		ACD2785F1F25C67100168B36 /* FontSizeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeController.swift; sourceTree = "<group>"; };
+		ACD278611F25C68600168B36 /* FontSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeCell.swift; sourceTree = "<group>"; };
+		ACD278631F25C6AA00168B36 /* YHAnimatedBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHAnimatedBtn.h; sourceTree = "<group>"; };
+		ACD278641F25C6AA00168B36 /* YHAnimatedBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHAnimatedBtn.m; sourceTree = "<group>"; };
+		ACD278661F25C6DC00168B36 /* EditAccountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditAccountController.h; sourceTree = "<group>"; };
+		ACD278671F25C6DC00168B36 /* EditAccountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditAccountController.m; sourceTree = "<group>"; };
+		ACD2786B1F25C70400168B36 /* IQNSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQNSArray+Sort.h"; sourceTree = "<group>"; };
+		ACD2786C1F25C70400168B36 /* IQNSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQNSArray+Sort.m"; sourceTree = "<group>"; };
+		ACD2786D1F25C70400168B36 /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
+		ACD2786E1F25C70400168B36 /* IQUIScrollView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIScrollView+Additions.m"; sourceTree = "<group>"; };
+		ACD2786F1F25C70400168B36 /* IQUITextFieldView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUITextFieldView+Additions.h"; sourceTree = "<group>"; };
+		ACD278701F25C70400168B36 /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
+		ACD278711F25C70400168B36 /* IQUIView+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+Hierarchy.h"; sourceTree = "<group>"; };
+		ACD278721F25C70400168B36 /* IQUIView+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+Hierarchy.m"; sourceTree = "<group>"; };
+		ACD278731F25C70400168B36 /* IQUIViewController+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIViewController+Additions.h"; sourceTree = "<group>"; };
+		ACD278741F25C70400168B36 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIViewController+Additions.m"; sourceTree = "<group>"; };
+		ACD278751F25C70400168B36 /* IQUIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIWindow+Hierarchy.h"; sourceTree = "<group>"; };
+		ACD278761F25C70400168B36 /* IQUIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		ACD278781F25C70400168B36 /* IQKeyboardManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstants.h; sourceTree = "<group>"; };
+		ACD278791F25C70400168B36 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
+		ACD2787A1F25C70400168B36 /* IQKeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardManager.h; sourceTree = "<group>"; };
+		ACD2787B1F25C70400168B36 /* IQKeyboardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardManager.m; sourceTree = "<group>"; };
+		ACD2787C1F25C70400168B36 /* IQKeyboardReturnKeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyboardReturnKeyHandler.h; sourceTree = "<group>"; };
+		ACD2787D1F25C70400168B36 /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
+		ACD2787F1F25C70400168B36 /* IQTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTextView.h; sourceTree = "<group>"; };
+		ACD278801F25C70400168B36 /* IQTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTextView.m; sourceTree = "<group>"; };
+		ACD278821F25C70400168B36 /* IQBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQBarButtonItem.h; sourceTree = "<group>"; };
+		ACD278831F25C70400168B36 /* IQBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQBarButtonItem.m; sourceTree = "<group>"; };
+		ACD278841F25C70400168B36 /* IQPreviousNextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQPreviousNextView.h; sourceTree = "<group>"; };
+		ACD278851F25C70400168B36 /* IQPreviousNextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQPreviousNextView.m; sourceTree = "<group>"; };
+		ACD278861F25C70400168B36 /* IQTitleBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQTitleBarButtonItem.h; sourceTree = "<group>"; };
+		ACD278871F25C70400168B36 /* IQTitleBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQTitleBarButtonItem.m; sourceTree = "<group>"; };
+		ACD278881F25C70400168B36 /* IQToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQToolbar.h; sourceTree = "<group>"; };
+		ACD278891F25C70400168B36 /* IQToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQToolbar.m; sourceTree = "<group>"; };
+		ACD2788A1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
+		ACD2788B1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
+		ACD2788C1F25C70400168B36 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
+		ACD2788E1F25C70400168B36 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		ACD2789E1F25C73100168B36 /* MyPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPasswordView.h; sourceTree = "<group>"; };
+		ACD2789F1F25C73100168B36 /* MyPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPasswordView.m; sourceTree = "<group>"; };
 		ACDDA3931F1F2B1D0029E134 /* YHMyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHMyController.h; sourceTree = "<group>"; };
 		ACDDA3941F1F2B1D0029E134 /* YHMyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMyController.m; sourceTree = "<group>"; };
 		ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyControllerHeaderCell.swift; sourceTree = "<group>"; };
@@ -553,6 +676,26 @@
 		ACF6C6E21F1A11BA003EF332 /* ConnectionSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionSearchCell.m; sourceTree = "<group>"; };
 		ACF6C6E51F1A1611003EF332 /* YHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHTabBarController.h; sourceTree = "<group>"; };
 		ACF6C6E61F1A1611003EF332 /* YHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHTabBarController.m; sourceTree = "<group>"; };
+		ACFC60501F25D30A000A1202 /* AccountInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfoController.h; sourceTree = "<group>"; };
+		ACFC60511F25D30A000A1202 /* AccountInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfoController.m; sourceTree = "<group>"; };
+		ACFC60531F25D340000A1202 /* EditPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPasswordController.h; sourceTree = "<group>"; };
+		ACFC60541F25D340000A1202 /* EditPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPasswordController.m; sourceTree = "<group>"; };
+		ACFC60561F25D35D000A1202 /* EditPhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPhoneController.h; sourceTree = "<group>"; };
+		ACFC60571F25D35D000A1202 /* EditPhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPhoneController.m; sourceTree = "<group>"; };
+		ACFC60591F25D377000A1202 /* ChangePhoneNuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePhoneNuViewController.h; sourceTree = "<group>"; };
+		ACFC605A1F25D377000A1202 /* ChangePhoneNuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneNuViewController.m; sourceTree = "<group>"; };
+		ACFC605C1F25D38D000A1202 /* VerificationNuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationNuViewController.h; sourceTree = "<group>"; };
+		ACFC605D1F25D38D000A1202 /* VerificationNuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationNuViewController.m; sourceTree = "<group>"; };
+		ACFC605F1F25D462000A1202 /* YHError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHError.swift; sourceTree = "<group>"; };
+		ACFC60621F25DC6F000A1202 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		ACFC60631F25DC6F000A1202 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
+		ACFC60661F25DF86000A1202 /* libcupolicy.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcupolicy.tbd; path = usr/lib/libcupolicy.tbd; sourceTree = SDKROOT; };
+		ACFC60681F25DFA5000A1202 /* libicucore.A.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.A.tbd; path = usr/lib/libicucore.A.tbd; sourceTree = SDKROOT; };
+		ACFC606B1F25DFFD000A1202 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		ACFC606D1F25E00C000A1202 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		ACFC606F1F25E01A000A1202 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		ACFC60711F25E31A000A1202 /* UILabel+FontChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+FontChange.swift"; sourceTree = "<group>"; };
+		ACFC60721F25E31A000A1202 /* UITextField+FontChange.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+FontChange.swift"; sourceTree = "<group>"; };
 		ACFCF4121F1856960040F988 /* YHChatTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHChatTableView.h; sourceTree = "<group>"; };
 		ACFCF4131F1856960040F988 /* YHChatTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHChatTableView.m; sourceTree = "<group>"; };
 		ACFCF4161F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
@@ -567,6 +710,14 @@
 		ACFCF41F1F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
 		ACFCF4201F18A34A0040F988 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
 		ACFCF4211F18A34A0040F988 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
+		ACFEF3001F25A0B800582683 /* YHScanResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHScanResultVC.swift; sourceTree = "<group>"; };
+		ACFEF3011F25A0B800582683 /* YHScanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHScanVC.swift; sourceTree = "<group>"; };
+		ACFEF3051F25A0D900582683 /* YHScanArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHScanArea.swift; sourceTree = "<group>"; };
+		ACFEF3061F25A0D900582683 /* YHScanBG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHScanBG.swift; sourceTree = "<group>"; };
+		ACFEF3091F25A15F00582683 /* YHLoginByWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHLoginByWebVC.swift; sourceTree = "<group>"; };
+		ACFEF30B1F25A25100582683 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		ACFEF30D1F25C07A00582683 /* YHChooseFriVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHChooseFriVC.h; sourceTree = "<group>"; };
+		ACFEF30E1F25C07A00582683 /* YHChooseFriVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHChooseFriVC.m; sourceTree = "<group>"; };
 		D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YHChatDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -575,7 +726,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACFC60701F25E01A000A1202 /* JavaScriptCore.framework in Frameworks */,
+				ACFC606E1F25E00C000A1202 /* libstdc++.tbd in Frameworks */,
+				ACFC606C1F25DFFD000A1202 /* libz.1.2.5.tbd in Frameworks */,
+				ACFC606A1F25DFEE000A1202 /* libicucore.A.tbd in Frameworks */,
+				ACFEF30C1F25A25100582683 /* AVFoundation.framework in Frameworks */,
 				5DCF916208E7F34616016DB7 /* Pods_YHChatDevelop.framework in Frameworks */,
+				ACFC60641F25DC6F000A1202 /* MOBFoundation.framework in Frameworks */,
+				ACFC60651F25DC6F000A1202 /* SMS_SDK.framework in Frameworks */,
 				AC51FFFF1EFB67B5005EAE4F /* libopencore-amrwb.a in Frameworks */,
 				AC51FFFE1EFB67B5005EAE4F /* libopencore-amrnb.a in Frameworks */,
 			);
@@ -636,6 +794,8 @@
 		AC51FE9C1EFB67B5005EAE4F /* Catagory */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC60711F25E31A000A1202 /* UILabel+FontChange.swift */,
+				ACFC60721F25E31A000A1202 /* UITextField+FontChange.swift */,
 				ACC9ACC41F1312C200A5FF88 /* UIBarButtonItem+Extension.swift */,
 				AC51FE9D1EFB67B5005EAE4F /* NSDate+Extension.h */,
 				AC51FE9E1EFB67B5005EAE4F /* NSDate+Extension.m */,
@@ -708,6 +868,9 @@
 		AC51FF6B1EFB67B5005EAE4F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC60611F25DC6F000A1202 /* SMS_SDK */,
+				ACD278691F25C70400168B36 /* IQKeyboardManager */,
+				AC7736F41F25C12800FA8D6B /* ZJScrollPageView */,
 				ACF6C6B41F1A0E03003EF332 /* pinyin */,
 				ACF6C6B01F1A0DB8003EF332 /* RegexKitLite */,
 				ACFCF4151F18A34A0040F988 /* SWTableViewCell */,
@@ -934,6 +1097,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		AC7736F41F25C12800FA8D6B /* ZJScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				AC7736F51F25C12800FA8D6B /* UIView+ZJFrame.h */,
+				AC7736F61F25C12800FA8D6B /* UIView+ZJFrame.m */,
+				AC7736F71F25C12800FA8D6B /* UIViewController+ZJScrollPageController.h */,
+				AC7736F81F25C12800FA8D6B /* UIViewController+ZJScrollPageController.m */,
+				AC7736F91F25C12800FA8D6B /* ZJCollectionView.h */,
+				AC7736FA1F25C12800FA8D6B /* ZJCollectionView.m */,
+				AC7736FB1F25C12800FA8D6B /* ZJContentView.h */,
+				AC7736FC1F25C12800FA8D6B /* ZJContentView.m */,
+				AC7736FD1F25C12800FA8D6B /* ZJScrollPageView.h */,
+				AC7736FE1F25C12800FA8D6B /* ZJScrollPageView.m */,
+				AC7736FF1F25C12800FA8D6B /* ZJScrollPageViewDelegate.h */,
+				AC7737001F25C12800FA8D6B /* ZJScrollSegmentView.h */,
+				AC7737011F25C12800FA8D6B /* ZJScrollSegmentView.m */,
+				AC7737021F25C12800FA8D6B /* ZJSegmentStyle.h */,
+				AC7737031F25C12800FA8D6B /* ZJSegmentStyle.m */,
+				AC7737041F25C12800FA8D6B /* ZJTitleView.h */,
+				AC7737051F25C12800FA8D6B /* ZJTitleView.m */,
+			);
+			path = ZJScrollPageView;
+			sourceTree = "<group>";
+		};
 		ACC9ACB31F1311B900A5FF88 /* STMURLCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,6 +1154,8 @@
 				ACC9AD821F1322A300A5FF88 /* YHPhotoBrowser */,
 				ACC9AD7A1F1322A300A5FF88 /* YHActionSheet.h */,
 				ACC9AD7B1F1322A300A5FF88 /* YHActionSheet.m */,
+				ACD278631F25C6AA00168B36 /* YHAnimatedBtn.h */,
+				ACD278641F25C6AA00168B36 /* YHAnimatedBtn.m */,
 				ACC9AED31F134CFE00A5FF88 /* YHCellWave.h */,
 				ACC9AED41F134CFE00A5FF88 /* YHCellWave.m */,
 				ACC9AEC81F134C5100A5FF88 /* HHTagsContainer.h */,
@@ -1115,10 +1304,13 @@
 		ACC9AE151F1322DB00A5FF88 /* SubPages */ = {
 			isa = PBXGroup;
 			children = (
+				AC7737141F25C1D000FA8D6B /* YHGroupListViewController.swift */,
 				ACC9AE1F1F1322DB00A5FF88 /* YHTransferGroupOwner.swift */,
 				ACC9AE1A1F1322DB00A5FF88 /* YHGroupMembersList.swift */,
 				ACC9AE1B1F1322DB00A5FF88 /* YHGroupSetting.swift */,
 				ACC9AE1C1F1322DB00A5FF88 /* YHRemoveGroupMembers.swift */,
+				ACFEF30D1F25C07A00582683 /* YHChooseFriVC.h */,
+				ACFEF30E1F25C07A00582683 /* YHChooseFriVC.m */,
 				ACC9AE161F1322DB00A5FF88 /* YHChatDetailVC.h */,
 				ACC9AE171F1322DB00A5FF88 /* YHChatDetailVC.m */,
 				ACC9AEE31F135BE200A5FF88 /* YHMsgLogVC.h */,
@@ -1163,6 +1355,12 @@
 		ACC9AE301F1322DC00A5FF88 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AC7737161F25C1FD00FA8D6B /* CellForChatGroup.h */,
+				AC7737171F25C1FD00FA8D6B /* CellForChatGroup.m */,
+				AC7737111F25C19400FA8D6B /* YHSearchFriBar.h */,
+				AC7737121F25C19400FA8D6B /* YHSearchFriBar.m */,
+				AC77370E1F25C16800FA8D6B /* YHSearchFriView.h */,
+				AC77370F1F25C16800FA8D6B /* YHSearchFriView.m */,
 				ACC9AE311F1322DC00A5FF88 /* CellDocument.h */,
 				ACC9AE321F1322DC00A5FF88 /* CellDocument.m */,
 				ACC9AE331F1322DC00A5FF88 /* CellGroupSetting.swift */,
@@ -1254,6 +1452,7 @@
 		ACC9AE6C1F1322DC00A5FF88 /* YHLogin */ = {
 			isa = PBXGroup;
 			children = (
+				ACFEF3091F25A15F00582683 /* YHLoginByWebVC.swift */,
 				ACC9AE6D1F1322DC00A5FF88 /* YHLoginInputViewController.h */,
 				ACC9AE6E1F1322DC00A5FF88 /* YHLoginInputViewController.m */,
 				ACC9AE6F1F1322DC00A5FF88 /* YHLoginInputViewController.xib */,
@@ -1337,6 +1536,8 @@
 		ACC9AEC11F134B4500A5FF88 /* SubPages */ = {
 			isa = PBXGroup;
 			children = (
+				ACFEF3001F25A0B800582683 /* YHScanResultVC.swift */,
+				ACFEF3011F25A0B800582683 /* YHScanVC.swift */,
 				ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */,
 				ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */,
 				ACF6C6D51F1A0FE6003EF332 /* AddFansViewController.h */,
@@ -1355,6 +1556,7 @@
 				ACF6C6AE1F1A0D8C003EF332 /* CellForMyFri.m */,
 				ACF6C6E11F1A11BA003EF332 /* ConnectionSearchCell.h */,
 				ACF6C6E21F1A11BA003EF332 /* ConnectionSearchCell.m */,
+				ACFEF3041F25A0D900582683 /* Scan */,
 				ACF6C6D81F1A1023003EF332 /* AddressBook */,
 				ACF6C6BB1F1A0E30003EF332 /* Contact */,
 				ACC9AECB1F134C9700A5FF88 /* CardDetail */,
@@ -1371,6 +1573,85 @@
 				ACC9AECF1F134C9700A5FF88 /* YHCardDetailHeaderView.m */,
 			);
 			path = CardDetail;
+			sourceTree = "<group>";
+		};
+		ACD278691F25C70400168B36 /* IQKeyboardManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACD2786A1F25C70400168B36 /* Categories */,
+				ACD278771F25C70400168B36 /* Constants */,
+				ACD2787A1F25C70400168B36 /* IQKeyboardManager.h */,
+				ACD2787B1F25C70400168B36 /* IQKeyboardManager.m */,
+				ACD2787C1F25C70400168B36 /* IQKeyboardReturnKeyHandler.h */,
+				ACD2787D1F25C70400168B36 /* IQKeyboardReturnKeyHandler.m */,
+				ACD2787E1F25C70400168B36 /* IQTextView */,
+				ACD278811F25C70400168B36 /* IQToolbar */,
+				ACD2788C1F25C70400168B36 /* KeyboardManager.h */,
+				ACD2788D1F25C70400168B36 /* Resources */,
+			);
+			path = IQKeyboardManager;
+			sourceTree = "<group>";
+		};
+		ACD2786A1F25C70400168B36 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				ACD2786B1F25C70400168B36 /* IQNSArray+Sort.h */,
+				ACD2786C1F25C70400168B36 /* IQNSArray+Sort.m */,
+				ACD2786D1F25C70400168B36 /* IQUIScrollView+Additions.h */,
+				ACD2786E1F25C70400168B36 /* IQUIScrollView+Additions.m */,
+				ACD2786F1F25C70400168B36 /* IQUITextFieldView+Additions.h */,
+				ACD278701F25C70400168B36 /* IQUITextFieldView+Additions.m */,
+				ACD278711F25C70400168B36 /* IQUIView+Hierarchy.h */,
+				ACD278721F25C70400168B36 /* IQUIView+Hierarchy.m */,
+				ACD278731F25C70400168B36 /* IQUIViewController+Additions.h */,
+				ACD278741F25C70400168B36 /* IQUIViewController+Additions.m */,
+				ACD278751F25C70400168B36 /* IQUIWindow+Hierarchy.h */,
+				ACD278761F25C70400168B36 /* IQUIWindow+Hierarchy.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		ACD278771F25C70400168B36 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				ACD278781F25C70400168B36 /* IQKeyboardManagerConstants.h */,
+				ACD278791F25C70400168B36 /* IQKeyboardManagerConstantsInternal.h */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		ACD2787E1F25C70400168B36 /* IQTextView */ = {
+			isa = PBXGroup;
+			children = (
+				ACD2787F1F25C70400168B36 /* IQTextView.h */,
+				ACD278801F25C70400168B36 /* IQTextView.m */,
+			);
+			path = IQTextView;
+			sourceTree = "<group>";
+		};
+		ACD278811F25C70400168B36 /* IQToolbar */ = {
+			isa = PBXGroup;
+			children = (
+				ACD278821F25C70400168B36 /* IQBarButtonItem.h */,
+				ACD278831F25C70400168B36 /* IQBarButtonItem.m */,
+				ACD278841F25C70400168B36 /* IQPreviousNextView.h */,
+				ACD278851F25C70400168B36 /* IQPreviousNextView.m */,
+				ACD278861F25C70400168B36 /* IQTitleBarButtonItem.h */,
+				ACD278871F25C70400168B36 /* IQTitleBarButtonItem.m */,
+				ACD278881F25C70400168B36 /* IQToolbar.h */,
+				ACD278891F25C70400168B36 /* IQToolbar.m */,
+				ACD2788A1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.h */,
+				ACD2788B1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.m */,
+			);
+			path = IQToolbar;
+			sourceTree = "<group>";
+		};
+		ACD2788D1F25C70400168B36 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ACD2788E1F25C70400168B36 /* IQKeyboardManager.bundle */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		ACDDA38F1F1F2ADB0029E134 /* YHMy */ = {
@@ -1395,6 +1676,21 @@
 		ACDDA3911F1F2AF90029E134 /* SubPages */ = {
 			isa = PBXGroup;
 			children = (
+				ACD2785F1F25C67100168B36 /* FontSizeController.swift */,
+				ACFC60591F25D377000A1202 /* ChangePhoneNuViewController.h */,
+				ACFC605A1F25D377000A1202 /* ChangePhoneNuViewController.m */,
+				ACFC60501F25D30A000A1202 /* AccountInfoController.h */,
+				ACFC60511F25D30A000A1202 /* AccountInfoController.m */,
+				ACD278661F25C6DC00168B36 /* EditAccountController.h */,
+				ACD278671F25C6DC00168B36 /* EditAccountController.m */,
+				ACFC60531F25D340000A1202 /* EditPasswordController.h */,
+				ACFC60541F25D340000A1202 /* EditPasswordController.m */,
+				ACFC60561F25D35D000A1202 /* EditPhoneController.h */,
+				ACFC60571F25D35D000A1202 /* EditPhoneController.m */,
+				ACFC605C1F25D38D000A1202 /* VerificationNuViewController.h */,
+				ACFC605D1F25D38D000A1202 /* VerificationNuViewController.m */,
+				ACD278591F25C60700168B36 /* MySettingController.h */,
+				ACD2785A1F25C60700168B36 /* MySettingController.m */,
 				ACDDA39A1F1F35F20029E134 /* MyVisitorsViewController.h */,
 				ACDDA39B1F1F35F20029E134 /* MyVisitorsViewController.m */,
 			);
@@ -1404,8 +1700,13 @@
 		ACDDA3921F1F2AF90029E134 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ACD278611F25C68600168B36 /* FontSizeCell.swift */,
 				ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */,
 				ACDDA3971F1F2B970029E134 /* MyControllerMiddleCell.swift */,
+				ACD2789E1F25C73100168B36 /* MyPasswordView.h */,
+				ACD2789F1F25C73100168B36 /* MyPasswordView.m */,
+				ACD2785C1F25C64900168B36 /* MySettingCommonCell.h */,
+				ACD2785D1F25C64900168B36 /* MySettingCommonCell.m */,
 				ACDDA39D1F1F366A0029E134 /* VistorCell.h */,
 				ACDDA39E1F1F366A0029E134 /* VistorCell.m */,
 				ACDDA39F1F1F366A0029E134 /* VistorCell.xib */,
@@ -1496,6 +1797,7 @@
 		ACF6C6DD1F1A10B0003EF332 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC605F1F25D462000A1202 /* YHError.swift */,
 				ACF6C6DE1F1A10B0003EF332 /* YHAddressBook.h */,
 				ACF6C6DF1F1A10B0003EF332 /* YHAddressBook.m */,
 			);
@@ -1509,6 +1811,15 @@
 				ACF6C6E61F1A1611003EF332 /* YHTabBarController.m */,
 			);
 			path = YHTabbar;
+			sourceTree = "<group>";
+		};
+		ACFC60611F25DC6F000A1202 /* SMS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				ACFC60621F25DC6F000A1202 /* MOBFoundation.framework */,
+				ACFC60631F25DC6F000A1202 /* SMS_SDK.framework */,
+			);
+			path = SMS_SDK;
 			sourceTree = "<group>";
 		};
 		ACFCF4151F18A34A0040F988 /* SWTableViewCell */ = {
@@ -1530,6 +1841,15 @@
 			path = SWTableViewCell;
 			sourceTree = "<group>";
 		};
+		ACFEF3041F25A0D900582683 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				ACFEF3051F25A0D900582683 /* YHScanArea.swift */,
+				ACFEF3061F25A0D900582683 /* YHScanBG.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
 		BD806E136FFB44C3DFADE3AB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1542,6 +1862,12 @@
 		EAE80C7416966FDC5449E3DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACFC606F1F25E01A000A1202 /* JavaScriptCore.framework */,
+				ACFC606D1F25E00C000A1202 /* libstdc++.tbd */,
+				ACFC606B1F25DFFD000A1202 /* libz.1.2.5.tbd */,
+				ACFC60681F25DFA5000A1202 /* libicucore.A.tbd */,
+				ACFC60661F25DF86000A1202 /* libcupolicy.tbd */,
+				ACFEF30B1F25A25100582683 /* AVFoundation.framework */,
 				D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */,
 			);
 			name = Frameworks;
@@ -1617,6 +1943,7 @@
 				AC51FE901EFB5B1A005EAE4F /* Main.storyboard in Resources */,
 				ACDDA3A11F1F366A0029E134 /* VistorCell.xib in Resources */,
 				ACF6C6C91F1A0E30003EF332 /* CellForMyFans.xib in Resources */,
+				ACD2789D1F25C70400168B36 /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1675,6 +2002,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD278911F25C70400168B36 /* IQUITextFieldView+Additions.m in Sources */,
 				AC604ABA1F03444A00B8D8B4 /* NetManager+Connections.m in Sources */,
 				ACF6C6CA1F1A0E30003EF332 /* CellForNewFri.m in Sources */,
 				ACC9AEA21F1322DC00A5FF88 /* CellChatGIFRight.m in Sources */,
@@ -1684,23 +2012,37 @@
 				ACDDA3951F1F2B1D0029E134 /* YHMyController.m in Sources */,
 				ACC9AE9F1F1322DC00A5FF88 /* CellChatFileLeft.m in Sources */,
 				ACC9AE891F1322DC00A5FF88 /* YHEducationExperienceModel.m in Sources */,
+				ACD2785E1F25C64900168B36 /* MySettingCommonCell.m in Sources */,
 				ACC9AEDB1F134D4100A5FF88 /* QRCode.swift in Sources */,
 				ACC9AE931F1322DC00A5FF88 /* YHTransferGroupOwner.swift in Sources */,
 				AC51FFFD1EFB67B5005EAE4F /* amrFileCodec.mm in Sources */,
 				ACC9AE811F1322DC00A5FF88 /* YHChatListModel.m in Sources */,
 				AC604AC41F03444A00B8D8B4 /* YHUploadManager.m in Sources */,
+				ACFEF30F1F25C07A00582683 /* YHChooseFriVC.m in Sources */,
+				ACFEF3081F25A0D900582683 /* YHScanBG.swift in Sources */,
 				AC51FFFA1EFB67B5005EAE4F /* NSObject+MJProperty.m in Sources */,
 				AC51FFE41EFB67B5005EAE4F /* YHFileTool.m in Sources */,
+				AC77370A1F25C12800FA8D6B /* ZJScrollPageView.m in Sources */,
+				ACD2789A1F25C70400168B36 /* IQTitleBarButtonItem.m in Sources */,
+				ACFEF3031F25A0B800582683 /* YHScanVC.swift in Sources */,
+				ACD278651F25C6AA00168B36 /* YHAnimatedBtn.m in Sources */,
 				ACC9ACD31F13193700A5FF88 /* YHConfig.m in Sources */,
 				ACE13CCE1F17156300F23433 /* CellChatCheckinRight.m in Sources */,
 				ACC9ADE51F1322A300A5FF88 /* YHPopMenu.swift in Sources */,
+				ACFEF3021F25A0B800582683 /* YHScanResultVC.swift in Sources */,
 				ACC9AEA61F1322DC00A5FF88 /* CellChatTextLeft.m in Sources */,
+				ACFEF3071F25A0D900582683 /* YHScanArea.swift in Sources */,
 				ACC9ACBF1F1311B900A5FF88 /* STMURLProtocol.m in Sources */,
+				AC7737071F25C12800FA8D6B /* UIViewController+ZJScrollPageController.m in Sources */,
 				AC51FFFB1EFB67B5005EAE4F /* NSString+MJExtension.m in Sources */,
 				ACC9AED21F134C9700A5FF88 /* YHCardDetailHeaderView.m in Sources */,
 				ACC9AEB61F1322DC00A5FF88 /* YHVoiceHUD.m in Sources */,
+				ACD278921F25C70400168B36 /* IQUIView+Hierarchy.m in Sources */,
+				ACD278901F25C70400168B36 /* IQUIScrollView+Additions.m in Sources */,
 				ACC9AE9A1F1322DC00A5FF88 /* YHVideoHelper.m in Sources */,
 				ACC9AEAE1F1322DC00A5FF88 /* YHExpressionInputView.m in Sources */,
+				AC7737181F25C1FD00FA8D6B /* CellForChatGroup.m in Sources */,
+				ACFC60601F25D462000A1202 /* YHError.swift in Sources */,
 				ACF6C6E71F1A1611003EF332 /* YHTabBarController.m in Sources */,
 				ACC9ACBD1F1311B900A5FF88 /* STMURLCacheMk.m in Sources */,
 				AC604ABB1F03444A00B8D8B4 /* NetManager+Login.m in Sources */,
@@ -1709,24 +2051,32 @@
 				ACC9AE921F1322DC00A5FF88 /* YHShootVC.m in Sources */,
 				ACC9AE8A1F1322DC00A5FF88 /* YHUserInfo.m in Sources */,
 				ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */,
+				ACD278991F25C70400168B36 /* IQPreviousNextView.m in Sources */,
 				ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */,
 				ACC9AE861F1322DC00A5FF88 /* YHGroupMember.m in Sources */,
 				ACDDA39C1F1F35F20029E134 /* MyVisitorsViewController.m in Sources */,
 				ACC9ACCC1F1314CB00A5FF88 /* YHProtocol.swift in Sources */,
 				AC604ABC1F03444A00B8D8B4 /* NetManager+Profile.m in Sources */,
 				ACC9AEE01F134EF900A5FF88 /* YHQRCodeCardVC.swift in Sources */,
+				ACD2785B1F25C60700168B36 /* MySettingController.m in Sources */,
 				AC604AC01F03444A00B8D8B4 /* SqliteManager.m in Sources */,
+				ACD278621F25C68600168B36 /* FontSizeCell.swift in Sources */,
 				ACC9AEB41F1322DC00A5FF88 /* YHShootBotView.m in Sources */,
 				ACC9ADDD1F1322A300A5FF88 /* YHActionSheet.m in Sources */,
+				AC7737131F25C19400FA8D6B /* YHSearchFriBar.m in Sources */,
 				ACC9AE951F1322DC00A5FF88 /* YHAVPlayer.m in Sources */,
+				ACD278601F25C67100168B36 /* FontSizeController.swift in Sources */,
 				AC604AB91F03444A00B8D8B4 /* NetManager+Chat.m in Sources */,
 				ACC9AE961F1322DC00A5FF88 /* YHPlayManager.m in Sources */,
+				ACD278A01F25C73100168B36 /* MyPasswordView.m in Sources */,
+				ACFC605E1F25D38D000A1202 /* VerificationNuViewController.m in Sources */,
 				ACC9AEAC1F1322DC00A5FF88 /* YHExpressionAddView.m in Sources */,
 				AC51FF971EFB67B5005EAE4F /* NSString+Extension.m in Sources */,
 				AC51FF991EFB67B5005EAE4F /* UIBarButtonItem+Extension.m in Sources */,
 				ACC9AEA11F1322DC00A5FF88 /* CellChatGIFLeft.m in Sources */,
 				ACC9ADE71F1322A300A5FF88 /* YHTipsView.m in Sources */,
 				ACC9AED11F134C9700A5FF88 /* CellForCard2.swift in Sources */,
+				AC77370C1F25C12800FA8D6B /* ZJSegmentStyle.m in Sources */,
 				AC51FFE11EFB67B5005EAE4F /* TestData.m in Sources */,
 				AC51FF9B1EFB67B5005EAE4F /* UIView+DRCorner.m in Sources */,
 				ACC9AEB01F1322DC00A5FF88 /* YHChatButton.m in Sources */,
@@ -1736,24 +2086,32 @@
 				ACC9AEBB1F1322DC00A5FF88 /* YHCommentData.m in Sources */,
 				ACC9AE911F1322DC00A5FF88 /* YHRemoveGroupMembers.swift in Sources */,
 				ACC9ADDF1F1322A300A5FF88 /* YHLoadingView.swift in Sources */,
+				ACFC60741F25E31A000A1202 /* UITextField+FontChange.swift in Sources */,
 				ACC9AEA41F1322DC00A5FF88 /* CellChatImageRight.m in Sources */,
 				ACF6C6B31F1A0DB8003EF332 /* RegexKitLite.m in Sources */,
 				ACC9AEAF1F1322DC00A5FF88 /* YHExpressionKeyboard.m in Sources */,
+				ACFEF30A1F25A15F00582683 /* YHLoginByWebVC.swift in Sources */,
 				ACFCF4261F18A34A0040F988 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
+				ACD278681F25C6DC00168B36 /* EditAccountController.m in Sources */,
 				ACC9AE991F1322DC00A5FF88 /* YHChatHelper.m in Sources */,
 				ACF6C6B91F1A0E03003EF332 /* ChineseString.m in Sources */,
 				AC51FFF61EFB67B5005EAE4F /* MJPropertyType.m in Sources */,
 				AC51FFF81EFB67B5005EAE4F /* NSObject+MJCoding.m in Sources */,
+				ACD2789C1F25C70400168B36 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				ACC9AEAA1F1322DC00A5FF88 /* CellChatVoiceRight.m in Sources */,
+				ACD278931F25C70400168B36 /* IQUIViewController+Additions.m in Sources */,
 				ACF6C6AF1F1A0D8C003EF332 /* CellForMyFri.m in Sources */,
 				ACC9ACF71F131EF100A5FF88 /* SqliteManager+Fris.m in Sources */,
+				ACD278971F25C70400168B36 /* IQTextView.m in Sources */,
 				ACC9AECA1F134C5100A5FF88 /* HHTagsContainer.m in Sources */,
+				ACFC60521F25D30A000A1202 /* AccountInfoController.m in Sources */,
 				AC51FFF31EFB67B5005EAE4F /* MJFoundation.m in Sources */,
 				AC51FFE21EFB67B5005EAE4F /* HHUtils.m in Sources */,
 				ACC9AEB21F1322DC00A5FF88 /* YHChatLabel.m in Sources */,
 				AC51FFF41EFB67B5005EAE4F /* MJProperty.m in Sources */,
 				ACF6C6E01F1A10B0003EF332 /* YHAddressBook.m in Sources */,
 				ACDDA3981F1F2B970029E134 /* MyControllerHeaderCell.swift in Sources */,
+				ACD2788F1F25C70400168B36 /* IQNSArray+Sort.m in Sources */,
 				ACC9AEDC1F134D4100A5FF88 /* YHABUserInfo.swift in Sources */,
 				ACC9AE8E1F1322DC00A5FF88 /* YHDocumentVC.m in Sources */,
 				ACF6C6CB1F1A0E30003EF332 /* CellNewFri.swift in Sources */,
@@ -1763,8 +2121,10 @@
 				ACC9ACBC1F1311B900A5FF88 /* STMURLCache.m in Sources */,
 				ACC9AE851F1322DC00A5FF88 /* YHGroupInfo.m in Sources */,
 				AC69EA231F1F3777008D8EE0 /* SqliteManager+MyVisitors.m in Sources */,
+				ACFC60581F25D35D000A1202 /* EditPhoneController.m in Sources */,
 				AC51FFF71EFB67B5005EAE4F /* NSObject+MJClass.m in Sources */,
 				ACC9AE841F1322DC00A5FF88 /* YHGIFModel.m in Sources */,
+				ACFC605B1F25D377000A1202 /* ChangePhoneNuViewController.m in Sources */,
 				AC604AC31F03444A00B8D8B4 /* YHDownLoadManager.m in Sources */,
 				ACE13CDA1F17565000F23433 /* YHPicModel.m in Sources */,
 				AC51FFE31EFB67B5005EAE4F /* SwiftExtension.swift in Sources */,
@@ -1773,17 +2133,23 @@
 				ACC9ACD91F131A1B00A5FF88 /* YHCompanyInfo.m in Sources */,
 				AC604ABD1F03444A00B8D8B4 /* NetManager.m in Sources */,
 				ACC9ADE81F1322A300A5FF88 /* YHUICommon.m in Sources */,
+				ACD278951F25C70400168B36 /* IQKeyboardManager.m in Sources */,
 				ACFCF4231F18A34A0040F988 /* SWCellScrollView.m in Sources */,
 				ACC9ACC81F1312F200A5FF88 /* OCtoSwiftUtil.m in Sources */,
+				ACD278961F25C70400168B36 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */,
 				AC604AB71F03444A00B8D8B4 /* YHChatManager.m in Sources */,
 				ACC9AEBC1F1322DC00A5FF88 /* YHWGManager.m in Sources */,
 				AC51FFE51EFB67B5005EAE4F /* YHPhotoPicker.swift in Sources */,
 				ACC9AE831F1322DC00A5FF88 /* YHFileModel.m in Sources */,
+				ACFC60551F25D340000A1202 /* EditPasswordController.m in Sources */,
 				ACFCF4141F1856960040F988 /* YHChatTableView.m in Sources */,
 				ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */,
 				ACF6C6CD1F1A0E30003EF332 /* YHConnectionSearchView.m in Sources */,
+				AC7737081F25C12800FA8D6B /* ZJCollectionView.m in Sources */,
+				ACD278981F25C70400168B36 /* IQBarButtonItem.m in Sources */,
 				ACC9AE7F1F1322DC00A5FF88 /* DataParser.m in Sources */,
+				AC7737101F25C16800FA8D6B /* YHSearchFriView.m in Sources */,
 				ACC9AEA31F1322DC00A5FF88 /* CellChatImageLeft.m in Sources */,
 				AC51FF961EFB67B5005EAE4F /* NSDate+Extension.m in Sources */,
 				ACC9ADE41F1322A300A5FF88 /* YHWaitingView.m in Sources */,
@@ -1799,6 +2165,7 @@
 				ACC9AE801F1322DC00A5FF88 /* YHChatGroupModel.m in Sources */,
 				ACC9AEA51F1322DC00A5FF88 /* CellChatList.m in Sources */,
 				ACFCF4221F18A34A0040F988 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				AC7737091F25C12800FA8D6B /* ZJContentView.m in Sources */,
 				ACF6C6BA1F1A0E03003EF332 /* pinyin.c in Sources */,
 				ACC9AE901F1322DC00A5FF88 /* YHGroupSetting.swift in Sources */,
 				ACC9AE8F1F1322DC00A5FF88 /* YHGroupMembersList.swift in Sources */,
@@ -1815,7 +2182,9 @@
 				AC51FFFC1EFB67B5005EAE4F /* OpenUDID.m in Sources */,
 				ACC9AE821F1322DC00A5FF88 /* YHChatModel.m in Sources */,
 				ACE13CD41F171AAE00F23433 /* YHCheckinBtn.m in Sources */,
+				AC7737061F25C12800FA8D6B /* UIView+ZJFrame.m in Sources */,
 				ACC9AE941F1322DC00A5FF88 /* VideoPlayOperation.m in Sources */,
+				ACFC60731F25E31A000A1202 /* UILabel+FontChange.swift in Sources */,
 				ACC9AE9E1F1322DC00A5FF88 /* CellChatBase.m in Sources */,
 				ACC9AE8C1F1322DC00A5FF88 /* YHWorkExperienceModel.m in Sources */,
 				ACF6C6CC1F1A0E30003EF332 /* YHConnectionHeaderView.m in Sources */,
@@ -1835,6 +2204,7 @@
 				ACC9AEA01F1322DC00A5FF88 /* CellChatFileRight.m in Sources */,
 				ACC9AE9B1F1322DC00A5FF88 /* CellDocument.m in Sources */,
 				ACC9ACD61F1319AC00A5FF88 /* YHAppInfoManager.m in Sources */,
+				AC77370B1F25C12800FA8D6B /* ZJScrollSegmentView.m in Sources */,
 				ACC9AEAB1F1322DC00A5FF88 /* YHModel.m in Sources */,
 				AC51FFF91EFB67B5005EAE4F /* NSObject+MJKeyValue.m in Sources */,
 				ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */,
@@ -1847,6 +2217,8 @@
 				ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */,
 				ACC9ACDF1F131C4700A5FF88 /* SqliteManager+Dynamic.m in Sources */,
 				ACF6C6DB1F1A1023003EF332 /* CellForAB.swift in Sources */,
+				ACD278941F25C70400168B36 /* IQUIWindow+Hierarchy.m in Sources */,
+				AC7737151F25C1D000FA8D6B /* YHGroupListViewController.swift in Sources */,
 				AC51FE871EFB5B1A005EAE4F /* main.m in Sources */,
 				AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */,
 				ACC9ACC51F1312C200A5FF88 /* UIBarButtonItem+Extension.swift in Sources */,
@@ -1855,6 +2227,8 @@
 				AC51FF9A1EFB67B5005EAE4F /* UIImage+Extension.m in Sources */,
 				AC51FFF21EFB67B5005EAE4F /* MJExtensionConst.m in Sources */,
 				ACC9AEAD1F1322DC00A5FF88 /* YHExpressionHelper.m in Sources */,
+				ACD2789B1F25C70400168B36 /* IQToolbar.m in Sources */,
+				AC77370D1F25C12800FA8D6B /* ZJTitleView.m in Sources */,
 				ACF6C6D41F1A0F15003EF332 /* YHIMHandler.m in Sources */,
 				ACC9ADE31F1322A300A5FF88 /* YHPhotoBrowserView.m in Sources */,
 			);
@@ -1975,6 +2349,10 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6C6E567289;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YHChatDevelop/Vendors/SMS_SDK",
+				);
 				GCC_PREFIX_HEADER = "YHChatDevelop/YHChatDevelop-PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = YHChatDevelop/Info.plist;
@@ -2033,6 +2411,10 @@
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6C6E567289;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YHChatDevelop/Vendors/SMS_SDK",
+				);
 				GCC_PREFIX_HEADER = "YHChatDevelop/YHChatDevelop-PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = YHChatDevelop/Info.plist;

@@ -17,11 +17,11 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AddressBook/AddressBook.h>
 #import <Contacts/Contacts.h>
-
+#import "RegexKitLite.h"
 
 #define FileHashDefaultChunkSizeForReadingData 1024*512
 #define kCommonAlertTag         10
-#define kSystemVersion [[UIDevice  currentDevice].systemVersion floatValue]
+
 
 CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath,size_t chunkSizeForReadingData) {
     // Declare needed variables
@@ -204,6 +204,120 @@ int getFileSize(NSString *path)
         return -1;
     }
 }
+
+BOOL isValidePassword( NSString * strPsw ) {
+    if ( ![strPsw isMatchedByRegex:@"^[\\x21-\\x7e]{6,20}$"] ) {  // ASCII 可见字符
+        // ^[a-zA-Z0-9`~!@#\$%\^&\*\(\)\-\+_=\[\]\{\}\\\|;:'"<>,\.\/\?]{6,20}$
+        return NO;
+    }
+    else
+        return YES;
+    
+}
+
+BOOL isValideTaxAccountFormat(NSString *taxAccount){
+    BOOL isValidPhone = NO;
+    BOOL isValidTaxAccount = NO;
+    //税道账号格式
+    NSString *userNameRegex = @"^[A-Za-z0-9]{6,20}+$";
+    NSPredicate *userNamePredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", userNameRegex];
+    
+    if (![userNamePredicate evaluateWithObject:taxAccount])
+    {
+        isValidTaxAccount = NO;
+    }
+    else{
+        isValidTaxAccount = YES;
+    }
+    
+    //手机格式
+    if (![taxAccount isMatchedByRegex:@"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"] ) {
+        isValidPhone = NO;
+    }
+    else{
+        isValidPhone = YES;
+    }
+    
+    if (isValidPhone || isValidTaxAccount) {
+        return YES;
+    }
+    return NO;
+}
+
+BOOL isValidePhoneFormat(NSString *mobileNum){
+    
+    if (mobileNum.length != 11)
+    {
+        return NO;
+    }
+    /**
+     * 手机号码:
+     * 13[0-9], 14[5,7], 15[0, 1, 2, 3, 5, 6, 7, 8, 9], 17[6, 7, 8], 18[0-9], 170[0-9]
+     * 移动号段: 134,135,136,137,138,139,150,151,152,157,158,159,182,183,184,187,188,147,178,1705
+     * 联通号段: 130,131,132,155,156,185,186,145,176,1709
+     * 电信号段: 133,153,180,181,189,177,1700
+     */
+    NSString *MOBILE = @"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|70)\\d{8}$";
+    /**
+     * 中国移动：China Mobile
+     * 134,135,136,137,138,139,150,151,152,157,158,159,182,183,184,187,188,147,178,1705
+     */
+    NSString *CM = @"(^1(3[4-9]|4[7]|5[0-27-9]|7[8]|8[2-478])\\d{8}$)|(^1705\\d{7}$)";
+    /**
+     * 中国联通：China Unicom
+     * 130,131,132,155,156,185,186,145,176,1709
+     */
+    NSString *CU = @"(^1(3[0-2]|4[5]|5[56]|7[6]|8[56])\\d{8}$)|(^1709\\d{7}$)";
+    /**
+     * 中国电信：China Telecom
+     * 133,153,180,181,189,177,1700
+     */
+    NSString *CT = @"(^1(33|53|77|8[019])\\d{8}$)|(^1700\\d{7}$)";
+    
+    
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBILE];
+    NSPredicate *regextestcm = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CM];
+    NSPredicate *regextestcu = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CU];
+    NSPredicate *regextestct = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", CT];
+    
+    if (([regextestmobile evaluateWithObject:mobileNum] == YES)
+        || ([regextestcm evaluateWithObject:mobileNum] == YES)
+        || ([regextestct evaluateWithObject:mobileNum] == YES)
+        || ([regextestcu evaluateWithObject:mobileNum] == YES))
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+
+
+BOOL isValideAccount( NSString * account ) {
+    if ( ![account isMatchedByRegex:@"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$"] && ![account isMatchedByRegex:@"^[0-9]{8,11}$"] ) {
+        return NO;
+    }
+    return YES;
+}
+
+BOOL isValideCustomTag( NSString *customTag){
+    if(!customTag.length){
+        postTips(@"标签内容不能为空", @"");
+        return NO;
+    }
+    if ([customTag rangeOfString:@"#"].location != NSNotFound) {
+        postTips(@"请勿添加带有#号、系统限制词,长度不能超过20个字符", @"");
+        return NO;
+    }
+    if (![customTag isMatchedByRegex:@"^([\\u4e00-\\u9fa5\\x20-\\x7e]){1,20}$"]) {
+        postTips(@"请勿添加带有#号、系统限制词,长度不能超过20个字符", @"");
+        return NO;
+    }else
+        return YES;
+}
+
 
 NSString* getDeviceVersion()
 {

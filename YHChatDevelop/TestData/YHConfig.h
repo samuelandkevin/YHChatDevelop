@@ -15,9 +15,11 @@ extern const int   lengthForEveryRequest;   //每次请求n条
 extern const int   kVerifyCodeValidDuration;//验证码有效时长
 
 void configLaunchOptions();
+void configMobSDK();
 void configSDWebImage();
 /**
  * 配置网页缓存(离线缓存+加载缓存)
  */
 void configWebViewCache();
+void configSysFont();
 @end

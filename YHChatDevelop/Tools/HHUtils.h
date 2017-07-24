@@ -55,9 +55,23 @@ extern "C" {
  */
 int getFileSize(NSString *path);
 
-
-NSString * getDeviceVersion();
-NSString * platformString ();
+#pragma mark - 格式检查
+    BOOL isValideOpusName( NSString *name);
+    //昵称格式是否有效
+    BOOL isValideNike( NSString * nick );
+    //密码是否有效
+    BOOL isValidePassword( NSString * psw );
+    //税道账号格式是否有效
+    BOOL isValideTaxAccountFormat(NSString *taxAccount);
+    //手机格式是否有效
+    BOOL isValidePhoneFormat(NSString *phoneNum);
+    //账号格式是否有效
+    BOOL isValideAccount( NSString * account );
+    //自定义标签是否有效
+    BOOL isValideCustomTag( NSString *customTag);
+    
+    NSString * getDeviceVersion();
+    NSString * platformString ();
     BOOL checkABGranted();   //检查通讯录是否授权
     BOOL checkVideoGranted();//检查视频是否授权
 /**

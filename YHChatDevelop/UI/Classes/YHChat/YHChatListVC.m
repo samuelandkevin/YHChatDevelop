@@ -24,6 +24,9 @@
 #import "SqliteManager+Chat.h"
 #import "YHVisitorChatDetailVC.h"
 #import "YHIMHandler.h"
+#import "AddFansViewController.h"
+#import "YHChooseFriVC.h"
+#import "Masonry.h"
 
 @interface YHChatListVC ()<UITableViewDelegate,UITableViewDataSource,SWTableViewCellDelegate>
 @property (nonatomic,strong) YHRefreshTableView *tableView;
@@ -34,7 +37,12 @@
 @end
 
 @implementation YHChatListVC
-
+-(instancetype)init{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
 #pragma mark - Life
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -45,10 +53,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     if (!_isVisitor) {
         [self _requestChatList];
     }
 }
+
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -86,20 +96,19 @@
     return _dataArray;
 }
 
+
 #pragma mark - init
 - (void)_initUI{
     //tableview
-    self.tableView = [[YHRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH
-                                                                          , SCREEN_HEIGHT-64) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
+    self.tableView = [[YHRefreshTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64-49) style:UITableViewStylePlain];
+    self.tableView.delegate   = self;
     self.tableView.dataSource = self;
-    [self.tableView setEnableLoadNew:NO];
     [self.view addSubview:self.tableView];
     self.tableView.rowHeight  = 70;
     self.tableView.backgroundColor = RGBCOLOR(244, 244, 244);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[CellChatList class] forCellReuseIdentifier:NSStringFromClass([CellChatList class])];
-    
+    [self.tableView setEnableLoadNew:NO];
 }
 
 - (void)_setupNavigationBar{
@@ -187,14 +196,25 @@
     WeakSelf
     [popView dismissWithHandler:^(BOOL isCanceled, NSInteger row) {
         switch (row) {
-            case 0:
-            
+            case 0:{
+                YHChooseFriVC *vc = [[YHChooseFriVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.pageType = PageType_CreatGroupChat;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 break;
-            case 1:
+            case 1:{
+                AddFansViewController *vc = [[AddFansViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 
                 break;
-            case 2:
-                
+            case 2:{
+                YHScanVC *vc = [[YHScanVC alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 break;
             default:
                 break;

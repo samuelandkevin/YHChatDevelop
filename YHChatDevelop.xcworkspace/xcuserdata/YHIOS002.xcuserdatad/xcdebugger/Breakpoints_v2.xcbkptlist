@@ -37,5 +37,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "YHChatDevelop/UI/Classes/YHConnection/SubPages/YHScanVC.swift"
+            timestampString = "522560688.461424"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "closePage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YHChatDevelop.YHScanVC.closePage () -&gt; ()"
+                  moduleName = "YHChatDevelop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YHIOS002/Desktop/MyGithubDemo/YHChatDevelop/YHChatDevelop/UI/Classes/YHConnection/SubPages/YHScanVC.swift"
+                  timestampString = "522582908.711618"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "YHChatDevelop.YHScanVC.closePage () -&gt; ()"
+                  moduleName = "YHChatDevelop"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/YHIOS002/Desktop/MyGithubDemo/YHChatDevelop/YHChatDevelop/UI/Classes/YHConnection/SubPages/YHScanVC.swift"
+                  timestampString = "522582908.713235"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

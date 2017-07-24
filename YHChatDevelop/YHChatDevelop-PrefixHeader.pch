@@ -13,6 +13,7 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import <Foundation/Foundation.h>
 #import "YHDebug.h"
 #import "YHConfig.h"
@@ -62,7 +63,12 @@ alpha:1.0]
 #define kErrorCell                  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"errCell"]
 
 
+//NSUserDefault
+#define kVerificationCode_WrongCount @"verificationCode.wrongCount"
+
 #pragma mark - 通知事件
+
+#define Event_notRegister_showLoginVC @"event.notRegister.showLoginVC"
 #define Event_Login_Success @"event.login.success"
 
 //刷新名片详情页

@@ -164,6 +164,7 @@
 - (void)updateFont:(NSNotification *)aNotifi{
     [self.tableView removeFromSuperview];
     [self initUI];
+    [self _setupContactersCount:self.myFriManager.allFriendsArray.count];
     [self.tableView reloadData];
 }
 
@@ -515,6 +516,7 @@
 #pragma mark - Private
 //设置联系人数量
 - (void)_setupContactersCount:(NSInteger)count{
+   _lbContacters.hidden = count > 0?NO:YES;
    _lbContacters.text = [NSString stringWithFormat:@"%ld位联系人",count];
 }
 
