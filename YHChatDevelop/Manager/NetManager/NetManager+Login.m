@@ -20,7 +20,7 @@
 
 - (void)_loginWithRequestDict:(NSDictionary *)requestDict complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathLogin];
+    NSString *requestUrl = [YHProtocol share].pathLogin;
     
     [self postWithRequestUrl:requestUrl parameters:requestDict complete:^(BOOL success, id obj) {
         
@@ -78,7 +78,7 @@
 //验证手机号是否可以进行注册
 - (void)getVerifyphoneNum:(NSString *)phoneNum complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathVerifyPhoneExist];
+    NSString *requestUrl = [YHProtocol share].pathVerifyPhoneExist;
     
     NSDictionary *dict = @{
                            @"mobile":phoneNum,
@@ -103,7 +103,7 @@
 //注册
 - (void)postRegisterWithPhoneNum:(NSString *)phoneNum veriCode:(NSString *)veriCode passwd:(NSString *)passwd complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathRegister];
+    NSString *requestUrl = [YHProtocol share].pathRegister;
     
     NSDictionary *dict = @{
                            @"mobile":   phoneNum,
@@ -158,7 +158,7 @@
 //验证token是否有效(直接登录用到)
 - (void)postValidateTokenWithUserInfo:(YHUserInfo *)userInfo complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathValidateToken];
+    NSString *requestUrl = [YHProtocol share].pathValidateToken;
     
     
     NSString *uid   = [[NSUserDefaults standardUserDefaults] objectForKey:kUserUid];
@@ -233,7 +233,7 @@
 - (void)postLoginWithPhoneNum:(NSString*)phoneNum verifyCode:(NSString *)verifyCode newPasswd:(NSString*)newPasswd complete:(NetManagerCallback)complete{
     //密码MD5加密
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathForgetPasswd];
+    NSString *requestUrl = [YHProtocol share].pathForgetPasswd;
     
     NSString *passwdMD5 = [HHUtils md5HexDigest:newPasswd];
     
@@ -258,7 +258,7 @@
 //退出登录
 - (void)postLogoutComplete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathLogout];
+    NSString *requestUrl = [YHProtocol share].pathLogout;
     if (![YHUserInfoManager sharedInstance].userInfo.accessToken) {
         complete(NO,@"用户token 为nil");
         return;
@@ -283,7 +283,7 @@
 - (void)postVerifyPhonesAreRegistered:(NSArray *)phoneNums complete:(NetManagerCallback)complete
 {
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathWhetherPhonesAreRegistered];
+    NSString *requestUrl = [YHProtocol share].pathWhetherPhonesAreRegistered;
     
     if (![YHUserInfoManager sharedInstance].userInfo.accessToken)
     {
@@ -352,7 +352,7 @@
 //验证第三方账号登录是否有效
 - (void)postVerifyThirdPartyWithUid:(NSString *)uid platform:(PlatformType)platform complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathVerifyThridPartyAccount];
+    NSString *requestUrl = [YHProtocol share].pathVerifyThridPartyAccount;
     
     if (!uid.length) {
         complete(NO,@"第三方uid为nil");
@@ -421,7 +421,7 @@
 //第三方账号登录绑定手机号
 - (void)postBindPhone:(NSString *)phone platform:(PlatformType)platform thridPartyUid:(NSString *)thridPartyUid verifyCode:(NSString *)verifyCode complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathBindPhoneByThirdPartyAccountLogin];
+    NSString *requestUrl = [YHProtocol share].pathBindPhoneByThirdPartyAccountLogin;
     
     if(!phone.length){
         complete(NO,@"手机号为nil!");
@@ -494,7 +494,7 @@
 
 //第三方绑定手机后设置密码
 - (void)postThridPartyLoginAndSetPasswd:(NSString *)passwd complete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathThridPartyLoginSetPasswd];
+    NSString *requestUrl = [YHProtocol share].pathThridPartyLoginSetPasswd;
     
     if(!passwd.length){
         complete(NO,@"密码为nil!");
@@ -525,7 +525,7 @@
  */
 - (void)postCommitBootLoggingComplete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathBootLogging];
+    NSString *requestUrl = [YHProtocol share].pathBootLogging;
     
     //未登录为空
     NSString *uid = [YHUserInfoManager sharedInstance].userInfo.uid;
@@ -614,7 +614,7 @@
 - (void)postLoginByWebPage:(NSString *)QRCodeId complete:(NetManagerCallback)complete{
     
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathLoginByWebPage];
+    NSString *requestUrl = [YHProtocol share].pathLoginByWebPage;
     if(!QRCodeId.length){
         complete(NO,@"QRCodeId is nil");
         return;

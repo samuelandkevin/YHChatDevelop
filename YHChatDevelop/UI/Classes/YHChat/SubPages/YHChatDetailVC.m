@@ -1037,6 +1037,20 @@
     DDLog(@"%s is dealloc",__func__);
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [[IQKeyboardManager sharedManager] setEnable:NO];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+    [super viewWillDisappear:animated];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

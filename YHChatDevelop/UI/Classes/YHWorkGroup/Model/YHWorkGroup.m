@@ -58,11 +58,17 @@ extern const CGFloat kMarginContentRight;
 
 + (NSDictionary *)yh_getClassForKeyIsObject{
     return @{@"userInfo":[YHUserInfo class],
-             @"forwardModel":[YHWorkGroup class]};
+             @"forwardModel":[YHWorkGroup class]
+             };
 }
 
 + (NSArray *)yh_propertyDonotSave{
     return @[@"contentW",@"lastContentWidth",@"isOpening",@"shouldShowMoreButton",@"showDeleteButton",@"hiddenBotLine",@"layout"];
+}
+
++ (NSDictionary *)yh_propertyIsInstanceOfArray{
+    return @{@"originalPicUrls":[NSURL class],
+             @"thumbnailPicUrls":[NSURL class]};
 }
 
 

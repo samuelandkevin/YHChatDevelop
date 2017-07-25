@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YHExpressionTextView.h"
 
 @protocol YHExpressionInputViewDelegate <NSObject>
 
@@ -22,6 +23,6 @@
 /// 表情键盘
 @interface YHExpressionInputView : UIView
 @property (nonatomic, weak) id<YHExpressionInputViewDelegate> delegate;
-@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) YHExpressionTextView *textView;
 + (instancetype)sharedView;
 @end

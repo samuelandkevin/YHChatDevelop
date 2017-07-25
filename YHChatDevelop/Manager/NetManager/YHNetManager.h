@@ -17,5 +17,6 @@
 #import "NetManager+Connections.h"
 #import "YHUploadManager.h"
 #import "YHDownLoadManager.h"
+#import "NetManager+WorkGroup.h"
 
 #endif /* YHNetManager_h */

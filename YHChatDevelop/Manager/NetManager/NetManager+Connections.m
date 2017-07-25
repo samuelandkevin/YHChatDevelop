@@ -14,7 +14,7 @@
 //请求添加好友
 - (void)postAddFriendwithFriendId:(NSString *)friendId complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathAddFriend];
+    NSString *requestUrl = [YHProtocol share].pathAddFriend;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -42,7 +42,7 @@
 //请求删除好友
 - (void)postDeleteFriendWithFrinedId:(NSString *)friendId complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathDeleteFriend];
+    NSString *requestUrl = [YHProtocol share].pathDeleteFriend;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -67,7 +67,7 @@
 //获取新的好友
 - (void)postNewAddFriendsCount:(int)count currentPage:(int)currentPage complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathNewFriends];
+    NSString *requestUrl = [YHProtocol share].pathNewFriends;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -133,7 +133,7 @@
 //获取我的好友
 - (void)postMyFriendsCount:(int)count currentPage:(int)currentPage complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathMyFriends];
+    NSString *requestUrl = [YHProtocol share].pathMyFriends;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -201,7 +201,7 @@
 //访问名片详情
 - (void)getVisitCardDetailWithTargetUid:(NSString *)tagretUid complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathVisitCardDetail];
+    NSString *requestUrl = [YHProtocol share].pathVisitCardDetail;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -251,7 +251,7 @@
 //其他用户与我的关系查询
 - (void)postGetRelationAboutMeWithUserIds:(NSArray *)userIds complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathRelationWithMe];
+    NSString *requestUrl = [YHProtocol share].pathRelationWithMe;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -306,7 +306,7 @@
 //接受加好友请求
 - (void)postAcceptAddFriendRequest:(NSString *)applicantId complete:(NetManagerCallback)complete
 {
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathAcceptAddFriendReq];
+    NSString *requestUrl = [YHProtocol share].pathAcceptAddFriendReq;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -353,7 +353,7 @@
 //查找好友
 - (void)postFindFriendsWithKeyWord:(NSString *)keyWord complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathFindFriends];
+    NSString *requestUrl = [YHProtocol share].pathFindFriends;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -413,7 +413,7 @@
 
 //获取某用户的账号信息（手机号和税道账号）
 - (void)getUserAccountWithUserId:(NSString *)userId complete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetUserAccount];
+    NSString *requestUrl = [YHProtocol share].pathGetUserAccount;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken ){
@@ -481,7 +481,7 @@
 //搜索人脉
 - (void)getSearchConnectionWithKeyWord:(NSString *)keyWord count:(int)count currentPage:(int)currentPage complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathSearchConnection];
+    NSString *requestUrl = [YHProtocol share].pathSearchConnection;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -538,7 +538,7 @@
 //投诉
 - (void)postComplainContent:(NSString *)content type:(ComplainType)type targetID:(NSString*)targetID complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathComplain];
+    NSString *requestUrl = [YHProtocol share].pathComplain;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -568,7 +568,7 @@
 //修改黑名单
 - (void)postModifyBlacklistWithTargetID:(NSString *)targetID add:(BOOL)add complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathModifyBlackList];
+    NSString *requestUrl = [YHProtocol share].pathModifyBlackList;
     requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"?accessToken=%@",[YHUserInfoManager sharedInstance].userInfo.accessToken]];
     
     //参数判断

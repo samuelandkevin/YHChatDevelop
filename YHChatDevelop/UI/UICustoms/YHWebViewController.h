@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+#import "ZJScrollPageViewDelegate.h"
 
-
-@interface YHWebViewController : UIViewController
+@interface YHWebViewController : UIViewController<ZJScrollPageViewChildVcDelegate>
 
 @property (nonatomic,assign,readonly) BOOL finishLoading;
 @property (nonatomic,assign,readonly) BOOL noCache;    //没有网页缓存

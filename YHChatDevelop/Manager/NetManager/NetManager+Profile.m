@@ -20,7 +20,7 @@
 #pragma mark - Public
 
 - (void)postVerifyTaxAccountExist:(NSString *)taxAccount complete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathTaxAccountExist];
+    NSString *requestUrl = [YHProtocol share].pathTaxAccountExist;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -54,7 +54,7 @@
 - (void)postEditMyCardWithUserInfo:(YHUserInfo *)userInfo complete:(NetManagerCallback)complete{
     
     //1.url
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditMyCard];
+    NSString *requestUrl = [YHProtocol share].pathEditMyCard;
     
     //2.参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -150,7 +150,7 @@
 
 //获取我的名片信息
 - (void)getMyCardDetailComplete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathMyCard];
+    NSString *requestUrl = [YHProtocol share].pathMyCard;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -199,7 +199,7 @@
 //登录后的修改密码
 - (void)postModifyPasswd:(NSString *)newPasswd oldPasswd:(NSString *)oldPasswd complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathModifyPasswd];
+    NSString *requestUrl = [YHProtocol share].pathModifyPasswd;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -239,7 +239,7 @@
 //验证旧密码是否正确
 - (void)postValidateOldPasswd:(NSString *)oldPasswd complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathValidateOldPasswd];
+    NSString *requestUrl = [YHProtocol share].pathValidateOldPasswd;
     
     //密码MD5加密
     NSString *passwdMD5 = [HHUtils md5HexDigest:oldPasswd];
@@ -268,7 +268,7 @@
 //修改手机号
 - (void)postChangePhoneNum:(NSString *)newPhoneNum verifyCode:(NSString *)verifyCode complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathChangePhone];
+    NSString *requestUrl = [YHProtocol share].pathChangePhone;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -304,7 +304,7 @@
 //获取我的动态
 - (void)getUserDynamicListWithUseId:(NSString *)userId count:(int)count currentPage:(int)currentPage complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetMyDynamics];
+    NSString *requestUrl = [YHProtocol share].pathGetMyDynamics;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -364,7 +364,7 @@
 
 //获取好友的动态列表
 - (void)getFriDynmaicListWithfriId:(NSString *)friId count:(int)count currentPage:(int)currentPage complete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetFriDynamics];
+    NSString *requestUrl = [YHProtocol share].pathGetFriDynamics;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
@@ -429,7 +429,7 @@
 //获取我的访客
 - (void)getMyVistorsCount:(int)count currentPage:(int)currentPage Complete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetMyVistors];
+    NSString *requestUrl = [YHProtocol share].pathGetMyVistors;
     
     //参数判断
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
@@ -486,7 +486,7 @@
 
 //删除动态
 - (void)postDeleteDynamcicWithDynamicId:(NSString *)dynamicId complete:(NetManagerCallback)complete{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathDeleteMyDynamic];
+    NSString *requestUrl = [YHProtocol share].pathDeleteMyDynamic;
     
     if(![YHUserInfoManager sharedInstance].userInfo.accessToken || ![YHUserInfoManager sharedInstance].userInfo.uid){
         complete(NO,@"用户Id 或 token 为nil");
@@ -522,7 +522,7 @@
     }
     
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@?accessToken=%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathUploadImage,[YHUserInfoManager sharedInstance].userInfo.accessToken];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@?accessToken=%@",[YHProtocol share].pathUploadImage,[YHUserInfoManager sharedInstance].userInfo.accessToken];
     
     
     [self uploadWithRequestUrl:requestUrl parameters:nil imageArray:@[image] fileNames:@[@"myAvatar"] name:@"files" mimeType:@"image/png" progress:^(int64_t bytesWritten, int64_t totalBytesWritten) {
@@ -575,7 +575,7 @@
         return;
     }
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathChangeTaxAccount];
+    NSString *requestUrl = [YHProtocol share].pathChangeTaxAccount;
     
     NSDictionary *dict = @{
                            @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
@@ -595,7 +595,7 @@
 //获取应用的基本信息
 - (void)getAppInfoComplete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetAppInfo];
+    NSString *requestUrl = [YHProtocol share].pathGetAppInfo;
     
     
     NSDictionary *dict = @{
@@ -613,7 +613,7 @@
 //检查App更新
 - (void)postCheckUpdateComplete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathCheckUpdate];
+    NSString *requestUrl = [YHProtocol share].pathCheckUpdate;
     
     NSDictionary *params = @{
                              @"platform":iOSPlatform,
@@ -647,7 +647,7 @@
 //获取关于
 - (void)getAboutComplete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathGetAbout];
+    NSString *requestUrl = [YHProtocol share].pathGetAbout;
     
     
     NSDictionary *dict = @{
@@ -718,7 +718,7 @@
 //获取行业职位列表
 - (void)getIndustryListComplete:(NetManagerCallback)complete{
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathIndustryList];
+    NSString *requestUrl = [YHProtocol share].pathIndustryList;
     
     [self getWithRequestUrl:requestUrl parameters:nil complete:^(BOOL success, id obj) {
         
@@ -814,7 +814,7 @@
     }
     DDLog(@"要增加的职位字符串为:%@",jobTagsString);
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditJobTags];
+    NSString *requestUrl = [YHProtocol share].pathEditJobTags;
     
     NSDictionary *params = @{
                              @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
@@ -848,7 +848,7 @@
     }
     DDLog(@"删除职位字符串为:%@",jobTagsString);
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditJobTags];
+    NSString *requestUrl = [YHProtocol share].pathEditJobTags;
     
     NSDictionary *params = @{
                              @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
@@ -890,7 +890,7 @@
         return;
     }
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditWorkExp];
+    NSString *requestUrl = [YHProtocol share].pathEditWorkExp;
     
     NSDictionary *params = @{
                              @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
@@ -927,7 +927,7 @@
         complete(NO,@"工作经历id为nil");
         return;
     }
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditWorkExp];
+    NSString *requestUrl = [YHProtocol share].pathEditWorkExp;
     NSDictionary *params = @{
                              @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
                              @"id":workExperience.workExpId
@@ -970,7 +970,7 @@
         return;
     }
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditWorkExp];
+    NSString *requestUrl = [YHProtocol share].pathEditWorkExp;
     
     NSDictionary *params = @{
                              @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
@@ -1020,7 +1020,7 @@
         educationExperience.moreDescription = @"";
     }
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditEducationExp];
+    NSString *requestUrl = [YHProtocol share].pathEditEducationExp;
     
     NSDictionary *params = @{
                              
@@ -1065,7 +1065,7 @@
         complete(NO,@"工作经历id为nil");
         return;
     }
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditEducationExp];
+    NSString *requestUrl = [YHProtocol share].pathEditEducationExp;
     NSDictionary *params = @{
                              @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
                              @"id":educationExperience.eduExpId
@@ -1112,7 +1112,7 @@
         educationExperience.moreDescription = @"";
     }
     
-    NSString *requestUrl = [NSString stringWithFormat:@"%@%@",[YHProtocol share].kBaseURL,[YHProtocol share].kPathEditEducationExp];
+    NSString *requestUrl = [YHProtocol share].pathEditEducationExp;
     
     NSDictionary *params = @{
                              

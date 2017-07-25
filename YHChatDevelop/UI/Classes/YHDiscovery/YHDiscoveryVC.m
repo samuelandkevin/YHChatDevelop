@@ -8,6 +8,7 @@
 
 #import "YHDiscoveryVC.h"
 #import "YHRefreshTableView.h"
+#import "YHWorkGroupController.h"
 
 @interface YHDiscoveryVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -97,6 +98,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (!indexPath.row && !indexPath.section) {
+        YHWorkGroupController *vc = [[YHWorkGroupController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (!indexPath.row && indexPath.section == 1){
+        YHScanVC *vc = [[YHScanVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 /*

@@ -17,6 +17,13 @@
 #import <Foundation/Foundation.h>
 #import "YHDebug.h"
 #import "YHConfig.h"
+
+typedef NS_ENUM(int,RefreshPage){
+    RefreshPage_SearchDyn,//刷新搜索动态页
+    RefreshPage_WorkGroup,//刷新工作圈首页
+    RefreshPage_MyDyn,    //刷新我的动态页
+    RefreshPage_Synthesis //刷新综合搜索页
+};
 #endif
 
 #define KEYWINDOW [UIApplication sharedApplication].keyWindow
@@ -72,7 +79,8 @@ alpha:1.0]
 #define kVerificationCode_WrongCount @"verificationCode.wrongCount"
 
 #pragma mark - 通知事件
-
+//刷新动态页
+#define Event_RefreshDynPage @"event.refreshDynPage"
 #define Event_Register_Success @"event.register.success"
 #define Event_notRegister_showLoginVC @"event.notRegister.showLoginVC"
 #define Event_Login_Success @"event.login.success"

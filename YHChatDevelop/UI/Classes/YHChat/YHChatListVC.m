@@ -71,6 +71,7 @@
     self.navigationController.navigationBar.translucent = NO;
     [self _setupNavigationBar];
     [self _initUI];
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64);//存在tabbar且第一次进入此页面,frame值设置
     [self _addNotification];
     
     if (!_isVisitor) {
