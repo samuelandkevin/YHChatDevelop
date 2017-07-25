@@ -1,8 +1,8 @@
 //
 //  YHScanResultVC.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 2017/5/16.
+//  Created by samuelandkevin on 2017/5/16.
 //  Copyright © 2017年 YHSoft. All rights reserved.
 //
 

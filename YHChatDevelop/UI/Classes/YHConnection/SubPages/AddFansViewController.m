@@ -7,7 +7,7 @@
 //
 
 #import "AddFansViewController.h"
-//#import "AddABViewController.h"
+#import "AddABViewController.h"
 #import "YHAddressBook.h"
 #import "HHUtils.h"
 #import "YHNetManager.h"
@@ -296,8 +296,8 @@
             {
                 if (checkABGranted())
                 {
-//                    AddABViewController *vc = [[AddABViewController alloc] init];
-//                    [self.navigationController pushViewController:vc animated:YES];
+                    AddABViewController *vc = [[AddABViewController alloc] init];
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
                 else
                 {
@@ -320,8 +320,8 @@
                 }
                 
                 //二维码添加好友
-//                YHScanVC *vc = [[YHScanVC alloc] init];
-//                [self.navigationController pushViewController:vc animated:YES];
+                YHScanVC *vc = [[YHScanVC alloc] init];
+                [self.navigationController pushViewController:vc animated:YES];
             }
                 break;
                 
@@ -346,7 +346,7 @@
 //    }else{
 //        self.userInfo = nil;
 //        self.isSearching = NO;
-//        ROLOAD_MYTABLEVIEW
+//        [self.tableView relodData];
 //    }
 //	return YES;
 //}

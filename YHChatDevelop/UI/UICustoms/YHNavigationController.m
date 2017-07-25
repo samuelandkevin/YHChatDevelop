@@ -2,7 +2,7 @@
 //  CustomerNavigationController.m
 //  testCustomerNavigationBar
 //
-//  Created by YHIOS003 on 16/4/20.
+//  Created by samuelandkevin on 16/4/20.
 //  Copyright © 2016年 GDsamuelandkevin. All rights reserved.
 //
 

@@ -1,8 +1,8 @@
 //
 //  YHChooseFriVC.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/10/24.
+//  Created by samuelandkevin on 16/10/24.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //  选择好友
 

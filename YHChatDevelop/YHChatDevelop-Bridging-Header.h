@@ -27,6 +27,7 @@
 #import "YHCellWave.h"
 #import "CardDetailViewController.h"
 #import "CellForChatGroup.h"
-
+#import "IQKeyboardManager.h"
+#import "IQTextView.h"
 
 #endif /* YHChatDevelop_Bridging_Header_h */

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellForJobDetail" id="KGk-i7-Jjw" customClass="CellForJobDetail">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMu-Di-PI5" userLabel="line">
+                        <rect key="frame" x="0.0" y="42" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Baa-gr-IaF"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rm-FX-wif">
+                        <rect key="frame" x="142" y="13" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Zk-pF-U1W" userLabel="line">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="ybm-BP-RAK"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="2Zk-pF-U1W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2sl-pE-OGc"/>
+                    <constraint firstItem="5Rm-FX-wif" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DP4-kQ-9Tp"/>
+                    <constraint firstItem="2Zk-pF-U1W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="L3H-ez-XFv"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Rm-FX-wif" secondAttribute="trailing" id="S6f-Hf-gZZ"/>
+                    <constraint firstAttribute="bottom" secondItem="JMu-Di-PI5" secondAttribute="bottom" id="TeN-zS-n0j"/>
+                    <constraint firstItem="5Rm-FX-wif" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="gw2-OW-eP5"/>
+                    <constraint firstAttribute="trailing" secondItem="2Zk-pF-U1W" secondAttribute="trailing" id="k6h-RA-O75"/>
+                    <constraint firstAttribute="trailing" secondItem="JMu-Di-PI5" secondAttribute="trailing" id="uha-9l-bch"/>
+                    <constraint firstItem="5Rm-FX-wif" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vvv-VJ-CX8"/>
+                    <constraint firstItem="JMu-Di-PI5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="y9C-kG-DIY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="labelTitle" destination="5Rm-FX-wif" id="fqz-6G-351"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

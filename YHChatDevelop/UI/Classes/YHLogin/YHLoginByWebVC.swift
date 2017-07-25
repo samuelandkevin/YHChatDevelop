@@ -1,8 +1,8 @@
 //
 //  YHLoginByWebVC.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //  网页登录
-//  Created by YHIOS002 on 16/12/22.
+//  Created by samuelandkevin on 16/12/22.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //
 

@@ -21,11 +21,10 @@
 #import "UIImageView+WebCache.h"
 #import "YHChatDevelop-Swift.h"
 #import "UITableViewCell+HYBMasonryAutoCellHeight.h"
-//#import "MyDetailEditViewController.h"
+#import "MyDetailEditViewController.h"
 //#import "MyDynamicViewController.h"
 //#import "YHSocialShareManager.h"
 //#import "YHSharePresentView.h"
-//#import "MyDetailEditViewController.h"
 //#import "YHConnectioniewController.h"
 //#import "YHCacheManager.h"
 //#import "ChooseMyFrisViewController.h"
@@ -793,8 +792,8 @@ typedef NS_ENUM (NSInteger, SectionType)
 	if (_isSelfProfile)
 	{
 		//进入编辑页
-//		MyDetailEditViewController *vc = [[MyDetailEditViewController alloc] init];
-//		[self.navigationController pushViewController:vc animated:YES];
+		MyDetailEditViewController *vc = [[MyDetailEditViewController alloc] init];
+		[self.navigationController pushViewController:vc animated:YES];
 	}
 	else
 	{

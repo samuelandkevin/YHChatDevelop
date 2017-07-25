@@ -1,8 +1,8 @@
 //
 //  YHChooseFriVC.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/10/24.
+//  Created by samuelandkevin on 16/10/24.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //
 
@@ -173,7 +173,7 @@ static const CGFloat kSearchBarH = 44;
     //1.左BarItem
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     cancelBtn.frame = CGRectMake(0, 0, 40, 40);
-    [cancelBtn setImage:[UIImage imageNamed:@"leftarrow"] forState:UIControlStateNormal];
+    [cancelBtn setImage:[UIImage imageNamed:@"common_leftArrow"] forState:UIControlStateNormal];
     cancelBtn.titleLabel.font = [UIFont systemFontOfSize:18];
     cancelBtn.titleLabel.textColor = [UIColor whiteColor];
     [cancelBtn addTarget:self action:@selector(onBack:) forControlEvents:UIControlEventTouchUpInside];

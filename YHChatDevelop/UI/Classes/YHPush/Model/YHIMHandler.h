@@ -2,7 +2,7 @@
 //  YHIMHandler.h
 //  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 16/6/8.
+//  Created by samuelandkevin on 16/6/8.
 //  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 

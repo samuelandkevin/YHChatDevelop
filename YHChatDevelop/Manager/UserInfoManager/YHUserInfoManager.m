@@ -123,10 +123,19 @@
 - (void)logout
 {
 	
+    //1.清除“已登录”标志
     [self _clearLoginInfoFromUserDefaults];
     
+    
+    //2.解除社交账号授权
+//    [self _clearAuthFromSocialPlatFrom];
+    
+    
+    //3.登出清除全部聊天记录
+//    [[YHCacheManager shareInstance] clearCacheWhenLogout];
+    [[SqliteManager sharedInstance] clearCacheWhenLogout];
     [[NSUserDefaults standardUserDefaults] synchronize];
-     [[SqliteManager sharedInstance] clearCacheWhenLogout];
+    
     //4.清除用户单例信息
     _userInfo = nil;
     
@@ -142,6 +151,11 @@
         STMURLCacheModel *sModel = [STMURLCacheModel shareInstance];
         [sModel deleteCacheFolder];
     }
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+    //6.发出“账号退出”通知 (备注：放在最后)
+    [[NSNotificationCenter defaultCenter] postNotificationName:Event_Logout object:nil];
 }
 
 //从UserDefaults中清除登录信息

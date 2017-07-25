@@ -2,7 +2,7 @@
 //  ConnectionSearchCell.m
 //  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 16/5/26.
+//  Created by samuelandkevin on 16/5/26.
 //  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 

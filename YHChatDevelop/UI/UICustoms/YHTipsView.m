@@ -10,7 +10,7 @@
 #import "Masonry.h"
 
 #define  kEdge_TipsBG       10
-#define  kMaxWidth_TipsView (SCREEN_WIDTH-100-(2*kEdge_TipsBG)) //提示文字的最大宽度
+#define  kMaxWidth_TipsView (SCREEN_WIDTH-60-(2*kEdge_TipsBG)) //提示文字的最大宽度
 @interface YHTipsView ()
 
 @property (nonatomic, strong) UIView *backgroundView;
@@ -30,28 +30,28 @@
  */
 - (instancetype)init
 {
-	if (self = [super init])
-	{
+    if (self = [super init])
+    {
         
         self.userInteractionEnabled = YES;
         
         //tipsLabel
-		self.tipsLabel               = [[UILabel alloc] init];
-		self.tipsLabel.textColor     = [UIColor whiteColor];
-		self.tipsLabel.numberOfLines = 0;
+        self.tipsLabel               = [[UILabel alloc] init];
+        self.tipsLabel.textColor     = [UIColor whiteColor];
+        self.tipsLabel.numberOfLines = 0;
         self.tipsLabel.preferredMaxLayoutWidth = kMaxWidth_TipsView;
-		self.tipsLabel.font          = [UIFont systemFontOfSize:13.0f];
-
+        self.tipsLabel.font          = [UIFont systemFontOfSize:13.0f];
+        
         //tipslabel的背景
-		self.viewTipsBG                     = [[UIView alloc] init];
-		self.viewTipsBG.backgroundColor     = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+        self.viewTipsBG                     = [[UIView alloc] init];
+        self.viewTipsBG.backgroundColor     = [[UIColor blackColor] colorWithAlphaComponent:0.8];
         self.viewTipsBG.layer.cornerRadius  = 5;
         self.viewTipsBG.layer.masksToBounds = YES;
-
+        
         
         [self addSubview:self.viewTipsBG];
-		[self addSubview:self.tipsLabel];
-
+        [self addSubview:self.tipsLabel];
+        
         WeakSelf
         [self.tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(weakSelf);
@@ -64,14 +64,14 @@
             make.right.equalTo(weakSelf.tipsLabel.mas_right).offset(kEdge_TipsBG);
         }];
         
-	}
-	return self;
+    }
+    return self;
 }
 
 #pragma mark - Getter
 - (UITapGestureRecognizer *)tapGesture{
     if (!_tapGesture) {
-         _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
+        _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap)];
         [self addGestureRecognizer:_tapGesture];
     }
     return _tapGesture;
@@ -99,29 +99,31 @@
             [subV removeFromSuperview];
         }
     }
-   
+    
     [statusBarWindow addSubview:self];
     
     CGFloat maxW = kMaxWidth_TipsView;
-    CGFloat height = [msg boundingRectWithSize:CGSizeMake(maxW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.tipsLabel.font } context:nil].size.height;
+    //    CGFloat addFont = [[[NSUserDefaults standardUserDefaults] valueForKey:kSetSystemFontSize] floatValue];
+    CGFloat height = [msg boundingRectWithSize:CGSizeMake(maxW, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.tipsLabel.font.pointSize]  } context:nil].size.height+5;
     
     WeakSelf
-    [_tipsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_tipsLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(height);
+        make.center.equalTo(weakSelf);
     }];
     
     
     self.alpha  = 0.5;
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(height+2*kEdge_TipsBG);
         make.center.equalTo(statusBarWindow);
     }];
-
-
+    
+    
     [self.layer setValue:@(0) forKeyPath:@"transform.scale"];
     [UIView animateWithDuration:0.75 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:1.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         [weakSelf.layer setValue:@(1) forKeyPath:@"transform.scale"];
-         weakSelf.alpha = 1.0;
+        weakSelf.alpha = 1.0;
     } completion:^(BOOL finished) {
         
     }];
@@ -142,20 +144,20 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self hide];
         });
-    
+        
     }
-
+    
 }
 
 #pragma mark - Private
 - (UIWindow *)statusBarWindow
 {
-	return [[UIApplication sharedApplication] valueForKey:@"_statusBarWindow"];
+    return [[UIApplication sharedApplication] valueForKey:@"_statusBarWindow"];
 }
 
 - (void)hide
 {
-	[self removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 

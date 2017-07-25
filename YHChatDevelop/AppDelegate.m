@@ -26,6 +26,8 @@
     
     // add Noitfication
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccess:) name:Event_Login_Success object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLogout) name:Event_Logout object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTokenUnavailable:) name:Event_Token_Unavailable object:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     
@@ -42,7 +44,6 @@
         [self _showLoginPage];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTokenUnavailable:) name:Event_Token_Unavailable object:nil];
     
     return YES;
 }
@@ -66,6 +67,26 @@
 #pragma mark - NSNotification
 - (void)handleLoginSuccess:(NSNotification *)aNoti{
     [self _showRootVCPage];
+}
+
+- (void)handleLogout{
+    [self _showLoginPage];
+}
+
+- (void)handleTokenUnavailable:(NSNotification *)aNotifi
+{
+    
+    //1.控制器跳转
+    postTips(@"账号登录异常,请重新登录", nil);
+    
+    //2.处理用户token失效数据
+    [[YHUserInfoManager sharedInstance] handleTokenUnavailable];
+    
+    YHLoginInputViewController *vc = [[YHLoginInputViewController alloc] init];
+    YHNavigationController *nav    = [[YHNavigationController alloc] initWithRootViewController:vc];
+    [UIApplication sharedApplication].delegate.window.rootViewController = nav;
+    [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
+    
 }
 
 #pragma mark - UIApplicationDelegate
@@ -96,21 +117,7 @@
 }
 
 
-- (void)handleTokenUnavailable:(NSNotification *)aNotifi
-{
-    
-    //1.控制器跳转
-    postTips(@"账号登录异常,请重新登录", nil);
-    
-    //2.处理用户token失效数据
-    [[YHUserInfoManager sharedInstance] handleTokenUnavailable];
-    
-    YHLoginInputViewController *vc = [[YHLoginInputViewController alloc] init];
-    YHNavigationController *nav    = [[YHNavigationController alloc] initWithRootViewController:vc];
-    [UIApplication sharedApplication].delegate.window.rootViewController = nav;
-    [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];
-    
-}
+
 
 
 @end

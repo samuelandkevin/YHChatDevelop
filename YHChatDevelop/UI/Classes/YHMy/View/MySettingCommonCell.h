@@ -1,8 +1,8 @@
 //
 //  MySettingCommonCell.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 16/6/2.
+//  Created by samuelandkevin on 16/6/2.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //
 

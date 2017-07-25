@@ -1,8 +1,8 @@
 //
 //  UITextField+FontChange.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 2017/5/18.
+//  Created by samuelandkevin on 2017/5/18.
 //  Copyright © 2017年 YHSoft. All rights reserved.
 //
 

@@ -11,10 +11,12 @@
 #import "YHAppInfoManager.h"
 #import "UIImageView+WebCache.h"
 #import <SMS_SDK/SMSSDK.h>
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>
 
 const int   kDynamciTextMaxLength             = 150; //发动态长度
 const int   lengthForEveryRequest             = 20;  //每次请求n条
 const int   kVerifyCodeValidDuration          = 120; //验证码有效时长
+
 //Mob短信平台
 NSString * const kMobAppKey                   = @"11f71aa828ed0";
 NSString * const kMobAppSecret                = @"a64321f5ede1e37b5e2f47b070f4f272";
@@ -29,16 +31,32 @@ NSString * const kWXAppSecret = @"ae5ac01d111423d950d5d0a056fb8e0d";
 NSString * const kQQAppId = @"1105361751";
 NSString * const kQQAppSecret = @"U6BpxVgHIAjUKIu0";
 
+//百度地图
+NSString * const kBMKKey = @"KwEeqnpDZu7kQfsUuY39xuNZkPpNGnu7";
+
 #pragma mark - Public
 
 void configLaunchOptions(){
     [[NetManager sharedInstance] startMonitoring];
     configWebViewCache();
     configSysFont();
+    configBMKMapSDK();
 }
 
 void configMobSDK() {
     [SMSSDK registerApp:kMobAppKey withSecret:kMobAppSecret];
+}
+
+void configBMKMapSDK(){
+    
+    // 要使用百度地图，请先启动BaiduMapManager
+    BMKMapManager *mapManager = [[BMKMapManager alloc] init];
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [mapManager start:kBMKKey  generalDelegate:nil];
+    if (!ret){
+        DDLog(@"manager start failed!");
+    }
+
 }
 
 

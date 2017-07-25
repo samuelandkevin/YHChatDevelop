@@ -3,6 +3,7 @@ target 'YHChatDevelop' do
     use_frameworks!
     pod 'Masonry'
     pod 'MJRefresh'
+    pod 'BaiduMapKit'
     pod 'HYBMasonryAutoCellHeight'
     pod 'YYKit'
     pod 'SDWebImage'

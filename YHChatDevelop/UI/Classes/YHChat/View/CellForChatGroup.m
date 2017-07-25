@@ -1,8 +1,8 @@
 //
 //  CellForChatGroup.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 17/1/18.
+//  Created by samuelandkevin on 17/1/18.
 //  Copyright © 2017年 YHSoft. All rights reserved.
 //
 

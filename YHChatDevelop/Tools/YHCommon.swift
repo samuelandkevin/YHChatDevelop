@@ -9,7 +9,8 @@
 import Foundation
 
 let kBlackColor_Swift = UIColor(red: 54/255.0, green: 54/255.0, blue: 59/255.0, alpha: 1.0)
-let kBlueColor_Swift = UIColor.colorWithHexString(hex: "0e92dd")
+//let kBlueColor_Swift = UIColor.colorWithHexString(hex: "0e92dd")
+let kBlueColor_Swift = UIColor(red: 9/255.0, green: 187/255.0, blue: 7/255.0, alpha: 1.0)
 let kRedColor_Swift  = UIColor(red: 221/255.0, green: 82/255.0, blue: 77/255.0, alpha: 1.0)
 let kSeparatorLineColor_Swift = UIColor(red: 222/255.0, green: 222/255.0, blue: 222/255.0, alpha: 1.0)  //分隔线颜色
 let kTbvBGColor_Swift =  UIColor(red: 244/255.0, green: 244/255.0, blue: 244/255.0, alpha: 1.0)         //控制器view的背景色

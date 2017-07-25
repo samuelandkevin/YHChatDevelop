@@ -70,6 +70,50 @@
 		AC7737151F25C1D000FA8D6B /* YHGroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7737141F25C1D000FA8D6B /* YHGroupListViewController.swift */; };
 		AC7737181F25C1FD00FA8D6B /* CellForChatGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7737171F25C1FD00FA8D6B /* CellForChatGroup.m */; };
 		ACA84D7C1F0CB40800A887AD /* YHCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA84D7B1F0CB40800A887AD /* YHCommon.swift */; };
+		ACC958381F26DD3400FAE436 /* AddABViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958361F26DD3400FAE436 /* AddABViewController.m */; };
+		ACC958391F26DD3400FAE436 /* AddABViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC958371F26DD3400FAE436 /* AddABViewController.xib */; };
+		ACC9583C1F26DEF900FAE436 /* MyDetailEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9583B1F26DEF900FAE436 /* MyDetailEditViewController.m */; };
+		ACC9584F1F26DF7C00FAE436 /* DeleteExperienceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9583E1F26DF7C00FAE436 /* DeleteExperienceCell.m */; };
+		ACC958501F26DF7C00FAE436 /* MyAreaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958401F26DF7C00FAE436 /* MyAreaCell.m */; };
+		ACC958511F26DF7C00FAE436 /* MyDetailEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958421F26DF7C00FAE436 /* MyDetailEditCell.m */; };
+		ACC958521F26DF7C00FAE436 /* MyExperienceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958441F26DF7C00FAE436 /* MyExperienceListCell.m */; };
+		ACC958531F26DF7C00FAE436 /* MyListEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958461F26DF7C00FAE436 /* MyListEditCell.m */; };
+		ACC958541F26DF7C00FAE436 /* MyMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958481F26DF7C00FAE436 /* MyMapCell.m */; };
+		ACC958561F26DF7C00FAE436 /* MyTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9584C1F26DF7C00FAE436 /* MyTextViewCell.m */; };
+		ACC958571F26DF7C00FAE436 /* MyTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9584E1F26DF7C00FAE436 /* MyTimeCell.m */; };
+		ACC958681F26E01F00FAE436 /* CityListController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958591F26E01F00FAE436 /* CityListController.m */; };
+		ACC958691F26E01F00FAE436 /* ExperienceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9585B1F26E01F00FAE436 /* ExperienceListController.m */; };
+		ACC9586A1F26E01F00FAE436 /* IntroduceEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9585D1F26E01F00FAE436 /* IntroduceEditController.m */; };
+		ACC9586B1F26E01F00FAE436 /* JobSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9585E1F26E01F00FAE436 /* JobSelectController.swift */; };
+		ACC9586C1F26E01F00FAE436 /* LabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958601F26E01F00FAE436 /* LabelController.m */; };
+		ACC9586D1F26E01F00FAE436 /* ListEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958621F26E01F00FAE436 /* ListEditController.m */; };
+		ACC9586E1F26E01F00FAE436 /* MyMapController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958641F26E01F00FAE436 /* MyMapController.m */; };
+		ACC9586F1F26E01F00FAE436 /* SingleEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958661F26E01F00FAE436 /* SingleEditController.m */; };
+		ACC958701F26E01F00FAE436 /* SingleEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC958671F26E01F00FAE436 /* SingleEditController.swift */; };
+		ACC958741F26E0EF00FAE436 /* MySearchResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958721F26E0EF00FAE436 /* MySearchResultModel.m */; };
+		ACC958751F26E0EF00FAE436 /* SingleEditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC958731F26E0EF00FAE436 /* SingleEditModel.swift */; };
+		ACC9587D1F26E39E00FAE436 /* LxGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958781F26E39E00FAE436 /* LxGridView.m */; };
+		ACC9587E1F26E39E00FAE436 /* LxGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9587A1F26E39E00FAE436 /* LxGridViewCell.m */; };
+		ACC9587F1F26E39E00FAE436 /* LxGridViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9587C1F26E39E00FAE436 /* LxGridViewFlowLayout.m */; };
+		ACC9589E1F26E62500FAE436 /* YHVerifyCodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958831F26E62500FAE436 /* YHVerifyCodeManager.m */; };
+		ACC9589F1F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958861F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.m */; };
+		ACC958A01F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC958871F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.xib */; };
+		ACC958A11F26E62500FAE436 /* YHRegisterChooseJobMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958891F26E62500FAE436 /* YHRegisterChooseJobMainViewController.m */; };
+		ACC958A21F26E62500FAE436 /* YHRegisterChooseJobMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC9588A1F26E62500FAE436 /* YHRegisterChooseJobMainViewController.xib */; };
+		ACC958A31F26E62500FAE436 /* YHRegisterCompleteInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9588C1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.m */; };
+		ACC958A41F26E62500FAE436 /* YHRegisterCompleteInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC9588D1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.xib */; };
+		ACC958A51F26E62500FAE436 /* CellForJobDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958901F26E62500FAE436 /* CellForJobDetail.m */; };
+		ACC958A61F26E62500FAE436 /* CellForJobDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC958911F26E62500FAE436 /* CellForJobDetail.xib */; };
+		ACC958A71F26E62500FAE436 /* CellForJobType.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958931F26E62500FAE436 /* CellForJobType.m */; };
+		ACC958A81F26E62500FAE436 /* CellForJobType.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC958941F26E62500FAE436 /* CellForJobType.xib */; };
+		ACC958A91F26E62500FAE436 /* CellForRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958961F26E62500FAE436 /* CellForRegister.m */; };
+		ACC958AA1F26E62500FAE436 /* CellForRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC958971F26E62500FAE436 /* CellForRegister.xib */; };
+		ACC958AB1F26E62500FAE436 /* CellForRegister2.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958991F26E62500FAE436 /* CellForRegister2.m */; };
+		ACC958AC1F26E62500FAE436 /* CellForRegister2.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC9589A1F26E62500FAE436 /* CellForRegister2.xib */; };
+		ACC958AD1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9589C1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.m */; };
+		ACC958AE1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC9589D1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.xib */; };
+		ACC958B21F26E69C00FAE436 /* YHCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958B11F26E69C00FAE436 /* YHCacheManager.m */; };
+		ACC958B61F26E9C800FAE436 /* MySettingCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC958B51F26E9C800FAE436 /* MySettingCommonCell.m */; };
 		ACC9ACBC1F1311B900A5FF88 /* STMURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB51F1311B900A5FF88 /* STMURLCache.m */; };
 		ACC9ACBD1F1311B900A5FF88 /* STMURLCacheMk.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB71F1311B900A5FF88 /* STMURLCacheMk.m */; };
 		ACC9ACBE1F1311B900A5FF88 /* STMURLCacheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9ACB91F1311B900A5FF88 /* STMURLCacheModel.m */; };
@@ -175,7 +219,6 @@
 		ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */; };
 		ACC9AEE51F135BE200A5FF88 /* YHMsgLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */; };
 		ACD2785B1F25C60700168B36 /* MySettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2785A1F25C60700168B36 /* MySettingController.m */; };
-		ACD2785E1F25C64900168B36 /* MySettingCommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD2785D1F25C64900168B36 /* MySettingCommonCell.m */; };
 		ACD278601F25C67100168B36 /* FontSizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2785F1F25C67100168B36 /* FontSizeController.swift */; };
 		ACD278621F25C68600168B36 /* FontSizeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD278611F25C68600168B36 /* FontSizeCell.swift */; };
 		ACD278651F25C6AA00168B36 /* YHAnimatedBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD278641F25C6AA00168B36 /* YHAnimatedBtn.m */; };
@@ -385,6 +428,83 @@
 		AC7737161F25C1FD00FA8D6B /* CellForChatGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForChatGroup.h; sourceTree = "<group>"; };
 		AC7737171F25C1FD00FA8D6B /* CellForChatGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForChatGroup.m; sourceTree = "<group>"; };
 		ACA84D7B1F0CB40800A887AD /* YHCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YHCommon.swift; sourceTree = "<group>"; };
+		ACC958351F26DD3400FAE436 /* AddABViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddABViewController.h; sourceTree = "<group>"; };
+		ACC958361F26DD3400FAE436 /* AddABViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddABViewController.m; sourceTree = "<group>"; };
+		ACC958371F26DD3400FAE436 /* AddABViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddABViewController.xib; sourceTree = "<group>"; };
+		ACC9583A1F26DEF900FAE436 /* MyDetailEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDetailEditViewController.h; sourceTree = "<group>"; };
+		ACC9583B1F26DEF900FAE436 /* MyDetailEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailEditViewController.m; sourceTree = "<group>"; };
+		ACC9583D1F26DF7C00FAE436 /* DeleteExperienceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteExperienceCell.h; sourceTree = "<group>"; };
+		ACC9583E1F26DF7C00FAE436 /* DeleteExperienceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteExperienceCell.m; sourceTree = "<group>"; };
+		ACC9583F1F26DF7C00FAE436 /* MyAreaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAreaCell.h; sourceTree = "<group>"; };
+		ACC958401F26DF7C00FAE436 /* MyAreaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAreaCell.m; sourceTree = "<group>"; };
+		ACC958411F26DF7C00FAE436 /* MyDetailEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDetailEditCell.h; sourceTree = "<group>"; };
+		ACC958421F26DF7C00FAE436 /* MyDetailEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDetailEditCell.m; sourceTree = "<group>"; };
+		ACC958431F26DF7C00FAE436 /* MyExperienceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyExperienceListCell.h; sourceTree = "<group>"; };
+		ACC958441F26DF7C00FAE436 /* MyExperienceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyExperienceListCell.m; sourceTree = "<group>"; };
+		ACC958451F26DF7C00FAE436 /* MyListEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyListEditCell.h; sourceTree = "<group>"; };
+		ACC958461F26DF7C00FAE436 /* MyListEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyListEditCell.m; sourceTree = "<group>"; };
+		ACC958471F26DF7C00FAE436 /* MyMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapCell.h; sourceTree = "<group>"; };
+		ACC958481F26DF7C00FAE436 /* MyMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapCell.m; sourceTree = "<group>"; };
+		ACC9584B1F26DF7C00FAE436 /* MyTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextViewCell.h; sourceTree = "<group>"; };
+		ACC9584C1F26DF7C00FAE436 /* MyTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextViewCell.m; sourceTree = "<group>"; };
+		ACC9584D1F26DF7C00FAE436 /* MyTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTimeCell.h; sourceTree = "<group>"; };
+		ACC9584E1F26DF7C00FAE436 /* MyTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTimeCell.m; sourceTree = "<group>"; };
+		ACC958581F26E01F00FAE436 /* CityListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListController.h; sourceTree = "<group>"; };
+		ACC958591F26E01F00FAE436 /* CityListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListController.m; sourceTree = "<group>"; };
+		ACC9585A1F26E01F00FAE436 /* ExperienceListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExperienceListController.h; sourceTree = "<group>"; };
+		ACC9585B1F26E01F00FAE436 /* ExperienceListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExperienceListController.m; sourceTree = "<group>"; };
+		ACC9585C1F26E01F00FAE436 /* IntroduceEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroduceEditController.h; sourceTree = "<group>"; };
+		ACC9585D1F26E01F00FAE436 /* IntroduceEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroduceEditController.m; sourceTree = "<group>"; };
+		ACC9585E1F26E01F00FAE436 /* JobSelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobSelectController.swift; sourceTree = "<group>"; };
+		ACC9585F1F26E01F00FAE436 /* LabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelController.h; sourceTree = "<group>"; };
+		ACC958601F26E01F00FAE436 /* LabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelController.m; sourceTree = "<group>"; };
+		ACC958611F26E01F00FAE436 /* ListEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListEditController.h; sourceTree = "<group>"; };
+		ACC958621F26E01F00FAE436 /* ListEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListEditController.m; sourceTree = "<group>"; };
+		ACC958631F26E01F00FAE436 /* MyMapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMapController.h; sourceTree = "<group>"; };
+		ACC958641F26E01F00FAE436 /* MyMapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMapController.m; sourceTree = "<group>"; };
+		ACC958651F26E01F00FAE436 /* SingleEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleEditController.h; sourceTree = "<group>"; };
+		ACC958661F26E01F00FAE436 /* SingleEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleEditController.m; sourceTree = "<group>"; };
+		ACC958671F26E01F00FAE436 /* SingleEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEditController.swift; sourceTree = "<group>"; };
+		ACC958711F26E0EF00FAE436 /* MySearchResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySearchResultModel.h; sourceTree = "<group>"; };
+		ACC958721F26E0EF00FAE436 /* MySearchResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySearchResultModel.m; sourceTree = "<group>"; };
+		ACC958731F26E0EF00FAE436 /* SingleEditModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleEditModel.swift; sourceTree = "<group>"; };
+		ACC958771F26E39E00FAE436 /* LxGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxGridView.h; sourceTree = "<group>"; };
+		ACC958781F26E39E00FAE436 /* LxGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridView.m; sourceTree = "<group>"; };
+		ACC958791F26E39E00FAE436 /* LxGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxGridViewCell.h; sourceTree = "<group>"; };
+		ACC9587A1F26E39E00FAE436 /* LxGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewCell.m; sourceTree = "<group>"; };
+		ACC9587B1F26E39E00FAE436 /* LxGridViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxGridViewFlowLayout.h; sourceTree = "<group>"; };
+		ACC9587C1F26E39E00FAE436 /* LxGridViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LxGridViewFlowLayout.m; sourceTree = "<group>"; };
+		ACC958821F26E62500FAE436 /* YHVerifyCodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHVerifyCodeManager.h; sourceTree = "<group>"; };
+		ACC958831F26E62500FAE436 /* YHVerifyCodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHVerifyCodeManager.m; sourceTree = "<group>"; };
+		ACC958851F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHRegisterChooseJobFunctionViewController.h; sourceTree = "<group>"; };
+		ACC958861F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHRegisterChooseJobFunctionViewController.m; sourceTree = "<group>"; };
+		ACC958871F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHRegisterChooseJobFunctionViewController.xib; sourceTree = "<group>"; };
+		ACC958881F26E62500FAE436 /* YHRegisterChooseJobMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHRegisterChooseJobMainViewController.h; sourceTree = "<group>"; };
+		ACC958891F26E62500FAE436 /* YHRegisterChooseJobMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHRegisterChooseJobMainViewController.m; sourceTree = "<group>"; };
+		ACC9588A1F26E62500FAE436 /* YHRegisterChooseJobMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHRegisterChooseJobMainViewController.xib; sourceTree = "<group>"; };
+		ACC9588B1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHRegisterCompleteInfoViewController.h; sourceTree = "<group>"; };
+		ACC9588C1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHRegisterCompleteInfoViewController.m; sourceTree = "<group>"; };
+		ACC9588D1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHRegisterCompleteInfoViewController.xib; sourceTree = "<group>"; };
+		ACC9588F1F26E62500FAE436 /* CellForJobDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForJobDetail.h; sourceTree = "<group>"; };
+		ACC958901F26E62500FAE436 /* CellForJobDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForJobDetail.m; sourceTree = "<group>"; };
+		ACC958911F26E62500FAE436 /* CellForJobDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellForJobDetail.xib; sourceTree = "<group>"; };
+		ACC958921F26E62500FAE436 /* CellForJobType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForJobType.h; sourceTree = "<group>"; };
+		ACC958931F26E62500FAE436 /* CellForJobType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForJobType.m; sourceTree = "<group>"; };
+		ACC958941F26E62500FAE436 /* CellForJobType.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellForJobType.xib; sourceTree = "<group>"; };
+		ACC958951F26E62500FAE436 /* CellForRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForRegister.h; sourceTree = "<group>"; };
+		ACC958961F26E62500FAE436 /* CellForRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForRegister.m; sourceTree = "<group>"; };
+		ACC958971F26E62500FAE436 /* CellForRegister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellForRegister.xib; sourceTree = "<group>"; };
+		ACC958981F26E62500FAE436 /* CellForRegister2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForRegister2.h; sourceTree = "<group>"; };
+		ACC958991F26E62500FAE436 /* CellForRegister2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellForRegister2.m; sourceTree = "<group>"; };
+		ACC9589A1F26E62500FAE436 /* CellForRegister2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellForRegister2.xib; sourceTree = "<group>"; };
+		ACC9589B1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHRegisterByPhoneNumViewController.h; sourceTree = "<group>"; };
+		ACC9589C1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHRegisterByPhoneNumViewController.m; sourceTree = "<group>"; };
+		ACC9589D1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YHRegisterByPhoneNumViewController.xib; sourceTree = "<group>"; };
+		ACC958B01F26E69C00FAE436 /* YHCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHCacheManager.h; sourceTree = "<group>"; };
+		ACC958B11F26E69C00FAE436 /* YHCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCacheManager.m; sourceTree = "<group>"; };
+		ACC958B31F26E6EA00FAE436 /* YHSerializeKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSerializeKit.h; sourceTree = "<group>"; };
+		ACC958B41F26E9C800FAE436 /* MySettingCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySettingCommonCell.h; sourceTree = "<group>"; };
+		ACC958B51F26E9C800FAE436 /* MySettingCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySettingCommonCell.m; sourceTree = "<group>"; };
 		ACC9ACB41F1311B900A5FF88 /* STMURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMURLCache.h; sourceTree = "<group>"; };
 		ACC9ACB51F1311B900A5FF88 /* STMURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMURLCache.m; sourceTree = "<group>"; };
 		ACC9ACB61F1311B900A5FF88 /* STMURLCacheMk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMURLCacheMk.h; sourceTree = "<group>"; };
@@ -580,8 +700,6 @@
 		ACC9AEE41F135BE200A5FF88 /* YHMsgLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHMsgLogVC.m; sourceTree = "<group>"; };
 		ACD278591F25C60700168B36 /* MySettingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySettingController.h; sourceTree = "<group>"; };
 		ACD2785A1F25C60700168B36 /* MySettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySettingController.m; sourceTree = "<group>"; };
-		ACD2785C1F25C64900168B36 /* MySettingCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySettingCommonCell.h; sourceTree = "<group>"; };
-		ACD2785D1F25C64900168B36 /* MySettingCommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySettingCommonCell.m; sourceTree = "<group>"; };
 		ACD2785F1F25C67100168B36 /* FontSizeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeController.swift; sourceTree = "<group>"; };
 		ACD278611F25C68600168B36 /* FontSizeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeCell.swift; sourceTree = "<group>"; };
 		ACD278631F25C6AA00168B36 /* YHAnimatedBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHAnimatedBtn.h; sourceTree = "<group>"; };
@@ -818,6 +936,7 @@
 		AC51FF261EFB67B5005EAE4F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				ACC958AF1F26E69C00FAE436 /* CacheManager */,
 				AC604A921F03444A00B8D8B4 /* ChatManager */,
 				AC604A951F03444A00B8D8B4 /* NetManager */,
 				AC604AA41F03444A00B8D8B4 /* SqilteManager */,
@@ -868,6 +987,7 @@
 		AC51FF6B1EFB67B5005EAE4F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				ACC958761F26E39E00FAE436 /* LxGridView */,
 				ACFC60611F25DC6F000A1202 /* SMS_SDK */,
 				ACD278691F25C70400168B36 /* IQKeyboardManager */,
 				AC7736F41F25C12800FA8D6B /* ZJScrollPageView */,
@@ -1121,6 +1241,85 @@
 			path = ZJScrollPageView;
 			sourceTree = "<group>";
 		};
+		ACC958761F26E39E00FAE436 /* LxGridView */ = {
+			isa = PBXGroup;
+			children = (
+				ACC958771F26E39E00FAE436 /* LxGridView.h */,
+				ACC958781F26E39E00FAE436 /* LxGridView.m */,
+				ACC958791F26E39E00FAE436 /* LxGridViewCell.h */,
+				ACC9587A1F26E39E00FAE436 /* LxGridViewCell.m */,
+				ACC9587B1F26E39E00FAE436 /* LxGridViewFlowLayout.h */,
+				ACC9587C1F26E39E00FAE436 /* LxGridViewFlowLayout.m */,
+			);
+			path = LxGridView;
+			sourceTree = "<group>";
+		};
+		ACC958801F26E62500FAE436 /* YHRegister */ = {
+			isa = PBXGroup;
+			children = (
+				ACC958811F26E62500FAE436 /* Model */,
+				ACC958841F26E62500FAE436 /* SubPages */,
+				ACC9588E1F26E62500FAE436 /* View */,
+				ACC9589B1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.h */,
+				ACC9589C1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.m */,
+				ACC9589D1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.xib */,
+			);
+			path = YHRegister;
+			sourceTree = "<group>";
+		};
+		ACC958811F26E62500FAE436 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACC958821F26E62500FAE436 /* YHVerifyCodeManager.h */,
+				ACC958831F26E62500FAE436 /* YHVerifyCodeManager.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ACC958841F26E62500FAE436 /* SubPages */ = {
+			isa = PBXGroup;
+			children = (
+				ACC958851F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.h */,
+				ACC958861F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.m */,
+				ACC958871F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.xib */,
+				ACC958881F26E62500FAE436 /* YHRegisterChooseJobMainViewController.h */,
+				ACC958891F26E62500FAE436 /* YHRegisterChooseJobMainViewController.m */,
+				ACC9588A1F26E62500FAE436 /* YHRegisterChooseJobMainViewController.xib */,
+				ACC9588B1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.h */,
+				ACC9588C1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.m */,
+				ACC9588D1F26E62500FAE436 /* YHRegisterCompleteInfoViewController.xib */,
+			);
+			path = SubPages;
+			sourceTree = "<group>";
+		};
+		ACC9588E1F26E62500FAE436 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ACC9588F1F26E62500FAE436 /* CellForJobDetail.h */,
+				ACC958901F26E62500FAE436 /* CellForJobDetail.m */,
+				ACC958911F26E62500FAE436 /* CellForJobDetail.xib */,
+				ACC958921F26E62500FAE436 /* CellForJobType.h */,
+				ACC958931F26E62500FAE436 /* CellForJobType.m */,
+				ACC958941F26E62500FAE436 /* CellForJobType.xib */,
+				ACC958951F26E62500FAE436 /* CellForRegister.h */,
+				ACC958961F26E62500FAE436 /* CellForRegister.m */,
+				ACC958971F26E62500FAE436 /* CellForRegister.xib */,
+				ACC958981F26E62500FAE436 /* CellForRegister2.h */,
+				ACC958991F26E62500FAE436 /* CellForRegister2.m */,
+				ACC9589A1F26E62500FAE436 /* CellForRegister2.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ACC958AF1F26E69C00FAE436 /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				ACC958B01F26E69C00FAE436 /* YHCacheManager.h */,
+				ACC958B11F26E69C00FAE436 /* YHCacheManager.m */,
+			);
+			path = CacheManager;
+			sourceTree = "<group>";
+		};
 		ACC9ACB31F1311B900A5FF88 /* STMURLCache */ = {
 			isa = PBXGroup;
 			children = (
@@ -1195,6 +1394,7 @@
 		ACC9ADEF1F1322DB00A5FF88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ACC958801F26E62500FAE436 /* YHRegister */,
 				ACC9ADF01F1322DB00A5FF88 /* YHChat */,
 				AC69EA241F1F3D71008D8EE0 /* YHDiscovery */,
 				ACDDA38F1F1F2ADB0029E134 /* YHMy */,
@@ -1545,6 +1745,9 @@
 				ACC9AEC31F134C1C00A5FF88 /* CardDetailViewController.h */,
 				ACC9AEC41F134C1C00A5FF88 /* CardDetailViewController.m */,
 				ACC9AEC51F134C1C00A5FF88 /* CardDetailViewController.xib */,
+				ACC958351F26DD3400FAE436 /* AddABViewController.h */,
+				ACC958361F26DD3400FAE436 /* AddABViewController.m */,
+				ACC958371F26DD3400FAE436 /* AddABViewController.xib */,
 			);
 			path = SubPages;
 			sourceTree = "<group>";
@@ -1669,6 +1872,9 @@
 		ACDDA3901F1F2AF90029E134 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ACC958711F26E0EF00FAE436 /* MySearchResultModel.h */,
+				ACC958721F26E0EF00FAE436 /* MySearchResultModel.m */,
+				ACC958731F26E0EF00FAE436 /* SingleEditModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1677,6 +1883,24 @@
 			isa = PBXGroup;
 			children = (
 				ACD2785F1F25C67100168B36 /* FontSizeController.swift */,
+				ACC958581F26E01F00FAE436 /* CityListController.h */,
+				ACC958591F26E01F00FAE436 /* CityListController.m */,
+				ACC9585A1F26E01F00FAE436 /* ExperienceListController.h */,
+				ACC9585B1F26E01F00FAE436 /* ExperienceListController.m */,
+				ACC9585C1F26E01F00FAE436 /* IntroduceEditController.h */,
+				ACC9585D1F26E01F00FAE436 /* IntroduceEditController.m */,
+				ACC9585E1F26E01F00FAE436 /* JobSelectController.swift */,
+				ACC9585F1F26E01F00FAE436 /* LabelController.h */,
+				ACC958601F26E01F00FAE436 /* LabelController.m */,
+				ACC958611F26E01F00FAE436 /* ListEditController.h */,
+				ACC958621F26E01F00FAE436 /* ListEditController.m */,
+				ACC958631F26E01F00FAE436 /* MyMapController.h */,
+				ACC958641F26E01F00FAE436 /* MyMapController.m */,
+				ACC958651F26E01F00FAE436 /* SingleEditController.h */,
+				ACC958661F26E01F00FAE436 /* SingleEditController.m */,
+				ACC958671F26E01F00FAE436 /* SingleEditController.swift */,
+				ACC9583A1F26DEF900FAE436 /* MyDetailEditViewController.h */,
+				ACC9583B1F26DEF900FAE436 /* MyDetailEditViewController.m */,
 				ACFC60591F25D377000A1202 /* ChangePhoneNuViewController.h */,
 				ACFC605A1F25D377000A1202 /* ChangePhoneNuViewController.m */,
 				ACFC60501F25D30A000A1202 /* AccountInfoController.h */,
@@ -1703,10 +1927,26 @@
 				ACD278611F25C68600168B36 /* FontSizeCell.swift */,
 				ACDDA3961F1F2B970029E134 /* MyControllerHeaderCell.swift */,
 				ACDDA3971F1F2B970029E134 /* MyControllerMiddleCell.swift */,
+				ACC9583D1F26DF7C00FAE436 /* DeleteExperienceCell.h */,
+				ACC9583E1F26DF7C00FAE436 /* DeleteExperienceCell.m */,
+				ACC9583F1F26DF7C00FAE436 /* MyAreaCell.h */,
+				ACC958401F26DF7C00FAE436 /* MyAreaCell.m */,
+				ACC958411F26DF7C00FAE436 /* MyDetailEditCell.h */,
+				ACC958421F26DF7C00FAE436 /* MyDetailEditCell.m */,
+				ACC958B41F26E9C800FAE436 /* MySettingCommonCell.h */,
+				ACC958B51F26E9C800FAE436 /* MySettingCommonCell.m */,
+				ACC958431F26DF7C00FAE436 /* MyExperienceListCell.h */,
+				ACC958441F26DF7C00FAE436 /* MyExperienceListCell.m */,
+				ACC958451F26DF7C00FAE436 /* MyListEditCell.h */,
+				ACC958461F26DF7C00FAE436 /* MyListEditCell.m */,
+				ACC958471F26DF7C00FAE436 /* MyMapCell.h */,
+				ACC958481F26DF7C00FAE436 /* MyMapCell.m */,
+				ACC9584B1F26DF7C00FAE436 /* MyTextViewCell.h */,
+				ACC9584C1F26DF7C00FAE436 /* MyTextViewCell.m */,
+				ACC9584D1F26DF7C00FAE436 /* MyTimeCell.h */,
+				ACC9584E1F26DF7C00FAE436 /* MyTimeCell.m */,
 				ACD2789E1F25C73100168B36 /* MyPasswordView.h */,
 				ACD2789F1F25C73100168B36 /* MyPasswordView.m */,
-				ACD2785C1F25C64900168B36 /* MySettingCommonCell.h */,
-				ACD2785D1F25C64900168B36 /* MySettingCommonCell.m */,
 				ACDDA39D1F1F366A0029E134 /* VistorCell.h */,
 				ACDDA39E1F1F366A0029E134 /* VistorCell.m */,
 				ACDDA39F1F1F366A0029E134 /* VistorCell.xib */,
@@ -1797,6 +2037,7 @@
 		ACF6C6DD1F1A10B0003EF332 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				ACC958B31F26E6EA00FAE436 /* YHSerializeKit.h */,
 				ACFC605F1F25D462000A1202 /* YHError.swift */,
 				ACF6C6DE1F1A10B0003EF332 /* YHAddressBook.h */,
 				ACF6C6DF1F1A10B0003EF332 /* YHAddressBook.m */,
@@ -1935,15 +2176,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC958AA1F26E62500FAE436 /* CellForRegister.xib in Resources */,
+				ACC958A01F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.xib in Resources */,
 				AC51FFE01EFB67B5005EAE4F /* ExpressionKeyboard.bundle in Resources */,
+				ACC958A41F26E62500FAE436 /* YHRegisterCompleteInfoViewController.xib in Resources */,
 				AC51FFF11EFB67B5005EAE4F /* Info.plist in Resources */,
+				ACC958AE1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.xib in Resources */,
 				ACC9AEB91F1322DC00A5FF88 /* YHLoginInputViewController.xib in Resources */,
 				AC51FE921EFB5B1B005EAE4F /* Assets.xcassets in Resources */,
 				ACC9AEC71F134C1C00A5FF88 /* CardDetailViewController.xib in Resources */,
 				AC51FE901EFB5B1A005EAE4F /* Main.storyboard in Resources */,
 				ACDDA3A11F1F366A0029E134 /* VistorCell.xib in Resources */,
+				ACC958A21F26E62500FAE436 /* YHRegisterChooseJobMainViewController.xib in Resources */,
+				ACC958A61F26E62500FAE436 /* CellForJobDetail.xib in Resources */,
 				ACF6C6C91F1A0E30003EF332 /* CellForMyFans.xib in Resources */,
 				ACD2789D1F25C70400168B36 /* IQKeyboardManager.bundle in Resources */,
+				ACC958A81F26E62500FAE436 /* CellForJobType.xib in Resources */,
+				ACC958AC1F26E62500FAE436 /* CellForRegister2.xib in Resources */,
+				ACC958391F26DD3400FAE436 /* AddABViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2010,17 +2260,22 @@
 				AC604AB81F03444A00B8D8B4 /* NetManager+AppInfo.m in Sources */,
 				AC604AC11F03444A00B8D8B4 /* FMDatabase+YHDatabase.m in Sources */,
 				ACDDA3951F1F2B1D0029E134 /* YHMyController.m in Sources */,
+				ACC9587D1F26E39E00FAE436 /* LxGridView.m in Sources */,
 				ACC9AE9F1F1322DC00A5FF88 /* CellChatFileLeft.m in Sources */,
+				ACC958521F26DF7C00FAE436 /* MyExperienceListCell.m in Sources */,
+				ACC958AB1F26E62500FAE436 /* CellForRegister2.m in Sources */,
 				ACC9AE891F1322DC00A5FF88 /* YHEducationExperienceModel.m in Sources */,
-				ACD2785E1F25C64900168B36 /* MySettingCommonCell.m in Sources */,
 				ACC9AEDB1F134D4100A5FF88 /* QRCode.swift in Sources */,
 				ACC9AE931F1322DC00A5FF88 /* YHTransferGroupOwner.swift in Sources */,
 				AC51FFFD1EFB67B5005EAE4F /* amrFileCodec.mm in Sources */,
 				ACC9AE811F1322DC00A5FF88 /* YHChatListModel.m in Sources */,
 				AC604AC41F03444A00B8D8B4 /* YHUploadManager.m in Sources */,
 				ACFEF30F1F25C07A00582683 /* YHChooseFriVC.m in Sources */,
+				ACC958A31F26E62500FAE436 /* YHRegisterCompleteInfoViewController.m in Sources */,
 				ACFEF3081F25A0D900582683 /* YHScanBG.swift in Sources */,
+				ACC9587E1F26E39E00FAE436 /* LxGridViewCell.m in Sources */,
 				AC51FFFA1EFB67B5005EAE4F /* NSObject+MJProperty.m in Sources */,
+				ACC958541F26DF7C00FAE436 /* MyMapCell.m in Sources */,
 				AC51FFE41EFB67B5005EAE4F /* YHFileTool.m in Sources */,
 				AC77370A1F25C12800FA8D6B /* ZJScrollPageView.m in Sources */,
 				ACD2789A1F25C70400168B36 /* IQTitleBarButtonItem.m in Sources */,
@@ -2042,14 +2297,18 @@
 				ACC9AE9A1F1322DC00A5FF88 /* YHVideoHelper.m in Sources */,
 				ACC9AEAE1F1322DC00A5FF88 /* YHExpressionInputView.m in Sources */,
 				AC7737181F25C1FD00FA8D6B /* CellForChatGroup.m in Sources */,
+				ACC9589F1F26E62500FAE436 /* YHRegisterChooseJobFunctionViewController.m in Sources */,
 				ACFC60601F25D462000A1202 /* YHError.swift in Sources */,
 				ACF6C6E71F1A1611003EF332 /* YHTabBarController.m in Sources */,
 				ACC9ACBD1F1311B900A5FF88 /* STMURLCacheMk.m in Sources */,
 				AC604ABB1F03444A00B8D8B4 /* NetManager+Login.m in Sources */,
+				ACC958A71F26E62500FAE436 /* CellForJobType.m in Sources */,
+				ACC958A11F26E62500FAE436 /* YHRegisterChooseJobMainViewController.m in Sources */,
 				ACC9ADE21F1322A300A5FF88 /* YHBrowserImageView.m in Sources */,
 				AC51FF9C1EFB67B5005EAE4F /* UIView+Extension.m in Sources */,
 				ACC9AE921F1322DC00A5FF88 /* YHShootVC.m in Sources */,
 				ACC9AE8A1F1322DC00A5FF88 /* YHUserInfo.m in Sources */,
+				ACC9586B1F26E01F00FAE436 /* JobSelectController.swift in Sources */,
 				ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */,
 				ACD278991F25C70400168B36 /* IQPreviousNextView.m in Sources */,
 				ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */,
@@ -2064,6 +2323,7 @@
 				ACC9AEB41F1322DC00A5FF88 /* YHShootBotView.m in Sources */,
 				ACC9ADDD1F1322A300A5FF88 /* YHActionSheet.m in Sources */,
 				AC7737131F25C19400FA8D6B /* YHSearchFriBar.m in Sources */,
+				ACC958531F26DF7C00FAE436 /* MyListEditCell.m in Sources */,
 				ACC9AE951F1322DC00A5FF88 /* YHAVPlayer.m in Sources */,
 				ACD278601F25C67100168B36 /* FontSizeController.swift in Sources */,
 				AC604AB91F03444A00B8D8B4 /* NetManager+Chat.m in Sources */,
@@ -2080,6 +2340,8 @@
 				AC51FFE11EFB67B5005EAE4F /* TestData.m in Sources */,
 				AC51FF9B1EFB67B5005EAE4F /* UIView+DRCorner.m in Sources */,
 				ACC9AEB01F1322DC00A5FF88 /* YHChatButton.m in Sources */,
+				ACC958511F26DF7C00FAE436 /* MyDetailEditCell.m in Sources */,
+				ACC958561F26DF7C00FAE436 /* MyTextViewCell.m in Sources */,
 				AC604AC21F03444A00B8D8B4 /* NSObject+YHDBRuntime.m in Sources */,
 				ACC9ACDC1F131B7200A5FF88 /* YHAboutModel.m in Sources */,
 				ACC9ACBE1F1311B900A5FF88 /* STMURLCacheModel.m in Sources */,
@@ -2108,13 +2370,17 @@
 				AC51FFF31EFB67B5005EAE4F /* MJFoundation.m in Sources */,
 				AC51FFE21EFB67B5005EAE4F /* HHUtils.m in Sources */,
 				ACC9AEB21F1322DC00A5FF88 /* YHChatLabel.m in Sources */,
+				ACC958701F26E01F00FAE436 /* SingleEditController.swift in Sources */,
+				ACC9589E1F26E62500FAE436 /* YHVerifyCodeManager.m in Sources */,
 				AC51FFF41EFB67B5005EAE4F /* MJProperty.m in Sources */,
 				ACF6C6E01F1A10B0003EF332 /* YHAddressBook.m in Sources */,
 				ACDDA3981F1F2B970029E134 /* MyControllerHeaderCell.swift in Sources */,
+				ACC958691F26E01F00FAE436 /* ExperienceListController.m in Sources */,
 				ACD2788F1F25C70400168B36 /* IQNSArray+Sort.m in Sources */,
 				ACC9AEDC1F134D4100A5FF88 /* YHABUserInfo.swift in Sources */,
 				ACC9AE8E1F1322DC00A5FF88 /* YHDocumentVC.m in Sources */,
 				ACF6C6CB1F1A0E30003EF332 /* CellNewFri.swift in Sources */,
+				ACC9586C1F26E01F00FAE436 /* LabelController.m in Sources */,
 				ACC9AEDE1F134D4100A5FF88 /* YHMyFriendsManager.m in Sources */,
 				ACC9AEB11F1322DC00A5FF88 /* YHChatImageView.m in Sources */,
 				ACC9AEA81F1322DC00A5FF88 /* CellChatTips.m in Sources */,
@@ -2136,6 +2402,7 @@
 				ACD278951F25C70400168B36 /* IQKeyboardManager.m in Sources */,
 				ACFCF4231F18A34A0040F988 /* SWCellScrollView.m in Sources */,
 				ACC9ACC81F1312F200A5FF88 /* OCtoSwiftUtil.m in Sources */,
+				ACC958571F26DF7C00FAE436 /* MyTimeCell.m in Sources */,
 				ACD278961F25C70400168B36 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				ACE13CC81F16F7FC00F23433 /* YHVisitorChatDetailVC.m in Sources */,
 				AC604AB71F03444A00B8D8B4 /* YHChatManager.m in Sources */,
@@ -2145,17 +2412,23 @@
 				ACFC60551F25D340000A1202 /* EditPasswordController.m in Sources */,
 				ACFCF4141F1856960040F988 /* YHChatTableView.m in Sources */,
 				ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */,
+				ACC958381F26DD3400FAE436 /* AddABViewController.m in Sources */,
 				ACF6C6CD1F1A0E30003EF332 /* YHConnectionSearchView.m in Sources */,
+				ACC9586E1F26E01F00FAE436 /* MyMapController.m in Sources */,
 				AC7737081F25C12800FA8D6B /* ZJCollectionView.m in Sources */,
+				ACC958A51F26E62500FAE436 /* CellForJobDetail.m in Sources */,
 				ACD278981F25C70400168B36 /* IQBarButtonItem.m in Sources */,
 				ACC9AE7F1F1322DC00A5FF88 /* DataParser.m in Sources */,
+				ACC9584F1F26DF7C00FAE436 /* DeleteExperienceCell.m in Sources */,
 				AC7737101F25C16800FA8D6B /* YHSearchFriView.m in Sources */,
 				ACC9AEA31F1322DC00A5FF88 /* CellChatImageLeft.m in Sources */,
 				AC51FF961EFB67B5005EAE4F /* NSDate+Extension.m in Sources */,
 				ACC9ADE41F1322A300A5FF88 /* YHWaitingView.m in Sources */,
 				ACF6C6D71F1A0FE6003EF332 /* AddFansViewController.m in Sources */,
+				ACC958B61F26E9C800FAE436 /* MySettingCommonCell.m in Sources */,
 				ACC9AEBD1F1322DC00A5FF88 /* YHWGTouchModel.m in Sources */,
 				ACC9AE9C1F1322DC00A5FF88 /* CellGroupSetting.swift in Sources */,
+				ACC9587F1F26E39E00FAE436 /* LxGridViewFlowLayout.m in Sources */,
 				ACC9ADE11F1322A300A5FF88 /* YHNavigationController.m in Sources */,
 				ACC9ADE91F1322A300A5FF88 /* YHWebViewController.m in Sources */,
 				ACC9AE8B1F1322DC00A5FF88 /* YHUserSetting.m in Sources */,
@@ -2171,13 +2444,19 @@
 				ACC9AE8F1F1322DC00A5FF88 /* YHGroupMembersList.swift in Sources */,
 				AC51FFF51EFB67B5005EAE4F /* MJPropertyKey.m in Sources */,
 				AC69EA2A1F1F3DA4008D8EE0 /* YHDiscoveryVC.m in Sources */,
+				ACC958751F26E0EF00FAE436 /* SingleEditModel.swift in Sources */,
+				ACC958681F26E01F00FAE436 /* CityListController.m in Sources */,
 				ACC9AEB81F1322DC00A5FF88 /* YHLoginInputViewController.m in Sources */,
 				ACC9AEBA1F1322DC00A5FF88 /* YHWGLayout.m in Sources */,
 				ACDDA3991F1F2B970029E134 /* MyControllerMiddleCell.swift in Sources */,
 				ACC9AEC61F134C1C00A5FF88 /* CardDetailViewController.m in Sources */,
 				AC51FE8A1EFB5B1A005EAE4F /* AppDelegate.m in Sources */,
 				ACC9AEBE1F1322DC00A5FF88 /* YHWorkGroup.m in Sources */,
+				ACC958741F26E0EF00FAE436 /* MySearchResultModel.m in Sources */,
+				ACC9586A1F26E01F00FAE436 /* IntroduceEditController.m in Sources */,
 				AC5100001EFB67B5005EAE4F /* VoiceConverter.mm in Sources */,
+				ACC958AD1F26E62500FAE436 /* YHRegisterByPhoneNumViewController.m in Sources */,
+				ACC958501F26DF7C00FAE436 /* MyAreaCell.m in Sources */,
 				ACC9AEA71F1322DC00A5FF88 /* CellChatTextRight.m in Sources */,
 				AC51FFFC1EFB67B5005EAE4F /* OpenUDID.m in Sources */,
 				ACC9AE821F1322DC00A5FF88 /* YHChatModel.m in Sources */,
@@ -2191,7 +2470,9 @@
 				ACF6C6C71F1A0E30003EF332 /* CellForContact.swift in Sources */,
 				ACC9AE9D1F1322DC00A5FF88 /* CellGroupSettingMembers.swift in Sources */,
 				AC604ABF1F03444A00B8D8B4 /* SqliteManager+Chat.m in Sources */,
+				ACC9586F1F26E01F00FAE436 /* SingleEditController.m in Sources */,
 				ACC9ADE01F1322A300A5FF88 /* YHLoadView.m in Sources */,
+				ACC9586D1F26E01F00FAE436 /* ListEditController.m in Sources */,
 				ACF6C6E31F1A11BA003EF332 /* ConnectionSearchCell.m in Sources */,
 				ACC9AED01F134C9700A5FF88 /* CellForCard.swift in Sources */,
 				ACC9AE8D1F1322DC00A5FF88 /* YHChatDetailVC.m in Sources */,
@@ -2205,6 +2486,7 @@
 				ACC9AE9B1F1322DC00A5FF88 /* CellDocument.m in Sources */,
 				ACC9ACD61F1319AC00A5FF88 /* YHAppInfoManager.m in Sources */,
 				AC77370B1F25C12800FA8D6B /* ZJScrollSegmentView.m in Sources */,
+				ACC958B21F26E69C00FAE436 /* YHCacheManager.m in Sources */,
 				ACC9AEAB1F1322DC00A5FF88 /* YHModel.m in Sources */,
 				AC51FFF91EFB67B5005EAE4F /* NSObject+MJKeyValue.m in Sources */,
 				ACC9AEE21F13504F00A5FF88 /* YHCardSettingVC.swift in Sources */,
@@ -2218,12 +2500,14 @@
 				ACC9ACDF1F131C4700A5FF88 /* SqliteManager+Dynamic.m in Sources */,
 				ACF6C6DB1F1A1023003EF332 /* CellForAB.swift in Sources */,
 				ACD278941F25C70400168B36 /* IQUIWindow+Hierarchy.m in Sources */,
+				ACC958A91F26E62500FAE436 /* CellForRegister.m in Sources */,
 				AC7737151F25C1D000FA8D6B /* YHGroupListViewController.swift in Sources */,
 				AC51FE871EFB5B1A005EAE4F /* main.m in Sources */,
 				AC604AC51F03444A00B8D8B4 /* YHUserInfoManager.m in Sources */,
 				ACC9ACC51F1312C200A5FF88 /* UIBarButtonItem+Extension.swift in Sources */,
 				ACC9ADE61F1322A300A5FF88 /* YHRefreshTableView.m in Sources */,
 				ACC9AEA91F1322DC00A5FF88 /* CellChatVoiceLeft.m in Sources */,
+				ACC9583C1F26DEF900FAE436 /* MyDetailEditViewController.m in Sources */,
 				AC51FF9A1EFB67B5005EAE4F /* UIImage+Extension.m in Sources */,
 				AC51FFF21EFB67B5005EAE4F /* MJExtensionConst.m in Sources */,
 				ACC9AEAD1F1322DC00A5FF88 /* YHExpressionHelper.m in Sources */,

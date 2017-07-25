@@ -48,8 +48,9 @@ alpha:1.0]
 #define kGrayColor  RGBCOLOR(196, 197, 198)
 #define kBlackColor RGBCOLOR(54, 54, 59) 
 #define kTbvBGColor RGBCOLOR(239, 239, 244)
-#define kGreenColor kBlueColor    //绿色主调
-#define kBlueColor  RGB16(0x0e92dd)          //蓝色主调
+#define kGreenColor RGBCOLOR(9, 187, 7)    //绿色主调
+//#define kBlueColor  RGB16(0x0e92dd)      //蓝色主调
+#define kBlueColor  kGreenColor          //蓝色主调
 #define kSeparatorLineColor RGBCOLOR(222, 222, 222)  //分隔线颜色
 
 
@@ -58,7 +59,11 @@ alpha:1.0]
 
 #define WeakSelf  __weak __typeof(&*self)weakSelf = self;
 
+//dispatch main queue(start)
+#define DISPATCH_MAIN_START __weak __typeof(&*self)ws = self; dispatch_async(dispatch_get_main_queue(), ^{
 
+//dispatch end
+#define DISPATCH_END });
 #pragma mark - UI
 #define kErrorCell                  [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"errCell"]
 
@@ -68,8 +73,16 @@ alpha:1.0]
 
 #pragma mark - 通知事件
 
+#define Event_Register_Success @"event.register.success"
 #define Event_notRegister_showLoginVC @"event.notRegister.showLoginVC"
 #define Event_Login_Success @"event.login.success"
+#define Event_AddFriend_Vistor @"event.addFriend.vistor"
+#define Event_UserDetailEdit_Save @"event.userDetail.save"
+#define Event_MyTextViewCell_Height @"event.myTextViewCell.height"
+#define Event_MyListEdit_Count @"event.myListEdit.Count"
+#define Event_SingleVC_Value @"event.singleVC.value"
+//删除工作经历或教育经历
+#define Event_Experience_Delete @"event.experience.delete"
 
 //刷新名片详情页
 #define Event_CardDetailPage_Refresh @"event.cardDetailPage_refresh"

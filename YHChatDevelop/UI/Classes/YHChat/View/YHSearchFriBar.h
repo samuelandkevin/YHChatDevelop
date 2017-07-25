@@ -1,6 +1,6 @@
 //
 //  YHSearchFriBar.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by kun on 16/10/24.
 //  Copyright © 2016年 YHSoft. All rights reserved.

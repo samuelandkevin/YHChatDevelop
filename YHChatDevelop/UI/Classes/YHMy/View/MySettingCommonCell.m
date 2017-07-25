@@ -1,8 +1,8 @@
 //
 //  MySettingCommonCell.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 16/6/2.
+//  Created by samuelandkevin on 16/6/2.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //
 
@@ -19,7 +19,7 @@
         
         self.detail = [self labelCreateWithFontSize:13 withFontColor:[UIColor colorWithWhite:0.376 alpha:1.000]];
         
-        self.arrow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"TableViewArrow"]];
+        self.arrow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rightbigarrow"]];
         
         self.line = [[UIView alloc]init];
         self.line.backgroundColor = [UIColor colorWithWhite:0.871 alpha:1.000];

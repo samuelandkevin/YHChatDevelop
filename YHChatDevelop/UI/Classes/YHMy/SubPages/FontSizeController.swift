@@ -1,8 +1,8 @@
 //
 //  FontSizeController.swift
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 16/8/3.
+//  Created by samuelandkevin on 16/8/3.
 //  Copyright © 2016年 YHSoft. All rights reserved.
 //
 

@@ -9,7 +9,10 @@
 #import "NetManager.h"
 
 @interface NetManager (Login)
+
+- (void)postRegisterWithPhoneNum:(NSString *)phoneNum veriCode:(NSString *)veriCode passwd:(NSString *)passwd complete:(NetManagerCallback)complete;
 - (void)getVerifyphoneNum:(NSString *)phoneNum complete:(NetManagerCallback)complete;
+- (void)postVerifyPhonesAreRegistered:(NSArray *)phoneNums complete:(NetManagerCallback)complete;
 //退出登录
 - (void)postLogoutComplete:(NetManagerCallback)complete;
 - (void)postLoginWithPhoneNum:(NSString *)phoneNum passwd:(NSString *)passwd complete:(NetManagerCallback)complete;

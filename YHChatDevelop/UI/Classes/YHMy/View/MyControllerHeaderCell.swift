@@ -2,7 +2,7 @@
 //  MyControllerHeaderCell.swift
 //  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 2017/5/5.
+//  Created by samuelandkevin on 2017/5/5.
 //  Copyright © 2017年 samuelandkevin. All rights reserved.
 //
 

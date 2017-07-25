@@ -2,7 +2,7 @@
 //  SwiftExtension.swift
 //  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS003 on 2016/11/24.
+//  Created by samuelandkevin on 2016/11/24.
 //  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 

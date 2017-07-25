@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - BaiduMapKit (3.3.2)
   - FDFullscreenPopGesture (1.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - BaiduMapKit
   - FDFullscreenPopGesture
   - FMDB
   - HYBMasonryAutoCellHeight
@@ -51,6 +53,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMapKit: 5118390d63b375483bd64c963e8e32a40fd9ddb5
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   HYBMasonryAutoCellHeight: 9296583777080d32ba6257f55e52b7334dd481fc
@@ -64,6 +67,6 @@ SPEC CHECKSUMS:
   TZImagePickerController: '086034156913375cb19c8e4103562f15322c3b36'
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 9e1fde42832de28173b0842b3265bb8869fa7fec
+PODFILE CHECKSUM: 0a5f7c0cd79ddb9e2c0a0f1bfb842a7911b06bdd
 
 COCOAPODS: 1.1.1

@@ -29,6 +29,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>YHChatDevelop需要访问您的相机</string>
+	<key>NSContactsUsageDescription</key>
+	<string>YHChatDevelop需要访问您的联系人</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>YHChatDevelop需要访问您的麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>

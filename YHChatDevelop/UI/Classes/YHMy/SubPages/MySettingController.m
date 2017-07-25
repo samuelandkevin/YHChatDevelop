@@ -12,6 +12,7 @@
 #import "MySettingCommonCell.h"
 #import "YHChatDevelop-Swift.h"
 #import "YHAnimatedBtn.h"
+#import "MBProgressHUD.h"
 
 @interface MySettingController ()
 
@@ -83,13 +84,17 @@
 
 	cell.title.text = arr[indexPath.row];
 
-	if (indexPath.row == 0 || indexPath.row == 1)
-	{
-		cell.line.hidden = NO;
+    if (indexPath.row == 0 || indexPath.row == 1){
+        cell.line.hidden = NO;
     }else{
         cell.line.hidden = YES;
     }
-
+    
+    if (indexPath.row == 2) {
+        cell.arrow.hidden = YES;
+    }else{
+        cell.arrow.hidden = NO;
+    }
 	return cell;
 }
 
@@ -116,9 +121,15 @@
         FontSizeController *vc = [[FontSizeController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }else{
+        WeakSelf
         [YHAlertView showWithTitle:@"清理缓存" message:@"确定清理缓存？" cancelButtonTitle:@"取消" otherButtonTitle:@"确定" clickButtonBlock:^(YHAlertView * _Nonnull alertView, NSInteger buttonIndex) {
             if(buttonIndex == 1){
                 DDLog(@"确定清理");
+                [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+                    postTips(@"清理完成", nil);
+                });
             }
         }];
     }

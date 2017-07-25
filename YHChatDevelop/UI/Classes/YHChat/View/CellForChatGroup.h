@@ -1,8 +1,8 @@
 //
 //  CellForChatGroup.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 17/1/18.
+//  Created by samuelandkevin on 17/1/18.
 //  Copyright © 2017年 YHSoft. All rights reserved.
 //
 
@@ -23,5 +23,5 @@
 @property (nonatomic,strong) UIImageView *imgvSel;
 @property (nonatomic,strong) UIButton *btnTapScope;
 @property (nonatomic,assign) BOOL isOnlyShowGroup;//仅仅显示群,不显示勾选
-@property (nonatomic) NSIndexPath *indexPath;
+@property (nonatomic,strong) NSIndexPath *indexPath;
 @end
