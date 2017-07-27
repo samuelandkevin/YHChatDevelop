@@ -474,9 +474,9 @@ typedef NS_ENUM(int,SearchState){
         NSString *userName = [YHUserInfoManager sharedInstance].userInfo.userName;
         NSString *companyWeb = [YHUserInfoManager sharedInstance].companyWeb;
         if (!companyWeb.length) {
-            companyWeb = @"www.yhsoft.com";
+            companyWeb = @"www.samuelandkevin.com";
         }
-        NSString *message = [NSString stringWithFormat:@"【税道APP】您的好友%@邀请您加入税道人脉圈，一个集财税行业人脉的平台，找人办事不再难，财税大咖云集，快点行动吧下载地址：%@",userName,companyWeb];
+        NSString *message = [NSString stringWithFormat:@"【APP】您的好友%@邀请您加入税道人脉圈，一个集财税行业人脉的平台，找人办事不再难，财税大咖云集，快点行动吧下载地址：%@",userName,companyWeb];
         if(cell.userInfo.mobilephone)
         {
             [self showMessageView:@[cell.userInfo.mobilephone] title:@"新消息" body:message];

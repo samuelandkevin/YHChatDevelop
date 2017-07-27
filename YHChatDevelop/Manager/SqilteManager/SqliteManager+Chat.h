@@ -83,4 +83,28 @@
 //删除某一个办公文件
 - (void)deleteOneOfficeFile:(YHFileModel *)officeFile userInfo:(NSDictionary *)userInfo complete:(void(^)(BOOL success,id obj))complete;
 
+
+#pragma mark - 讨论组
+
+/*
+ *  更新GroupList表
+ */
+- (void)updateGroupList:(NSArray <YHChatGroupModel *>*)groupList uid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete;
+
+
+/*
+ *  查询GroupList表
+ */
+- (void)queryGroupListTableWithUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete;
+
+/*
+ *  删除某个群
+ */
+- (void)deleteOneGroupModel:(YHChatGroupModel *)groupModel uid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete;
+
+/*
+ *  删除GroupList表
+ */
+- (void)deleteGroupListTableWithUid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete;
+
 @end

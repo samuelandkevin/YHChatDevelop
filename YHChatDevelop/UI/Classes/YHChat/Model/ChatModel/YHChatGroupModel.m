@@ -7,7 +7,27 @@
 //
 
 #import "YHChatGroupModel.h"
+#import "NSObject+YHDBRuntime.h"
 
 @implementation YHChatGroupModel
+
++ (NSString *)yh_primaryKey{
+    return @"groupID";
+}
+
++ (NSDictionary *)yh_replacedKeyFromPropertyName{
+    return @{@"groupID":YHDB_PrimaryKey};
+}
+
++ (NSDictionary *)yh_propertyIsInstanceOfArray{
+    return @{
+             @"groupIconUrl":[NSURL class],
+             @"memberHeadUrls":[NSURL class]
+             };
+}
+
++ (NSArray *)yh_propertyDonotSave{
+    return @[@"isSelected"];
+}
 
 @end

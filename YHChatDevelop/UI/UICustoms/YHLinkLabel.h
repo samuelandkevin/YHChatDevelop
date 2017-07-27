@@ -1,9 +1,9 @@
 //
 //  YHLinkLabel.h
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
-//  Created by YHIOS002 on 16/8/25.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/8/25.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

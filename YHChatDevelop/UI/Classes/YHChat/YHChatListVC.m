@@ -394,7 +394,11 @@
 
 // utility button open/close event
 - (void)swipeableTableViewCell:(CellChatList *)cell scrollingToState:(SWCellState)state{
-    
+    if (state == kCellStateRight) {
+        self.tableView.disableReloadData = YES;
+    }else{
+        self.tableView.disableReloadData = NO;
+    }
 }
 
 // prevent multiple cells from showing utilty buttons simultaneously

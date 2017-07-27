@@ -3,7 +3,7 @@
 //  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by samuelandkevin on 16/6/20.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //  验证码管理
 
 #import <Foundation/Foundation.h>

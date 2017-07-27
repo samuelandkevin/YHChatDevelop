@@ -13,8 +13,8 @@
 @interface YHRefreshTableView()
 {
     UIView      *_viewLoadFailed;
-    UIView      *_viewLoadingState;
     UIView      *_viewNoData;
+    YHLoadingView *_viewLoading;
 }
 
 @end
@@ -22,12 +22,12 @@
 @implementation YHRefreshTableView
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -56,9 +56,9 @@
 - (void)createHeaderView{
     
     if (!self.mj_header) {
-         self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
+        self.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNew)];
     }
-   
+    
 }
 
 - (void)removeHeaderView{
@@ -68,7 +68,7 @@
 - (void)creatFooterView{
     
     if (!self.mj_footer) {
-         self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
+        self.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMore)];
     }
     
 }
@@ -78,7 +78,7 @@
 }
 
 - (void)didFinishLoadData {
-
+    
 }
 
 #pragma mark - Life
@@ -176,7 +176,7 @@
             _viewNoData =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 50)];
             
             UILabel *labelTips = [[UILabel alloc] initWithFrame:_viewNoData.frame];
-//            labelTips.frame.origin.y = 0;
+            //            labelTips.frame.origin.y = 0;
             labelTips.textAlignment = NSTextAlignmentCenter;
             labelTips.tag = 111;
             labelTips.font = [UIFont systemFontOfSize:14.0f];
@@ -210,14 +210,14 @@
             [_viewNoData removeFromSuperview];
         }
     }
-
+    
 }
 
 
 - (void)setNoMoreData:(BOOL)noMoreData{
     _noMoreData = noMoreData;
     if (_noMoreData) {
-         [self.mj_footer endRefreshingWithNoMoreData];
+        [self.mj_footer endRefreshingWithNoMoreData];
     }
     else{
         [self.mj_footer resetNoMoreData];
@@ -227,56 +227,21 @@
 #pragma mark - Public
 - (void)showLoadingView:(BOOL)isShow {
     if (isShow) {
-        if (!_viewLoadingState)
-        {
-            _viewLoadingState = [[UIView alloc] initWithFrame:self.bounds];
-            _viewLoadingState.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
-           
-            UIActivityIndicatorView *indicator = [UIActivityIndicatorView new];
-            indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-            [indicator startAnimating];
-            
-            
-            
-            UILabel *label = [UILabel new];
-            label.text = @"加载中...";
-            label.font = [UIFont systemFontOfSize:13.0];
-            label.textColor = [UIColor blackColor];
-            label.backgroundColor   = [UIColor clearColor];
-            label.textAlignment     = NSTextAlignmentLeft;
-            
-          
-            label.center = CGPointMake(self.bounds.size.width/2.0+50, indicator.center.y+40);
-            
-            [_viewLoadingState addSubview:indicator];
-            [_viewLoadingState addSubview:label];
-            indicator.tag   = 11;
-            label.tag       = 12;
-            
-           
-            [indicator mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.height.mas_equalTo(30);
-                make.centerX.equalTo(_viewLoadingState.mas_centerX).offset(-30);
-                make.centerY.equalTo(_viewLoadingState.mas_centerY).offset(-30);
-            }];
-            
-            [label mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.width.mas_equalTo(100);
-                make.height.mas_equalTo(20);
-                make.left.equalTo(indicator.mas_right).offset(10);
-                make.centerY.equalTo(indicator.mas_centerY);
-
-            }];
-
-        }
+        
+        [_viewNoData removeFromSuperview];
+        
         if (self.numberOfSections > 0 && [self numberOfRowsInSection:0]) {
             // 有内容时不显示loading
         }
         else
         {
-            [self addSubview:_viewLoadingState];
-            [(UIActivityIndicatorView *)[_viewLoadingState viewWithTag:11] startAnimating];
+            // 没有内容
+            DDLog(@"没有内容");
+            if (!_viewLoading)
+            {
+                _viewLoading = [YHLoadingView showLoadingInView:self];
+                
+            }
         }
         
         
@@ -284,9 +249,9 @@
         [self setLoadFailed:NO];
     }
     else {
-        if (_viewLoadingState.superview) {
-            [(UIActivityIndicatorView *)[_viewLoadingState viewWithTag:11] stopAnimating];
-            [_viewLoadingState removeFromSuperview];
+        if (_viewLoading.superview) {
+            [_viewLoading hideLoadingView];
+            _viewLoading = nil;
         }
         
     }
@@ -300,7 +265,7 @@
             UIView *faildView = [[UIView alloc] initWithFrame:self.bounds];
             faildView.backgroundColor = [UIColor colorWithRed:17/255.0 green:17/255.0 blue:17/255.0 alpha:1.0];
             faildView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
+            
             
             UILabel *faildTitle     = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 22)];
             faildTitle.textColor    = [UIColor colorWithRed:129/255.0 green:129/255.0 blue:129/255.0 alpha:1.0];
@@ -353,6 +318,11 @@
 #pragma mark - override
 
 - (void)reloadData {
+    
+    if(_disableReloadData){
+        return;
+    }
+    
     [super reloadData];
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(tableView:numberOfRowsInSection:)]) {
         if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {

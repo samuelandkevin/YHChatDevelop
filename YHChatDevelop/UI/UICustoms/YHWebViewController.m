@@ -334,6 +334,8 @@
     if ([strBody hasPrefix:HTML_TokenInvalid]) {
         DDLog(@"token失效,请重新登录");
         [[NSNotificationCenter defaultCenter] postNotificationName:Event_Token_Unavailable object:self];
+    }else if([strBody hasPrefix:@"{\"status\":\"error\",\"code\""]){
+        [self.webView reload];
     }
     
 }

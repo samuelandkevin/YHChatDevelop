@@ -63,10 +63,10 @@ typedef NS_ENUM(int,ComplainType){
 /**
  *  其他用户与我的关系查询
  *
- *  @param userIds  其他用户ID数组  
+ *  @param userIds  其他用户ID数组
  *  @param complete 成功返回是userStauts数组,数组元素是NSDictionary,有 status，uId两个key
-                //status :0 已申请 1 已添加
-                //uId    :用户Id
+ //status :0 已申请 1 已添加
+ //uId    :用户Id
  */
 - (void)postGetRelationAboutMeWithUserIds:(NSArray *)userIds complete:(NetManagerCallback)complete;
 
@@ -86,7 +86,7 @@ typedef NS_ENUM(int,ComplainType){
  *
  *  @param userId   用户Id
  *  @param complete dict { @"mobilePhone":mobilePhone,
-                            @"taxAccount":taxAccount}
+ @"taxAccount":taxAccount}
  */
 - (void)getUserAccountWithUserId:(NSString *)userId complete:(NetManagerCallback)complete;
 
@@ -118,4 +118,13 @@ typedef NS_ENUM(int,ComplainType){
  *  @param complete    成功失败回调
  */
 - (void)postModifyBlacklistWithTargetID:(NSString *)targetID add:(BOOL)add complete:(NetManagerCallback)complete;
+
+
+/**
+ 删除好友申请记录
+ 
+ @param friID 好友ID
+ @param complete 成功失败回调
+ */
+- (void)postDeleteRecordOfAddFriWithFriID:(NSString *)friID complete:(NetManagerCallback)complete;
 @end

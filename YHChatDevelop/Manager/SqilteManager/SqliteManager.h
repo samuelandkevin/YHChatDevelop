@@ -39,9 +39,13 @@ typedef NS_ENUM(int,DBChatType){
 @property(nonatomic,strong) NSMutableArray < CreatTable *>*visitorsArray;//访客Array
 @property(nonatomic,strong) NSMutableArray <CreatTable *>*officeFileArray;//聊天文件表（暂时只有一个Sql表）
 @property(nonatomic,strong) NSMutableArray <CreatTable *>*chatListArray;//聊天列表Array
-
+@property(nonatomic,strong) NSMutableArray <CreatTable *>*chatGroupArray;//讨论组Array
 
 + (instancetype)sharedInstance;
+
+#pragma mark - 文件大小
+//所有数据库占的总空间
+- (unsigned long long)totalSize;
 
 #pragma mark - 退出登录
 /*

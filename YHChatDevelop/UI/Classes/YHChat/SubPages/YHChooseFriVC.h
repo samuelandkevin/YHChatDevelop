@@ -3,7 +3,7 @@
 //  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by samuelandkevin on 16/10/24.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //  选择好友
 
 #import <UIKit/UIKit.h>

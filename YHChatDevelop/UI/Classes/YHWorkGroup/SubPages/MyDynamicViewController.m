@@ -1,9 +1,9 @@
 //
 //  MyDynamicViewController.m
-//  PikeWay
+//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
 //
 //  Created by kun on 16/5/29.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //
 
 #import "MyDynamicViewController.h"

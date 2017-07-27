@@ -1,8 +1,8 @@
 //
 //  YHGroupListViewController.swift
-//  samuelandkevin github:https://github.com/samuelandkevin/YHChat
+//  PikeWay
 //
-//  Created by samuelandkevin on 2017/7/20.
+//  Created by YHIOS002 on 2017/7/20.
 //  Copyright © 2017年 YHSoft. All rights reserved.
 //  讨论组列表
 
@@ -32,12 +32,32 @@ class YHGroupListViewController:UIViewController{
         _tableView.register(
             CellForChatGroup.classForCoder(), forCellReuseIdentifier: NSStringFromClass(CellForChatGroup.classForCoder()))
         _tableView.enableLoadNew = true
-        //请求数据
-        _requestGroupList(loadNew: true)
+        
+        //先显示缓存,再从服务器获取
+        self._tableView.loadBegin(.loadNew)
+        SqliteManager.sharedInstance().queryGroupListTable(userInfo: nil, fuzzyUserInfo: nil) { [weak self](success, obj) in
+            if let weakSelf = self {
+                weakSelf._tableView.loadFinish(.loadNew)
+                if success == true , let retObj = obj as? [YHChatGroupModel],retObj.count > 0{
+                    YHPrint("获取讨论组列表DB成功")
+                    weakSelf._dataArray.removeAll()
+                    weakSelf._dataArray = retObj
+                    weakSelf._tableView.reloadData()
+                }else{
+                    
+                }
+                //请求数据
+                weakSelf._requestGroupList(loadNew: true)
+            }
+            
+        }
+        
+        
         
     }
     
     // MARK:- 网络请求
+    //获取讨论组列表
     fileprivate func _requestGroupList(loadNew:Bool){
         
         
@@ -49,7 +69,7 @@ class YHGroupListViewController:UIViewController{
         else{
             refreshType = .loadMore;
         }
-
+        
         self._tableView.loadBegin(refreshType)
         
         NetManager.sharedInstance().getGroupChatListComplete { [weak self](success, obj) in
@@ -60,6 +80,14 @@ class YHGroupListViewController:UIViewController{
                         weakSelf._dataArray.removeAll()
                         weakSelf._dataArray = retObj
                         weakSelf._tableView.reloadData()
+                        
+                        SqliteManager.sharedInstance().updateGroupList(retObj, uid: YHUserInfoManager.sharedInstance().userInfo.uid, complete: { (success, obj) in
+                            if success == true {
+                                YHPrint("更新讨论组DB成功")
+                            }else{
+                                YHPrint("更新讨论组DB失败")
+                            }
+                        })
                     }
                     
                 }
@@ -85,7 +113,7 @@ extension YHGroupListViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellID1 =  NSStringFromClass(CellForChatGroup.classForCoder())
-       
+        
         var cell = tableView.dequeueReusableCell(withIdentifier: cellID1) as? CellForChatGroup
         
         if cell == nil {
@@ -100,17 +128,17 @@ extension YHGroupListViewController:UITableViewDataSource,UITableViewDelegate{
         }
         
         return cell!
-   
+        
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
-
+    
 }
 
 extension YHGroupListViewController:CellForChatGroupDelegate{
-
+    
     func didSelectOneGroup(_ didSel: Bool, inCell cell: CellForChatGroup!) {
         
         if  let indexPath = cell.indexPath, _dataArray.count > indexPath.row{
@@ -128,7 +156,7 @@ extension YHGroupListViewController:CellForChatGroupDelegate{
                 return
             }
             
-
+            
             let groupTitle = model.groupName
             
             let path = YHProtocol.share().pathGroupChat + "/\(groupID)?accessToken=\(token)"
@@ -147,14 +175,14 @@ extension YHGroupListViewController:CellForChatGroupDelegate{
             
             
         }
-
+        
     }
 }
 
 extension YHGroupListViewController:YHRefreshTableViewDelegate{
     
     func refreshTableViewLoadNew(_ view: YHRefreshTableView!) {
-            _requestGroupList(loadNew: true)
+        _requestGroupList(loadNew: true)
     }
     
     func refreshTableViewLoadmore(_ view: YHRefreshTableView!) {

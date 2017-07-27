@@ -59,6 +59,9 @@ static inline NSString *tableNameLogin(NSString *userID){
 #define OfficeDir [YHChatLogDir stringByAppendingPathComponent:@"OfficeDoc"]
 
 
+//讨论组列表目录
+#define GroupListDir [YHChatLogDir stringByAppendingPathComponent:@"GroupList"]
+
 //获取聊天记录路径  dir:目录名称 sessionID:会话ID
 static inline NSString *pathLogWithDir( NSString *dir,NSString *sessionID){
     NSString *pathLog = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"yh_%@.sqlite",sessionID]];
@@ -87,6 +90,21 @@ static inline NSString *pathChatListLogWithDir(NSString *dir,NSString *uid){
 static inline NSString *tableNameChatList(NSString *uid){
     
     return [NSString stringWithFormat:@"chatList_%@",[uid stringByReplacingOccurrencesOfString:@"-" withString:@""]];
+}
+
+
+#pragma mark - /********************聊天讨论组表*****************/
+
+//获取讨论组列表路径  dir:目录名称 uid:用户id
+static inline NSString *pathGroupListWithDir(NSString *dir,NSString *uid){
+    NSString *pathLog = [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"groupList_%@.sqlite",uid]];
+    return pathLog;
+}
+
+//GroupList表名的命名方式
+static inline NSString *tableNameGroupList(NSString *uid){
+    
+    return [NSString stringWithFormat:@"groupList_%@",[uid stringByReplacingOccurrencesOfString:@"-" withString:@""]];
 }
 
 

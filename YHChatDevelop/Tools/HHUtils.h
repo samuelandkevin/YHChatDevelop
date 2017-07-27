@@ -79,6 +79,11 @@ int getFileSize(NSString *path);
  @return 返回与是一次是否有变化
  */
 BOOL compareStringIdsDiff( NSArray *allphones, NSString *phonesCacheFilePath, NSArray **addlist, NSArray **removelist );
+    
+#pragma mark - 文件管理
+    
+    //计算文件/文件夹大小
+    unsigned long long fileSize(NSString *path);
 
 #ifdef __cplusplus
     }

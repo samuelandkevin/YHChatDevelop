@@ -9,7 +9,7 @@
 #import "YHConnectioniewController.h"
 
 #import "YHNetManager.h"
-//#import "NewFansVC.h"
+#import "NewFansVC.h"
 #import "HHUtils.h"
 #import "YHUserInfoManager.h"
 //#import "YHTalentListController.h"
@@ -281,16 +281,14 @@
     [self.hView didSelectRowHandler:^(NSIndexPath *indexPath) {
         if (indexPath.row == 0) {
             //新的好友
-//            NewFansVC *vc = [[NewFansVC alloc] init];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [weakSelf.navigationController pushViewController:vc animated:YES];
+            NewFansVC *vc = [[NewFansVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         }else{
             //群聊
-            NSString *path = [YHProtocol share].pathGroupList;
-            path = [path stringByAppendingString:[NSString stringWithFormat:@"?accessToken=%@",[YHUserInfoManager sharedInstance].userInfo.accessToken]];
-//            YHGroupListVC *vc = [[YHGroupListVC alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-64) url:[NSURL URLWithString:path] loadCache:YES];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
+            YHGroupListViewController *vc = [[YHGroupListViewController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }];
     

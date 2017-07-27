@@ -26,11 +26,11 @@ typedef NS_ENUM(int,YHRefreshType){
 
 @interface YHRefreshTableView : UITableView
 
-@property (nonatomic,assign )  IBInspectable   BOOL enableLoadNew;
+@property (nonatomic, assign)  IBInspectable   BOOL enableLoadNew;
 @property (nonatomic, assign)  IBInspectable   BOOL enableLoadMore;
 @property (nonatomic, assign)  BOOL noData;            //无数据
 @property (nonatomic, assign)  BOOL noMoreData;//上拉加载无更多数据
-
+@property (nonatomic, assign)  BOOL disableReloadData; //禁止刷新
 //开始加载
 - (void)loadBegin:(YHRefreshType)type;
 //结束加载

@@ -499,6 +499,118 @@
     }];
 }
 
+#pragma mark - 讨论组
+
+//建讨论组列表表
+- (CreatTable *)creatGroupListTableWithUid:(NSString *)uid{
+    
+    CreatTable *model = [self _firstGroupListTableWithUid:uid];
+    FMDatabaseQueue *queue = model.queue;
+    NSArray *sqlArr    = model.sqlCreatTable;
+    for (NSString *sql in sqlArr) {
+        [queue inDatabase:^(FMDatabase *db) {
+            
+            BOOL ok = [db executeUpdate:sql];
+            if (ok == NO) {
+                DDLog(@"----NO:%@---",sql);
+            }
+            
+        }];
+    }
+    return model;
+}
+
+
+/*
+ *  更新GroupList表
+ */
+- (void)updateGroupList:(NSArray <YHChatGroupModel *>*)groupList uid:(NSString *)uid complete:(void (^)(BOOL success,id obj))complete{
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        CreatTable *model = [self _setupGroupListDBqueueWithUid:uid];
+        FMDatabaseQueue *queue = model.queue;
+        
+        NSString *tableName = tableNameGroupList(uid);
+        
+        for (int i= 0; i< groupList.count; i++) {
+            
+            YHChatGroupModel *model = groupList[i];
+            
+            [queue inDatabase:^(FMDatabase *db) {
+                /** 存储:会自动调用insert或者update，不需要担心重复插入数据 */
+                [db yh_saveDataWithTable:tableName model:model userInfo:nil otherSQL:nil option:^(BOOL save) {
+                    if (i == groupList.count-1) {
+                        complete(save,nil);
+                    }else{
+                        if (!save) {
+                            complete(save,@"更新某条数据失败");
+                        }
+                    }
+                    
+                }];
+                
+            }];
+        }
+        
+    });
+}
+
+//删除某个群
+- (void)deleteOneGroupModel:(YHChatGroupModel *)groupModel uid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete{
+    CreatTable *model = [self _setupGroupListDBqueueWithUid:uid];
+    FMDatabaseQueue *queue = model.queue;
+    NSString *tableName = tableNameGroupList(uid);
+    [queue inDatabase:^(FMDatabase * _Nonnull db) {
+        [db yh_deleteDataWithTable:tableName model:groupModel userInfo:nil otherSQL:nil option:^(BOOL del) {
+            complete(del,@(del));
+        }];
+    }];
+    
+}
+
+
+/*
+ *  查询GroupList表
+ */
+- (void)queryGroupListTableWithUserInfo:(NSDictionary *)userInfo fuzzyUserInfo:(NSDictionary *)fuzzyUserInfo complete:(void (^)(BOOL success,id obj))complete{
+    
+    NSString *uid = [YHUserInfoManager sharedInstance].userInfo.uid;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        CreatTable *model = [self _setupGroupListDBqueueWithUid:uid];
+        FMDatabaseQueue *queue = model.queue;
+        
+        [queue inDatabase:^(FMDatabase *db) {
+            [db yh_excuteDatasWithTable:tableNameGroupList(uid) model:[YHChatGroupModel new] userInfo:userInfo fuzzyUserInfo:fuzzyUserInfo otherSQL:nil option:^(NSMutableArray *models) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    complete(YES,models);
+                });
+            }];
+        }];
+    });
+    
+}
+
+/*
+ *  删除GroupList表
+ */
+- (void)deleteGroupListTableWithUid:(NSString *)uid complete:(void(^)(BOOL success,id obj))complete{
+    NSString *pathGroupList = pathGroupListWithDir(GroupListDir, uid);
+    BOOL success = [self _deleteFileAtPath:pathGroupList];
+    if (success) {
+        
+        for (CreatTable *model in self.chatGroupArray) {
+            NSString *aID = model.Id;
+            if ([aID isEqualToString:uid]) {
+                [self.chatGroupArray removeObject:model];
+                break;
+            }
+        }
+        
+    }
+    complete(success,nil);
+}
+
+
 
 #pragma mark - Private 聊天记录
 //初始化聊天FMDBQueue
@@ -740,6 +852,82 @@
     //没有就创建文件目录表
     return [self creatFileTable];
 }
+
+
+#pragma mark - Private 讨论组列表
+- (CreatTable *)_setupGroupListDBqueueWithUid:(NSString *)uid{
+    //是否已存在Queue
+    for (CreatTable *model in self.chatGroupArray) {
+        NSString *aID = model.Id;
+        if ([aID isEqualToString:uid]) {
+            
+#ifdef DEBUG
+            
+            NSString *pathGroupList = pathGroupListWithDir(GroupListDir, uid);
+            DDLog(@"-----groupListDBPath------\n%@",pathGroupList);
+#else
+            
+#endif
+            return model;
+            break;
+        }
+    }
+    
+    //没有就创建我的好友表
+    return [self creatGroupListTableWithUid:uid];
+}
+
+
+//第一次建GroupList表
+- (CreatTable *)_firstGroupListTableWithUid:(NSString *)uid{
+    
+    NSString *pathGroupList = pathGroupListWithDir(GroupListDir, uid);
+    NSFileManager *fileM = [NSFileManager defaultManager];
+    if(![fileM fileExistsAtPath:GroupListDir]){
+        //如果不存在,则说明是第一次运行这个程序，那么建立这个文件夹
+        if (![fileM fileExistsAtPath:YHDocumentDir]) {
+            [fileM createDirectoryAtPath:YHDocumentDir withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        if (![fileM fileExistsAtPath:YHUserDir]) {
+            [fileM createDirectoryAtPath:YHUserDir withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        if (![fileM fileExistsAtPath:YHChatLogDir]) {
+            [fileM createDirectoryAtPath:YHChatLogDir withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+        if (![fileM fileExistsAtPath:GroupListDir]) {
+            [fileM createDirectoryAtPath:GroupListDir withIntermediateDirectories:YES attributes:nil error:nil];
+        }
+    }
+    
+    DDLog(@"------GroupListDBPath-----\n:%@",pathGroupList);
+    
+    CreatTable *model = [[CreatTable alloc] init];
+    FMDatabaseQueue *queue = [FMDatabaseQueue databaseQueueWithPath:pathGroupList];
+    
+    if (queue) {
+        
+        //存ID和队列
+        model.Id    = uid;
+        model.queue = queue;
+        
+        
+        //存SQL语句
+        NSString *tableName = tableNameGroupList(uid);
+        NSString *chatGroupSql = [YHChatGroupModel yh_sqlForCreatTable:tableName primaryKey:@"id"];
+        NSArray *sqlArr = nil;
+        if (chatGroupSql) {
+            sqlArr = @[chatGroupSql];
+        }
+        
+        if (sqlArr) {
+            model.sqlCreatTable = sqlArr;
+        }
+        
+        [self.chatGroupArray addObject:model];
+    }
+    return model;
+}
+
 
 
 

@@ -11,6 +11,9 @@
 #import "NetManager+Login.h"
 #import "YHChatListVC.h"
 #import "YHUserInfoManager.h"
+#import "MBProgressHUD.h"
+#import "IQKeyboardManager.h"
+
 //用户手机号
 #define kMobilePhone            @"mobilePhone"
 @interface YHLoginInputViewController () <UITextFieldDelegate,UIScrollViewDelegate>
@@ -129,8 +132,12 @@
 //登录
 - (IBAction)onLogin:(id)sender
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     WeakSelf
     [[NetManager sharedInstance] postLoginWithPhoneNum:weakSelf.tfAccount.text passwd:weakSelf.tfPasswd.text complete:^(BOOL success, id obj) {
+        DISPATCH_MAIN_START
+        [MBProgressHUD hideHUDForView:ws.view animated:YES];
+        DISPATCH_END
         //取消Loading
         //		[weakSelf.loginLoading hide:YES];
         
@@ -241,7 +248,8 @@
 	//状态栏显示,从欢迎页跳进此页面显示
 	[UIApplication sharedApplication].statusBarHidden = NO;
 	[super viewWillAppear:animated];
-    
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     
 }
 
@@ -249,7 +257,7 @@
 {
 
 	[super viewWillDisappear:animated];
-    
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

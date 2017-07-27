@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5DCF916208E7F34616016DB7 /* Pods_YHChatDevelop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D61DD23A0921913C346599D3 /* Pods_YHChatDevelop.framework */; };
+		AC09C4271F29D2DD00555AC3 /* NewFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AC09C4261F29D2DD00555AC3 /* NewFansVC.m */; };
 		AC5100001EFB67B5005EAE4F /* VoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC51FF951EFB67B5005EAE4F /* VoiceConverter.mm */; };
 		AC51FE871EFB5B1A005EAE4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FE861EFB5B1A005EAE4F /* main.m */; };
 		AC51FE8A1EFB5B1A005EAE4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC51FE891EFB5B1A005EAE4F /* AppDelegate.m */; };
@@ -331,6 +332,8 @@
 /* Begin PBXFileReference section */
 		1D3C9F420566C26A08A91725 /* Pods-YHChatDevelop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHChatDevelop.release.xcconfig"; path = "Pods/Target Support Files/Pods-YHChatDevelop/Pods-YHChatDevelop.release.xcconfig"; sourceTree = "<group>"; };
 		9A8BB269D610A637905778E2 /* Pods-YHChatDevelop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YHChatDevelop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YHChatDevelop/Pods-YHChatDevelop.debug.xcconfig"; sourceTree = "<group>"; };
+		AC09C4251F29D2DD00555AC3 /* NewFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFansVC.h; sourceTree = "<group>"; };
+		AC09C4261F29D2DD00555AC3 /* NewFansVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFansVC.m; sourceTree = "<group>"; };
 		AC5100011EFB6841005EAE4F /* YHChatDevelop-PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YHChatDevelop-PrefixHeader.pch"; sourceTree = "<group>"; };
 		AC5100021EFB68B9005EAE4F /* YHChatDevelop-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YHChatDevelop-Bridging-Header.h"; sourceTree = "<group>"; };
 		AC51FE821EFB5B1A005EAE4F /* YHChatDevelop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHChatDevelop.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1882,6 +1885,8 @@
 				ACFEF3011F25A0B800582683 /* YHScanVC.swift */,
 				ACC9AEE11F13504F00A5FF88 /* YHCardSettingVC.swift */,
 				ACC9AEDF1F134EF900A5FF88 /* YHQRCodeCardVC.swift */,
+				AC09C4251F29D2DD00555AC3 /* NewFansVC.h */,
+				AC09C4261F29D2DD00555AC3 /* NewFansVC.m */,
 				ACBFBAE21F26F4C5004A5D8B /* ChooseMyFrisViewController.h */,
 				ACBFBAE31F26F4C5004A5D8B /* ChooseMyFrisViewController.m */,
 				ACF6C6D51F1A0FE6003EF332 /* AddFansViewController.h */,
@@ -2467,6 +2472,7 @@
 				ACC9586B1F26E01F00FAE436 /* JobSelectController.swift in Sources */,
 				ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */,
 				ACD278991F25C70400168B36 /* IQPreviousNextView.m in Sources */,
+				AC09C4271F29D2DD00555AC3 /* NewFansVC.m in Sources */,
 				ACE13CCB1F17154B00F23433 /* CellChatCheckinLeft.m in Sources */,
 				ACC9AE861F1322DC00A5FF88 /* YHGroupMember.m in Sources */,
 				ACDDA39C1F1F35F20029E134 /* MyVisitorsViewController.m in Sources */,

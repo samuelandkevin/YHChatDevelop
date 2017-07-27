@@ -2,8 +2,8 @@
 //  CellForWorkGroupRepost.h
 //  HKPTimeLine
 //
-//  Created by YHIOS002 on 16/9/20.
-//  Copyright © 2016年 YHSoft. All rights reserved.
+//  Created by samuelandkevin on 16/9/20.
+//  Copyright © 2016年 samuelandkevin. All rights reserved.
 //  转发视图
 
 #import <UIKit/UIKit.h>

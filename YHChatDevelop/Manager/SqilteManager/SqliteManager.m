@@ -98,6 +98,13 @@
     return _chatListArray;
 }
 
+- (NSMutableArray<CreatTable *> *)chatGroupArray{
+    if(!_chatGroupArray){
+        _chatGroupArray = [NSMutableArray new];
+    }
+    return _chatGroupArray;
+}
+
 #pragma mark - Private 登录用户
 
 //第一次建登录用户表
@@ -170,7 +177,12 @@
     return [self creatLoginAccountTableWithUserID:userID];
 }
 
-
+#pragma mark - 文件大小
+//所有数据库占的总空间
+- (unsigned long long)totalSize{
+    unsigned long long sizeUserDir = fileSize(YHUserDir);
+    return sizeUserDir;
+}
 
 //退出登录清除缓存
 - (void)clearCacheWhenLogout{

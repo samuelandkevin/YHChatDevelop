@@ -635,5 +635,32 @@
     
 }
 
+//删除好友申请记录
+- (void)postDeleteRecordOfAddFriWithFriID:(NSString *)friID complete:(NetManagerCallback)complete{
+    
+    NSString *requestUrl = [YHProtocol share].pathDeleteRecordOfAddFri;
+    
+    //参数判断
+    if(![YHUserInfoManager sharedInstance].userInfo.accessToken){
+        complete(NO,@"token is nil");
+        return;
+    }
+    if(!friID){
+        complete(NO,@"friID is nil");
+        return;
+    }
+    
+    NSDictionary *params = @{
+                             @"accessToken":[YHUserInfoManager sharedInstance].userInfo.accessToken,
+                             @"uid":friID
+                             };
+    
+    [self postWithRequestUrl:requestUrl parameters:params complete:^(BOOL success, id obj) {
+        complete(success,obj);
+    } progress:^(NSProgress *uploadProgress) {
+        
+    }];
+}
+
 
 @end
