@@ -280,6 +280,11 @@
 		ACE13CD41F171AAE00F23433 /* YHCheckinBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD31F171AAE00F23433 /* YHCheckinBtn.m */; };
 		ACE13CD71F17450100F23433 /* YHCheckinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD61F17450100F23433 /* YHCheckinModel.m */; };
 		ACE13CDA1F17565000F23433 /* YHPicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACE13CD91F17565000F23433 /* YHPicModel.m */; };
+		ACED7DC41F4568D5003C55F1 /* YHSearchConnectionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED7DC31F4568D5003C55F1 /* YHSearchConnectionsController.m */; };
+		ACED7DC71F4568EF003C55F1 /* YHSearchDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED7DC61F4568EF003C55F1 /* YHSearchDynamicViewController.m */; };
+		ACED7DCA1F456B60003C55F1 /* YHGlobalSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED7DC91F456B60003C55F1 /* YHGlobalSearchController.m */; };
+		ACED7DCD1F456F23003C55F1 /* YHSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED7DCC1F456F23003C55F1 /* YHSearchModel.m */; };
+		ACED7DD01F456F7C003C55F1 /* YHSynthesisSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = ACED7DCF1F456F7C003C55F1 /* YHSynthesisSearch.m */; };
 		ACF6C6AC1F1A0D04003EF332 /* YHConnectioniewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF6C6AB1F1A0D04003EF332 /* YHConnectioniewController.m */; };
 		ACF6C6AF1F1A0D8C003EF332 /* CellForMyFri.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF6C6AE1F1A0D8C003EF332 /* CellForMyFri.m */; };
 		ACF6C6B31F1A0DB8003EF332 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF6C6B21F1A0DB8003EF332 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -430,6 +435,8 @@
 		AC604AB31F03444A00B8D8B4 /* YHUploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUploadManager.m; sourceTree = "<group>"; };
 		AC604AB51F03444A00B8D8B4 /* YHUserInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHUserInfoManager.h; sourceTree = "<group>"; };
 		AC604AB61F03444A00B8D8B4 /* YHUserInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHUserInfoManager.m; sourceTree = "<group>"; };
+		AC656B411F453E080029B832 /* ConnectionSearchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionSearchCell.h; sourceTree = "<group>"; };
+		AC656B421F453E080029B832 /* ConnectionSearchCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectionSearchCell.m; sourceTree = "<group>"; };
 		AC69EA211F1F3777008D8EE0 /* SqliteManager+MyVisitors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SqliteManager+MyVisitors.h"; sourceTree = "<group>"; };
 		AC69EA221F1F3777008D8EE0 /* SqliteManager+MyVisitors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SqliteManager+MyVisitors.m"; sourceTree = "<group>"; };
 		AC69EA281F1F3DA4008D8EE0 /* YHDiscoveryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHDiscoveryVC.h; sourceTree = "<group>"; };
@@ -847,6 +854,16 @@
 		ACE13CD61F17450100F23433 /* YHCheckinModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHCheckinModel.m; sourceTree = "<group>"; };
 		ACE13CD81F17565000F23433 /* YHPicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHPicModel.h; sourceTree = "<group>"; };
 		ACE13CD91F17565000F23433 /* YHPicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHPicModel.m; sourceTree = "<group>"; };
+		ACED7DC21F4568D5003C55F1 /* YHSearchConnectionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSearchConnectionsController.h; sourceTree = "<group>"; };
+		ACED7DC31F4568D5003C55F1 /* YHSearchConnectionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSearchConnectionsController.m; sourceTree = "<group>"; };
+		ACED7DC51F4568EF003C55F1 /* YHSearchDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSearchDynamicViewController.h; sourceTree = "<group>"; };
+		ACED7DC61F4568EF003C55F1 /* YHSearchDynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSearchDynamicViewController.m; sourceTree = "<group>"; };
+		ACED7DC81F456B60003C55F1 /* YHGlobalSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHGlobalSearchController.h; sourceTree = "<group>"; };
+		ACED7DC91F456B60003C55F1 /* YHGlobalSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHGlobalSearchController.m; sourceTree = "<group>"; };
+		ACED7DCB1F456F23003C55F1 /* YHSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSearchModel.h; sourceTree = "<group>"; };
+		ACED7DCC1F456F23003C55F1 /* YHSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSearchModel.m; sourceTree = "<group>"; };
+		ACED7DCE1F456F7C003C55F1 /* YHSynthesisSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHSynthesisSearch.h; sourceTree = "<group>"; };
+		ACED7DCF1F456F7C003C55F1 /* YHSynthesisSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHSynthesisSearch.m; sourceTree = "<group>"; };
 		ACF6C6AA1F1A0D04003EF332 /* YHConnectioniewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHConnectioniewController.h; sourceTree = "<group>"; };
 		ACF6C6AB1F1A0D04003EF332 /* YHConnectioniewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHConnectioniewController.m; sourceTree = "<group>"; };
 		ACF6C6AD1F1A0D8C003EF332 /* CellForMyFri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellForMyFri.h; sourceTree = "<group>"; };
@@ -1272,6 +1289,49 @@
 			path = UserInfoManager;
 			sourceTree = "<group>";
 		};
+		AC656B351F453E080029B832 /* YHSearch */ = {
+			isa = PBXGroup;
+			children = (
+				AC656B361F453E080029B832 /* Model */,
+				AC656B3B1F453E080029B832 /* SubPages */,
+				AC656B401F453E080029B832 /* View */,
+				ACED7DC81F456B60003C55F1 /* YHGlobalSearchController.h */,
+				ACED7DC91F456B60003C55F1 /* YHGlobalSearchController.m */,
+			);
+			path = YHSearch;
+			sourceTree = "<group>";
+		};
+		AC656B361F453E080029B832 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACED7DCB1F456F23003C55F1 /* YHSearchModel.h */,
+				ACED7DCC1F456F23003C55F1 /* YHSearchModel.m */,
+				ACED7DCE1F456F7C003C55F1 /* YHSynthesisSearch.h */,
+				ACED7DCF1F456F7C003C55F1 /* YHSynthesisSearch.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AC656B3B1F453E080029B832 /* SubPages */ = {
+			isa = PBXGroup;
+			children = (
+				ACED7DC21F4568D5003C55F1 /* YHSearchConnectionsController.h */,
+				ACED7DC31F4568D5003C55F1 /* YHSearchConnectionsController.m */,
+				ACED7DC51F4568EF003C55F1 /* YHSearchDynamicViewController.h */,
+				ACED7DC61F4568EF003C55F1 /* YHSearchDynamicViewController.m */,
+			);
+			path = SubPages;
+			sourceTree = "<group>";
+		};
+		AC656B401F453E080029B832 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AC656B411F453E080029B832 /* ConnectionSearchCell.h */,
+				AC656B421F453E080029B832 /* ConnectionSearchCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AC69EA241F1F3D71008D8EE0 /* YHDiscovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -1505,6 +1565,7 @@
 		ACC9ADEF1F1322DB00A5FF88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AC656B351F453E080029B832 /* YHSearch */,
 				ACC958801F26E62500FAE436 /* YHRegister */,
 				ACC9ADF01F1322DB00A5FF88 /* YHChat */,
 				AC69EA241F1F3D71008D8EE0 /* YHDiscovery */,
@@ -2404,6 +2465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD278911F25C70400168B36 /* IQUITextFieldView+Additions.m in Sources */,
+				ACED7DC71F4568EF003C55F1 /* YHSearchDynamicViewController.m in Sources */,
 				AC604ABA1F03444A00B8D8B4 /* NetManager+Connections.m in Sources */,
 				ACBFBAF31F271281004A5D8B /* YHExpressionTextView.m in Sources */,
 				ACF6C6CA1F1A0E30003EF332 /* CellForNewFri.m in Sources */,
@@ -2468,6 +2530,7 @@
 				ACC9ADE21F1322A300A5FF88 /* YHBrowserImageView.m in Sources */,
 				AC51FF9C1EFB67B5005EAE4F /* UIView+Extension.m in Sources */,
 				ACC9AE921F1322DC00A5FF88 /* YHShootVC.m in Sources */,
+				ACED7DCA1F456B60003C55F1 /* YHGlobalSearchController.m in Sources */,
 				ACC9AE8A1F1322DC00A5FF88 /* YHUserInfo.m in Sources */,
 				ACC9586B1F26E01F00FAE436 /* JobSelectController.swift in Sources */,
 				ACFCF4241F18A34A0040F988 /* SWLongPressGestureRecognizer.m in Sources */,
@@ -2510,6 +2573,7 @@
 				ACC9ACBE1F1311B900A5FF88 /* STMURLCacheModel.m in Sources */,
 				ACC9AEBB1F1322DC00A5FF88 /* YHCommentData.m in Sources */,
 				ACC9AE911F1322DC00A5FF88 /* YHRemoveGroupMembers.swift in Sources */,
+				ACED7DD01F456F7C003C55F1 /* YHSynthesisSearch.m in Sources */,
 				ACC9ADDF1F1322A300A5FF88 /* YHLoadingView.swift in Sources */,
 				ACFC60741F25E31A000A1202 /* UITextField+FontChange.swift in Sources */,
 				ACC9AEA41F1322DC00A5FF88 /* CellChatImageRight.m in Sources */,
@@ -2598,10 +2662,12 @@
 				AC51FF961EFB67B5005EAE4F /* NSDate+Extension.m in Sources */,
 				ACC9ADE41F1322A300A5FF88 /* YHWaitingView.m in Sources */,
 				ACF6C6D71F1A0FE6003EF332 /* AddFansViewController.m in Sources */,
+				ACED7DC41F4568D5003C55F1 /* YHSearchConnectionsController.m in Sources */,
 				ACC958B61F26E9C800FAE436 /* MySettingCommonCell.m in Sources */,
 				ACC9AEBD1F1322DC00A5FF88 /* YHWGTouchModel.m in Sources */,
 				ACC9AE9C1F1322DC00A5FF88 /* CellGroupSetting.swift in Sources */,
 				ACC9587F1F26E39E00FAE436 /* LxGridViewFlowLayout.m in Sources */,
+				ACED7DCD1F456F23003C55F1 /* YHSearchModel.m in Sources */,
 				ACC9ADE11F1322A300A5FF88 /* YHNavigationController.m in Sources */,
 				ACC9ADE91F1322A300A5FF88 /* YHWebViewController.m in Sources */,
 				ACC9AE8B1F1322DC00A5FF88 /* YHUserSetting.m in Sources */,

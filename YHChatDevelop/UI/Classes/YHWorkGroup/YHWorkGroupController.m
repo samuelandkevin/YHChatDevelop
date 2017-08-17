@@ -11,7 +11,7 @@
 #import "YHNetManager.h"
 #import "YHNavigationController.h"
 #import "YHDynamicPublishOController.h"
-//#import "YHGlobalSearchController.h"
+#import "YHGlobalSearchController.h"
 #import "ZJScrollPageView.h"
 #import "YHDynamicListViewController.h"
 #import "YHWGManager.h"

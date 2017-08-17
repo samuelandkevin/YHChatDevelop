@@ -16,7 +16,7 @@
 #import "YHDynamicPublishOController.h"
 #import "YHNavigationController.h"
 #import "YHNetManager.h"
-//#import "YHGlobalSearchController.h"
+#import "YHGlobalSearchController.h"
 #import "YHDynamicForwardController.h"
 #import "YHUserInfoManager.h"
 #import "YHRefreshTableView.h"
@@ -34,7 +34,6 @@
 #import "YHMyDynManager.h"
 #import "UITableViewCell+HYBMasonryAutoCellHeight.h"
 #import "SqliteManager+Dynamic.h"
-//#import "YHGlobalSearchController.h"
 #import "SDImageCache.h"
 #import "YHWGLayout.h"
 #import "YHChatDevelop-Swift.h"
@@ -193,9 +192,9 @@ UISearchBarDelegate>{
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     //进入搜索
-//    YHGlobalSearchController *vc = [[YHGlobalSearchController alloc] init];
-//    YHNavigationController *nav = [[YHNavigationController alloc] initWithRootViewController:vc];
-//    [self presentViewController:nav animated:YES completion:NULL];
+    YHGlobalSearchController *vc = [[YHGlobalSearchController alloc] init];
+    YHNavigationController *nav = [[YHNavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:NULL];
     return NO;
 }
 
